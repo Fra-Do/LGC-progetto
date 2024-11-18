@@ -8,7 +8,7 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    img_player = PP.assets.image.add(s, "assets/images/stickman.png");
+    player = PP.assets.image.add(s, img_player, 200, 650, 1,1);
 }
 
 function update_player(s) {
