@@ -1,6 +1,9 @@
 let img_player;
 let player;
+
 let player_speed =   200;
+let step_lenght = 4;
+let height = 5;
 
 
 function preload_player(s) {
@@ -8,20 +11,26 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.image.add(s, img_player, 200, 650, 1,1);
+    player = PP.assets.image.add(s, img_player, 200,400, 1, 1);
 }
 
 function update_player(s) {
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT)) {
-        PP.physics.set_velocity_x(img_player, player_speed);
+        player.geometry.x += step_lenght;
     } 
     else if (PP.interactive.kb.is_key_down(s, PP.key_codes.LEFT)) {
-        PP.physics.set_velocity_x(img_player, -player_speed);
-    } //else {
-        //PP.physics.set_velocity_x(player, 0);
-       // next_anim = "stop";
-    //}
+        player.geometry.x -= step_lenght;
+    } 
+
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
+        player.geometry.y -= height;
+    }
+
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.DOWN)) {
+        player.geometry.y += height;
+    }
 }
+
 
 function destroy_player(s) {
 

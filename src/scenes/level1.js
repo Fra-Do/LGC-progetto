@@ -1,5 +1,6 @@
 let img_background;
 let floor;
+let background;
 
 function preload(s) {
     img_background = PP.assets.image.load(s, "assets/images/livello_1.png");
@@ -7,17 +8,18 @@ function preload(s) {
 }
 
 function create(s) {
-    PP.assets.image.add(s, img_background, 0, 0, 0, 0);
-    floor = PP.shapes.rectangle_add(s, 640, 620, 12800, 1, "0x000000", 0); 
-    create_player
+    background = PP.assets.image.add (s, img_background, 0, 0, 0, 0);
+    floor = PP.shapes.rectangle_add(s, 640, 620, 12800, 1, "0xFF0000", 0); 
+    create_player(s);
+    PP.camera.start_follow(s, player, -500, 120);
 }
 
 function update(s) {
-    update_player
+    update_player(s);
 }
 
 function destroy(s) {
-    destroy_player
+    destroy_player(s);
 }
 
 PP.scenes.add("level1", preload, create, update, destroy);
