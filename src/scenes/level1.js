@@ -13,7 +13,8 @@ function create(s) {
    
     create_player(s);
 
-    PP.camera.start_follow(s, player, -500, 120);
+    PP.camera.set_follow_offset(s, 600, 400)
+    PP.camera.start_follow(s, player, 50, 120);
 }
 
 function update(s) {
