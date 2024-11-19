@@ -11,7 +11,7 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.image.add(s, img_player, 120, 400, 1, 1);
+    player = PP.assets.image.add(s, img_player, 120, 300, 1, 1);
 }
 
 function update_player(s) {

@@ -6,17 +6,15 @@ function preload_platform1 (s) {
 }
 
 function create_platform1 (s) {
-    if( player.geometry.x >= platform.geometry.x &&
-        player.geometry.x <= platform.geometry.x + platform.geometry.display_width) {
-            player.is_on_platform = true;
-    }
+    platform = PP.assets.image.add(s, img_platform, 0, 300, 0, 0);
+    PP.physics.add(s, platform, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, platform, collision_platform);
+    
 
 }
 
 function update_platform1 (s) {
-    platform = PP.assets.image.add(s, img_platform, 400, 300, 0, 0);
-    PP.physics.add(s, platform, PP.physics.type.STATIC); 
-    PP.physics.add_collider_f(s, player, platform, collision_platform);
+    
     
 }
 
