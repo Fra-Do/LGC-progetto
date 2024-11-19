@@ -5,12 +5,14 @@ let background;
 function preload(s) {
     img_background = PP.assets.image.load(s, "assets/images/livello_1.png");
     preload_player(s);
+    
 }
 
 function create(s) {
     background = PP.assets.image.add (s, img_background, 0, 0, 0, 0);
-    floor = PP.shapes.rectangle_add(s, 640, 620, 12800, 1, "0xFF0000", 0); 
+   
     create_player(s);
+
     PP.camera.start_follow(s, player, -500, 120);
 }
 
