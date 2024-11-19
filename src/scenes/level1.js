@@ -3,7 +3,7 @@ let floor;
 let background;
 
 function preload(s) {
-    img_background = PP.assets.image.load(s, "assets/images/livello_1.png");
+    img_background = PP.assets.image.load(s, "assets/images/sfondo.png");
     preload_player(s);
     
 }
