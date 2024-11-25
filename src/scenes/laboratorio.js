@@ -3,14 +3,17 @@ let floor;
 let background;
 
 function preload(s) {
-    img_background = PP.assets.image.load(s, "assets/images/prova_mappa_3.png");
-    
+    img_background = PP.assets.image.load(s, "assets/images/level_1.png");
+
 }
 
 function create(s) {
     background = PP.assets.image.add(s, img_background, 0, 0, 0, 0);
-   
-    create_structure(s, player)
+
+    create_structure(s);
+    create_player(s);
+    configure_player_animations(s)
+
 
     PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, 50, 120);
