@@ -3,17 +3,14 @@ let floor;
 let background;
 
 function preload(s) {
-    img_background = PP.assets.image.load(s, "assets/images/prova_mappa.png");
-    preload_player(s);
-    preload_platform1 (s)
+    img_background = PP.assets.image.load(s, "assets/images/prova_mappa_3.png");
     
 }
 
 function create(s) {
     background = PP.assets.image.add(s, img_background, 0, 0, 0, 0);
    
-    create_player(s);
-    create_platform1 (s)
+    create_structure(s, player)
 
     PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, 50, 120);
@@ -27,4 +24,4 @@ function destroy(s) {
     destroy_player(s);
 }
 
-PP.scenes.add("level1", preload, create, update, destroy);
+PP.scenes.add("laboratorio", preload, create, update, destroy);
