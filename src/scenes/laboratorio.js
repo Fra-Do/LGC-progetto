@@ -4,6 +4,7 @@ let background;
 
 function preload(s) {
     img_background = PP.assets.image.load(s, "assets/images/level_1.png");
+    preload_player(s);
 
 }
 
