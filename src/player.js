@@ -1,13 +1,6 @@
-let img_player;
-let player;
-
-let player_speed =   300;
-let step_lenght = 4;
-let height = 5;
-let jump_init_speed = 300;
-let floor_height    = 615;
-
-let curr_anim = "stop";
+let floor_height    = 620;
+let player_speed    = 400;
+let jump_init_speed = 450;
 
 function configure_player_animations(s) {
 
@@ -39,15 +32,6 @@ function update_player(s) {
         player.geometry.y += height;
     }
 
-    if(player.geometry.y>=floor_height-1 || player.is_on_platform) {
-        // Se mi trovo sul pavimento OPPURE su una piattaforma...
-
-        if(PP.interactive.kb.is_key_down(s, PP.key_codes.SPACE)) {
-            // ... e premo il tasto spazio, allo salto
-            PP.physics.set_velocity_y(player, -jump_init_speed);
-        }
-
-    }
 }
 
 function destroy_player(s) {
