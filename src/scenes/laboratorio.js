@@ -3,16 +3,16 @@ let floor;
 let background;
 
 function preload(s) {
-    img_background = PP.assets.image.load(s, "assets/images/level_1.png");
+    img_background = PP.assets.image.load(s, "assets/images/livello_1.png");
     preload_player(s);
 
 }
 
 function create(s) {
-    background = PP.assets.image.add(s, img_background, 0, 0, 0, 0);
-
-    create_structure(s);
+    background = PP.assets.image.add(s, img_background, 0, -450, 0, 0);
     create_player(s);
+    create_structure(s);
+    
     configure_player_animations(s)
 
 

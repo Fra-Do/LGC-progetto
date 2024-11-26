@@ -2,7 +2,7 @@ let img_player;
 let player;
 
 let player_speed =   200;
-let step_lenght = 4;
+let step_lenght  = 4;
 let height = 5;
 
 
@@ -11,7 +11,8 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.image.add(s, img_player, 758,260, 1, 1);
+    preload_player(s);
+    player = PP.assets.image.add(s, img_player, 758, 260, 1, 1);
 }
 
 function update_player(s) {
@@ -35,3 +36,4 @@ function update_player(s) {
 function destroy_player(s) {
 }
 
+PP.scenes.add("player", preload, create, update, destroy);

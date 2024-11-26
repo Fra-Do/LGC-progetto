@@ -67,9 +67,15 @@ function create_structure(s, player) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-    
+}
 
-    //console.log("Muro sx creato a:", 38, 500, "con larghezza 300 e altezza 80");
+function update_structure(s, player) {
 
 }
+
+function destroy_structure(s, player) {
+    
+}
+
+PP.scenes.add("structureo", preload, create, update, destroy);
 
