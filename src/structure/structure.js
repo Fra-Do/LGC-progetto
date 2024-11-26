@@ -20,14 +20,14 @@ function create_structure(s) {
     
     //------SOFFITTO-----
     //SOFFITTO
-    wall = PP.shapes.rectangle_add(s, 900, 150, 1920, 72.9117, "0xFF0000", 0);
+    wall = PP.shapes.rectangle_add(s, 1300, -72, 2476, 155, "0xFF0000", 0);
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
     //-------SCALE------
     
     //SCALA 1
-    wall = PP.shapes.rectangle_add(s, 370, 320, 130, 30, "0xFF0000", 0); // Modifica colore per il debug
+    wall = PP.shapes.rectangle_add(s, 1000, 320, 130, 30, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
