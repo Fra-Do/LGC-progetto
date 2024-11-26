@@ -5,14 +5,13 @@ function preload_structure(s) {
 
 }
 
-function collision_platform(s,player, platform) {
+function collision_platform(s, player, platform) {
     player.is_on_platform = true;
 }
 
-
 function create_structure(s) {
 
-    PP.physics.add_collider(s, player, floor);
+    //PP.physics.add_collider(s, player, floor);
     //------PIATTAFORME STATICHE-----
     //MURO INIZIALE
     wall = PP.shapes.rectangle_add(s, 1060, 317, 120, 250, "0xFF0000", 0); // Modifica colore per il debug
@@ -50,6 +49,7 @@ function create_structure(s) {
 }
 
 function update_structure(s, player) {
+    collision_wall(s);
 
 }
 
