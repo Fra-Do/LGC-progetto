@@ -7,7 +7,7 @@ let height       = 5;
 
 
 function preload_player(s) {
-    img_player = PP.assets.image.load(s, "assets/images/personaggio.png");
+    img_player = PP.assets.image.load(s, "assets/images/ragazza.png");
 }
 
 function create_player(s) {
