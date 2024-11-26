@@ -11,8 +11,9 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    preload_player(s);
     player = PP.assets.image.add(s, img_player, 400, 600, 1, 1);
+    PP.physics.add(s, player, PP.physics.type.DYNAMIC); 
+    
 }
 
 function update_player(s) {
@@ -21,10 +22,12 @@ function update_player(s) {
     } 
     else if (PP.interactive.kb.is_key_down(s, PP.key_codes.LEFT)) {
         player.geometry.x -= step_lenght;
+        PP.physics.set_velocity_x(player, player_speed);
     } 
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
         player.geometry.y -= height;
+        PP.physics.set_velocity_x(player, -player_speed);
     }
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.DOWN)) {
