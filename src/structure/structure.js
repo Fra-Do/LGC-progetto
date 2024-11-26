@@ -77,5 +77,4 @@ function destroy_structure(s, player) {
     
 }
 
-PP.scenes.add("structureo", preload, create, update, destroy);
 

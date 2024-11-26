@@ -12,12 +12,9 @@ function create(s) {
     background = PP.assets.image.add(s, img_background, 0, -450, 0, 0);
     create_player(s);
     create_structure(s);
-    
-    configure_player_animations(s)
 
-
-    PP.camera.set_follow_offset(s, 600, 400)
-    PP.camera.start_follow(s, player, 50, 120);
+    //PP.camera.set_follow_offset(s, 600, 400)
+    //PP.camera.start_follow(s, player, 50, 120);
 }
 
 function update(s) {

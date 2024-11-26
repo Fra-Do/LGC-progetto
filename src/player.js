@@ -7,12 +7,12 @@ let height = 5;
 
 
 function preload_player(s) {
-    img_player = PP.assets.image.load(s, "assets/images/stickman.png");
+    img_player = PP.assets.image.load(s, "assets/images/personaggio.png");
 }
 
 function create_player(s) {
     preload_player(s);
-    player = PP.assets.image.add(s, img_player, 758, 260, 1, 1);
+    player = PP.assets.image.add(s, img_player, 400, 600, 1, 1);
 }
 
 function update_player(s) {
@@ -36,4 +36,3 @@ function update_player(s) {
 function destroy_player(s) {
 }
 
-PP.scenes.add("player", preload, create, update, destroy);
