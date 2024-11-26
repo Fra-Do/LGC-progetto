@@ -13,7 +13,7 @@ function collision_floor(s, player, floor) {
 
 function create_structure(s) {
     //PAVIMENTO 1
-    wall = PP.shapes.rectangle_add(s, 900, 707, 1270, 160, "0xFF0000", 0); // Modifica colore per il debug
+    wall = PP.shapes.rectangle_add(s, 1150, 707, 2100, 160, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     console.log (player);
     PP.physics.add_collider(s, player, wall);
@@ -26,7 +26,7 @@ function create_structure(s) {
     
     //------SOFFITTO-----
     //SOFFITTO
-    wall = PP.shapes.rectangle_add(s, 252, 150, 1920, 72.9117, "0xFF0000", 0);
+    wall = PP.shapes.rectangle_add(s, 900, 150, 1920, 72.9117, "0xFF0000", 0);
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
