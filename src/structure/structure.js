@@ -178,6 +178,26 @@ function create_structure(s) {
     wall = PP.shapes.rectangle_add(s, 8120, -40, 3764, 248, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
+
+    //7.4
+    wall = PP.shapes.rectangle_add(s, 9222, 610, 1556, 1090, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //7.5
+    wall = PP.shapes.rectangle_add(s, 8090, 790, 746, 714, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //7.6
+    wall = PP.shapes.rectangle_add(s, 7185, 500, 1055, 125, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //7.7
+    wall = PP.shapes.rectangle_add(s, 6560, 530, 207, 58, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
     
 
 
