@@ -11,7 +11,7 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.image.add(s, img_player, 400, 600, 1, 1);
+    player = PP.assets.image.add(s, img_player, 400, 300, 1, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC); 
     
 }

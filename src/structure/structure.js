@@ -3,17 +3,11 @@ let verifica_floor;
 
 function preload_structure(s) {
 
-
-}
-
-function collision_floor(s, player, floor) {
-    verifica_floor = true;
-    console.log ("collisione struttura");
 }
 
 function create_structure(s) {
     //PAVIMENTO 1
-    wall = PP.shapes.rectangle_add(s, 1150, 707, 2100, 160, "0xFF0000", 0); // Modifica colore per il debug
+    wall = PP.shapes.rectangle_add(s, 1150, 1870, 2100, 3000, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     console.log (player);
     PP.physics.add_collider(s, player, wall);
@@ -31,10 +25,6 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     //-------SCALE------
-    //SCALA 2
-    wall = PP.shapes.rectangle_add(s, 375, 300, 70, 30, "0xFF0000", 0); // Modifica colore per il debug
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
     
     //SCALA 1
     wall = PP.shapes.rectangle_add(s, 370, 320, 130, 30, "0xFF0000", 0); // Modifica colore per il debug
@@ -42,10 +32,7 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     //------MURI----- 
-    //MURO INIZIALE
-    wall = PP.shapes.rectangle_add(s, 270, 400, 100, 500, "0xFF0000", 0); // Modifica colore per il debug
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    
     
     
 
