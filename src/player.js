@@ -1,7 +1,7 @@
 let img_player;
 let player;
 
-let player_speed = 700;
+let player_speed = 800;
 let step_lenght  = 4;
 let height       = 5;
 
