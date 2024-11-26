@@ -15,7 +15,7 @@ function create_structure(s) {
     //PP.physics.add_collider(s, player, floor);
     //------PIATTAFORME STATICHE-----
     //MURO INIZIALE
-    wall = PP.shapes.rectangle_add(s, 1060, 317, 120, 250, "0xFF0000", 0); // Modifica colore per il debug
+    wall = PP.shapes.rectangle_add(s, 177, 300, 120, 250, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
@@ -26,6 +26,12 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     //------PIATTAFORMA 3------
+    //3.1
+    wall = PP.shapes.rectangle_add(s, 900, 1870, 1500, 3000, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    console.log (player);
+    PP.physics.add_collider(s, player, wall);
+
     //3.2
     wall = PP.shapes.rectangle_add(s, 918, 273, 168, 54, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
@@ -36,11 +42,22 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-    //3.1
-    wall = PP.shapes.rectangle_add(s, 1150, 1870, 2100, 3000, "0xFF0000", 0); // Modifica colore per il debug
+    //3.4
+    wall = PP.shapes.rectangle_add(s, 1876, 233, 191, 37, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    console.log (player);
     PP.physics.add_collider(s, player, wall);
+
+    //3.5
+    wall = PP.shapes.rectangle_add(s, 2210, 350, 191, 37, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //3.6
+    wall = PP.shapes.rectangle_add(s, 2210, 789, 191, 37, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    
     
     //------MURI----- 
     
