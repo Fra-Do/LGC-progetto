@@ -1,9 +1,9 @@
 let img_player;
 let player;
 
-let player_speed =   200;
+let player_speed = 200;
 let step_lenght  = 4;
-let height = 5;
+let height       = 5;
 
 
 function preload_player(s) {
