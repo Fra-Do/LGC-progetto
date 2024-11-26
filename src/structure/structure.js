@@ -6,11 +6,7 @@ function preload_structure(s) {
 }
 
 function create_structure(s) {
-    //PAVIMENTO 1
-    wall = PP.shapes.rectangle_add(s, 1150, 1870, 2100, 3000, "0xFF0000", 0); // Modifica colore per il debug
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    console.log (player);
-    PP.physics.add_collider(s, player, wall);
+    
 
     //------PIATTAFORME STATICHE-----
     //MURO INIZIALE
@@ -24,11 +20,16 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
-    //-------SCALE------
-    
-    //SCALA 1
+    //-------PIATTAFORMA 3------
+    //3.2
     wall = PP.shapes.rectangle_add(s, 1000, 320, 130, 30, "0xFF0000", 0); // Modifica colore per il debug
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //3.1
+    wall = PP.shapes.rectangle_add(s, 1150, 1870, 2100, 3000, "0xFF0000", 0); // Modifica colore per il debug
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    console.log (player);
     PP.physics.add_collider(s, player, wall);
     
     //------MURI----- 
