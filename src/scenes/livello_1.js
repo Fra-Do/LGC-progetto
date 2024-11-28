@@ -12,6 +12,7 @@ function create(s) {
     background = PP.assets.image.add(s, img_background, 0, -450, 0, 0);
     create_player(s);
     create_structure(s);
+    create_platforms (s);
 
     PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, 50, 120);
@@ -19,6 +20,7 @@ function create(s) {
 
 function update(s) {
     update_player(s);
+    update_platforms(s);
 }
 
 function destroy(s) {
