@@ -1,6 +1,8 @@
 let img_platforms;
 let platforms;
 let pl_1_speed = 250;
+let pl_3_speed = 250;
+
 
 function preload_platforms(s) {
 
@@ -46,6 +48,14 @@ function create_platforms(s) {
     // PP.physics.add_collider_f(s, player, platform_2, collision_platform);
     // PP.physics.set_velocity_x(platform_2, 100);
 
+    //piattaforma 3
+    pl_3 = PP.shapes.rectangle_add(s, 3473, 2100, 409, 65, "0xFF0000", 0);
+    PP.physics.add(s, pl_3, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_3, true);
+    PP.physics.set_allow_gravity(pl_3, false);    
+    PP.physics.add_collider_f(s, player, pl_3, collision_platform);
+    PP.physics.set_velocity_x(pl_3, pl_1_speed);
+
 }
 
 function update_platforms(s) {
@@ -70,6 +80,14 @@ function update_platforms(s) {
         PP.physics.set_velocity_y(pl_1_3, -pl_1_speed);
     }
     else if(pl_1_3.geometry.y <= 200) {
+        PP.physics.set_velocity_y(pl_1_3, pl_1_speed);
+    }
+
+    //3 !!DA RIVEDERE!!
+    if(pl_3.geometry.y >= 1600) {
+        PP.physics.set_velocity_y(pl_1_3, -pl_1_speed);
+    }
+    else if(pl_3.geometry.y <= 5000) {
         PP.physics.set_velocity_y(pl_1_3, pl_1_speed);
     }
     
