@@ -2,6 +2,8 @@ let img_platforms;
 let platforms;
 let pl_1_speed = 250;
 let pl_2_speed = 150;
+let pl_3_speed = 250;
+
 
 
 function preload_platforms(s) {
@@ -41,8 +43,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_1_3, pl_1_speed);
 
 
-
-    //piattaforme gruppo 2 (diagonale)
+    //piattaforma gruppo 2 (diagonale)
     pl_2 = PP.shapes.rectangle_add(s, 3100, 2080, 235, 50, "0xFF0000", 0);
     PP.physics.add(s, pl_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_2, true);
@@ -52,9 +53,17 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_2, pl_2_speed);
 
 
-
-
+    //piattaforma gruppo 3
+    pl_3 = PP.shapes.rectangle_add(s, 3700, 2130, 410, 65, "0xFF0000", 0);
+    PP.physics.add(s, pl_3, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_3, true);
+    PP.physics.set_allow_gravity(pl_3, false);    
+    PP.physics.add_collider_f(s, player, pl_3, collision_platform);
+    PP.physics.set_velocity_x(pl_3, pl_3_speed);
     
+
+
+
 
     // platform_2 = PP.assets.image.add(s, img_platform, 800, 200, 0, 0);
     // PP.physics.add(s, platform_2, PP.physics.type.DYNAMIC); 
@@ -108,10 +117,18 @@ function update_platforms(s) {
     }
 
 
-
+    //piattaforme gruppo 3
+    if(pl_3.geometry.x >= 5000) {
+        PP.physics.set_velocity_x(pl_3, -pl_3_speed);
+    }
+    else if(pl_3.geometry.x <= 3700) {
+        PP.physics.set_velocity_x(pl_3, pl_3_speed);
+    }
 
 
     
+
+
     // Aggiorno la velocita' della piattaforma mobile nel
     // caso in cui si trovi al limite destro o il limite sinistro
     // scelto (800 - 1200)
