@@ -3,6 +3,7 @@ let platforms;
 let pl_1_speed = 250;
 let pl_2_speed = 150;
 let pl_3_speed = 250;
+let pl_5_speed = 300;
 
 
 function preload_platforms(s) {
@@ -68,18 +69,16 @@ function create_platforms(s) {
     PP.physics.set_allow_gravity(pl_3, false);    
     PP.physics.add_collider_f(s, player, pl_3, collision_platform);
     PP.physics.set_velocity_x(pl_3, pl_3_speed);
+
+    //piattaforma gruppo 5
+    //5.1
+    pl_5 = PP.shapes.rectangle_add(s, 3000, 1600, 149, 86, "0xFF0000", 0);
+    PP.physics.add(s, pl_5, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_5, true);
+    PP.physics.set_allow_gravity(pl_5, false);    
+    PP.physics.add_collider_f(s, player, pl_5, collision_platform);
+    PP.physics.set_velocity_x(pl_5, pl_5_speed);
     
-
-
-
-
-    // platform_2 = PP.assets.image.add(s, img_platform, 800, 200, 0, 0);
-    // PP.physics.add(s, platform_2, PP.physics.type.DYNAMIC); 
-    // PP.physics.set_immovable(platform_2, true);
-    // PP.physics.set_allow_gravity(platform_2, false);    
-    // PP.physics.add_collider_f(s, player, platform_2, collision_platform);
-    // PP.physics.set_velocity_x(platform_2, 100);
-
     
 
 }
@@ -112,7 +111,7 @@ function update_platforms(s) {
 
     
 
-    //piattaforme gruppo 2      fa cose strane non sono riuscitta a farlo andare in diagonale domani riprovo
+    //piattaforme gruppo 2      fa cose strane non sono riuscita a farlo andare in diagonale domani riprovo
     if(pl_2.geometry.x >= 3250) {
         PP.physics.set_velocity_x(pl_2, -pl_2_speed);
     }
@@ -121,21 +120,25 @@ function update_platforms(s) {
     }
 
     if(pl_2.geometry.y >= 2080) {
-        PP.physics.set_velocity_y(pl_2, -pl_2_speed);
-    }
-    else if(pl_2.geometry.y <= 1900) {
         PP.physics.set_velocity_y(pl_2, pl_2_speed);
     }
+    else if(pl_2.geometry.y <= 1900) {
+        PP.physics.set_velocity_y(pl_2, -pl_2_speed);
+    }
 
-    //if (pl_2_diagonal.geometry.x <= 3250 || pl_2_diagonal.geometry.y <= 2800) {
-        // Inverti la velocità per il movimento diagonale verso l'alto a sinistra
-        //PP.physics.set_velocity_x(pl_diagonal, pl_2_speed);  // Cambia direzione orizzontale verso destra
-        //PP.physics.set_velocity_y(pl_diagonal, pl_2_speed);  // Cambia direzione verticale verso il basso
+    //ci ho riprovato ma invano
+    //if(pl_2.geometry.x >= 3250) {
+        //PP.physics.set_velocity_x(pl_diagonal, -pl_2_speed); 
     //}
-    //else if (pl_diagonal.geometry.x >= 2080 || pl_diagonal.geometry.y >= 1900) {
-        // Inverti la velocità per il movimento diagonale verso il basso a destra
-        //PP.physics.set_velocity_x(pl_diagonal, -pl_2_speed);  // Cambia direzione orizzontale verso sinistra
-        //PP.physics.set_velocity_y(pl_diagonal, -pl_2_speed);  // Cambia direzione verticale verso l'alto
+    //else if(pl_2.geometry.x <= 2800) {
+        //PP.physics.set_velocity_x(pl_diagonal, pl_2_speed);  
+   // }
+
+    //if(pl_2.geometry.y >= 2080) {
+        //PP.physics.set_velocity_x(pl_diagonal, -pl_2_speed); 
+    //}
+    //else if(pl_2.geometry.y <= 1900) {
+        //PP.physics.set_velocity_y(pl_2, pl_2_speed);
     //}
 
 
@@ -147,20 +150,20 @@ function update_platforms(s) {
         PP.physics.set_velocity_x(pl_3, pl_3_speed);
     }
 
+    //piattaforme gruppo 5 DA RIVEDERE
+    //5.1
+    if(pl_5.geometry.x >= 5000) {
+        PP.physics.set_velocity_x(pl_5, -pl_5_speed);
+    }
+    else if(pl_5.geometry.x <= 3608) {
+        PP.physics.set_velocity_x(pl_5, pl_5_speed);
+    }
+
 
     
 
 
-    // Aggiorno la velocita' della piattaforma mobile nel
-    // caso in cui si trovi al limite destro o il limite sinistro
-    // scelto (800 - 1200)
-
-    //if(platform_2.geometry.x >= 1200) {
-        //PP.physics.set_velocity_x(platform_2, -100);
-   // }
-    //else if(platform_2.geometry.x <= 800) {
-        //PP.physics.set_velocity_x(platform_2, 100);
-    //}
+    
 
 }
 
