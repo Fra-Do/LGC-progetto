@@ -4,6 +4,7 @@ let pl_1_speed = 250;
 let pl_2_speed = 150;
 let pl_3_speed = 250;
 let pl_5_speed = 300;
+let pl_8_speed = 350;
 
 
 function preload_platforms(s) {
@@ -42,7 +43,7 @@ function create_platforms(s) {
     PP.physics.add_collider_f(s, player, pl_1_3, collision_platform);
     PP.physics.set_velocity_y(pl_1_3, pl_1_speed);
 
-
+    //-----------------------------------------------------------------------------
     //piattaforma gruppo 2 (diagonale)
     pl_2 = PP.shapes.rectangle_add(s, 3100, 2080, 235, 50, "0xFF0000", 0);
     PP.physics.add(s, pl_2, PP.physics.type.DYNAMIC); 
@@ -60,6 +61,8 @@ function create_platforms(s) {
     //PP.physics.set_allow_gravity(pl_2_diagonal, false);    
     //PP.physics.add_collider_f(s, player, pl_2_diagonal, collision_platform);
     //PP.physics.set_velocity_y(pl_2_diagonal, -pl_2_speed);
+
+    //-----------------------------------------------------------------------------
 
 
     //piattaforma gruppo 3
@@ -86,7 +89,23 @@ function create_platforms(s) {
     PP.physics.set_allow_gravity(pl_5_2, false);    
     PP.physics.add_collider_f(s, player, pl_5_2, collision_platform);
     PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
-    
+
+    //Piattaforme 8
+    //8.1
+    pl_8 = PP.shapes.rectangle_add(s, 7400, 416, 381, 42, "0xFF0000", 0);
+    PP.physics.add(s, pl_8, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_8, true);
+    PP.physics.set_allow_gravity(pl_8, false);    
+    PP.physics.add_collider_f(s, player, pl_8, collision_platform);
+    PP.physics.set_velocity_y(pl_8, pl_8_speed);
+
+    //8.2
+    pl_8_2 = PP.shapes.rectangle_add(s, 8750, 3000, 381, 42, "0xFF0000", 0);
+    PP.physics.add(s, pl_8_2, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_8_2, true);
+    PP.physics.set_allow_gravity(pl_8_2, false);    
+    PP.physics.add_collider_f(s, player, pl_8_2, collision_platform);
+    PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
     
 
 }
@@ -174,6 +193,23 @@ function update_platforms(s) {
     else if(pl_5_2.geometry.x <= 4690) {
         PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
     }
+
+    //8.1
+    if(pl_8.geometry.y >= 1570) {
+        PP.physics.set_velocity_y(pl_8, -pl_8_speed);
+    }
+    else if(pl_8.geometry.y <= 800) {
+        PP.physics.set_velocity_y(pl_8, pl_8_speed);
+    }
+
+    //8.2
+    if(pl_8_2.geometry.y >= 2500) {
+        PP.physics.set_velocity_y(pl_8_2, -pl_8_speed);
+    }
+    else if(pl_8_2.geometry.y <= 1000) {
+        PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
+    }
+
 
 
     
