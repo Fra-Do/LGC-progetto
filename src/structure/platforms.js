@@ -5,6 +5,7 @@ let pl_2_speed = 150;
 let pl_3_speed = 250;
 let pl_4_speed = 100;
 let pl_5_speed = 300;
+let pl_7_speed = 400;
 let pl_8_speed = 350;
 
 
@@ -91,6 +92,23 @@ function create_platforms(s) {
     PP.physics.add_collider_f(s, player, pl_5_2, collision_platform);
     PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
 
+    //piattaforme gruppo 7
+    //7.1
+    pl_7 = PP.shapes.rectangle_add(s, 7900 , 100, 131, 416, "0xFF0000", 0);
+    PP.physics.add(s, pl_7, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_7, true);
+    PP.physics.set_allow_gravity(pl_7, false);    
+    PP.physics.add_collider_f(s, player, pl_7, collision_platform);
+    PP.physics.set_velocity_y(pl_7, pl_7_speed);
+
+    //7.2
+    pl_7_2 = PP.shapes.rectangle_add(s, 8300 , -200, 131, 416, "0xFF0000", 0);
+    PP.physics.add(s, pl_7_2, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_7_2, true);
+    PP.physics.set_allow_gravity(pl_7_2, false);    
+    PP.physics.add_collider_f(s, player, pl_7_2, collision_platform);
+    PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
+
     //Piattaforme 8
     //8.1
     pl_8 = PP.shapes.rectangle_add(s, 7400, 416, 381, 42, "0xFF0000", 0);
@@ -107,6 +125,9 @@ function create_platforms(s) {
     PP.physics.set_allow_gravity(pl_8_2, false);    
     PP.physics.add_collider_f(s, player, pl_8_2, collision_platform);
     PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
+
+    
+    
 
 
     // piattaforme gruppo 4 (spuntoni)
@@ -276,6 +297,22 @@ function update_platforms(s) {
     }
     else if(pl_5_2.geometry.x <= 4690) {
         PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
+    }
+
+    // 7.1
+    if(pl_7.geometry.y >= 1260) {
+        PP.physics.set_velocity_y(pl_7, -pl_7_speed);
+    }
+    else if(pl_7.geometry.y <= 700) {
+        PP.physics.set_velocity_y(pl_7, pl_7_speed);
+    }
+
+    // 7.2
+    if(pl_7_2.geometry.y >= 1260) {
+        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
+    }
+    else if(pl_7_2.geometry.y <= 700) {
+        PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
     }
 
     //8.1
