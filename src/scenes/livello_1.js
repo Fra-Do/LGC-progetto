@@ -5,6 +5,7 @@ let background;
 function preload(s) {
     img_background = PP.assets.image.load(s, "assets/images/livello_1.png");
     preload_player(s);
+    preload_structure(s)
 
 }
 
