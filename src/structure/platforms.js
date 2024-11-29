@@ -75,61 +75,6 @@ function create_platforms(s) {
     PP.physics.add_collider_f(s, player, pl_3, collision_platform);
     PP.physics.set_velocity_x(pl_3, pl_3_speed);
 
-//piattaforma gruppo 5
-    //5.1
-    pl_5 = PP.shapes.rectangle_add(s, 4000, 1510, 149, 86, "0xFF0000", 0);
-    PP.physics.add(s, pl_5, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(pl_5, true);
-    PP.physics.set_allow_gravity(pl_5, false);    
-    PP.physics.add_collider_f(s, player, pl_5, collision_platform);
-    PP.physics.set_velocity_x(pl_5, pl_5_speed);
-
-    //5.2
-    pl_5_2 = PP.shapes.rectangle_add(s, 5000, 1510, 149, 86, "0xFF0000", 0);
-    PP.physics.add(s, pl_5_2, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(pl_5_2, true);
-    PP.physics.set_allow_gravity(pl_5_2, false);    
-    PP.physics.add_collider_f(s, player, pl_5_2, collision_platform);
-    PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
-
-    //piattaforme gruppo 7
-    //7.1
-    pl_7 = PP.shapes.rectangle_add(s, 7900 , 100, 131, 416, "0xFF0000", 0);
-    PP.physics.add(s, pl_7, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(pl_7, true);
-    PP.physics.set_allow_gravity(pl_7, false);    
-    PP.physics.add_collider_f(s, player, pl_7, collision_platform);
-    PP.physics.set_velocity_y(pl_7, pl_7_speed);
-
-    //7.2
-    pl_7_2 = PP.shapes.rectangle_add(s, 8300 , -200, 131, 416, "0xFF0000", 0);
-    PP.physics.add(s, pl_7_2, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(pl_7_2, true);
-    PP.physics.set_allow_gravity(pl_7_2, false);    
-    PP.physics.add_collider_f(s, player, pl_7_2, collision_platform);
-    PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
-
-    //Piattaforme 8
-    //8.1
-    pl_8 = PP.shapes.rectangle_add(s, 7400, 416, 381, 42, "0xFF0000", 0);
-    PP.physics.add(s, pl_8, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(pl_8, true);
-    PP.physics.set_allow_gravity(pl_8, false);    
-    PP.physics.add_collider_f(s, player, pl_8, collision_platform);
-    PP.physics.set_velocity_y(pl_8, pl_8_speed);
-
-    //8.2
-    pl_8_2 = PP.shapes.rectangle_add(s, 8750, 3000, 381, 42, "0xFF0000", 0);
-    PP.physics.add(s, pl_8_2, PP.physics.type.DYNAMIC); 
-    PP.physics.set_immovable(pl_8_2, true);
-    PP.physics.set_allow_gravity(pl_8_2, false);    
-    PP.physics.add_collider_f(s, player, pl_8_2, collision_platform);
-    PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
-
-    
-    
-
-
     // piattaforme gruppo 4 (spuntoni)
     // primo gruppo
     //4.1 
@@ -213,6 +158,61 @@ function create_platforms(s) {
     PP.physics.add_collider_f(s, player, pl_4_10, collision_platform);
     PP.physics.set_velocity_y(pl_4_10, pl_4_speed);
 
+    
+    //piattaforma gruppo 5
+    //5.1
+    pl_5_1 = PP.shapes.rectangle_add(s, 4000, 1510, 149, 86, "0xFF0000", 0);
+    PP.physics.add(s, pl_5_1, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_5_1, true);
+    PP.physics.set_allow_gravity(pl_5_1, false);    
+    PP.physics.add_collider_f(s, player, pl_5_1, collision_platform);
+    PP.physics.set_velocity_x(pl_5_1, pl_5_speed);
+
+    //5.2
+    pl_5_2 = PP.shapes.rectangle_add(s, 5000, 1510, 149, 86, "0xFF0000", 0);
+    PP.physics.add(s, pl_5_2, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_5_2, true);
+    PP.physics.set_allow_gravity(pl_5_2, false);    
+    PP.physics.add_collider_f(s, player, pl_5_2, collision_platform);
+    PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
+
+    // piattaforme guuppo 6 --> animazioni acido spruzzato
+
+    //piattaforme gruppo 7
+    //7.1
+    pl_7_1 = PP.shapes.rectangle_add(s, 7900 , 100, 131, 416, "0xFF0000", 0);
+    PP.physics.add(s, pl_7_1, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_7_1, true);
+    PP.physics.set_allow_gravity(pl_7_1, false);    
+    PP.physics.add_collider_f(s, player, pl_7_1, collision_platform);
+    PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
+
+    //7.2
+    pl_7_2 = PP.shapes.rectangle_add(s, 8300 , -200, 131, 416, "0xFF0000", 0);
+    PP.physics.add(s, pl_7_2, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_7_2, true);
+    PP.physics.set_allow_gravity(pl_7_2, false);    
+    PP.physics.add_collider_f(s, player, pl_7_2, collision_platform);
+    PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
+
+    //Piattaforme gruppo 8
+    //8.1
+    pl_8_1 = PP.shapes.rectangle_add(s, 7400, 416, 381, 42, "0xFF0000", 0);
+    PP.physics.add(s, pl_8_1, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_8_1, true);
+    PP.physics.set_allow_gravity(pl_8_1, false);    
+    PP.physics.add_collider_f(s, player, pl_8_1, collision_platform);
+    PP.physics.set_velocity_y(pl_8_1, pl_8_speed);
+
+    //8.2
+    pl_8_2 = PP.shapes.rectangle_add(s, 8750, 1800, 381, 42, "0xFF0000", 0);
+    PP.physics.add(s, pl_8_2, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_8_2, true);
+    PP.physics.set_allow_gravity(pl_8_2, false);    
+    PP.physics.add_collider_f(s, player, pl_8_2, collision_platform);
+    PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
+
+    
 }
 
 function update_platforms(s) {
@@ -242,7 +242,6 @@ function update_platforms(s) {
     }
 
     
-
     //piattaforme gruppo 2      fa cose strane non sono riuscita a farlo andare in diagonale domani riprovo
     if(pl_2.geometry.x >= 3250) {
         PP.physics.set_velocity_x(pl_2, -pl_2_speed);
@@ -282,58 +281,7 @@ function update_platforms(s) {
         PP.physics.set_velocity_x(pl_3, pl_3_speed);
     }
 
-//piattaforme gruppo 5 
-    //5.1
-    if(pl_5.geometry.x >= 4545) {
-        PP.physics.set_velocity_x(pl_5, -pl_5_speed);
-    }
-    else if(pl_5.geometry.x <= 4400) {
-        PP.physics.set_velocity_x(pl_5, pl_5_speed);
-    }
-
-    //5.2
-    if(pl_5_2.geometry.x >= 4880) {
-        PP.physics.set_velocity_x(pl_5_2, -pl_5_speed);
-    }
-    else if(pl_5_2.geometry.x <= 4690) {
-        PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
-    }
-
-    // 7.1
-    if(pl_7.geometry.y >= 1260) {
-        PP.physics.set_velocity_y(pl_7, -pl_7_speed);
-    }
-    else if(pl_7.geometry.y <= 700) {
-        PP.physics.set_velocity_y(pl_7, pl_7_speed);
-    }
-
-    // 7.2
-    if(pl_7_2.geometry.y >= 1260) {
-        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
-    }
-    else if(pl_7_2.geometry.y <= 700) {
-        PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
-    }
-
-    //8.1
-    if(pl_8.geometry.y >= 1570) {
-        PP.physics.set_velocity_y(pl_8, -pl_8_speed);
-    }
-    else if(pl_8.geometry.y <= 800) {
-        PP.physics.set_velocity_y(pl_8, pl_8_speed);
-    }
-
-    //8.2
-    if(pl_8_2.geometry.y >= 2500) {
-        PP.physics.set_velocity_y(pl_8_2, -pl_8_speed);
-    }
-    else if(pl_8_2.geometry.y <= 1000) {
-        PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
-    }
-
-
-
-    // piattaforme gruppo 4 (spuntoni)
+// piattaforme gruppo 4 (spuntoni)
     // primo gruppo 
     //4.1
     if(pl_4_1.geometry.y >= 340) {
@@ -416,6 +364,61 @@ function update_platforms(s) {
     else if(pl_4_10.geometry.y <= 220) {
         PP.physics.set_velocity_y(pl_4_10, pl_4_speed);
     }
+
+    //piattaforme gruppo 5 
+    //5.1
+    if(pl_5_1.geometry.x >= 4545) {
+        PP.physics.set_velocity_x(pl_5_1, -pl_5_speed);
+    }
+    else if(pl_5_1.geometry.x <= 4400) {
+        PP.physics.set_velocity_x(pl_5_1, pl_5_speed);
+    }
+
+    //5.2
+    if(pl_5_2.geometry.x >= 4880) {
+        PP.physics.set_velocity_x(pl_5_2, -pl_5_speed);
+    }
+    else if(pl_5_2.geometry.x <= 4690) {
+        PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
+    }
+
+    // piattaforme 6 --> acido spruzzato animazione 
+    
+    //piattaforme gruppo 7 
+    // 7.1
+    if(pl_7_1.geometry.y >= 1260) {
+        PP.physics.set_velocity_y(pl_7_1, -pl_7_speed);
+    }
+    else if(pl_7_1.geometry.y <= 900) {
+        PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
+    }
+
+    // 7.2
+    if(pl_7_2.geometry.y >= 1260) {
+        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
+    }
+    else if(pl_7_2.geometry.y <= 900) {
+        PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
+    }
+
+    //piattaforme gruppo 8
+    //8.1
+    if(pl_8_1.geometry.y >= 1570) {
+        PP.physics.set_velocity_y(pl_8_1, -pl_8_speed);
+    }
+    else if(pl_8_1.geometry.y <= 800) {
+        PP.physics.set_velocity_y(pl_8_1, pl_8_speed);
+    }
+
+    //8.2
+    if(pl_8_2.geometry.y >= 1800) {
+        PP.physics.set_velocity_y(pl_8_2, -pl_8_speed);
+    }
+    else if(pl_8_2.geometry.y <= 1200) {
+        PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
+    }
+
+    
 }
 
 function destroy_platforms(s) {
