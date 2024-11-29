@@ -14,6 +14,7 @@ function create(s) {
     create_player(s);
     create_structure(s);
     create_platforms (s);
+    configure_player_animations(s);
 
     PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, 50, 120);
