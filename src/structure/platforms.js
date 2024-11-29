@@ -72,12 +72,20 @@ function create_platforms(s) {
 
     //piattaforma gruppo 5
     //5.1
-    pl_5 = PP.shapes.rectangle_add(s, 3000, 1600, 149, 86, "0xFF0000", 0);
+    pl_5 = PP.shapes.rectangle_add(s, 4000, 1510, 149, 86, "0xFF0000", 0);
     PP.physics.add(s, pl_5, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_5, true);
     PP.physics.set_allow_gravity(pl_5, false);    
     PP.physics.add_collider_f(s, player, pl_5, collision_platform);
     PP.physics.set_velocity_x(pl_5, pl_5_speed);
+
+    //5.2
+    pl_5_2 = PP.shapes.rectangle_add(s, 5000, 1510, 149, 86, "0xFF0000", 0);
+    PP.physics.add(s, pl_5_2, PP.physics.type.DYNAMIC); 
+    PP.physics.set_immovable(pl_5_2, true);
+    PP.physics.set_allow_gravity(pl_5_2, false);    
+    PP.physics.add_collider_f(s, player, pl_5_2, collision_platform);
+    PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
     
     
 
@@ -119,10 +127,10 @@ function update_platforms(s) {
         PP.physics.set_velocity_x(pl_2, pl_2_speed);
     }
 
-    if(pl_2.geometry.y >= 2080) {
+    if(pl_2.geometry.y >= 4900) {
         PP.physics.set_velocity_y(pl_2, pl_2_speed);
     }
-    else if(pl_2.geometry.y <= 1900) {
+    else if(pl_2.geometry.y <= 4600) {
         PP.physics.set_velocity_y(pl_2, -pl_2_speed);
     }
 
@@ -150,13 +158,21 @@ function update_platforms(s) {
         PP.physics.set_velocity_x(pl_3, pl_3_speed);
     }
 
-    //piattaforme gruppo 5 DA RIVEDERE
+    //piattaforme gruppo 5 
     //5.1
-    if(pl_5.geometry.x >= 5000) {
+    if(pl_5.geometry.x >= 4545) {
         PP.physics.set_velocity_x(pl_5, -pl_5_speed);
     }
-    else if(pl_5.geometry.x <= 3608) {
+    else if(pl_5.geometry.x <= 4400) {
         PP.physics.set_velocity_x(pl_5, pl_5_speed);
+    }
+
+    //5.2
+    if(pl_5_2.geometry.x >= 4880) {
+        PP.physics.set_velocity_x(pl_5_2, -pl_5_speed);
+    }
+    else if(pl_5_2.geometry.x <= 4690) {
+        PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
     }
 
 
