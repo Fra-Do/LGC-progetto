@@ -6,6 +6,7 @@ function preload(s) {
     img_background = PP.assets.image.load(s, "assets/images/livello_1.png");
     preload_player(s);
     preload_structure(s)
+    preload_collectibles(s)
 
 }
 
@@ -14,7 +15,8 @@ function create(s) {
     create_player(s);
     create_structure(s);
     create_platforms (s);
-    configure_player_animations(s);
+    //configure_player_animations(s);
+    create_collectibles(s)
 
     PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, 50, 120);
