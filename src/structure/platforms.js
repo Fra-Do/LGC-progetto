@@ -47,7 +47,7 @@ function create_platforms(s) {
 
     //-----------------------------------------------------------------------------
     //piattaforma gruppo 2 (diagonale)
-    pl_2 = PP.shapes.rectangle_add(s, 3100, 2080, 235, 50, "0xFF0000", 0);
+    pl_2 = PP.shapes.rectangle_add(s, 3250, 2080, 235, 50, "0xFF0000", 0);
     PP.physics.add(s, pl_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_2, true);
     PP.physics.set_allow_gravity(pl_2, false);    
@@ -269,7 +269,7 @@ function update_platforms(s) {
     if(pl_2.geometry.y >= 2080) {
         PP.physics.set_velocity_y(pl_2, -pl_2_speed);
     }
-    else if(pl_2.geometry.y <= 1900) {
+    else if(pl_2.geometry.y <= 2080-450) {
         PP.physics.set_velocity_y(pl_2, pl_2_speed);
     }
 
@@ -419,12 +419,13 @@ function update_platforms(s) {
     
     //piattaforme gruppo 7 
     // 7.1
-    if(pl_7_1.geometry.y >= 1260) {
-        PP.physics.set_velocity_y(pl_7_1, -pl_7_speed);
+    if(pl_7_1.geometry.y >= 1260 || pl_7_1.geometry.y <= 900) {
+        pl_7_speed = -pl_7_speed;
     }
-    else if(pl_7_1.geometry.y <= 900) {
-        PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
-    }
+
+    PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
+
+    
 
     // 7.2
     if(pl_7_2.geometry.y >= 1260) {
@@ -432,6 +433,9 @@ function update_platforms(s) {
     }
     else if(pl_7_2.geometry.y <= 900) {
         PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
+    }
+    else {
+        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
     }
 
     //piattaforme gruppo 8

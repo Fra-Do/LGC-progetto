@@ -56,7 +56,6 @@ function create_structure(s) {
     //3.1
     wall = PP.shapes.rectangle_add(s, 900, 1860, 1500, 3000, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    console.log (player);
     PP.physics.add_collider(s, player, wall);
 
     //3.2
