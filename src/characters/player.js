@@ -3,7 +3,7 @@ let player;
 
 let player_speed = 200;
 let step_lenght  = 4;
-let height       = 5;
+let height       = 8;
 
 let curr_anim = "stop";
 
