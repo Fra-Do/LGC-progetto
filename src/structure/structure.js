@@ -8,8 +8,6 @@ function preload_structure(s) {
     img_acid = PP.assets.image.load(s, "assets/images/acid.png");
     img_acid_2 = PP.assets.image.load(s, "assets/images/acid_2.png");
     img_acid_3 = PP.assets.image.load(s, "assets/images/acid_3.png");
-    
-
 }
 
 function collision_platform(s,player, platform) {
@@ -271,7 +269,7 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //kit 3
-    wall = PP.shapes.rectangle_add(s, 8080, 1430, 35, 30, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 8090, 1443, 35, 30, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
@@ -281,7 +279,7 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //Chiave
-    wall = PP.shapes.rectangle_add(s, 9450, 2100, 35, 30, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 9460, 2126, 35, 30, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
