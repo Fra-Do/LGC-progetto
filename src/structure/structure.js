@@ -4,10 +4,19 @@ let img_acid;
 let img_acid_2;
 let img_acid_3;
 
+let img_tubi;
+let img_tubi_2;
+let img_tubi_3;
+let img_tubi_4;
+
 function preload_structure(s) {
+    //Acido game over
     img_acid = PP.assets.image.load(s, "assets/images/acid.png");
     img_acid_2 = PP.assets.image.load(s, "assets/images/acid_2.png");
     img_acid_3 = PP.assets.image.load(s, "assets/images/acid_3.png");
+
+    //Tubi statici
+    img_tubi = PP.assets.image.load(s, "assets/images/tubi_statici.png");
 }
 
 function collision_platform(s,player, platform) {
@@ -20,6 +29,15 @@ function create_structure(s) {
     background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_3, 8450, 2190, 0, 0);
+
+    //Tubi statici
+    background = PP.assets.image.add(s, img_tubi, 1785, 213, 0, 0);
+    background = PP.assets.image.add(s, img_tubi, 2120, 330, 0, 0);
+    background = PP.assets.image.add(s, img_tubi, 1795, 560, 0, 0);
+    background = PP.assets.image.add(s, img_tubi, 2120, 770, 0, 0);
+    background = PP.assets.image.add(s, img_tubi, 1860, 930, 0, 0);
+
+
 
     //------PIATTAFORME STATICHE-----
     //MURO INIZIALE
