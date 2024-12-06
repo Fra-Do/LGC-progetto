@@ -7,6 +7,7 @@ function preload(s) {
     preload_player(s);
     preload_structure(s)
     preload_collectibles(s)
+    preload_platforms(s)
 
 }
 
@@ -29,6 +30,7 @@ function update(s) {
 
 function destroy(s) {
     destroy_player(s);
+    destroy_platforms(s)
 }
 
 PP.scenes.add("laboratorio", preload, create, update, destroy);

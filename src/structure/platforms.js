@@ -1,4 +1,5 @@
-let img_platforms;
+let img_pl1;
+let pl_1;
 let platforms;
 let pl_1_speed = 250;
 let pl_2_speed = 150;
@@ -10,10 +11,11 @@ let pl_8_speed = 350;
 
 
 function preload_platforms(s) {
+    img_pl1 = PP.assets.image.load(s, "assets/images/tubi_mobili.png");
 
 }
 
-function collision_platform(s, player, platform) {
+function collision_platform(s, player, platforms) {
     player.is_on_platform = true;
 }
 
@@ -22,7 +24,9 @@ function create_platforms(s) {
 
     //piattaforme gruppo 1
     //1.1
-    pl_1 = PP.shapes.rectangle_add(s, 3280, 200, 110, 20, "0xFF0000", 0);
+    background = PP.assets.image.add(s, img_pl1, 3280, 200, 0, 0);
+    pl_1 = PP.shapes.rectangle_add(s, //img_pl1
+        3280, 200, 110, 20, "0xFF0000", 0);
     PP.physics.add(s, pl_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_1, true);
     PP.physics.set_allow_gravity(pl_1, false);    
