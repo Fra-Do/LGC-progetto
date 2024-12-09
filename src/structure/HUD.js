@@ -4,7 +4,7 @@ const maxHealth = 3;  // Numero massimo di cuori
 let img_cuore; 
 
 function preload_HUD() {
-  img_cuore = PP.assets.image.load('cuore', 'assets/images/cuore.png');
+  img_cuore = PP.assets.image.load("cuore", "assets/images/cuore.png");
 }
 
 function create_HUD() {

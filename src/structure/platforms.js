@@ -1,5 +1,7 @@
 let img_pl1;
+let img_pl3;
 let pl_1;
+let pl_3;
 let platforms;
 let pl_1_speed = 250;
 let pl_2_speed = 150;
@@ -11,7 +13,8 @@ let pl_8_speed = 350;
 
 
 function preload_platforms(s) {
-    img_pl1 = PP.assets.image.load(s, "assets/images/tubi_mobili.png");
+    img_pl1 = PP.assets.image.load(s, "assets/images/movable01.png");
+    img_pl3 = PP.assets.image.load(s, "assets/images/movable03.png");
 
 }
 
@@ -24,7 +27,7 @@ function create_platforms(s) {
 
     //piattaforme gruppo 1
     //1.1
-    background = PP.assets.image.add(s, img_pl1, 3280, 200, 0, 0);
+    pl_1 = PP.assets.image.add(s, img_pl1, 3260, 200, 0, 0);
     pl_1 = PP.shapes.rectangle_add(s, //img_pl1
         3280, 200, 110, 20, "0xFF0000", 0);
     PP.physics.add(s, pl_1, PP.physics.type.DYNAMIC); 
@@ -59,20 +62,13 @@ function create_platforms(s) {
     PP.physics.set_velocity_x(pl_2, pl_2_speed);
     PP.physics.set_velocity_y(pl_2, pl_2_speed);
 
-
-    //Qua ho provato a dare una soluzione invano
-    //pl_2 = PP.shapes.rectangle_add(s, 3100, 2080, 235, 50, "0xFF0000", 0);
-    //PP.physics.add(s, pl_2_diagonal, PP.physics.type.DYNAMIC); 
-    //PP.physics.set_immovable(pl_2_diagonal, true);
-    //PP.physics.set_allow_gravity(pl_2_diagonal, false);    
-    //PP.physics.add_collider_f(s, player, pl_2_diagonal, collision_platform);
-    //PP.physics.set_velocity_y(pl_2_diagonal, -pl_2_speed);
-
     //-----------------------------------------------------------------------------
 
 
     //piattaforma gruppo 3
-    pl_3 = PP.shapes.rectangle_add(s, 3700, 2130, 410, 65, "0xFF0000", 0);
+    pl_3 = PP.assets.image.add(s, img_pl3, 3700, 2130, 0, 0);
+    pl_3 = PP.shapes.rectangle_add(s, //img_pl1, 
+        3700, 2130, 410, 65, "0xFF0000", 0);
     PP.physics.add(s, pl_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_3, true);
     PP.physics.set_allow_gravity(pl_3, false);    
