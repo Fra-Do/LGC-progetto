@@ -27,11 +27,11 @@ function create(s) {
     //Parallasse tubi
     parallax01 = PP.assets.tilesprite.add(s, img_parallax01, 0, 0, 9985, 3163, 0, 0);
     parallax01.tile_geometry.scroll_factor_x = 0.5;
-    parallax01.tile_geometry.scroll_factor_y = 0;
+    parallax01.tile_geometry.scroll_factor_y = 0.5;
 
     parallax02 = PP.assets.tilesprite.add(s, img_parallax02, 0, 0, 9985, 3163, 0, 0);
     parallax02.tile_geometry.scroll_factor_x = 0.8;
-    parallax02.tile_geometry.scroll_factor_y = 0;
+    parallax02.tile_geometry.scroll_factor_y = 0.8;
 
     piattaforme = PP.assets.image.add(s, img_piattaforme, 0, -450, 0, 0);
     
@@ -41,13 +41,15 @@ function create(s) {
     configure_player_animations(s);
     create_collectibles(s)
 
-    PP.camera.set_follow_offset(s, 600, 400)
-    PP.camera.start_follow(s, player, 50, 120);
+    //PP.camera.set_follow_offset(s, 600, 400)
+    PP.camera.start_follow(s, player, -400, 120);
 }
 
 function update(s) {
     update_player(s);
     update_platforms(s);
+    //if (xz640)
+    //set_follow_offset(-640+X,y)
 }
 
 function destroy(s) {

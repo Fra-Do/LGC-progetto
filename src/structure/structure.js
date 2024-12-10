@@ -38,7 +38,7 @@ function create_structure(s) {
     background = PP.assets.image.add(s, img_tubi, 2120, 770, 0, 0);
     background = PP.assets.image.add(s, img_tubi, 1830, 930, 0, 0);
     background = PP.assets.image.add(s, img_tubi_2, 5930, 200, 0, 0);
-    background = PP.assets.image.add(s, img_tubi_2, 6200, 345, 0, 0);
+    background = PP.assets.image.add(s, img_tubi_2, 6150, 345, 0, 0);
 
 
     //------PIATTAFORME STATICHE-----
