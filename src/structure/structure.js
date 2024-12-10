@@ -25,6 +25,9 @@ function collision_platform(s,player, platform) {
     player.is_on_platform = true;
 }
 
+function goto_gameover(s) {
+    PP.scenes.start("gameover");
+}
 
 function create_structure(s) {
 
@@ -71,9 +74,9 @@ function create_structure(s) {
 
 
     //rettangolo acido 
-    wall = PP.shapes.rectangle_add(s, 5500, 2300, 7543, 290, "0x0000FF", 0); 
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    img_acid = PP.shapes.rectangle_add(s, 5500, 2300, 7543, 290, "0x0000FF", 0); 
+    PP.physics.add(s, img_acid, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, img_acid, goto_gameover);s
    
    
     //------PIATTAFORMA 3------
