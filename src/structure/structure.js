@@ -63,8 +63,15 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
+
     //pavimento (2)
     wall = PP.shapes.rectangle_add(s, 9590, 2280, 775, 305, "0x0000FF", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+
+    //rettangolo acido 
+    wall = PP.shapes.rectangle_add(s, 5500, 2300, 7543, 290, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
    
