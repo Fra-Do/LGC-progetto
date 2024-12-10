@@ -16,9 +16,9 @@ function preload_structure(s) {
     img_acid_3 = PP.assets.image.load(s, "assets/images/acid_3.png");
 
     //Tubi statici
-    //img_tubi   = PP.assets.image.load(s, "assets/images/tubistatici.png");
-    img_tubi   = PP.assets.image.load(s, "assets/images/tubo_prova.png");
-    img_tubi_2 = PP.assets.image.load(s, "assets/images/tubistatici2.png");
+    
+    img_tubi   = PP.assets.image.load(s, "assets/images/tubo_st_1.png");
+    img_tubi_2 = PP.assets.image.load(s, "assets/images/tubo_st_2.png");
 }
 
 function collision_platform(s,player, platform) {
@@ -30,9 +30,10 @@ function goto_gameover(s) {
 }
 
 function create_structure(s) {
-
-    
-
+    background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
+    background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
+    background = PP.assets.image.add(s, img_acid_3, 8450, 2190, 0, 0);
+     
     //Tubi statici
     background = PP.assets.image.add(s, img_tubi, 1785, 213, 0, 0);
     background = PP.assets.image.add(s, img_tubi, 2120, 330, 0, 0);
@@ -40,7 +41,7 @@ function create_structure(s) {
     background = PP.assets.image.add(s, img_tubi, 2120, 770, 0, 0);
     background = PP.assets.image.add(s, img_tubi, 1830, 930, 0, 0);
     background = PP.assets.image.add(s, img_tubi_2, 5930, 200, 0, 0);
-    background = PP.assets.image.add(s, img_tubi_2, 6150, 345, 0, 0);
+    background = PP.assets.image.add(s, img_tubi_2, 6150-10, 345, 0, 0);
 
 
     //------PIATTAFORME STATICHE-----
@@ -96,27 +97,27 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     //3.4
-    wall = PP.shapes.rectangle_add(s, 1876, 233, 190, 66, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1876+30, 233+30, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.5 !!!!! 2240, 380
-    wall = PP.shapes.rectangle_add(s, 2210, 350, 190, 66, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 2210+30, 350+30, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.6
-    wall = PP.shapes.rectangle_add(s, 2210, 789, 190, 66, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 2210+30, 789+30, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.7
-    wall = PP.shapes.rectangle_add(s, 1900, 580, 190, 66, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1900+30, 580+30, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.8
-    wall = PP.shapes.rectangle_add(s, 1920, 950, 190, 66, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1920+30, 950+30, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
@@ -194,12 +195,12 @@ function create_structure(s) {
 
     //PIATTAFORMA 7
     //7.1
-    wall = PP.shapes.rectangle_add(s, 6019, 220, 191, 37, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 6020+25, 220+15, 198, 39, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //7.2
-    wall = PP.shapes.rectangle_add(s, 6250, 365, 191, 37, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 6250+5, 365+15, 198, 39, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 

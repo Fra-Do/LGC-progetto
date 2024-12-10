@@ -3,6 +3,7 @@ let img_piattaforme;
 let img_parallax01;
 let img_parallax02;
 let img_tubi;
+
 let tubi;
 let floor;
 let background;
