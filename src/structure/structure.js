@@ -112,28 +112,28 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     // PIATTAFORMA 4
-    wall = PP.shapes.rectangle_add(s, 2810, 100, 696, 1080, "0x0000FF", 0); 
+    wall = PP.shapes.rectangle_add(s, 2810, 95, 696, 1080, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //PIATTAFORMA 5
-    wall = PP.shapes.rectangle_add(s, 2810, 1155, 696, 550, "0x0000FF", 0); 
+    wall = PP.shapes.rectangle_add(s, 2810, 1150, 696, 550, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     // 5.1
-    wall = PP.shapes.rectangle_add(s, 2490, 1555, 55, 260, "0x0000FF", 0); 
+    wall = PP.shapes.rectangle_add(s, 2500, 1555, 55, 260, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
 
     // 5.2
-    wall = PP.shapes.rectangle_add(s, 2580, 1670, 220, 40, "0x0000FF", 0); 
+    wall = PP.shapes.rectangle_add(s, 2580, 1640, 220, 40, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     // 5.3
-    wall = PP.shapes.rectangle_add(s, 3100, 1560, 110, 260, "0x0000FF", 0); 
+    wall = PP.shapes.rectangle_add(s, 3080, 1550, 140, 260, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
@@ -143,7 +143,7 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //6.1
-    wall = PP.shapes.rectangle_add(s, 4500, 80, 290, 40, "0x0000FF", 0); 
+    wall = PP.shapes.rectangle_add(s, 4500, 90, 290, 40, "0x0000FF", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
