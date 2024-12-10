@@ -21,10 +21,11 @@ let pl_8_speed = 350;
 function preload_platforms(s) {
     img_pl1      = PP.assets.image.load(s, "assets/images/tubo_mob_1.png");
     img_diagonal = PP.assets.image.load(s, "assets/images/diagonal.png");
-    img_pl3      = PP.assets.image.load(s, "assets/images/movable03.png");
+    img_pl3      = PP.assets.image.load(s, "assets/images/tubo_mob_3.png");
     img_spuntoni = PP.assets.image.load(s, "assets/images/spuntoni.png");
     img_pl5d      = PP.assets.image.load(s, "assets/images/movable_5d.png");
     img_pl5s      = PP.assets.image.load(s, "assets/images/movable_05s.png");
+    img_pl8       = PP.assets.image.load(s, "assets/images/tubo_mob_8.png");
 
 }
 
@@ -37,7 +38,7 @@ function create_platforms(s) {
 
     //piattaforme gruppo 1
     //1.1
-    pl_1 = PP.assets.image.add(s, img_pl1, 3260, 200, 0, 0);
+    pl_1 = PP.assets.image.add(s, img_pl1, 3260-30, 200, 0, 0);
     PP.physics.add(s, pl_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_1, true);
     PP.physics.set_allow_gravity(pl_1, false);    
@@ -45,7 +46,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_1, pl_1_speed);
 
     //1.2
-    pl_1_2 = PP.assets.image.add(s, img_pl1, 3500, 630, 0, 0);
+    pl_1_2 = PP.assets.image.add(s, img_pl1, 3500-60, 630, 0, 0);
     PP.physics.add(s, pl_1_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_1_2, true);
     PP.physics.set_allow_gravity(pl_1_2, false);    
@@ -53,7 +54,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_1_2, pl_1_speed);
 
     //1.3
-    pl_1_3 = PP.assets.image.add(s, img_pl1, 3720, 900, 0, 0);
+    pl_1_3 = PP.assets.image.add(s, img_pl1, 3720-60, 900, 0, 0);
     PP.physics.add(s, pl_1_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_1_3, true);
     PP.physics.set_allow_gravity(pl_1_3, false);    
@@ -86,7 +87,7 @@ function create_platforms(s) {
     // piattaforme gruppo 4 (spuntoni)
     // primo gruppo
     //4.1
-    pl_4_1 = PP.assets.image.add(s, img_spuntoni, 3970, 350, 0, 0); 
+    pl_4_1 = PP.assets.image.add(s, img_spuntoni, 3970-10, 350, 0, 0); 
     //pl_4_1 = PP.shapes.rectangle_add(s, 3970, 350, 30, 150, "0xFF0000", 0);
     PP.physics.add(s, pl_4_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_1, true);
@@ -95,7 +96,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_1, pl_4_speed);
     
     //4.2
-    pl_4_2 = PP.assets.image.add(s, img_spuntoni, 4015, 250, 0, 0); 
+    pl_4_2 = PP.assets.image.add(s, img_spuntoni, 4015-10, 250, 0, 0); 
     PP.physics.add(s, pl_4_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_2, true);
     PP.physics.set_allow_gravity(pl_4_2, false);    
@@ -103,7 +104,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_2, pl_4_speed);
 
     //4.3
-    pl_4_3 = PP.assets.image.add(s, img_spuntoni, 4060, 300, 0, 0); 
+    pl_4_3 = PP.assets.image.add(s, img_spuntoni, 4060-10, 300, 0, 0); 
     PP.physics.add(s, pl_4_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_3, true);
     PP.physics.set_allow_gravity(pl_4_3, false);    
@@ -111,7 +112,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_3, pl_4_speed);
 
     //4.4
-    pl_4_4 = PP.assets.image.add(s, img_spuntoni, 4105, 220, 0, 0); 
+    pl_4_4 = PP.assets.image.add(s, img_spuntoni, 4105-10, 220, 0, 0); 
     PP.physics.add(s, pl_4_4, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_4, true);
     PP.physics.set_allow_gravity(pl_4_4, false);    
@@ -119,7 +120,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_4, pl_4_speed);
 
     //4.5
-    pl_4_5 = PP.assets.image.add(s, img_spuntoni, 4150, 340, 0, 0); 
+    pl_4_5 = PP.assets.image.add(s, img_spuntoni, 4150-10, 340, 0, 0); 
     PP.physics.add(s, pl_4_5, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_5, true);
     PP.physics.set_allow_gravity(pl_4_5, false);    
@@ -128,7 +129,7 @@ function create_platforms(s) {
 
     //secondo gruppo
     //4.6
-    pl_4_6 = PP.assets.image.add(s, img_spuntoni, 4740, 340, 0, 0);
+    pl_4_6 = PP.assets.image.add(s, img_spuntoni, 4740-20, 340, 0, 0);
     PP.physics.add(s, pl_4_6, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_6, true);
     PP.physics.set_allow_gravity(pl_4_6, false);    
@@ -136,7 +137,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_6, pl_4_speed);
     
     //4.7
-    pl_4_7 = PP.assets.image.add(s, img_spuntoni, 4785, 220, 0, 0);
+    pl_4_7 = PP.assets.image.add(s, img_spuntoni, 4785-20, 220, 0, 0);
     PP.physics.add(s, pl_4_7, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_7, true);
     PP.physics.set_allow_gravity(pl_4_7, false);    
@@ -144,7 +145,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_7, pl_4_speed);
 
     //4.8
-    pl_4_8 = PP.assets.image.add(s, img_spuntoni, 4830, 300, 0, 0);
+    pl_4_8 = PP.assets.image.add(s, img_spuntoni, 4830-20, 300, 0, 0);
     PP.physics.add(s, pl_4_8, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_8, true);
     PP.physics.set_allow_gravity(pl_4_8, false);    
@@ -152,7 +153,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_8, pl_4_speed);
 
     //4.9
-    pl_4_9 = PP.assets.image.add(s, img_spuntoni, 4875, 250, 0, 0);
+    pl_4_9 = PP.assets.image.add(s, img_spuntoni, 4875-20, 250, 0, 0);
     PP.physics.add(s, pl_4_9, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_9, true);
     PP.physics.set_allow_gravity(pl_4_9, false);    
@@ -160,7 +161,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_9, pl_4_speed);
 
     //4.10
-    pl_4_10 = PP.assets.image.add(s, img_spuntoni, 4920, 350, 0, 0);
+    pl_4_10 = PP.assets.image.add(s, img_spuntoni, 4920-20, 350, 0, 0);
     PP.physics.add(s, pl_4_10, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_10, true);
     PP.physics.set_allow_gravity(pl_4_10, false);    
@@ -222,7 +223,7 @@ function create_platforms(s) {
 
     //Piattaforme gruppo 8
     //8.1
-    pl_8_1 = PP.shapes.rectangle_add(s, 7400, 416, 381, 42, "0xFF0000", 0);
+    pl_8_1 = PP.assets.image.add(s, img_pl8, 7175, 416, 0, 0);
     PP.physics.add(s, pl_8_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_8_1, true);
     PP.physics.set_allow_gravity(pl_8_1, false);    
@@ -230,7 +231,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_8_1, pl_8_speed);
 
     //8.2
-    pl_8_2 = PP.shapes.rectangle_add(s, 8750, 1500, 381, 42, "0xFF0000", 0);
+    pl_8_2 = PP.assets.image.add(s, img_pl8, 8550, 1500, 0, 0);
     PP.physics.add(s, pl_8_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_8_2, true);
     PP.physics.set_allow_gravity(pl_8_2, false);    
@@ -294,84 +295,84 @@ function update_platforms(s) {
 // piattaforme gruppo 4 (spuntoni)
     // primo gruppo 
     //4.1
-    if(pl_4_1.geometry.y >= 420) {
+    if(pl_4_1.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_1, -pl_4_speed);
     }
-    else if(pl_4_1.geometry.y <= 200) {
+    else if(pl_4_1.geometry.y <= 200-50) {
         PP.physics.set_velocity_y(pl_4_1, pl_4_speed);
     }
     
     //4.2
-    if(pl_4_2.geometry.y >= 340) {
+    if(pl_4_2.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_2, -pl_4_speed);
     }
-    else if(pl_4_2.geometry.y <= 220) {
+    else if(pl_4_2.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_2, pl_4_speed);
     }
     
     //4.3
-    if(pl_4_3.geometry.y >= 340) {
+    if(pl_4_3.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_3, -pl_4_speed);
     }
-    else if(pl_4_3.geometry.y <= 220) {
+    else if(pl_4_3.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_3, pl_4_speed);
     }
 
     //4.4
-    if(pl_4_4.geometry.y >= 340) {
+    if(pl_4_4.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_4, -pl_4_speed);
     }
-    else if(pl_4_4.geometry.y <= 220) {
+    else if(pl_4_4.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_4, pl_4_speed);
     }
 
     //4.5
-    if(pl_4_5.geometry.y >= 340) {
+    if(pl_4_5.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_5, -pl_4_speed);
     }
-    else if(pl_4_5.geometry.y <= 220) {
+    else if(pl_4_5.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_5, pl_4_speed);
     }
 
 
     // secondo gruppo 
     //4.6
-    if(pl_4_6.geometry.y >= 340) {
+    if(pl_4_6.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_6, -pl_4_speed);
     }
-    else if(pl_4_6.geometry.y <= 220) {
+    else if(pl_4_6.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_6, pl_4_speed);
     }
     
     //4.7
-    if(pl_4_7.geometry.y >= 340) {
+    if(pl_4_7.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_7, -pl_4_speed);
     }
-    else if(pl_4_7.geometry.y <= 220) {
+    else if(pl_4_7.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_7, pl_4_speed);
     }
     
     //4.8
-    if(pl_4_8.geometry.y >= 340) {
+    if(pl_4_8.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_8, -pl_4_speed);
     }
-    else if(pl_4_8.geometry.y <= 220) {
+    else if(pl_4_8.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_8, pl_4_speed);
     }
 
     //4.9
-    if(pl_4_9.geometry.y >= 340) {
+    if(pl_4_9.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_9, -pl_4_speed);
     }
-    else if(pl_4_9.geometry.y <= 220) {
+    else if(pl_4_9.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_9, pl_4_speed);
     }
 
     //4.10
-    if(pl_4_10.geometry.y >= 340) {
+    if(pl_4_10.geometry.y >= 340-100) {
         PP.physics.set_velocity_y(pl_4_10, -pl_4_speed);
     }
-    else if(pl_4_10.geometry.y <= 220) {
+    else if(pl_4_10.geometry.y <= 220-50) {
         PP.physics.set_velocity_y(pl_4_10, pl_4_speed);
     }
 
@@ -445,7 +446,7 @@ function update_platforms(s) {
     if(pl_8_2.geometry.y >= 2000) {
         PP.physics.set_velocity_y(pl_8_2, -pl_8_speed);
     }
-    else if(pl_8_2.geometry.y <= 1400) {
+    else if(pl_8_2.geometry.y <= 1250) {
         PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
     }
 
