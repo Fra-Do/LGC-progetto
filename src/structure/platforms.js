@@ -1,9 +1,7 @@
 let img_pl1;
 let img_pl3;
-let img_diagonal;
-/*let pl_1;
-let diagonal
-let pl_3;*/
+let pl_1;
+let pl_3;
 let platforms;
 let pl_1_speed = 250;
 let pl_2_speed = 150;
@@ -15,9 +13,8 @@ let pl_8_speed = 350;
 
 
 function preload_platforms(s) {
-    img_pl1      = PP.assets.image.load(s, "assets/images/movable01.png");
-    img_diagonal = PP.assets.image.load(s, "assets/images/movable03.png");
-    img_pl3      = PP.assets.image.load(s, "assets/images/diagonal.png");
+    img_pl1 = PP.assets.image.load(s, "assets/images/movable01.png");
+    img_pl3 = PP.assets.image.load(s, "assets/images/movable03.png");
 
 }
 
@@ -46,7 +43,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_1_2, pl_1_speed);
 
     //1.3
-    pl_1_3 = PP.shapes.image.add(s, img_pl1, 3720, 900, 110, 0, 0);
+    pl_1_3 = PP.assets.image.add(s, img_pl1, 3720, 900, 0, 0);
     PP.physics.add(s, pl_1_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_1_3, true);
     PP.physics.set_allow_gravity(pl_1_3, false);    
@@ -55,7 +52,7 @@ function create_platforms(s) {
 
     //-----------------------------------------------------------------------------
     //piattaforma gruppo 2 (diagonale)
-    pl_2 = PP.shapes.image.add(s, img_diagonal, 3250, 2080, 235, 0, 0);
+    pl_2 = PP.shapes.rectangle_add(s, 3250, 2080, 235, 50, "0xFF0000", 0);
     PP.physics.add(s, pl_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_2, true);
     PP.physics.set_allow_gravity(pl_2, false);    
