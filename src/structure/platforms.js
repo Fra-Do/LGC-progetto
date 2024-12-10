@@ -20,12 +20,14 @@ let pl_8_speed = 350;
 
 function preload_platforms(s) {
     img_pl1      = PP.assets.image.load(s, "assets/images/tubo_mob_1.png");
-    img_diagonal = PP.assets.image.load(s, "assets/images/diagonal.png");
+    img_diagonal = PP.assets.image.load(s, "assets/images/tubo_mob_2.png");
     img_pl3      = PP.assets.image.load(s, "assets/images/tubo_mob_3.png");
     img_spuntoni = PP.assets.image.load(s, "assets/images/tubo_mob_4.png");
     img_pl5d      = PP.assets.image.load(s, "assets/images/movable_5d.png");
     img_pl5s      = PP.assets.image.load(s, "assets/images/movable_05s.png");
     img_pl8       = PP.assets.image.load(s, "assets/images/tubo_mob_8.png");
+    img_pl7       = PP.assets.image.load(s, "assets/images/tubo_mob_7.png");
+
 
 }
 
@@ -206,7 +208,7 @@ function create_platforms(s) {
 
     //piattaforme gruppo 7
     //7.1
-    pl_7_1 = PP.shapes.rectangle_add(s, 7900 , 100, 131, 416, "0xFF0000", 0);
+    pl_7_1 = PP.assets.image.add(s, img_pl7, 7900, 100, 0, 0);
     PP.physics.add(s, pl_7_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_7_1, true);
     PP.physics.set_allow_gravity(pl_7_1, false);    
@@ -214,7 +216,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
 
     //7.2
-    pl_7_2 = PP.shapes.rectangle_add(s, 8300 , -200, 131, 416, "0xFF0000", 0);
+    pl_7_2 = PP.assets.image.add(s, img_pl7, 8300, -200, 0, 0);
     PP.physics.add(s, pl_7_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_7_2, true);
     PP.physics.set_allow_gravity(pl_7_2, false);    
