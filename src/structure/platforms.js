@@ -294,10 +294,10 @@ function update_platforms(s) {
 // piattaforme gruppo 4 (spuntoni)
     // primo gruppo 
     //4.1
-    if(pl_4_1.geometry.y >= 340) {
+    if(pl_4_1.geometry.y >= 420) {
         PP.physics.set_velocity_y(pl_4_1, -pl_4_speed);
     }
-    else if(pl_4_1.geometry.y <= 220) {
+    else if(pl_4_1.geometry.y <= 200) {
         PP.physics.set_velocity_y(pl_4_1, pl_4_speed);
     }
     

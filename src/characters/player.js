@@ -58,7 +58,9 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 300, 0.5, 1);
+    //player = PP.assets.sprite.add(s, img_player, 400, 300, 0.5, 1);
+
+    player = PP.assets.sprite.add(s, img_player, 6050, 2000, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);  
 }
 
