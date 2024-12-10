@@ -16,7 +16,8 @@ function preload_structure(s) {
     img_acid_3 = PP.assets.image.load(s, "assets/images/acid_3.png");
 
     //Tubi statici
-    img_tubi   = PP.assets.image.load(s, "assets/images/tubistatici.png");
+    //img_tubi   = PP.assets.image.load(s, "assets/images/tubistatici.png");
+    img_tubi   = PP.assets.image.load(s, "assets/images/tubo_prova.png");
     img_tubi_2 = PP.assets.image.load(s, "assets/images/tubistatici2.png");
 }
 
@@ -85,27 +86,27 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     //3.4
-    wall = PP.shapes.rectangle_add(s, 1876, 233, 191, 37, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1876, 233, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-    //3.5
-    wall = PP.shapes.rectangle_add(s, 2210, 350, 191, 37, "0xFF0000", 0); 
+    //3.5 !!!!! 2240, 380
+    wall = PP.shapes.rectangle_add(s, 2210, 350, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.6
-    wall = PP.shapes.rectangle_add(s, 2210, 789, 191, 37, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 2210, 789, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.7
-    wall = PP.shapes.rectangle_add(s, 1900, 580, 191, 37, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1900, 580, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.8
-    wall = PP.shapes.rectangle_add(s, 1920, 950, 191, 37, "0xFF0000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1920, 950, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
