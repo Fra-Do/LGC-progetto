@@ -1,8 +1,14 @@
 let img_pl1;
+let img_diagonal;
 let img_pl3;
+let img_spuntoni;
+let img_pl5d;
+let img_pl5s;
+
 let pl_1;
 let pl_3;
 let platforms;
+
 let pl_1_speed = 250;
 let pl_2_speed = 150;
 let pl_3_speed = 250;
@@ -13,8 +19,12 @@ let pl_8_speed = 350;
 
 
 function preload_platforms(s) {
-    img_pl1 = PP.assets.image.load(s, "assets/images/movable01.png");
-    img_pl3 = PP.assets.image.load(s, "assets/images/movable03.png");
+    img_pl1      = PP.assets.image.load(s, "assets/images/movable01.png");
+    img_diagonal = PP.assets.image.load(s, "assets/images/diagonal.png");
+    img_pl3      = PP.assets.image.load(s, "assets/images/movable03.png");
+    img_spuntoni = PP.assets.image.load(s, "assets/images/spuntoni.png");
+    img_pl5d      = PP.assets.image.load(s, "assets/images/movable_5d.png");
+    img_pl5s      = PP.assets.image.load(s, "assets/images/movable_05s.png");
 
 }
 
@@ -52,7 +62,7 @@ function create_platforms(s) {
 
     //-----------------------------------------------------------------------------
     //piattaforma gruppo 2 (diagonale)
-    pl_2 = PP.shapes.rectangle_add(s, 3250, 2080, 235, 50, "0xFF0000", 0);
+    pl_2 = PP.assets.image.add(s, img_diagonal, 3250, 2080, 0, 0);
     PP.physics.add(s, pl_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_2, true);
     PP.physics.set_allow_gravity(pl_2, false);    
@@ -65,8 +75,8 @@ function create_platforms(s) {
 
     //piattaforma gruppo 3
     pl_3 = PP.assets.image.add(s, img_pl3, 3700, 2130, 0, 0);
-    pl_3 = PP.shapes.rectangle_add(s, //img_pl1, 
-        3700, 2130, 410, 65, "0xFF0000", 0);
+    
+    //pl_3 = PP.shapes.rectangle_add(s, //img_pl1, 3700, 2130, 410, 65, "0xFF0000", 0);
     PP.physics.add(s, pl_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_3, true);
     PP.physics.set_allow_gravity(pl_3, false);    
@@ -75,8 +85,9 @@ function create_platforms(s) {
 
     // piattaforme gruppo 4 (spuntoni)
     // primo gruppo
-    //4.1 
-    pl_4_1 = PP.shapes.rectangle_add(s, 3970, 350, 30, 150, "0xFF0000", 0);
+    //4.1
+    pl_4_1 = PP.assets.image.add(s, img_spuntoni, 3970, 350, 0, 0); 
+    //pl_4_1 = PP.shapes.rectangle_add(s, 3970, 350, 30, 150, "0xFF0000", 0);
     PP.physics.add(s, pl_4_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_1, true);
     PP.physics.set_allow_gravity(pl_4_1, false);    
@@ -84,7 +95,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_1, pl_4_speed);
     
     //4.2
-    pl_4_2 = PP.shapes.rectangle_add(s, 4015, 250, 30, 150, "0xFF0000", 0);
+    pl_4_2 = PP.assets.image.add(s, img_spuntoni, 4015, 250, 0, 0); 
     PP.physics.add(s, pl_4_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_2, true);
     PP.physics.set_allow_gravity(pl_4_2, false);    
@@ -92,7 +103,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_2, pl_4_speed);
 
     //4.3
-    pl_4_3 = PP.shapes.rectangle_add(s, 4060, 300, 30, 150, "0xFF0000", 0);
+    pl_4_3 = PP.assets.image.add(s, img_spuntoni, 4060, 300, 0, 0); 
     PP.physics.add(s, pl_4_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_3, true);
     PP.physics.set_allow_gravity(pl_4_3, false);    
@@ -100,7 +111,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_3, pl_4_speed);
 
     //4.4
-    pl_4_4 = PP.shapes.rectangle_add(s, 4105, 220, 30, 150, "0xFF0000", 0);
+    pl_4_4 = PP.assets.image.add(s, img_spuntoni, 4105, 220, 0, 0); 
     PP.physics.add(s, pl_4_4, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_4, true);
     PP.physics.set_allow_gravity(pl_4_4, false);    
@@ -108,7 +119,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_4, pl_4_speed);
 
     //4.5
-    pl_4_5 = PP.shapes.rectangle_add(s, 4150, 340, 30, 150, "0xFF0000", 0);
+    pl_4_5 = PP.assets.image.add(s, img_spuntoni, 4150, 340, 0, 0); 
     PP.physics.add(s, pl_4_5, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_5, true);
     PP.physics.set_allow_gravity(pl_4_5, false);    
@@ -117,7 +128,7 @@ function create_platforms(s) {
 
     //secondo gruppo
     //4.6
-    pl_4_6 = PP.shapes.rectangle_add(s, 4740, 340, 30, 150, "0xFF0000", 0);
+    pl_4_6 = PP.assets.image.add(s, img_spuntoni, 4740, 340, 0, 0);
     PP.physics.add(s, pl_4_6, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_6, true);
     PP.physics.set_allow_gravity(pl_4_6, false);    
@@ -125,7 +136,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_6, pl_4_speed);
     
     //4.7
-    pl_4_7 = PP.shapes.rectangle_add(s, 4785, 220, 30, 150, "0xFF0000", 0);
+    pl_4_7 = PP.assets.image.add(s, img_spuntoni, 4785, 220, 0, 0);
     PP.physics.add(s, pl_4_7, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_7, true);
     PP.physics.set_allow_gravity(pl_4_7, false);    
@@ -133,7 +144,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_7, pl_4_speed);
 
     //4.8
-    pl_4_8 = PP.shapes.rectangle_add(s, 4830, 300, 30, 150, "0xFF0000", 0);
+    pl_4_8 = PP.assets.image.add(s, img_spuntoni, 4830, 300, 0, 0);
     PP.physics.add(s, pl_4_8, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_8, true);
     PP.physics.set_allow_gravity(pl_4_8, false);    
@@ -141,7 +152,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_8, pl_4_speed);
 
     //4.9
-    pl_4_9 = PP.shapes.rectangle_add(s, 4875, 250, 30, 150, "0xFF0000", 0);
+    pl_4_9 = PP.assets.image.add(s, img_spuntoni, 4875, 250, 0, 0);
     PP.physics.add(s, pl_4_9, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_9, true);
     PP.physics.set_allow_gravity(pl_4_9, false);    
@@ -149,7 +160,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_4_9, pl_4_speed);
 
     //4.10
-    pl_4_10 = PP.shapes.rectangle_add(s, 4920, 350, 30, 150, "0xFF0000", 0);
+    pl_4_10 = PP.assets.image.add(s, img_spuntoni, 4920, 350, 0, 0);
     PP.physics.add(s, pl_4_10, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_10, true);
     PP.physics.set_allow_gravity(pl_4_10, false);    
@@ -159,7 +170,7 @@ function create_platforms(s) {
     
     //piattaforma gruppo 5
     //5.1
-    pl_5_1 = PP.shapes.rectangle_add(s, 4540, 1505, 149, 86, "0xFF0000", 0);
+    pl_5_1 = PP.assets.image.add(s, img_pl5s, 4540, 1505, 0, 0);
     PP.physics.add(s, pl_5_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_5_1, true);
     PP.physics.set_allow_gravity(pl_5_1, false);    
@@ -167,7 +178,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_x(pl_5_1, pl_5_speed);
 
     //5.2
-    pl_5_2 = PP.shapes.rectangle_add(s, 4690, 1505, 149, 86, "0xFF0000", 0);
+    pl_5_2 = PP.assets.image.add(s, img_pl5d, 4690, 1505, 0, 0);
     PP.physics.add(s, pl_5_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_5_2, true);
     PP.physics.set_allow_gravity(pl_5_2, false);    
@@ -175,7 +186,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_x(pl_5_2, pl_5_speed);
 
     //5.3
-    pl_5_3 = PP.shapes.rectangle_add(s, 5140, 1505, 149, 86, "0xFF0000", 0);
+    pl_5_3 = PP.assets.image.add(s, img_pl5s, 5140, 1505, 0, 0);
     PP.physics.add(s, pl_5_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_5_3, true);
     PP.physics.set_allow_gravity(pl_5_3, false);    
@@ -183,7 +194,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_x(pl_5_3, pl_5_speed);
 
     //5.4
-    pl_5_4 = PP.shapes.rectangle_add(s, 5290, 1505, 149, 86, "0xFF0000", 0);
+    pl_5_4 = PP.assets.image.add(s, img_pl5d, 5290, 1505, 0, 0);
     PP.physics.add(s, pl_5_4, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_5_4, true);
     PP.physics.set_allow_gravity(pl_5_4, false);    
@@ -256,7 +267,7 @@ function update_platforms(s) {
     }
 
     
-    //piattaforme gruppo 2      fa cose strane non sono riuscita a farlo andare in diagonale domani riprovo
+    //piattaforme gruppo 2      
     if(pl_2.geometry.x >= 3250) {
         PP.physics.set_velocity_x(pl_2, -pl_2_speed);
     }
@@ -270,21 +281,6 @@ function update_platforms(s) {
     else if(pl_2.geometry.y <= 2080-450) {
         PP.physics.set_velocity_y(pl_2, pl_2_speed);
     }
-
-    //ci ho riprovato ma invano
-    //if(pl_2.geometry.x >= 3250) {
-        //PP.physics.set_velocity_x(pl_diagonal, -pl_2_speed); 
-    //}
-    //else if(pl_2.geometry.x <= 2800) {
-        //PP.physics.set_velocity_x(pl_diagonal, pl_2_speed);  
-   // }
-
-    //if(pl_2.geometry.y >= 2080) {
-        //PP.physics.set_velocity_x(pl_diagonal, -pl_2_speed); 
-    //}
-    //else if(pl_2.geometry.y <= 1900) {
-        //PP.physics.set_velocity_y(pl_2, pl_2_speed);
-    //}
 
 
     //piattaforme gruppo 3
