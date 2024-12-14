@@ -14,7 +14,7 @@ let pl_2_speed = 150;
 let pl_3_speed = 250;
 let pl_4_speed = 100;
 let pl_5_speed = 100;
-let pl_7_speed = 400;
+let pl_7_speed = 200;
 let pl_8_speed = 350;
 
 
@@ -208,7 +208,7 @@ function create_platforms(s) {
 
     //piattaforme gruppo 7
     //7.1
-    pl_7_1 = PP.assets.image.add(s, img_pl7, 7900, 100, 0, 0);
+    pl_7_1 = PP.assets.image.add(s, img_pl7, 7840, 810, 0, 0);
     PP.physics.add(s, pl_7_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_7_1, true);
     PP.physics.set_allow_gravity(pl_7_1, false);    
@@ -216,7 +216,7 @@ function create_platforms(s) {
     PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
 
     //7.2
-    pl_7_2 = PP.assets.image.add(s, img_pl7, 8300, -200, 0, 0);
+    pl_7_2 = PP.assets.image.add(s, img_pl7, 8240, 1040, 0, 0);
     PP.physics.add(s, pl_7_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_7_2, true);
     PP.physics.set_allow_gravity(pl_7_2, false);    
@@ -415,7 +415,25 @@ function update_platforms(s) {
     // piattaforme 6 --> acido spruzzato animazione 
     
     //piattaforme gruppo 7 
-    // 7.1
+    //7.1
+    if(pl_7_1.geometry.y >= 1040) {
+        PP.physics.set_velocity_y(pl_7_1, -pl_7_speed);
+    }
+    else if(pl_7_1.geometry.y <= 810) {
+        PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
+    } 
+
+        // 7.2
+    if(pl_7_2.geometry.y >= 1040) {
+        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
+    }
+    else if(pl_7_2.geometry.y <= 810) {
+        PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
+    }
+    
+    
+    
+    /*// 7.1 roba che ci aveva fatto fare l'assistente
     if(pl_7_1.geometry.y >= 1260 || pl_7_1.geometry.y <= 900) {
         pl_7_speed = -pl_7_speed;
     }
@@ -434,7 +452,7 @@ function update_platforms(s) {
     else {
         PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
     }
-
+*/
     //piattaforme gruppo 8
     //8.1
     if(pl_8_1.geometry.y >= 1570) {
@@ -454,6 +472,7 @@ function update_platforms(s) {
 
     
 }
+ 
 
 function destroy_platforms(s) {
 
