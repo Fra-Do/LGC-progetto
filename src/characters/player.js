@@ -47,7 +47,7 @@ function destroy_player(s) {
 */
 
 function configure_player_animations(s) {
-    PP.assets.sprite.animation_add_list(player, "run", [0, 1, 2, 3, 4, 5], 10, -1);  // 6 frame per l'animazione "run"
+    PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4, 5], 10, -1);  // 6 frame per l'animazione "run"
     PP.assets.sprite.animation_add(player, "stop", 0, 0, 10, 0);  // frame 0 per l'animazione "stop"
     PP.assets.sprite.animation_play(player, "stop");  // avvia l'animazione "stop" di default
 }
