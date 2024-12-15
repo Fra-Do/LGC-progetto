@@ -24,6 +24,7 @@ function preload(s) {
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
+    
 
 }
 
