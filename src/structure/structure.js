@@ -287,20 +287,20 @@ function create_structure(s) {
 
     //OGGETTI
     //KIT
-    //kit 1
-    wall = PP.shapes.rectangle_add(s, 1368, 347, 35, 30, "0xFF0000", 0); 
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    ///kit 1
+    //wall = PP.shapes.rectangle_add(s, 1370, 265, 70, 51, "0xFF0000", 0); 
+    //PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    //PP.physics.add_collider(s, player, wall);
 
     //kit 2
-    wall = PP.shapes.rectangle_add(s, 5580, 1450, 35, 30, "0xFF0000", 0); 
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    //wall = PP.shapes.rectangle_add(s, 5580, 1450, 35, 30, "0xFF0000", 0); 
+    //PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    //PP.physics.add_collider(s, player, wall);
 
     //kit 3
-    wall = PP.shapes.rectangle_add(s, 8090, 1443, 35, 30, "0xFF0000", 0); 
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    //wall = PP.shapes.rectangle_add(s, 8090, 1443, 35, 30, "0xFF0000", 0); 
+    //PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    //PP.physics.add_collider(s, player, wall);
 
     //pergamena
     wall = PP.shapes.rectangle_add(s, 1630, 347, 35, 30, "0xFF0000", 0); 
