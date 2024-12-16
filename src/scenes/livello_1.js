@@ -24,6 +24,7 @@ function preload(s) {
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
+    preload_instruction(s)
     
 
 }
@@ -49,6 +50,7 @@ function create(s) {
     create_platforms (s);
     configure_player_animations(s);
     create_collectibles(s)
+    create_instruction(s)
 
     //PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, -50, 120); //così il player è al centro dello schermo

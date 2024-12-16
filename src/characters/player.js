@@ -55,13 +55,14 @@ function configure_player_animations(s) {
 function preload_player(s) {
     
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/spriteragazza.png", 94, 136, 1, 1);
+    preload_instruction(s)
 }
 
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 300, 0.5, 1);
 
     //player = PP.assets.sprite.add(s, img_player, 7600, 800, 0.5, 1);
-    PP.physics.add(s, player, PP.physics.type.DYNAMIC);  
+    PP.physics.add(s, player, PP.physics.type.DYNAMIC);
 }
 
 function update_player(s) {
@@ -97,6 +98,8 @@ function update_player(s) {
     else if (PP.physics.get_velocity_x(player) > 0) {
         player.geometry.flip_x = false;
     }
+
+    update_instruction(s)
 }
 
 function destroy_player(s) {
