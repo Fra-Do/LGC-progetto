@@ -56,6 +56,8 @@ function create_collectibles(s) {
     pergamena = PP.assets.image.add(s, img_pergamena, 1600, 330, 0, 0);
     key       = PP.assets.image.add(s, img_key, 9450, 2100, 0, 0);
 
+    
+    
     // primo kit
     let kit_1 = PP.assets.image.add(s, img_kit, 1330, 240, 0, 0);
     PP.physics.add(s, kit_1, PP.physics.type.STATIC);

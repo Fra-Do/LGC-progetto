@@ -1,13 +1,15 @@
-let arrowLeft
-let arrowRight
-
 let img_up
-let img_left_right
-let img_left
+let img_arrows
+
+let arrows
+
+let istruzioni_arrows = false;
 
 let img_istruzioni_kit1;
 let img_istruzioni_kit2;
 let img_istruzioni_kit3;
+
+let istruzioni_leftright = false;
 
 let istruzioni_kit;
 
@@ -15,52 +17,39 @@ let istruzioni_kit_created1 = false;
 let istruzioni_kit_created2 = false;
 let istruzioni_kit_created3 = false;
 
+
+
 function preload_instruction(s) {
-    img_left_right = PP.assets.image.load(s, "assets/images/leftright.png");
+    img_arrows      = PP.assets.image.load(s, "assets/images/leftright.png");
     //img_up         = PP.assets.image.load(s, "assets/images/up.png");
 
     //kit 
-    img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
-    img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
-    img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
+    img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/k.png");
+    img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/k.png");
+    img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/k.png");
 }
 
 function create_instruction(s) {
-    if (!player) {
-        console.error("Player non trovato. Assicurati che il player sia stato creato.");
-        return;
-    }
-
-    // Posiziono le frecce sopra il personaggio
-    let playerX = player.geometry.x; 
-    let playerY = player.geometry.y;
-
-    // Posiziono le immagini
-    arrowLeft  = PP.assets.image.add(s, img_left_right, playerX - 50, playerY - 100, 1, 1);
-    arrowRight = PP.assets.image.add(s, img_left_right, playerX + 50, playerY - 100, 1, 1);
+    
 }
 
 function update_instruction(s) {
-    if (!player) return;
 
-    // Aggiorna la posizione delle frecce rispetto al personaggio
-    if (arrowLeft) arrowLeft.geometry.x = player.geometry.x - 50;
-    if (arrowRight) arrowRight.geometry.x = player.geometry.x + 50;
+    // FRECCE
+    //LEFT e RIGHT
+    if (player.geometry.x > 100 && player.geometry.x < 300 &&
+        player.geometry.y > 90 && player.geometry.y < 140) {
+        
+        if (istruzioni_arrows == false) {
+            istruzioni_interaction1 = PP.assets.image.add(s, img_arrows, 400, 300, 0.5, 1); 
+        }
+        istruzioni_arrows = true;
 
-    if (arrowLeft) arrowLeft.geometry.y = player.geometry.y - 100;
-    if (arrowRight) arrowRight.geometry.y = player.geometry.y - 100;
-
-    // Rimuovo le frecce se vengono premuti i tasti sinistra o destra
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.LEFT) && arrowLeft) {
-        PP.assets.image.remove(s, arrowLeft); // Rimuove l'immagine
-        arrowLeft = null; // Libera la variabile
+    } else if ((player.geometry.x < 100 || player.geometry.x > 300 &&
+                player.geometry.y > 90 && player.geometry.y < 140) && istruzioni_arrows == true){
+        PP.assets.destroy(istruzioni_interaction1);
+        istruzioni_arrows = false;
     }
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT) && arrowRight) {
-        PP.assets.image.remove(s, arrowRight); // Rimuove l'immagine
-        arrowRight = null; // Libera la variabile
-    }
-
-
 
 
     // KIT
@@ -111,13 +100,4 @@ function update_instruction(s) {
 } 
 
 function destroy_instruction(s) {
-    // Rimuove entrambe le frecce
-    if (arrowLeft) {
-        PP.assets.image.remove(s, arrowLeft);
-        arrowLeft = null;
-    }
-    if (arrowRight) {
-        PP.assets.image.remove(s, arrowRight);
-        arrowRight = null;
-    }
 }
