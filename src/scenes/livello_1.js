@@ -67,12 +67,14 @@ function update(s) {
     update_platforms(s);
     //if (xz640)
     //set_follow_offset(-640+X,y)
-    update_istruzioni(s, player);
+    //update_istruzioni(s, player);
+    update_instruction(s);
 }
 
 function destroy(s) {
     destroy_player(s);
-    destroy_platforms(s)
+    destroy_platforms(s);
+    destroy_instruction(s);
 }
 
 PP.scenes.add("laboratorio", preload, create, update, destroy);

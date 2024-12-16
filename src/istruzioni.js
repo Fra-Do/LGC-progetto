@@ -1,3 +1,5 @@
+//PAGINA UNITA CON INSTRUCTIONS MA LA LASCIO COMUNQUE QUI
+
 let img_istruzioni_kit1;
 let img_istruzioni_kit2;
 let img_istruzioni_kit3;
