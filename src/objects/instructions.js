@@ -2,34 +2,42 @@ let img_up
 let img_arrows
 
 let arrows
+let up
 
 let istruzioni_arrows = false;
 
 let img_istruzioni_kit1;
 let img_istruzioni_kit2;
 let img_istruzioni_kit3;
-
-let istruzioni_leftright = false;
+let img_istruzioni_map;
 
 let istruzioni_kit;
+let istruzioni_map;
 
+let istruzioni_leftright    = false;
 let istruzioni_kit_created1 = false;
 let istruzioni_kit_created2 = false;
 let istruzioni_kit_created3 = false;
+let istruzioni_map_created  = false;
 
 
 
 function preload_instruction(s) {
     img_arrows      = PP.assets.image.load(s, "assets/images/leftright.png");
-    //img_up         = PP.assets.image.load(s, "assets/images/up.png");
+    img_up          = PP.assets.image.load(s, "assets/images/up.png");
 
     //kit 
     img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/k.png");
     img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/k.png");
     img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/k.png");
+
+    //mappa
+    img_istruzioni_mappa = PP.assets.image.load(s, "assets/images/k.png");
 }
 
 function create_instruction(s) {
+    arrows = PP.assets.image.add(s, img_arrows, 300, 100, 0, 0);
+    up     = PP.assets.image.add(s, img_up, 870, 15, 0, 0);
     
 }
 
@@ -97,6 +105,23 @@ function update_instruction(s) {
         PP.assets.destroy(istruzioni_interaction3);
         istruzioni_kit_created3 = false;
 }
+
+    // MAPPA
+    if (player.geometry.x > 1900 && player.geometry.x < 610 &&
+        player.geometry.y > 1300 && player.geometry.y < 1700) {
+        
+        if (istruzioni_mappa_created == false) {
+            istruzioni_interaction1 = PP.assets.image.add(s, img_istruzioni_map, 1880, 200, 0.5, 1); 
+        }
+        istruzioni_map_created = true;
+
+    } else if ((player.geometry.x < 1900 || player.geometry.x > 610 &&
+                player.geometry.y > 1400 && player.geometry.y < 1700) && istruzioni_map_created == true){
+        PP.assets.destroy(istruzioni_mappa);
+        istruzioni_map_created = false;
+    }
+
+
 } 
 
 function destroy_instruction(s) {

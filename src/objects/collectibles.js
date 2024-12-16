@@ -6,6 +6,7 @@ let kit_3;
 let img_map;
 let map;
 let map_created = false;
+let pergamena
 
 let key;
 let img_key;
@@ -18,8 +19,8 @@ function preload_collectibles(s) {
     img_map       = PP.assets.image.load(s, "assets/images/pergamena.png");
     img_lil_map   = PP.assets.image.load(s, "assets/images/lil_map.png");
     
-    img_key       = PP.assets.image.load(s, "assets/images/chiave.png", 35, 30);
-    img_cage     = PP.assets.sprite.load_spritesheet(s, "assets/objects/ss_cage.png", 268, 105);
+    img_key       = PP.assets.image.load(s, "assets/images/chiave.png", 50, 50);
+    img_cage      = PP.assets.sprite.load_spritesheet(s, "assets/objects/ss_cage.png", 268, 105);
 
 }
 
@@ -51,7 +52,7 @@ function open_map (s, player, map) {
         PP.assets.destroy(lil_map);
         
     }
-          }
+}
 
 
 
@@ -108,7 +109,7 @@ function create_collectibles(s) {
     PP.physics.add(s, kit_down, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, kit_down, collision_collectibles);*/
 
-    let map = PP.assets.image.add(s, img_map, 1600, 240, 0, 0);
+    let map = PP.assets.image.add(s, img_map, 1880, 200, 0, 0);
     PP.physics.add(s, map, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, map, open_map);
 }
