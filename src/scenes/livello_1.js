@@ -68,7 +68,7 @@ function update(s) {
     //if (xz640)
     //set_follow_offset(-640+X,y)
     //update_istruzioni(s, player);
-    update_instruction(s);
+    update_instruction(s, player);
 }
 
 function destroy(s) {

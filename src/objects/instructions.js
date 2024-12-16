@@ -9,11 +9,12 @@ let img_istruzioni_kit1;
 let img_istruzioni_kit2;
 let img_istruzioni_kit3;
 
-let istruzioni_kit;
+let img_istruzioni_map;
 
 let istruzioni_kit_created1 = false;
 let istruzioni_kit_created2 = false;
 let istruzioni_kit_created3 = false;
+let istruzioni_map_created = false;
 
 function preload_instruction(s) {
     img_left_right = PP.assets.image.load(s, "assets/images/leftright.png");
@@ -23,10 +24,11 @@ function preload_instruction(s) {
     img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
     img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
     img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
+    img_istruzioni_map = PP.assets.image.load(s, "assets/images/instruction_map.png");
 }
 
 function create_instruction(s) {
-    if (!player) {
+   /* if (!player) {
         console.error("Player non trovato. Assicurati che il player sia stato creato.");
         return;
     }
@@ -37,11 +39,11 @@ function create_instruction(s) {
 
     // Posiziono le immagini
     arrowLeft  = PP.assets.image.add(s, img_left_right, playerX - 50, playerY - 100, 1, 1);
-    arrowRight = PP.assets.image.add(s, img_left_right, playerX + 50, playerY - 100, 1, 1);
-}
+    arrowRight = PP.assets.image.add(s, img_left_right, playerX + 50, playerY - 100, 1, 1); */
+} 
 
-function update_instruction(s) {
-    if (!player) return;
+function update_instruction(s, player) {
+    /*if (!player) return;
 
     // Aggiorna la posizione delle frecce rispetto al personaggio
     if (arrowLeft) arrowLeft.geometry.x = player.geometry.x - 50;
@@ -58,7 +60,8 @@ function update_instruction(s) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT) && arrowRight) {
         PP.assets.image.remove(s, arrowRight); // Rimuove l'immagine
         arrowRight = null; // Libera la variabile
-    }
+    */
+   
 
 
 
@@ -107,8 +110,26 @@ function update_instruction(s) {
                 player.geometry.y > 1400 && player.geometry.y < 1500) && istruzioni_kit_created3 == true){
         PP.assets.destroy(istruzioni_interaction3);
         istruzioni_kit_created3 = false;
-}
-} 
+    }
+
+
+    // ISTRUZIONE: mappa 
+    if (player.geometry.x > 1550 && player.geometry.x < 1650 &&
+        player.geometry.y > 340 && player.geometry.y < 400) {
+        
+        if (istruzioni_map_created == false) {
+            istruzioni_interaction_map = PP.assets.image.add(s, img_istruzioni_map, 1650, 200, 0.5, 1); 
+        }
+        istruzioni_map_created = true;
+
+    } else if ((player.geometry.x < 1550 || player.geometry.x > 1600 &&
+                player.geometry.y > 340 && player.geometry.y < 400) && istruzioni_map_created == true){
+        PP.assets.destroy(istruzioni_interaction_map);
+        istruzioni_map_created = false;
+        }
+    } 
+    
+    /*
 
 function destroy_instruction(s) {
     // Rimuove entrambe le frecce
@@ -120,4 +141,4 @@ function destroy_instruction(s) {
         PP.assets.image.remove(s, arrowRight);
         arrowRight = null;
     }
-}
+} */
