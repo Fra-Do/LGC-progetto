@@ -1,6 +1,7 @@
 let img_gameover;
+let gameover
 
-function preload(s) {
+function preload_gamover(s) {
     img_gameover  = PP.assets.image.load(s, "assets/images/gameoverprov.png");
 }
 
@@ -8,7 +9,9 @@ function mouse_click(s) {
     PP.scenes.start("livello_1");
 }
 
-function create(s) {
+function create_gameover(s) {
+    gameover = PP.assets.image.add(s, img_game_over_1, 0, 0, 0, 0);
+
     PP.shapes.text_styled_add(s, 
         PP.game.config.canvas_width /2,   //X
         PP.game.config.canvas_height/2,   //Y
@@ -39,11 +42,11 @@ function create(s) {
 
 }
 
-function update(s) {
+function update_gameover(s) {
 
 }
 
-function destroy(s) {
+function destroy_gameover(s) {
 
 }
 
