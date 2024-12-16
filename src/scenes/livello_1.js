@@ -20,7 +20,9 @@ function preload(s) {
     img_background  = PP.assets.image.load(s, "assets/images/sfondo.png");
     img_tubi        = PP.assets.image.load(s, "assets/images/livello1_tubi_prova.png"); 
     
+    preload_collectibles(s);
     preload_player(s);
+
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
@@ -45,12 +47,16 @@ function create(s) {
 
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
     
+    
     create_player(s);
+    create_collectibles(s); 
     create_structure(s);
     create_platforms (s);
     configure_player_animations(s);
+
     create_collectibles(s)
     create_instruction(s)
+
 
     //PP.camera.set_follow_offset(s, 600, 400)
     PP.camera.start_follow(s, player, -50, 120); //così il player è al centro dello schermo
@@ -61,6 +67,7 @@ function update(s) {
     update_platforms(s);
     //if (xz640)
     //set_follow_offset(-640+X,y)
+    update_istruzioni(s, player);
 }
 
 function destroy(s) {
