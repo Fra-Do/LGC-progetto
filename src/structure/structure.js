@@ -303,9 +303,9 @@ function create_structure(s) {
     //PP.physics.add_collider(s, player, wall);
 
     //pergamena
-    wall = PP.shapes.rectangle_add(s, 1630, 347, 35, 30, "0xFF0000", 0); 
-    PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    //wall = PP.shapes.rectangle_add(s, 1630, 347, 35, 30, "0xFF0000", 0); 
+    //PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    //PP.physics.add_collider(s, player, wall);
 
     //Chiave
     wall = PP.shapes.rectangle_add(s, 9460, 2126, 35, 30, "0xFF0000", 0); 

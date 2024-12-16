@@ -55,7 +55,6 @@ function configure_player_animations(s) {
 function preload_player(s) {
     
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/spriteragazza.png", 94, 136, 1, 1);
-    preload_instruction(s)
 }
 
 function create_player(s) {
@@ -99,7 +98,7 @@ function update_player(s) {
         player.geometry.flip_x = false;
     }
 
-    update_instruction(s)
+    
 }
 
 function destroy_player(s) {

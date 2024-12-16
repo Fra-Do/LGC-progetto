@@ -1,7 +1,7 @@
-let img_gameover
+let img_gameover;
 
 function preload(s) {
-    img_gamover  = PP.assets.image.load(s, "assets/images/gameoverprov.png");
+    img_gameover  = PP.assets.image.load(s, "assets/images/gameoverprov.png");
 }
 
 function mouse_click(s) {
