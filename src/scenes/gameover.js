@@ -1,7 +1,7 @@
 let img_gameover;
 let gameover
 
-function preload_gamover(s) {
+function preload_gameover(s) {
     img_gameover  = PP.assets.image.load(s, "assets/images/gameoverprov.png");
 }
 
@@ -10,9 +10,10 @@ function mouse_click(s) {
 }
 
 function create_gameover(s) {
-    gameover = PP.assets.image.add(s, img_game_over_1, 0, 0, 0, 0);
+    gameover = PP.assets.image.add(s, img_gameover, 0, 0, 0, 0); 
+    //1322 736
 
-    PP.shapes.text_styled_add(s, 
+    /*PP.shapes.text_styled_add(s, 
         PP.game.config.canvas_width /2,   //X
         PP.game.config.canvas_height/2,   //Y
         "Game Over",
@@ -36,9 +37,9 @@ function create_gameover(s) {
         null,  //background color
         0.5,
         0.5
-    );
+    ); 
 
-    PP.interactive.mouse.add(goback, "pointerdown",mouse_click);
+    PP.interactive.mouse.add(goback, "pointerdown",mouse_click);*/
 
 }
 
@@ -50,4 +51,4 @@ function destroy_gameover(s) {
 
 }
 
-PP.scenes.add("gameover", preload, create, update, destroy);
+PP.scenes.add("gameover", preload_gameover, create_gameover, update_gameover, destroy_gameover);

@@ -77,7 +77,7 @@ function create_structure(s) {
     //rettangolo acido 
     img_acid = PP.shapes.rectangle_add(s, 5500, 2300, 7543, 290, "0x0000FF", 0); 
     PP.physics.add(s, img_acid, PP.physics.type.STATIC); 
-    PP.physics.add_collider_f(s, player, img_acid, goto_gameover);s
+    PP.physics.add_collider_f(s, player, img_acid, goto_gameover);
    
    
     //------PIATTAFORMA 3------
@@ -101,7 +101,7 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-    //3.5 !!!!! 2240, 380
+    //3.5 
     wall = PP.shapes.rectangle_add(s, 2210+30, 350+30, 190, 66, "0xFF0000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);

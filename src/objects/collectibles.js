@@ -61,12 +61,13 @@ function collision_collectibles(s, player, kit) {
 
 
 function open_map (s, player, map) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        if (map_created == false) { 
-            lil_map = PP.assets.image.add(s, img_lil_map, 1350, -50, 0, 0);
-        }
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K) && map_created == false) {
+        console.log ("mappa");  
+        lil_map = PP.assets.image.add(s, img_lil_map, 1350, -50, 0, 0);
+        
         map_created = true;
-    } else if (PP.interactive.kb.is_key_down(s, PP.key_codes.K) && map_created == true) {
+    } else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_created == true) {
+        console.log ("creata")    
         map_created = false; 
         PP.assets.destroy(lil_map);
         
