@@ -22,7 +22,7 @@ function create(s) {
 
 function change_scene_livello_1(s) {
     console.log("Cambio scena: Livello 1");
-    PP.scenes.start("laboratorio");
+    PP.scenes.start("livello_1");
 }
 
 
