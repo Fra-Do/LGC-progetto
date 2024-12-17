@@ -54,7 +54,7 @@ function configure_player_animations(s) {
 
 function preload_player(s) {
     
-    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/spriteragazza.png", 94, 136, 1, 1);
+    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/spriteragazza.png", 94, 136, 1, 1);
 }
 
 function create_player(s) {

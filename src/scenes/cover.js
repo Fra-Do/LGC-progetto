@@ -5,8 +5,8 @@ let background_cover;
 let button_game;
 
 function preload(s) {
-    img_background_cover = PP.assets.image.load(s, "assets/images/Copertina.png");
-    img_button_game      = PP.assets.image.load(s, "assets/images/down.png");
+    img_background_cover = PP.assets.image.load(s, "assets/images/cover/copertina.png");
+    img_button_game      = PP.assets.image.load(s, "assets/images/istruzioni/down.png");
 
 }
 

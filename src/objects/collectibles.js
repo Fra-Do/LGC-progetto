@@ -20,12 +20,12 @@ let cage_1_opened = false;
 
 
 function preload_collectibles(s) {
-    img_kit       = PP.assets.image.load(s, "assets/images/kit.png");
-    img_map       = PP.assets.image.load(s, "assets/images/pergamena.png");
-    img_lil_map   = PP.assets.image.load(s, "assets/images/lil_map.png");
-     img_cage      = PP.assets.sprite.load_spritesheet(s, "assets/images/ss_cage.png", 134, 105);
+    img_kit       = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
+    img_map       = PP.assets.image.load(s, "assets/images/oggetti/pergamena.png");
+    img_lil_map   = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
+    img_cage     = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/ss_cage.png", 134, 105);
 
-    img_key       = PP.assets.image.load(s, "assets/images/chiave.png", 35, 30);
+    img_key       = PP.assets.image.load(s, "assets/images/oggetti/chiave.png", 35, 30);
 }
 
 function create_cage(s, player) {

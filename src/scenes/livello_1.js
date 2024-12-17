@@ -15,10 +15,10 @@ let parallax02;
 
 function preload(s) {
     
-    img_parallax01  = PP.assets.image.load(s, "assets/images/livello1_2_tubi.png");
-    img_parallax02  = PP.assets.image.load(s, "assets/images/livello1_3_tubi.png");
-    img_background  = PP.assets.image.load(s, "assets/images/sfondo.png");
-    img_tubi        = PP.assets.image.load(s, "assets/images/livello1_tubi_prova.png"); 
+    img_parallax01  = PP.assets.image.load(s, "assets/images/mappa/livello1_2_tubi.png");
+    img_parallax02  = PP.assets.image.load(s, "assets/images/mappa/livello1_3_tubi.png");
+    img_background  = PP.assets.image.load(s, "assets/images/mappa/sfondo.png");
+    img_tubi        = PP.assets.image.load(s, "assets/images/mappa/livello1_tubi.png"); 
     
     preload_collectibles(s);
     preload_player(s);

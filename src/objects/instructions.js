@@ -25,19 +25,19 @@ let istruzioni_cage;
 let istruzioni_cage_created = false; 
 
 function preload_instruction(s) {
-    img_arrows      = PP.assets.image.load(s, "assets/images/leftright.png");
-    img_up          = PP.assets.image.load(s, "assets/images/up.png");
+    img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/leftright.png");
+    img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
 
     //kit 
-    img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/k.png");
-    img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/k.png");
-    img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/k.png");
+    img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
 
     //mappa
-    img_istruzioni_map = PP.assets.image.load(s, "assets/images/k.png");
+    img_istruzioni_map = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
 
     //cage
-    img_istruzioni_cage = PP.assets.image.load(s, "assets/images/k.png")
+    img_istruzioni_cage = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
 }
 
 function create_instruction(s) {
