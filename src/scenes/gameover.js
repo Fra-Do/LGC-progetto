@@ -1,5 +1,5 @@
 let img_gameover;
-let gameover
+let gameover;
 
 function preload_gameover(s) {
     img_gameover  = PP.assets.image.load(s, "assets/images/gameoverprov.png");
@@ -11,7 +11,6 @@ function mouse_click(s) {
 
 function create_gameover(s) {
     gameover = PP.assets.image.add(s, img_gameover, 0, 0, 0, 0); 
-    //1322 736
 
     /*PP.shapes.text_styled_add(s, 
         PP.game.config.canvas_width /2,   //X
