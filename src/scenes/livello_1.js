@@ -60,14 +60,14 @@ function create(s) {
     create_instruction(s)
 
 
-    //PP.camera.set_follow_offset(s, 600, 400)
-    PP.camera.start_follow(s, player, -50, 120); //così il player è al centro dello schermo
-}
+    PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
+    PP.camera.set_follow_offset(s, -600, 120)
 
+}
 function update(s) {
     update_player(s);
     update_platforms(s);
-    //if (xz640)
+    if (player.geometry.body_x < 640) {PP.camera.set_follow_offset (s, -600 + player.geometry.body_x, 120);} 
     //set_follow_offset(-640+X,y)
     //update_istruzioni(s, player);
     update_instruction(s, player);
