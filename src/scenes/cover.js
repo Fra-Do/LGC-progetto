@@ -16,13 +16,13 @@ function create(s) {
     background_cover = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
     button_game      = PP.assets.image.add(s, img_button_game, 217, 57, 0, 0);
 
-    PP.interactive.mouse.add (button_game, "pointerdown", change_scene_livello_1);
+    PP.interactive.mouse.add (button_game, "pointerdown", change_scene_livello_1)
     
 }
 
 function change_scene_livello_1(s) {
     console.log("Cambio scena: Livello 1");
-    PP.scenes.start("livello_1");
+    PP.scenes.start("laboratorio");
 }
 
 
