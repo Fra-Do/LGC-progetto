@@ -10,7 +10,7 @@ function mouse_click(s) {
 }
 
 function create_gameover(s) {
-    gameover = PP.assets.image.add(s, img_game_over_1, 0, 0, 0, 0);
+    gameover = PP.assets.image.add(s, img_gameover, 0, 0, 0, 0);
 
     PP.shapes.text_styled_add(s, 
         PP.game.config.canvas_width /2,   //X
