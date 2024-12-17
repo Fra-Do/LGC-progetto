@@ -32,7 +32,7 @@ function preload_instruction(s) {
     img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/k.png");
 
     //mappa
-    img_istruzioni_mappa = PP.assets.image.load(s, "assets/images/k.png");
+    img_istruzioni_map = PP.assets.image.load(s, "assets/images/k.png");
 }
 
 function create_instruction(s) {
@@ -107,17 +107,17 @@ function update_instruction(s) {
 }
 
     // MAPPA
-    if (player.geometry.x > 1900 && player.geometry.x < 610 &&
-        player.geometry.y > 1300 && player.geometry.y < 1700) {
+    if (player.geometry.x > 1830 && player.geometry.x < 1890 &&
+        player.geometry.y > 130 && player.geometry.y < 250) {
         
-        if (istruzioni_mappa_created == false) {
-            istruzioni_interaction1 = PP.assets.image.add(s, img_istruzioni_map, 1880, 200, 0.5, 1); 
+        if (istruzioni_map_created == false) {
+            istruzioni_interaction_map = PP.assets.image.add(s, img_istruzioni_map, 1900, 130, 0.5, 1); 
         }
         istruzioni_map_created = true;
 
-    } else if ((player.geometry.x < 1900 || player.geometry.x > 610 &&
-                player.geometry.y > 1400 && player.geometry.y < 1700) && istruzioni_map_created == true){
-        PP.assets.destroy(istruzioni_mappa);
+    } else if ((player.geometry.x < 1830 || player.geometry.x > 1890 &&
+                player.geometry.y > 130 && player.geometry.y < 250) && istruzioni_map_created == true){
+        PP.assets.destroy(istruzioni_interaction_map);
         istruzioni_map_created = false;
     }
 
