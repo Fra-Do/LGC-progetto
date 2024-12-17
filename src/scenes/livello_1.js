@@ -50,10 +50,12 @@ function create(s) {
     
     create_player(s);
     create_collectibles(s); 
+    
     create_structure(s);
     create_platforms (s);
     configure_player_animations(s);
-
+    create_cage(s, player);
+    configure_cage_animations(s)
     create_collectibles(s)
     create_instruction(s)
 

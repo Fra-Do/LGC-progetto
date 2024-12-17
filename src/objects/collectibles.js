@@ -11,27 +11,46 @@ let pergamena
 let key;
 let img_key;
 
+
+
 let img_cage;
-let cage;
+let cage_1;
+let cage_1_opened = false;
+
+
 
 function preload_collectibles(s) {
     img_kit       = PP.assets.image.load(s, "assets/images/kit.png");
     img_map       = PP.assets.image.load(s, "assets/images/pergamena.png");
     img_lil_map   = PP.assets.image.load(s, "assets/images/lil_map.png");
-    
-    img_key       = PP.assets.image.load(s, "assets/images/chiave.png", 35, 30);
-    img_cage      = PP.assets.sprite.load_spritesheet(s, "assets/objects/ss_cage.png", 268, 105);
+     img_cage      = PP.assets.sprite.load_spritesheet(s, "assets/images/ss_cage.png", 134, 105);
 
+    img_key       = PP.assets.image.load(s, "assets/images/chiave.png", 35, 30);
 }
 
+function create_cage(s, player) {
+    // Creazione cage 
+    cage_1 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    PP.physics.add(s, cage_1, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, cage_1, open_cage_1);
+}
 
 function configure_cage_animations(s) {
-    
-    PP.assets.sprite.animation_add(cage, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage, "closed");
+    PP.assets.sprite.animation_add(cage_1, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_1, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_1, "closed");
     
 }
+
+function open_cage_1(s) {
+    if(PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+        cage_1_opened = true;
+        PP.assets.sprite.animation_stop(cage_1, "closed");
+        PP.assets.sprite.animation_play(cage_1, "opened");
+    }
+}
+
+
 
 function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
