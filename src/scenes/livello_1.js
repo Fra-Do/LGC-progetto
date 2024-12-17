@@ -79,4 +79,4 @@ function destroy(s) {
     destroy_instruction(s);
 }
 
-PP.scenes.add("laboratorio", preload, create, update, destroy);
+PP.scenes.add("livello_1", preload, create, update, destroy);
