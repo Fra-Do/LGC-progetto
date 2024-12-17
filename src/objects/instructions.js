@@ -25,7 +25,7 @@ let istruzioni_cage;
 let istruzioni_cage_created = false; 
 
 function preload_instruction(s) {
-    img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/leftright.png");
+    img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
     img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
 
     //kit 
@@ -41,8 +41,8 @@ function preload_instruction(s) {
 }
 
 function create_instruction(s) {
-    arrows = PP.assets.image.add(s, img_arrows, 300, 100, 0, 0);
-    up     = PP.assets.image.add(s, img_up, 870, 15, 0, 0);
+    arrows = PP.assets.image.add(s, img_arrows, 350, 100, 0, 0);
+    up     = PP.assets.image.add(s, img_up, 890, 30, 0, 0);
     
 }
 
