@@ -1,22 +1,22 @@
 let img_background_cover;
-let img_button_game;
+let img_button_gioca;
 
 let background_cover;
-let button_game;
+let button_gioca;
 
 function preload(s) {
     img_background_cover = PP.assets.image.load(s, "assets/images/cover/cover.png");
-    img_button_game      = PP.assets.image.load(s, "assets/images/istruzioni/down.png");
+    img_button_gioca      = PP.assets.image.load(s, "assets/images/cover/gioca.png");
 
 }
 
 
 
 function create(s) {
-    background_cover = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
-    button_game      = PP.assets.image.add(s, img_button_game, 217, 57, 0, 0);
+    background_cover  = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
+    button_gioca      = PP.assets.image.add(s, img_button_gioca, 352, 305, 0, 0);
 
-    PP.interactive.mouse.add (button_game, "pointerdown", change_scene_livello_1)
+    PP.interactive.mouse.add (button_gioca, "pointerdown", change_scene_livello_1)
     
 }
 
