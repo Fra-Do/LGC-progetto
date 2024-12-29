@@ -20,8 +20,8 @@ function preload(s) {
     img_background  = PP.assets.image.load(s, "assets/images/mappa/sfondo.png");
     img_tubi        = PP.assets.image.load(s, "assets/images/mappa/livello1_tubi.png"); 
     
-    preload_collectibles(s);
     preload_player(s);
+    preload_collectibles(s);
 
     preload_structure(s)
     preload_collectibles(s)
@@ -56,7 +56,6 @@ function create(s) {
     configure_player_animations(s);
     create_cage(s, player);
     configure_cage_animations(s)
-    create_collectibles(s)
     create_instruction(s)
 
 
