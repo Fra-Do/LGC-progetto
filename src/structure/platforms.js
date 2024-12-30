@@ -21,10 +21,10 @@ let pl_8_speed = 350;
 
 
 function preload_platforms(s) {
-    img_pl1      = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_1.png");
-    img_diagonal = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_2.png");
-    img_pl3      = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_3.png");
-    img_spuntoni = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_4.png");
+    img_pl1       = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_1.png");
+    img_diagonal  = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_2.png");
+    img_pl3       = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_3.png");
+    img_spuntoni  = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_4.png");
     img_pl5d      = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_5dx.png");
     img_pl5s      = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_5sx.png");
     img_pl8       = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_8.png");

@@ -2,7 +2,7 @@ let img_gameover;
 let gameover;
 
 function preload_gameover(s) {
-    img_gameover  = PP.assets.image.load(s, "assets/images/finali/gameoverprov.png");
+    img_gameover  = PP.assets.image.load(s, "assets/images/finali/gameover.png");
 }
 
 function mouse_click(s) {
