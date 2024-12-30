@@ -15,6 +15,8 @@ function preload_istruzioni(s) {
     img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
     img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
     img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
+    img_istruzioni_A    = PP.assets.image.load(s, "assets/images/istruzioni/A.png", 41, 45);
+
 }
 
 function create_istruzioni(s, player) {

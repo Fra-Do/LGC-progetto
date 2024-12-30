@@ -1,8 +1,15 @@
-let img_up
-let img_arrows
+let img_up;
+let img_arrows;
+let img_istruzioni_A;
+let img_istruzioni_B;
+let img_istruzioni_C;
 
 let arrows
 let up
+
+let istruzioni_A;
+let istruzioni_B;
+let istruzioni_C;
 
 let istruzioni_arrows = false;
 
@@ -25,6 +32,10 @@ let istruzioni_cage;
 let istruzioni_cage_created = false; 
 
 function preload_instruction(s) {
+    img_istruzioni_A    = PP.assets.image.load(s, "assets/images/istruzioni/A.png");
+    img_istruzioni_B    = PP.assets.image.load(s, "assets/images/istruzioni/B.png"); //sta dietro al parallasse e non so perché
+    img_istruzioni_C    = PP.assets.image.load(s, "assets/images/istruzioni/C.png"); //sta dietro al parallasse e non so perché
+
     img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
     img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
 
@@ -41,9 +52,12 @@ function preload_instruction(s) {
 }
 
 function create_instruction(s) {
-    arrows = PP.assets.image.add(s, img_arrows, 350, 100, 0, 0);
-    up     = PP.assets.image.add(s, img_up, 890, 30, 0, 0);
-    
+    istruzioni_A = PP.assets.image.add(s, img_istruzioni_A, 600, 50, 0, 0); 
+    istruzioni_B = PP.assets.image.add(s, img_istruzioni_B, 5000, 450, 0, 0); 
+    istruzioni_C = PP.assets.image.add(s, img_istruzioni_C, 7800, 1700, 0, 0); 
+
+    arrows       = PP.assets.image.add(s, img_arrows, 350, 100, 0, 0);
+    up           = PP.assets.image.add(s, img_up, 890, 30, 0, 0); 
 }
 
 function update_instruction(s) {
