@@ -21,11 +21,10 @@ let cage_1_opened = false;
 
 function preload_collectibles(s) {
     img_kit       = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
-    img_map       = PP.assets.image.load(s, "assets/images/oggetti/pergamena.png");
+    img_map       = PP.assets.image.load(s, "assets/images/oggetti/map.png");
     img_lil_map   = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
     img_cage      = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/ss_cage.png", 134, 105);
-
-    img_key       = PP.assets.image.load(s, "assets/images/oggetti/chiave.png", 35, 30);
+    img_key       = PP.assets.image.load(s, "assets/images/oggetti/key.png");
 }
 
 function create_cage(s, player) {
@@ -50,15 +49,12 @@ function open_cage_1(s) {
     }
 }
 
-
-
-function collision_collectibles(s, player, kit) {
+function collision_collectibles(s, player, kit, key) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        PP.assets.destroy(kit); ;
+        PP.assets.destroy(kit); 
+        PP.assets.destroy(key); 
     }
 }
-
-
 
 function open_map (s, player, map) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K) && map_created == false) {
@@ -129,7 +125,7 @@ function create_collectibles(s) {
     PP.physics.add(s, kit_down, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, kit_down, collision_collectibles);*/   
 
-    let map = PP.assets.image.add(s, img_map, 1600+280, 200-50, 0, 0);
+    let map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
     PP.physics.add(s, map, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, map, open_map);
 }
