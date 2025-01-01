@@ -8,6 +8,9 @@ let img_tubi;
 let img_tubi_2;
 let img_tubi_3;
 let img_tubi_4;
+let img_freccia;
+
+let freccia;
 
 function preload_structure(s) {
     //Acido game over
@@ -16,9 +19,12 @@ function preload_structure(s) {
     img_acid_3 = PP.assets.image.load(s, "assets/images/struttura/acid_3.png");
 
     //Tubi statici
-    
     img_tubi   = PP.assets.image.load(s, "assets/images/struttura/tubo_st_1.png");
     img_tubi_2 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_2.png");
+
+    //freccia
+    img_freccia = PP.assets.image.load(s, "assets/images/struttura/freccia.png");
+
 }
 
 function collision_platform(s,player, platform) {
@@ -29,10 +35,15 @@ function goto_gameover(s) {
     PP.scenes.start("gameover");
 }
 
+function goto_livello_2(s) {
+    PP.scenes.start("livello_2");
+}
+
 function create_structure(s) {
     background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_3, 8450, 2190, 0, 0);
+    freccia    = PP.assets.image.add(s, img_freccia, 9900, 2100, 0, 0);
      
     //Tubi statici
     background = PP.assets.image.add(s, img_tubi, 1785, 213, 0, 0);
@@ -283,6 +294,11 @@ function create_structure(s) {
     wall = PP.shapes.rectangle_add(s, 7585, 416, 124, 43, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
+
+    //rettangolo freccia
+    img_freccia = PP.shapes.rectangle_add(s, 9900, 2100, 50, 100, "0x000000", 0); 
+    PP.physics.add(s, img_freccia, PP.physics.type.STATIC); 
+    PP.physics.add_overlap_f(s, player, img_freccia, goto_livello_2);
 
 
 

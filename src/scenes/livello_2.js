@@ -25,4 +25,4 @@ function destroy(s) {
     destroy_player(s);
 }
 
-PP.scenes.add("laboratorio", preload, create, update, destroy);
+PP.scenes.add("livello_2", preload, create, update, destroy);
