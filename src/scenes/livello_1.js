@@ -70,7 +70,6 @@ function create(s) {
     configure_cage_animations(s)
     
 
-
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120)
 
@@ -84,6 +83,10 @@ function update(s) {
     //set_follow_offset(-640+X,y)
     //update_istruzioni(s, player);
     update_instruction(s, player);
+
+    open_map(s); // Controlla i tasti K e X per gestire la mappa
+
+
 }
 
 function destroy(s) {
