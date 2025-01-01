@@ -136,10 +136,10 @@ function open_map(s) {
 
 function create_collectibles(s) {
     
-    key       = PP.assets.image.add(s, img_key, 9450, 2100, 0, 0);
+    key       = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
+    PP.physics.add(s, key, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, key, collision_collectibles);
 
-    
-    
     // primo kit
     let kit_1 = PP.assets.image.add(s, img_kit, 1330, 240, 0, 0);
     PP.physics.add(s, kit_1, PP.physics.type.STATIC);
@@ -165,7 +165,7 @@ function create_collectibles(s) {
     PP.physics.add_overlap_f(s, player, map, open_map);
 
 
-    toggle_map_with_keys(s); // Alterna la visibilità della mappa con i tasti K e X
+    
 }
 
 
