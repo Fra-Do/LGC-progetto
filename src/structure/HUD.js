@@ -1,42 +1,69 @@
-let hearts = [];
-let playerHealth = 3; // Salute iniziale
-const maxHealth = 3;  // Numero massimo di cuori
-let img_cuore; 
+let ss_counter_health;
 
-function preload_HUD() {
-  img_cuore = PP.assets.image.load("cuore", "assets/images/cuore.png");
-}
+let counter_health;
 
-function create_HUD() {
-  // Creazione dei cuori all'inizio del gioco
-  for (let i = 0; i < maxHealth; i++) {
-    const heart = this.add.image(50 + i * 60, 30, img_cuore); 
-    hearts.push(heart); // Aggiungi il cuore all'array
-  }
+let player_health;
 
-  // Evento prendi danno
-  this.input.on('pointerdown', takeDamage, this); // Ad esempio, il danno avviene quando clicchi
+let health;
+
+let img_health; 
+
+function preload_HUD(s) {
+  ss_counter_health = PP.assets.sprite.load_spritesheet(s, "images/assets/HUD/spritesheetkit.png", 347, 58);}
+
+function create_HUD(s) {
+  // Variabili HUD
+  health = 3;
+
+  // Creazione counter cuori
+  counter_health = PP.assets.sprite.add(s, ss_counter_health, 50, 50, 0, 0);
+  counter_health.tile_geometry.scroll_factor_x = 0;
+  counter_health.tile_geometry.scroll_factor_y = 0;
+
+  PP.assets.sprite.animation_add(counter_health, "hearth: 5", 5, 5, 1, 0); 
+    PP.assets.sprite.animation_add(counter_health, "hearth: 4", 4, 4, 1, 0);
+    PP.assets.sprite.animation_add(counter_health, "hearth: 3", 3, 3, 1, 0); 
+    PP.assets.sprite.animation_add(counter_health, "hearth: 2", 2, 2, 1, 0);
+    PP.assets.sprite.animation_add(counter_health, "hearth: 1", 1, 1, 1, 0);
+    PP.assets.sprite.animation_add(counter_health, "hearth: 0", 0, 0, 1, 0);
+    PP.assets.sprite.animation_play(counter_health, "hearth: 0");
 }
 
 // Funzione update per aggiornare l'HUD quando la salute cambia
-function update_HUD() {
-  if (playerHealth < hearts.length) {
-    hearts[playerHealth].setAlpha(0); // Rende invisibile il cuore
-  }
+function update_HUD(s) {
+   // Gestione ss_counter_health
+   if (health == 5) {
+    PP.assets.sprite.animation_stop(counter_health, "hearth: 0");
+    PP.assets.sprite.animation_play(counter_health, "hearth: 5");    
 }
 
-// Funzione che simula il danno al giocatore
-function takeDamage() {
-  if (playerHealth > 0) {
-    playerHealth--; // Riduci la salute
-    update(); // Aggiorna l'HUD
-  }
+if (health == 4) {
+    PP.assets.sprite.animation_stop(counter_health, "hearth: 5");
+    PP.assets.sprite.animation_play(counter_health, "hearth: 4");    
+}
+
+if (health == 3) {
+    PP.assets.sprite.animation_stop(counter_health, "hearth: 4");
+    PP.assets.sprite.animation_play(counter_health, "hearth: 3");    
+}
+
+if (health == 2) {
+    PP.assets.sprite.animation_stop(counter_health, "hearth: 3");
+    PP.assets.sprite.animation_play(counter_health, "hearth: 2");
+}
+
+if (health == 1) {
+    PP.assets.sprite.animation_stop(counter_health, "hearth: 2");
+    PP.assets.sprite.animation_play(counter_health, "hearth: 1");
+}
+
+if (health == 0) {
+    PP.assets.sprite.animation_stop(counter_health, "hearth: 1");
+    PP.assets.sprite.animation_play(counter_health, "hearth: 0");
+}
 }
 
 // Funzione per distruggere l'HUD
-function destroy_HUD() {
-  hearts.forEach(heart => {
-    heart.destroy(); // Rimuovi tutti i cuori
-  });
-  hearts = []; // Resetta l'array dei cuori
+function destroy_HUD(s) {
+  
 }

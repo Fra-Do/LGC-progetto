@@ -34,6 +34,7 @@ function preload(s) {
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
+    preload_HUD(s)
     
     
 
@@ -68,10 +69,16 @@ function create(s) {
     configure_player_animations(s);
     create_cage(s, player);
     configure_cage_animations(s)
+    create_HUD(s)
     
 
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120)
+
+    //codice per creare un layer sopra tutti per il player
+    let nome_layer = PP.layers.create(s);
+    PP.layers.add_to_layer(nome_layer, player);
+    PP.layers.set_z_index(nome_layer, 10);
 
 }
 function update(s) {
@@ -86,6 +93,7 @@ function update(s) {
 
     open_map(s); // Controlla i tasti K e X per gestire la mappa
 
+    update_HUD(s)
 
 }
 
@@ -94,6 +102,7 @@ function destroy(s) {
     destroy_instruction(s);
     destroy_player(s);
     destroy_platforms(s);
+    destroy_HUD(s)
     
 }
 
