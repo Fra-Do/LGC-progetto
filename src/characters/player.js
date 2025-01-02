@@ -62,6 +62,11 @@ function create_player(s) {
 
     //player = PP.assets.sprite.add(s, img_player, 2520, 770, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
+
+    //codice per creare un layer sopra tutti 
+    let nome_layer = PP.layers.create(s);
+    PP.layers.add_to_layer(nome_layer, player);
+    PP.layers.set_z_index(nome_layer, 1);
 }
 
 function update_player(s) {

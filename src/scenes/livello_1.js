@@ -74,10 +74,7 @@ function create(s) {
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120)
 
-    //codice per creare un layer sopra tutti per il player
-    let nome_layer = PP.layers.create(s);
-    PP.layers.add_to_layer(nome_layer, player);
-    PP.layers.set_z_index(nome_layer, 10);
+    
 
 }
 function update(s) {
