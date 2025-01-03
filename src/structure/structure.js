@@ -305,7 +305,7 @@ function create_structure(s) {
 }
 
 function update_structure(s, player) {
-    collision_wall(s);
+    //collision_wall(s);
 
 }
 

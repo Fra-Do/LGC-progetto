@@ -90,10 +90,10 @@ function update_player(s) {
     }
 
     // Se l'animazione è cambiata, la aggiorniamo
-    if (next_anim != curr_anim) {
+    /*if (next_anim != curr_anim) {
         PP.assets.sprite.animation_play(player, next_anim);
         curr_anim = next_anim;
-    }
+    }*/
 
     // Flip l'immagine quando si cambia direzione
     if (PP.physics.get_velocity_x(player) < 0) {
