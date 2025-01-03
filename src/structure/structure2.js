@@ -43,7 +43,11 @@ function create_structure2(s) {
     wall2 = PP.shapes.rectangle_add(s, 1500, 779, 2912, 395, "0x000000", 0); 
     PP.physics.add(s, wall2, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall2);
-    
+
+    //------PIATTAFORMA 8------
+    wall2 = PP.shapes.rectangle_add(s, 5000, 2500, 2612, 870, "0x000000", 0); 
+    PP.physics.add(s, wall2, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall2);
 
 
     //rettangolo acido 
