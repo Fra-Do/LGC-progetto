@@ -5,10 +5,6 @@ function preload_gameover(s) {
     img_gameover  = PP.assets.image.load(s, "assets/images/finali/gameover.png");
 }
 
-function mouse_click(s) {
-    PP.scenes.start("livello_1");
-}
-
 function create_gameover(s) {
     gameover = PP.assets.image.add(s, img_gameover, 0, 0, 0, 0); 
 
