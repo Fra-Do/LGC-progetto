@@ -25,6 +25,8 @@ function create(s) {
     tubi = PP.assets.image.add(s, img_tubi, 0, 0, 0, 0);
 
     create_player(s);
+    configure_player_animations(s);
+
     create_structure2(s);
 
     PP.camera.set_follow_offset(s, 600, 400)

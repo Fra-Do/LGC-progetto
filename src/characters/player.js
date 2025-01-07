@@ -91,6 +91,7 @@ function update_player(s) {
 
     // Se l'animazione è cambiata, la aggiorniamo
     if (next_anim != curr_anim) {
+        console.log (next_anim)
         PP.assets.sprite.animation_play(player, next_anim);
         curr_anim = next_anim;
     }

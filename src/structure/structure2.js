@@ -1,12 +1,8 @@
 let wall2;
 
-let img_tubi;
-let img_tubi_2;
-let img_tubi_3;
-let img_tubi_4;
-let img_freccia;
 
-let freccia;
+
+
 
 function preload_structure2(s) {
     
