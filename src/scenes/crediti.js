@@ -17,4 +17,4 @@ function destroy_credits (s) {
     
 }
 
-PP.scenes.add("crediti", preload, create, update, destroy);
+PP.scenes.add("crediti", preload_credits, create_credits, update_credits, destroy_credits);

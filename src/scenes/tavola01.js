@@ -17,4 +17,4 @@ function destroy_tavola01 (s) {
     
 }
 
-PP.scenes.add("tavola01", preload, create, update, destroy);
+PP.scenes.add("tavola01", preload_tavola01, create_tavola01, update_tavola01, destroy_tavola01);

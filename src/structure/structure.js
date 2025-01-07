@@ -37,6 +37,7 @@ function goto_gameover(s) {
 
 function goto_livello_2(s) {
     PP.scenes.start("livello_2");
+    
 }
 
 function create_structure(s) {
@@ -298,7 +299,7 @@ function create_structure(s) {
     //rettangolo freccia
     img_freccia = PP.shapes.rectangle_add(s, 9900, 2100, 50, 100, "0x000000", 0); 
     PP.physics.add(s, img_freccia, PP.physics.type.STATIC); 
-    PP.physics.add_overlap_f(s, player, img_freccia, goto_livello_2);
+    PP.physics.add_collider_f(s, player, img_freccia, goto_livello_2);
 
 
 
