@@ -37,8 +37,8 @@ function preload_collectibles(s) {
     PP.assets.image.set_visible(lil_map, false); // Nascondi la mappa inizialmente
 }*/
 
-function toggle_map_with_keys(s, player, map) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K) && !map_visible) {
+/*function toggle_map_with_keys(s, player, map) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_visible) {
         // Mostra la mappa
         lil_map = PP.assets.image.add(s, img_lil_map, 800, 450, 0.5, 0.5);
         map_visible = true;
@@ -48,7 +48,7 @@ function toggle_map_with_keys(s, player, map) {
         lil_map = null;
         map_visible = false;
     }
-}
+}*/
 
 function create_cage(s, player) {
     // Creazione cage 
@@ -72,19 +72,20 @@ function open_cage_1(s) {
     }
 }
 
-function collision_collectibles(s, player, kit /*,key*/ ) {
+function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
         PP.assets.destroy(kit); 
-        /*PP.assets.destroy(key);*/
     }
 }
 
 function open_map(s) {
     // Controlla se il tasto K viene premuto e la mappa non è ancora visibile
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K) && !map_created) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_created) {
         console.log("Mappa aperta");
         // Aggiungi l'immagine della mappa al centro dello schermo
-        lil_map = PP.assets.image.add(s, img_lil_map, 400, 300, 0, 0); // Modifica posizione se necessario
+        lil_map = PP.assets.image.add(s, img_lil_map, 160, 270, 0, 0); // Modifica posizione se necessario
+        lil_map.tile_geometry.scroll_factor_x = 0;
+        lil_map.tile_geometry.scroll_factor_y = 0;
         map_created = true;
     } 
     // Controlla se il tasto X viene premuto e la mappa è visibile
@@ -94,6 +95,8 @@ function open_map(s) {
         lil_map = null; // Resetta il riferimento
         map_created = false;
     }
+
+    
 }
 
 /*function open_map (s, player, map) {
@@ -163,6 +166,7 @@ function create_collectibles(s) {
     let map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
     PP.physics.add(s, map, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, map, open_map);
+    
 
 
     

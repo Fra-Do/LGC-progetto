@@ -56,8 +56,8 @@ function create_instruction(s) {
     istruzioni_B = PP.assets.image.add(s, img_istruzioni_B, 5000, 450, 0, 0); 
     istruzioni_C = PP.assets.image.add(s, img_istruzioni_C, 7700, 1300, 0, 0); 
 
-    arrows       = PP.assets.image.add(s, img_arrows, 350, 100, 0, 0);
-    up           = PP.assets.image.add(s, img_up, 890, 30, 0, 0); 
+    arrows       = PP.assets.image.add(s, img_arrows, 350, 150, 0, 0);
+    up           = PP.assets.image.add(s, img_up, 890, 50, 0, 0); 
 }
 
 function update_instruction(s) {
