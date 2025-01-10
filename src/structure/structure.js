@@ -75,13 +75,13 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //PAVIMENTO (2)
-    wall = PP.shapes.rectangle_add(s, 5500, 2580, 8000, 230, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 5500, 2560, 8000, 240, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
 
     //pavimento (2)
-    wall = PP.shapes.rectangle_add(s, 9590, 2280, 775, 305, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 9590, 2260, 775, 305, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
