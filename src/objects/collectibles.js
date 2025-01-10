@@ -61,15 +61,23 @@ function configure_cage_animations(s) {
     PP.assets.sprite.animation_add(cage_1, "closed", 0, 0, 10, 0); 
     PP.assets.sprite.animation_add(cage_1, "opened", 1, 1, 10, 0);
     PP.assets.sprite.animation_play(cage_1, "closed");
-    
 }
 
-function open_cage_1(s) {
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+function open_cage_1(s, player) {
+    if(PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        let prev_score = PP.game_state.get_variable("score");
+        PP.game_state.set_variable("score", prev_score + 1); //Fa sì che il punteggio aumenta di 1
         cage_1_opened = true;
         PP.assets.sprite.animation_stop(cage_1, "closed");
         PP.assets.sprite.animation_play(cage_1, "opened");
+
+        
     }
+
+    
+        
+    
+    
 }
 
 function collision_collectibles(s, player, kit) {
