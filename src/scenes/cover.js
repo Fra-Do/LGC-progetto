@@ -16,22 +16,17 @@ function preload(s) {
 
 }
 
-
-
 function create(s) {
     background_cover  = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
     button_gioca      = PP.assets.image.add(s, img_button_gioca, 352, 305, 0, 0);
     button_storia     = PP.assets.image.add(s, img_button_storia, 535, 350, 0, 0);
-    button_crediti     = PP.assets.image.add(s, img_button_crediti, 810, 282, 0, 0);
+    button_crediti    = PP.assets.image.add(s, img_button_crediti, 810, 282, 0, 0);
 
 
 
     PP.interactive.mouse.add (button_gioca, "pointerdown", change_scene_livello_1)
     PP.interactive.mouse.add (button_storia, "pointerdown", change_scene_tavola01)
-    PP.interactive.mouse.add (button_crediti, "pointerdown", change_scene_crediti)
-
-
-    
+    PP.interactive.mouse.add (button_crediti, "pointerdown", change_scene_crediti) 
 }
 
 function change_scene_livello_1(s) {

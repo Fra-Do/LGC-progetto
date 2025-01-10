@@ -81,7 +81,7 @@ function update_player(s, player) {
      if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && PP.physics.get_velocity_y(player) == 0/*&& is_on_ground+*/) {
         PP.physics.set_velocity_y(player, -600);
         next_anim = "jump_up"; 
-       // is_on_ground = false;   // Il personaggio non è più a terra
+       
     }
 
     // Controllo per la caduta automatica

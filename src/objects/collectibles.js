@@ -18,7 +18,15 @@ let txt_score;
 let cage;
 let img_cage;
 let cage_1;
+let cage_2;
+let cage_3;
+let cage_4;
+let cage_5;
 let cage_1_opened = false;
+let cage_2_opened = false;
+let cage_3_opened = false;
+let cage_4_opened = false;
+let cage_5_opened = false;
 
 let lil_map; // Variabile per l'immagine da mostrare
 let image_visible = false; // Stato della visibilità dell'immagine
@@ -59,12 +67,37 @@ function create_cage(s, player) {
     cage_1 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
     PP.physics.add(s, cage_1, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_1, function () {
-        console.log("Collisione rilevata con la gabbia");
         open_cage_1(s, player);
+    });
+
+    cage_2 = PP.assets.sprite.add(s, img_cage, 4000, 50, 0.5, 1);
+    PP.physics.add(s, cage_2, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, cage_2, function () {
+        open_cage_2(s, player);
+    });
+
+    cage_3 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    PP.physics.add(s, cage_3, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, cage_3, function () {
+        open_cage_3(s, player);
+    });
+
+    cage_4 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    PP.physics.add(s, cage_4, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, cage_4, function () {
+        open_cage_4(s, player);
+    });
+
+    cage_5 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    PP.physics.add(s, cage_5, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, cage_5, function () {
+        open_cage_5(s, player);
     });
 
     
 }
+
+
 
 /*function collision_cage(s, player, cage) {
     // In caso di collisione procedo come segue:
@@ -99,6 +132,46 @@ function open_cage_1(s, player) {
         console.log("Tasto C premuto");
         // Cambia animazione della gabbia
         cage_1_opened = true;
+        PP.assets.sprite.animation_stop(cage_1, "closed");
+        PP.assets.sprite.animation_play(cage_1, "opened");
+    }
+}
+
+function open_cage_2(s, player) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        console.log("Tasto C premuto");
+        // Cambia animazione della gabbia
+        cage_2_opened = true;
+        PP.assets.sprite.animation_stop(cage_1, "closed");
+        PP.assets.sprite.animation_play(cage_1, "opened");
+    }
+}
+
+function open_cage_3(s, player) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        console.log("Tasto C premuto");
+        // Cambia animazione della gabbia
+        cage_3_opened = true;
+        PP.assets.sprite.animation_stop(cage_1, "closed");
+        PP.assets.sprite.animation_play(cage_1, "opened");
+    }
+}
+
+function open_cage_4(s, player) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        console.log("Tasto C premuto");
+        // Cambia animazione della gabbia
+        cage_4_opened = true;
+        PP.assets.sprite.animation_stop(cage_1, "closed");
+        PP.assets.sprite.animation_play(cage_1, "opened");
+    }
+}
+
+function open_cage_5(s, player) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        console.log("Tasto C premuto");
+        // Cambia animazione della gabbia
+        cage_5_opened = true;
         PP.assets.sprite.animation_stop(cage_1, "closed");
         PP.assets.sprite.animation_play(cage_1, "opened");
     }
