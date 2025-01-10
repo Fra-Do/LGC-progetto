@@ -19,6 +19,8 @@ let istruzioni_A;
 let istruzioni_B;
 let istruzioni_C;
 
+let txt_score;
+
 
 
 function preload(s) {
@@ -37,13 +39,14 @@ function preload(s) {
     preload_HUD(s)
     
     
+    
 
 }
 
 function create(s) {
     background  = PP.assets.image.add(s, img_background, 0, -450, 0, 0);
     
-    //ISTRUZIONI - non riesco a vederle
+    
     
 
     //Parallasse tubi
@@ -57,6 +60,13 @@ function create(s) {
 
 
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
+
+    txt_score = PP.shapes.text_styled_add(s, 1100, 50, "Score:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+
+    txt_score.tile_geometry.scroll_factor_x = 0;
+    txt_score.tile_geometry.scroll_factor_y = 0;
+
+    PP.game_state.set_variable("score", 0);
     
     
     create_HUD(s)
@@ -68,7 +78,7 @@ function create(s) {
     configure_player_animations(s);
     create_cage(s, player);
     configure_cage_animations(s)
-
+    
 
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120)
@@ -89,6 +99,7 @@ function update(s) {
     open_map(s); // Controlla i tasti K e X per gestire la mappa
 
     update_HUD(s)
+    
 
 }
 
@@ -98,6 +109,7 @@ function destroy(s) {
     destroy_player(s);
     destroy_platforms(s);
     destroy_HUD(s)
+    
     
 }
 

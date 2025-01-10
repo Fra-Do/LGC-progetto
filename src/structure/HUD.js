@@ -9,14 +9,14 @@ let health;
 let img_health; 
 
 function preload_HUD(s) {
-  ss_counter_health = PP.assets.sprite.load_spritesheet(s, "images/assets/HUD/spritesheetkit.png", 70, 51);}
+  ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/spriteskit.png", 70, 51);}
 
 function create_HUD(s) {
   // Variabili HUD
   health = 3;
 
   // Creazione counter cuori
-  counter_health = PP.assets.sprite.add(s, ss_counter_health, 80, 50, 0, 0);
+  counter_health = PP.assets.sprite.add(s, ss_counter_health, 100, 50, 0, 0);
   counter_health.tile_geometry.scroll_factor_x = 0;
   counter_health.tile_geometry.scroll_factor_y = 0;
 
@@ -30,7 +30,7 @@ function create_HUD(s) {
 }
 
 // Funzione update per aggiornare l'HUD quando la salute cambia
-function update_HUD(s) {
+function update_HUD(s, player, kit) {
    // Gestione ss_counter_health
    if (health == 5) {
     PP.assets.sprite.animation_stop(counter_health, "health: 0");
