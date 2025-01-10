@@ -34,7 +34,7 @@ function preload(s) {
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
-    //preload_HUD(s)
+    preload_HUD(s)
     
     
 
@@ -59,7 +59,7 @@ function create(s) {
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
     
     
-    
+    create_HUD(s)
     create_instruction(s) 
     create_player(s);
     create_collectibles(s);
@@ -68,8 +68,7 @@ function create(s) {
     configure_player_animations(s);
     create_cage(s, player);
     configure_cage_animations(s)
-    //create_HUD(s)
-    
+
 
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120)
@@ -89,7 +88,7 @@ function update(s) {
 
     open_map(s); // Controlla i tasti K e X per gestire la mappa
 
-    //update_HUD(s)
+    update_HUD(s)
 
 }
 
@@ -98,7 +97,7 @@ function destroy(s) {
     destroy_instruction(s);
     destroy_player(s);
     destroy_platforms(s);
-    //destroy_HUD(s)
+    destroy_HUD(s)
     
 }
 
