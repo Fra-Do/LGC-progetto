@@ -19,7 +19,7 @@ let istruzioni_A;
 let istruzioni_B;
 let istruzioni_C;
 
-let txt_score;
+
 
 
 
@@ -28,6 +28,7 @@ function preload(s) {
     img_parallax02  = PP.assets.image.load(s, "assets/images/mappa/livello1_3_tubi.png");
     img_background  = PP.assets.image.load(s, "assets/images/mappa/sfondo.png");
     img_tubi        = PP.assets.image.load(s, "assets/images/mappa/livello1_tubi.png"); 
+    
     
     preload_collectibles(s);
     preload_instruction(s)
@@ -40,14 +41,12 @@ function preload(s) {
     
     
     
+    
 
 }
 
 function create(s) {
     background  = PP.assets.image.add(s, img_background, 0, -450, 0, 0);
-    
-    
-    
 
     //Parallasse tubi
     parallax02 = PP.assets.image.add(s, img_parallax02, 0, 0, 0, 0);
@@ -79,6 +78,7 @@ function create(s) {
     create_cage(s, player);
     configure_cage_animations(s)
     
+    
 
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120)
@@ -94,11 +94,18 @@ function update(s) {
     if (player.geometry.body_x < 640) {PP.camera.set_follow_offset (s, -600 + player.geometry.body_x, 120);} 
     //set_follow_offset(-640+X,y)
     //update_istruzioni(s, player);
+
+    // Imposta l'offset della camera in base alla posizione del player
+    if (player.geometry.body_x < 640) {
+        PP.camera.set_follow_offset(s, -600 + player.geometry.body_x, 120);
+    }
+
     update_instruction(s, player);
 
     open_map(s); // Controlla i tasti K e X per gestire la mappa
 
     update_HUD(s)
+    
     
 
 }
@@ -111,6 +118,29 @@ function destroy(s) {
     destroy_HUD(s)
     
     
+    
 }
 
 PP.scenes.add("livello_1", preload, create, update, destroy);
+
+
+/*let prev_score = PP.game_state.get_variable("score");
+
+
+// Aggiorna lo score
+PP.game_state.set_variable("score", prev_score + 1);
+
+
+ // Aggiorna il testo visibile
+ txt_score.text = "Test Score Update"; // Test temporaneo per verificare l'aggiornamento
+
+
+
+
+// Aggiorna il testo visibile
+txt_score.text = "Score:" + (prev_score + 1);
+
+
+// Debug per verificare lo stato
+console.log("Nuovo score: " + PP.game_state.get_variable("score"));
+console.log("Testo aggiornato: " + txt_score.text);*/

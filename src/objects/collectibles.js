@@ -12,8 +12,10 @@ let pergamena
 let key;
 let img_key;
 
+let txt_score;
 
 
+let cage;
 let img_cage;
 let cage_1;
 let cage_1_opened = false;
@@ -50,12 +52,41 @@ function preload_collectibles(s) {
     }
 }*/
 
+
+
 function create_cage(s, player) {
     // Creazione cage 
     cage_1 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
     PP.physics.add(s, cage_1, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, cage_1, open_cage_1);
+    PP.physics.add_overlap_f(s, player, cage_1, function () {
+        console.log("Collisione rilevata con la gabbia");
+        open_cage_1(s, player);
+    });
+
+    
 }
+
+/*function collision_cage(s, player, cage) {
+    // In caso di collisione procedo come segue:
+
+    // Ottieni lo score attuale
+    let prev_score = PP.game_state.get_variable("score");
+    // Aggiorna lo score
+    PP.game_state.set_variable("score", prev_score + 1);
+
+     // Aggiorna il testo visibile
+     txt_score.text = "Test Score Update"; // Test temporaneo per verificare l'aggiornamento
+
+
+    // Aggiorna il testo visibile
+    let curr_score = PP.game_state.get_variable("score");
+    PP.shapes.text_change(txt_score, "Score: " + curr_score);
+
+    // Debug per verificare lo stato
+    console.log("Nuovo score: " + PP.game_state.get_variable("score"));
+    console.log("Testo aggiornato: " + txt_score.text);
+
+}*/
 
 function configure_cage_animations(s) {
     PP.assets.sprite.animation_add(cage_1, "closed", 0, 0, 10, 0); 
@@ -64,21 +95,15 @@ function configure_cage_animations(s) {
 }
 
 function open_cage_1(s, player) {
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
-        let prev_score = PP.game_state.get_variable("score");
-        PP.game_state.set_variable("score", prev_score + 1); //Fa sì che il punteggio aumenta di 1
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        console.log("Tasto C premuto");
+        // Cambia animazione della gabbia
         cage_1_opened = true;
         PP.assets.sprite.animation_stop(cage_1, "closed");
         PP.assets.sprite.animation_play(cage_1, "opened");
-
-        
     }
-
-    
-        
-    
-    
 }
+
 
 function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
@@ -146,6 +171,8 @@ function open_map(s) {
 //}
 
 function create_collectibles(s) {
+
+    
     
     key       = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
     PP.physics.add(s, key, PP.physics.type.STATIC);

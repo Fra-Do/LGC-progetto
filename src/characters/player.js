@@ -76,6 +76,18 @@ let is_on_ground = true; // Variabile per controllare se il personaggio è a ter
 
 function update_player(s, player) {
     let next_anim = curr_anim;
+
+     //Aggiorniamo la direzione dell'animazione (esempio per il salto)
+     if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && PP.physics.get_velocity_y(player) == 0/*&& is_on_ground+*/) {
+        PP.physics.set_velocity_y(player, -600);
+        next_anim = "jump_up"; 
+       // is_on_ground = false;   // Il personaggio non è più a terra
+    }
+
+    // Controllo per la caduta automatica
+    if (PP.physics.get_velocity_y(player) > 0) {
+        next_anim = "jump_down";  // animazione di caduta (verso il basso)
+    }
     
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT)) {
         PP.physics.set_velocity_x(player, player_speed);
@@ -88,21 +100,9 @@ function update_player(s, player) {
        PP.physics.set_velocity_x(player, 0);  // se nessun tasto è premuto, il player si ferma
        if (PP.physics.get_velocity_y(player) == 0) {  // Se il giocatore è a terra
         next_anim = "stop"; // animazione di stop
-    }
-        
-    }
-
-     //Aggiorniamo la direzione dell'animazione (esempio per il salto)
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && PP.physics.get_velocity_y(player) == 0/*&& is_on_ground+*/) {
-        PP.physics.set_velocity_y(player, -600);
-        next_anim = "jump_up"; 
-       // is_on_ground = false;   // Il personaggio non è più a terra
-    }
-
-    // Controllo per la caduta automatica
-    if (PP.physics.get_velocity_y(player) > 0) {
-        next_anim = "jump_down";  // animazione di caduta (verso il basso)
-    }
+    }    
+}
+    
 
     // Se l'animazione è cambiata, la aggiorniamo
     if (next_anim != curr_anim) {
