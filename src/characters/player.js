@@ -2,7 +2,7 @@ let img_player;
 let player;
 
 let player_speed = 350;
-let step_lenght  = 4;
+let step_lenght  = 10;
 let height       = 8;
 
 let curr_anim = "stop";
@@ -46,15 +46,17 @@ function destroy_player(s) {
 }
 */
 
-function configure_player_animations(s) {
-    PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4, 5], 10, -1);  // 6 frame per l'animazione "run"
+function configure_player_animations(s, player) {
+    PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4], 10, -1);  // 6 frame per l'animazione "run"
     PP.assets.sprite.animation_add(player, "stop", 0, 0, 10, 0);  // frame 0 per l'animazione "stop"
+    PP.assets.sprite.animation_add(player, "jump_up", 5, 8, 10, 0);
+    PP.assets.sprite.animation_add(player, "jump_down", 9, 12, 10, 0);
     PP.assets.sprite.animation_play(player, "stop");  // avvia l'animazione "stop" di default
 }
 
 function preload_player(s) {
     
-    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/sprite_ragazza.png", 94, 136, 1, 1);
+    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/spritesheetdef.png", 94, 136, 1, 12);
 }
 
 function create_player(s) {
@@ -62,6 +64,7 @@ function create_player(s) {
 
     //player = PP.assets.sprite.add(s, img_player, 2520, 770, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
+    PP.physics.set_allow_gravity(player, true);
 
     //codice per creare un layer sopra tutti 
     let nome_layer = PP.layers.create(s);
@@ -69,7 +72,9 @@ function create_player(s) {
     PP.layers.set_z_index(nome_layer, 1);
 }
 
-function update_player(s) {
+let is_on_ground = true; // Variabile per controllare se il personaggio è a terra
+
+function update_player(s, player) {
     let next_anim = curr_anim;
     
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT)) {
@@ -81,12 +86,22 @@ function update_player(s) {
         next_anim = "run";  // quando si preme freccia sinistra, l'animazione è "run"
     } else {
        PP.physics.set_velocity_x(player, 0);  // se nessun tasto è premuto, il player si ferma
-        next_anim = "stop";
+       if (PP.physics.get_velocity_y(player) == 0) {  // Se il giocatore è a terra
+        next_anim = "stop"; // animazione di stop
+    }
+        
     }
 
      //Aggiorniamo la direzione dell'animazione (esempio per il salto)
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
-        PP.physics.set_velocity_y(player, -player_speed);
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && PP.physics.get_velocity_y(player) == 0/*&& is_on_ground+*/) {
+        PP.physics.set_velocity_y(player, -600);
+        next_anim = "jump_up"; 
+       // is_on_ground = false;   // Il personaggio non è più a terra
+    }
+
+    // Controllo per la caduta automatica
+    if (PP.physics.get_velocity_y(player) > 0) {
+        next_anim = "jump_down";  // animazione di caduta (verso il basso)
     }
 
     // Se l'animazione è cambiata, la aggiorniamo

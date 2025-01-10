@@ -75,7 +75,7 @@ function create(s) {
     create_collectibles(s);
     create_structure(s);
     create_platforms (s);
-    configure_player_animations(s);
+    configure_player_animations(s, player);
     create_cage(s, player);
     configure_cage_animations(s)
     
@@ -89,7 +89,7 @@ function create(s) {
 function update(s) {
     //update_collectibles(s);
     update_instruction(s)
-    update_player(s);
+    update_player(s, player);
     update_platforms(s);
     if (player.geometry.body_x < 640) {PP.camera.set_follow_offset (s, -600 + player.geometry.body_x, 120);} 
     //set_follow_offset(-640+X,y)
