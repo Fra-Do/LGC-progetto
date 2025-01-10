@@ -35,11 +35,6 @@ function goto_gameover(s) {
     PP.scenes.start("gameover");
 }
 
-function goto_livello_2(s) {
-    PP.scenes.start("livello_2");
-    
-}
-
 function create_structure(s) {
     background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
@@ -75,13 +70,13 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //PAVIMENTO (2)
-    wall = PP.shapes.rectangle_add(s, 5500, 2580, 8000, 230, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 5500, 2560, 8000, 240, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
 
     //pavimento (2)
-    wall = PP.shapes.rectangle_add(s, 9590, 2280, 775, 305, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 9590, 2260, 775, 305, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
@@ -296,10 +291,6 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-    //rettangolo freccia
-    img_freccia = PP.shapes.rectangle_add(s, 9900, 2100, 50, 100, "0x000000", 0); 
-    PP.physics.add(s, img_freccia, PP.physics.type.STATIC); 
-    PP.physics.add_collider_f(s, player, img_freccia, goto_livello_2);
 
 
 

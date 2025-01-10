@@ -54,7 +54,7 @@ function configure_player_animations(s) {
 
 function preload_player(s) {
     
-    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/spriteragazza.png", 94, 136, 1, 1);
+    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/sprite_ragazza.png", 94, 136, 1, 1);
 }
 
 function create_player(s) {
@@ -91,6 +91,7 @@ function update_player(s) {
 
     // Se l'animazione è cambiata, la aggiorniamo
     if (next_anim != curr_anim) {
+        console.log (next_anim)
         PP.assets.sprite.animation_play(player, next_anim);
         curr_anim = next_anim;
     }
