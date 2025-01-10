@@ -70,13 +70,13 @@ function create_cage(s, player) {
         open_cage_1(s, player);
     });
 
-    cage_2 = PP.assets.sprite.add(s, img_cage, 4000, 50, 0.5, 1);
+    cage_2 = PP.assets.sprite.add(s, img_cage, 4500, -30, 0.5, 1);
     PP.physics.add(s, cage_2, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_2, function () {
         open_cage_2(s, player);
     });
 
-    cage_3 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    /*cage_3 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
     PP.physics.add(s, cage_3, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_3, function () {
         open_cage_3(s, player);
@@ -92,7 +92,7 @@ function create_cage(s, player) {
     PP.physics.add(s, cage_5, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_5, function () {
         open_cage_5(s, player);
-    });
+    });*/
 
     
 }
