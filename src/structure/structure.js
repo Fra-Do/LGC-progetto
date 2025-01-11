@@ -8,9 +8,7 @@ let img_tubi;
 let img_tubi_2;
 let img_tubi_3;
 let img_tubi_4;
-let img_freccia;
 
-let freccia;
 
 function preload_structure(s) {
     //Acido game over
@@ -325,6 +323,32 @@ function create_structure(s) {
     
     // BLOCCO pavimento
     wall = PP.shapes.rectangle_add(s, 7400, 5255, 5300, 130, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //piattaforme statiche gruppo 1 
+    wall = PP.shapes.rectangle_add(s, 7845, 3535, 190, 60, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    //piattaforme statiche gruppo 2
+    wall = PP.shapes.rectangle_add(s, 5575, 3140, 155, 88, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    wall = PP.shapes.rectangle_add(s, 5180, 3300, 155, 88, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    wall = PP.shapes.rectangle_add(s, 5440, 3605, 155, 88, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    wall = PP.shapes.rectangle_add(s, 5075, 3825, 155, 88, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    wall = PP.shapes.rectangle_add(s, 5510, 4185, 390, 82, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 

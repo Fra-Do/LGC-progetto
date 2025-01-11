@@ -81,7 +81,7 @@ function create(s) {
     
 
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
-    PP.camera.set_follow_offset(s, -600, 120)
+    //PP.camera.set_follow_offset(s, -600, 120)
 
     
 
