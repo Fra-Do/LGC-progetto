@@ -21,10 +21,8 @@ function preload_structure(s) {
     //Tubi statici
     img_tubi   = PP.assets.image.load(s, "assets/images/struttura/tubo_st_1.png");
     img_tubi_2 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_2.png");
-
-    //freccia
-    img_freccia = PP.assets.image.load(s, "assets/images/struttura/freccia.png");
-
+    img_tubi_3 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_3.png");
+   
 }
 
 function collision_platform(s,player, platform) {
@@ -39,7 +37,7 @@ function create_structure(s) {
     background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_3, 8450, 2190, 0, 0);
-    freccia    = PP.assets.image.add(s, img_freccia, 9900, 2100, 0, 0);
+   
      
     //Tubi statici
     background = PP.assets.image.add(s, img_tubi, 1785, 213, 0, 0);
@@ -70,13 +68,13 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //PAVIMENTO (2)
-    wall = PP.shapes.rectangle_add(s, 5500, 2560, 8000, 240, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 5700, 2630, 8000, 360, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
 
     //pavimento (2)
-    wall = PP.shapes.rectangle_add(s, 9590, 2260, 775, 305, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 9440, 2270, 520, 300, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
@@ -237,7 +235,7 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //7.6
-    wall = PP.shapes.rectangle_add(s, 9890, 1520, 160, 750, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 9990+50, 3220, 160, 4200, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
@@ -293,6 +291,42 @@ function create_structure(s) {
 
 
 
+
+    //EX LIVELLO 2 
+    // BLOCCO A
+    wall = PP.shapes.rectangle_add(s, 8885, 3100, 1630, 580, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    // BLOCCO B 
+    wall = PP.shapes.rectangle_add(s, 8990, 3885, 1980, 295, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    // BLOCCO C
+    wall = PP.shapes.rectangle_add(s, 9350, 4300, 1360, 530, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    // BLOCCO D
+    wall = PP.shapes.rectangle_add(s, 6610, 3585, 1540, 880, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    // BLOCCO E
+    wall = PP.shapes.rectangle_add(s, 7500, 4720, 5020, 325, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    // BLOCCO F
+    wall = PP.shapes.rectangle_add(s, 4540, 4050, 430, 2500, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+    
+    // BLOCCO pavimento
+    wall = PP.shapes.rectangle_add(s, 7400, 5255, 5300, 130, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
 
 }
 

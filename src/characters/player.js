@@ -62,7 +62,7 @@ function preload_player(s) {
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);
 
-    //player = PP.assets.sprite.add(s, img_player, 2520, 770, 0.5, 1);
+    //player = PP.assets.sprite.add(s, img_player, 8320, 3670, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
 
