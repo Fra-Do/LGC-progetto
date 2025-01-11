@@ -2,6 +2,8 @@ let img_kit;
 let kit_1;
 let kit_2;
 let kit_3;
+let kit_4;
+let kit_5;
 
 let img_map;
 let img_lil_map;
@@ -265,6 +267,17 @@ function create_collectibles(s) {
     let kit_3 = PP.assets.image.add(s, img_kit, 8055, 1330, 0, 0);
     PP.physics.add(s, kit_3, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, kit_3, collision_collectibles);
+
+
+    // liv 2 primo kit
+    let kit_4 = PP.assets.image.add(s, img_kit, 6120, 3025, 0, 0);
+    PP.physics.add(s, kit_4, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_4, collision_collectibles);
+
+    // liv 2 second kit
+    let kit_5 = PP.assets.image.add(s, img_kit, 8360, 4435, 0, 0);
+    PP.physics.add(s, kit_5, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_5, collision_collectibles);
     
     
     /*let kit_down = PP.assets.image.add(s, img_kit, 1130, 240, 0, 0);

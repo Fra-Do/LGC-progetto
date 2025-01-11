@@ -33,7 +33,7 @@ function create_animals (s) {
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
-    //PP.physics.add_collider_f(s, coniglio, player, goto_gameover);
+    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
 
     PP.assets.sprite.animation_add(topo, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(topo, "walk");

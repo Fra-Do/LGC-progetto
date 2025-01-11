@@ -3,18 +3,21 @@
 let img_istruzioni_kit1;
 let img_istruzioni_kit2;
 let img_istruzioni_kit3;
+let img_istruzioni_kit4;
 
 let istruzioni_kit;
 
 let istruzioni_kit_created1 = false;
 let istruzioni_kit_created2 = false;
 let istruzioni_kit_created3 = false;
+let istruzioni_kit_created4 = false;
 
 
 function preload_istruzioni(s) {
     img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
     img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
     img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
+    img_istruzioni_kit4 = PP.assets.image.load(s, "assets/images/istruzioni_kit.png");
 
 
 }
@@ -67,5 +70,19 @@ function update_istruzioni(s, player) {
                 player.geometry.y > 1400 && player.geometry.y < 1500) && istruzioni_kit_created3 == true){
         PP.assets.destroy(istruzioni_interaction3);
         istruzioni_kit_created3 = false;
-}
+    }
+        // ISTRUZIONE: kit 4   6120, 3025
+    if (player.geometry.x > 6020 && player.geometry.x < 6220 &&
+        player.geometry.y > 3000 && player.geometry.y < 3100) {
+        
+        if (istruzioni_kit_created4 == false) {
+            istruzioni_interaction4 = PP.assets.image.add(s, img_istruzioni_kit4, 6120, 3025, 0.5, 1); 
+        }
+        istruzioni_kit_created4 = true;
+
+    } else if ((player.geometry.x < 6020 || player.geometry.x > 6220 &&
+                player.geometry.y > 3000 && player.geometry.y < 3100) && istruzioni_kit_created4 == true){
+        PP.assets.destroy(istruzioni_interaction4);
+        istruzioni_kit_created4 = false;
+    }
 }
