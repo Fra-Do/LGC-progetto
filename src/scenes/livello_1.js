@@ -81,7 +81,7 @@ function create(s) {
     
 
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
-    //PP.camera.set_follow_offset(s, -600, 120)
+    PP.camera.set_follow_offset(s, -600, 120)
 
     
 
@@ -91,14 +91,33 @@ function update(s) {
     update_instruction(s)
     update_player(s, player);
     update_platforms(s);
-    if (player.geometry.body_x < 640) {PP.camera.set_follow_offset (s, -600 + player.geometry.body_x, 120);} 
+    
+    // margine sinistro camera
+    if (player.geometry.body_x < 640) {
+        PP.camera.set_follow_offset (s, -600 + player.geometry.body_x, 120);
+    } 
+    
+    // margine destro
+    if (player.geometry.body_x > 9320) {
+        PP.camera.set_follow_offset (s, -9320 + player.geometry.body_x, 120);
+    }
+    
+    //margine superiore 
+    if (player.geometry.body_y < 0) {
+        PP.camera.set_follow_offset (s, 0,  120 + player.geometry.body_y);
+    } 
+
+    //margine inferiore 
+    if (player.geometry.body_y >= 4770-120) {
+        PP.camera.set_follow_offset (s, 0, -4770 + player.geometry.body_y);
+    } 
+    
+
     //set_follow_offset(-640+X,y)
     //update_istruzioni(s, player);
 
     // Imposta l'offset della camera in base alla posizione del player
-    if (player.geometry.body_x < 640) {
-        PP.camera.set_follow_offset(s, -600 + player.geometry.body_x, 120);
-    }
+    
 
     update_instruction(s, player);
 
