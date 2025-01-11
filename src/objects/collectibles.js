@@ -7,12 +7,12 @@ let kit_5;
 
 let img_map;
 let img_lil_map;
-let map;
 let map_created = false;
 let pergamena
 
 let key;
 let img_key;
+let map;
 
 let txt_score;
 
@@ -61,8 +61,6 @@ function preload_collectibles(s) {
         map_visible = false;
     }
 }*/
-
-
 
 function create_cage(s, player) {
     // Creazione cage 
@@ -187,7 +185,7 @@ function collision_collectibles(s, player, kit) {
 }
 
 function open_map(s) {
-    // Controlla se il tasto K viene premuto e la mappa non è ancora visibile
+    // Controlla se il tasto M viene premuto e la mappa non è ancora visibile
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_created) {
         console.log("Mappa aperta");
         // Aggiungi l'immagine della mappa al centro dello schermo
@@ -199,12 +197,11 @@ function open_map(s) {
     // Controlla se il tasto X viene premuto e la mappa è visibile
     else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_created) {
         console.log("Mappa chiusa");
+        PP.assets.destroy(map); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
         PP.assets.destroy(lil_map); // Rimuove la mappa dalla scena
         lil_map = null; // Resetta il riferimento
         map_created = false;
     }
-
-    
 }
 
 /*function open_map (s, player, map) {
@@ -246,10 +243,7 @@ function open_map(s) {
 //}
 
 function create_collectibles(s) {
-
-    
-    
-    key       = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
+    key = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
     PP.physics.add(s, key, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, key, collision_collectibles);
 
@@ -284,13 +278,9 @@ function create_collectibles(s) {
     PP.physics.add(s, kit_down, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, kit_down, collision_collectibles);*/   
 
-    let map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
+    map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
     PP.physics.add(s, map, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, map, open_map);
-    
-
-
-    
 }
 
 

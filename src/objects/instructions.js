@@ -1,15 +1,8 @@
 let img_up;
 let img_arrows;
-let img_istruzioni_A;
-let img_istruzioni_B;
-let img_istruzioni_C;
 
 let arrows
 let up
-
-//let istruzioni_A;
-//let istruzioni_B;
-//let istruzioni_C;
 
 let istruzioni_arrows = false;
 
@@ -36,10 +29,6 @@ let istruzioni_cage;
 let istruzioni_cage_created = false; 
 
 function preload_instruction(s) {
-    //img_istruzioni_A    = PP.assets.image.load(s, "assets/images/istruzioni/A.png");
-    //img_istruzioni_B    = PP.assets.image.load(s, "assets/images/istruzioni/B.png"); 
-    //img_istruzioni_C    = PP.assets.image.load(s, "assets/images/istruzioni/C.png"); 
-
     img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
     img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
 
@@ -50,28 +39,23 @@ function preload_instruction(s) {
     img_istruzioni_kit4 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
     img_istruzioni_kit5 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
 
-
     //mappa
-    img_istruzioni_map = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_map = PP.assets.image.load(s, "assets/images/istruzioni/M.png");
 
     //cage
-    img_istruzioni_cage = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_cage = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
 }
 
 function create_instruction(s) {
-    //istruzioni_A = PP.assets.image.add(s, img_istruzioni_A, 600, 50, 0, 0); 
-    //istruzioni_B = PP.assets.image.add(s, img_istruzioni_B, 5000, 450, 0, 0); 
-    //istruzioni_C = PP.assets.image.add(s, img_istruzioni_C, 7700, 1300, 0, 0); 
-
     arrows       = PP.assets.image.add(s, img_arrows, 350, 150, 0, 0);
     up           = PP.assets.image.add(s, img_up, 890, 50, 0, 0); 
 }
 
 function update_instruction(s) {
 
-    // FRECCE
+    //FRECCE
     //LEFT e RIGHT
-    if (player.geometry.x > 100 && player.geometry.x < 300 &&
+    /*if (player.geometry.x > 100 && player.geometry.x < 300 &&
         player.geometry.y > 90 && player.geometry.y < 140) {
         
         if (istruzioni_arrows == false) {
@@ -83,7 +67,7 @@ function update_instruction(s) {
                 player.geometry.y > 90 && player.geometry.y < 140) && istruzioni_arrows == true){
         PP.assets.destroy(istruzioni_interaction1);
         istruzioni_arrows = false;
-    }
+    }*/
 
 
     // KIT

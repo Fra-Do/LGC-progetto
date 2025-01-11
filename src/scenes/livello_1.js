@@ -4,10 +4,6 @@ let img_parallax01;
 let img_parallax02;
 let img_tubi;
 
-let img_istruzioni_A;
-let img_istruzioni_B;
-let img_istruzioni_C;
-
 let tubi;
 let floor;
 let background;
@@ -34,17 +30,10 @@ function preload(s) {
     preload_instruction(s)
     preload_player(s);
     preload_animals (s);
-
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
     preload_HUD(s)
-
-    
-    
-    
-    
-
 }
 
 function create(s) {
@@ -59,16 +48,8 @@ function create(s) {
     parallax01.tile_geometry.scroll_factor_x = 0.5;
     parallax01.tile_geometry.scroll_factor_y = 0.5;
 
-
+    //Tubi struttura
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
-
-    txt_score = PP.shapes.text_styled_add(s, 1100, 50, "Score:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
-
-    txt_score.tile_geometry.scroll_factor_x = 0;
-    txt_score.tile_geometry.scroll_factor_y = 0;
-
-    PP.game_state.set_variable("score", 0);
-    
     
     create_HUD(s)
     create_instruction(s) 
@@ -82,10 +63,9 @@ function create(s) {
     create_cage(s, player);
     configure_cage_animations(s)
     
-    
-
+    //Gestione camera
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
-    PP.camera.set_follow_offset(s, -600, 120)
+    PP.camera.set_follow_offset(s, -600, 120);
 
     
 
@@ -118,20 +98,9 @@ function update(s) {
     } 
     
 
-    //set_follow_offset(-640+X,y)
-    //update_istruzioni(s, player);
-
-    // Imposta l'offset della camera in base alla posizione del player
-    
-
     update_instruction(s, player);
-
-    open_map(s); // Controlla i tasti K e X per gestire la mappa
-
+    open_map(s); // Controlla i tasti M e X per gestire la mappa
     update_HUD(s)
-    
-    
-
 }
 
 function destroy(s) {
@@ -141,9 +110,6 @@ function destroy(s) {
     destroy_platforms(s);
     destroy_HUD(s)
     destroy_animals (s);
-    
-    
-    
 }
 
 PP.scenes.add("livello_1", preload, create, update, destroy);
