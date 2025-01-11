@@ -33,11 +33,13 @@ function preload(s) {
     preload_collectibles(s);
     preload_instruction(s)
     preload_player(s);
+    preload_animals (s);
 
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
     preload_HUD(s)
+
     
     
     
@@ -71,6 +73,8 @@ function create(s) {
     create_HUD(s)
     create_instruction(s) 
     create_player(s);
+    create_animals (s);
+
     create_collectibles(s);
     create_structure(s);
     create_platforms (s);
@@ -91,6 +95,7 @@ function update(s) {
     update_instruction(s)
     update_player(s, player);
     update_platforms(s);
+    update_animals (s);
     
     // margine sinistro camera
     if (player.geometry.body_x < 640) {
@@ -135,6 +140,7 @@ function destroy(s) {
     destroy_player(s);
     destroy_platforms(s);
     destroy_HUD(s)
+    destroy_animals (s);
     
     
     
