@@ -9,6 +9,8 @@ let curr_anim         = "stop";
 let verifica_platform = true;
 let verifica_floor    = true;
 
+let is_on_platform;
+
 
 
 function configure_player_animations(s, player) {
@@ -24,10 +26,17 @@ function preload_player(s) {
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_protagonista.png", 94, 136, 1, 12);
 }
 
+function collision_platform(s, player, platform) {
+    if( platform.geometry.y <= player.geometry.y) {
+        verifica_platform = true;
+        console.log(verifica_platform); 
+        next_anim = "stop";
+    }
+}
+
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
 
-    //player = PP.assets.sprite.add(s, img_player,7845, 4235, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
 
@@ -41,10 +50,10 @@ function update_player(s, player) {
     let next_anim = curr_anim;
 
     // Verifica se il personaggio è a terra
-    is_on_ground = PP.physics.get_velocity_y(player) === 0;
+    is_on_ground = PP.physics.get_velocity_y(player) === 0; 
 
     // Se il personaggio è a terra, abilitiamo di nuovo il salto
-    if (is_on_ground) {
+    if (is_on_ground || is_on_platform) {
         verifica_floor = true;
         verifica_platform = true;
     }
@@ -58,9 +67,9 @@ function update_player(s, player) {
         PP.physics.set_velocity_x(player, -player_speed);
         next_anim = "run";  // quando si preme freccia sinistra, l'animazione è "run"
     } else {
-        PP.physics.set_velocity_x(player, 0);  // se nessun tasto è premuto, il player si ferma
-        if (PP.physics.get_velocity_y(player) == 0) {  // Se il giocatore è a terra
-            next_anim = "stop";  // animazione di stop
+        PP.physics.set_velocity_x(player, 0);
+        if (is_on_ground || is_on_platform) {
+            next_anim = "stop";
         }
     }
 
@@ -71,7 +80,7 @@ function update_player(s, player) {
             // Reset del flag a false quando il player è su una piattaforma
             verifica_floor = false;
             verifica_platform = false;
-            
+            player.is_on_platform = false; // Resetta lo stato della piattaforma per il prossimo frame 
         }
     }
 
@@ -80,7 +89,18 @@ function update_player(s, player) {
         next_anim = "jump_up";
     }
     else if(PP.physics.get_velocity_y(player) > 0 && !is_on_ground) {
-       next_anim = "jump_down";
+       // Verifica se il player è sopra una piattaforma mobile
+        if (is_on_platform) {
+        // Verifica se la piattaforma si muove lungo l'asse Y
+        let platform_velocity_y = PP.physics.get_velocity_y(player.platform);
+        if (platform_velocity_y > 0) {
+            // Se la piattaforma si muove, l'animazione "stop" è attivata
+            next_anim = "stop";
+        }
+    } else {
+        // Altrimenti, se non è in collisione con una piattaforma mobile, mantieni "jump_down"
+        next_anim = "jump_down";
+    }
     }
 
     // Se l'animazione è cambiata, la aggiorniamo
