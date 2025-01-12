@@ -51,7 +51,7 @@ function preload_collectibles(s) {
     img_cage_topo     = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_topogabbia.png", 134, 105);
     img_cage_coniglio = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_conigliogabbia.png", 134, 105);
     img_cage_maiale   = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_maialegabbia.png", 134, 105);
-    img_cage_scimmia   = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_scimmiagabbia.png", 134, 105);
+    img_cage_scimmia  = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_scimmiagabbia.png", 134, 105);
     img_key           = PP.assets.image.load(s, "assets/images/oggetti/key.png");
 }
 

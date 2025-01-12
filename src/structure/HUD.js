@@ -1,3 +1,6 @@
+let img_counter_cage
+let counter_cage;
+
 let ss_counter_health;
 
 let counter_health;
@@ -9,9 +12,15 @@ let health;
 let img_health; 
 
 function preload_HUD(s) {
-  ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/spriteskit.png", 70, 51);}
+    img_counter_cage  = PP.assets.image.load (s, "assets/images/HUD/gabbie.png");
+    ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/spriteskit.png", 70, 51);
+}
 
 function create_HUD(s) {
+    counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
+    counter_cage.tile_geometry.scroll_factor_x = 0;
+    counter_cage.tile_geometry.scroll_factor_y = 0;
+
   // Variabili HUD
   health = 3;
 
