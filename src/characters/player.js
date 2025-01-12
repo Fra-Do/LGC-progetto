@@ -1,12 +1,14 @@
 let img_player;
 let player;
 
-let player_speed = 350;
-let jump_init_speed = 600;
-let step_lenght  = 10;
-let height       = 8;
-let curr_anim    = "stop";
+let player_speed      = 350;
+let jump_init_speed   = 500;
+let step_lenght       = 10;
+let height            = 8;
+let curr_anim         = "stop";
 let verifica_platform = true;
+let verifica_floor    = true;
+
 
 
 function configure_player_animations(s, player) {
@@ -38,6 +40,15 @@ function create_player(s) {
 function update_player(s, player) {
     let next_anim = curr_anim;
 
+    // Verifica se il personaggio è a terra
+    is_on_ground = PP.physics.get_velocity_y(player) === 0;
+
+    // Se il personaggio è a terra, abilitiamo di nuovo il salto
+    if (is_on_ground) {
+        verifica_floor = true;
+        verifica_platform = true;
+    }
+
     // Movimento orizzontale
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT)) {
         PP.physics.set_velocity_x(player, player_speed);
@@ -65,23 +76,12 @@ function update_player(s, player) {
     }
 
     // Animazioni di salto gestite in base alla velocità verticale
-    if(PP.physics.get_velocity_y(player) > 0 && verifica_platform == false) {
+    if(PP.physics.get_velocity_y(player) < 0 && !is_on_ground ) {
         next_anim = "jump_up";
     }
-    else if(PP.physics.get_velocity_y(player) < 0 && verifica_platform == false) {
+    else if(PP.physics.get_velocity_y(player) > 0 && !is_on_ground) {
        next_anim = "jump_down";
     }
-
-    // Salto (quando si preme il tasto UP)
-    /*if (PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && PP.physics.get_velocity_y(player) == 0) {
-        PP.physics.set_velocity_y(player, -player_speed);  // Impostiamo la velocità verticale per il salto
-        next_anim = "jump_up";  // animazione di salto verso l'alto
-    }
-
-    // Controllo per la caduta automatica
-    if (PP.physics.get_velocity_y(player) > 0) {
-        next_anim = "jump_down";  // animazione di caduta (verso il basso)
-    }*/
 
     // Se l'animazione è cambiata, la aggiorniamo
     if (next_anim != curr_anim) {

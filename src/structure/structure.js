@@ -1,5 +1,4 @@
 let wall;
-let verifica_floor;
 let img_acid;
 let img_acid_2;
 let img_acid_3;
