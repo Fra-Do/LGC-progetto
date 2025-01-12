@@ -27,6 +27,7 @@ let istruzioni_map_created  = false;
 let img_istruzioni_cage;
 let istruzioni_cage;
 let istruzioni_cage_created = false; 
+let istruzioni_cage_created2 = false; 
 
 function preload_instruction(s) {
     img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
@@ -177,6 +178,20 @@ function update_instruction(s) {
         istruzioni_cage_created = false;
     }
 
+    //CAGE 2
+    if (player.geometry.x > 5500 && player.geometry.x < 5700 &&
+        player.geometry.y > 1400 && player.geometry.y < 1500) {
+        
+        if (istruzioni_cage_created2 == false) {
+            istruzioni_interaction_cage = PP.assets.image.add(s, img_istruzioni_cage, 2820, 650, 0.5, 1); 
+        }
+        istruzioni_cage_created2 = true;
+
+    } else if ((player.geometry.x < 5500 || player.geometry.x > 5700 &&
+                player.geometry.y > 1400 && player.geometry.y < 1500) && istruzioni_cage_created2 == true){
+        PP.assets.destroy(istruzioni_interaction_cage);
+        istruzioni_cage_created2 = false;
+    }
 } 
 
 function destroy_instruction(s) {

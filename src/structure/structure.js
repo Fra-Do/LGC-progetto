@@ -287,9 +287,6 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-
-
-
     //EX LIVELLO 2 
     // BLOCCO A
     wall = PP.shapes.rectangle_add(s, 8885, 3100, 1630, 580, "0x000000", 0); 

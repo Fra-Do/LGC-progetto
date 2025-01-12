@@ -8,96 +8,97 @@ let kit_5;
 let img_map;
 let img_lil_map;
 let map_created = false;
-let pergamena
+let lil_map; // Variabile per l'immagine da mostrare
+let image_visible = false; // Stato della visibilità dell'immagine
+let map;
 
 let key;
 let img_key;
-let map;
 
 let txt_score;
 
+let img_cage_topo;
+let cage_topo;
 
-let cage;
-let img_cage;
+let img_cage_coniglio;
+let cage_coniglio;
+
+let img_cage_maiale;
+let cage_maiale;
+
+let img_cage_scimmia;
+let cage_scimmia;
+
+
 let cage_1;
 let cage_2;
 let cage_3;
 let cage_4;
 let cage_5;
+let cage_6;
+
 let cage_1_opened = false;
 let cage_2_opened = false;
 let cage_3_opened = false;
 let cage_4_opened = false;
 let cage_5_opened = false;
-
-let lil_map; // Variabile per l'immagine da mostrare
-let image_visible = false; // Stato della visibilità dell'immagine
-
-
+let cage_6_opened = false;
 
 function preload_collectibles(s) {
-    img_kit       = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
-    img_map       = PP.assets.image.load(s, "assets/images/oggetti/map.png");
-    img_lil_map   = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
-    img_cage      = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/ss_cage.png", 134, 105);
-    img_key       = PP.assets.image.load(s, "assets/images/oggetti/key.png");
+    img_kit           = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
+    img_map           = PP.assets.image.load(s, "assets/images/oggetti/map.png");
+    img_lil_map       = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
+    img_cage_topo     = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_topogabbia.png", 134, 105);
+    img_cage_coniglio = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_conigliogabbia.png", 134, 105);
+    img_cage_maiale   = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_maialegabbia.png", 134, 105);
+    img_cage_scimmia   = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_scimmiagabbia.png", 134, 105);
+    img_key           = PP.assets.image.load(s, "assets/images/oggetti/key.png");
 }
 
-/*function create_image_toggle(s) {
-    // Aggiungi l'immagine e nascondila inizialmente
-    lil_map = PP.assets.image.add(s, img_lil_map, 800, 450, 0.5, 0.5); // Posizionala al centro
-    PP.assets.image.set_visible(lil_map, false); // Nascondi la mappa inizialmente
-}*/
-
-/*function toggle_map_with_keys(s, player, map) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_visible) {
-        // Mostra la mappa
-        lil_map = PP.assets.image.add(s, img_lil_map, 800, 450, 0.5, 0.5);
-        map_visible = true;
-    } else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_visible) {
-        // Nasconde la mappa
-        PP.assets.destroy(lil_map);
-        lil_map = null;
-        map_visible = false;
-    }
-}*/
-
 function create_cage(s, player) {
-    // Creazione cage 
-    cage_1 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    // Creazione gabbia topo
+    cage_1 = PP.assets.sprite.add(s, img_cage_topo, 2817, 777, 0.5, 1);
     PP.physics.add(s, cage_1, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_1, function () {
         open_cage_1(s, player);
     });
 
-    cage_2 = PP.assets.sprite.add(s, img_cage, 4500, -30, 0.5, 1);
+    // Creazione gabbia coniglio
+    cage_2 = PP.assets.sprite.add(s, img_cage_coniglio, 5632, 1330, 0.5, 1);
     PP.physics.add(s, cage_2, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_2, function () {
         open_cage_2(s, player);
     });
 
-    /*cage_3 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    // Creazione gabbia maiale
+    cage_3 = PP.assets.sprite.add(s, img_cage_maiale, 4503, -35, 0.5, 1);
     PP.physics.add(s, cage_3, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_3, function () {
         open_cage_3(s, player);
     });
 
-    cage_4 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    // Creazione gabbia scimmia
+    cage_4 = PP.assets.sprite.add(s, img_cage_scimmia, 5652, 147, 0.5, 1);
     PP.physics.add(s, cage_4, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_4, function () {
         open_cage_4(s, player);
     });
 
-    cage_5 = PP.assets.sprite.add(s, img_cage, 2817, 777, 0.5, 1);
+    // Creazione gabbia topo2
+    cage_5 = PP.assets.sprite.add(s, img_cage_topo, 8295, 320, 0.5, 1);
     PP.physics.add(s, cage_5, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, cage_5, function () {
         open_cage_5(s, player);
-    });*/
+    });
 
+    // Creazione gabbia coniglio2
+    cage_6 = PP.assets.sprite.add(s, img_cage_coniglio, 6060, 1988, 0.5, 1);
+    PP.physics.add(s, cage_6, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, cage_6, function () {
+        open_cage_6(s, player);
+    });
     
 }
-
-
 
 /*function collision_cage(s, player, cage) {
     // In caso di collisione procedo come segue:
@@ -122,9 +123,35 @@ function create_cage(s, player) {
 }*/
 
 function configure_cage_animations(s) {
+    //topo
     PP.assets.sprite.animation_add(cage_1, "closed", 0, 0, 10, 0); 
     PP.assets.sprite.animation_add(cage_1, "opened", 1, 1, 10, 0);
     PP.assets.sprite.animation_play(cage_1, "closed");
+
+    //coniglio
+    PP.assets.sprite.animation_add(cage_2, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_2, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_2, "closed");
+
+    //maiale
+    PP.assets.sprite.animation_add(cage_3, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_3, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_3, "closed");
+
+    //scimmia
+    PP.assets.sprite.animation_add(cage_4, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_4, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_4, "closed");
+
+    //topo2
+    PP.assets.sprite.animation_add(cage_5, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_5, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_5, "closed");
+
+    //coniglio2
+    PP.assets.sprite.animation_add(cage_6, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_6, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_6, "closed");
 }
 
 function open_cage_1(s, player) {
@@ -142,8 +169,8 @@ function open_cage_2(s, player) {
         console.log("Tasto C premuto");
         // Cambia animazione della gabbia
         cage_2_opened = true;
-        PP.assets.sprite.animation_stop(cage_1, "closed");
-        PP.assets.sprite.animation_play(cage_1, "opened");
+        PP.assets.sprite.animation_stop(cage_2, "closed");
+        PP.assets.sprite.animation_play(cage_2, "opened");
     }
 }
 
@@ -152,8 +179,8 @@ function open_cage_3(s, player) {
         console.log("Tasto C premuto");
         // Cambia animazione della gabbia
         cage_3_opened = true;
-        PP.assets.sprite.animation_stop(cage_1, "closed");
-        PP.assets.sprite.animation_play(cage_1, "opened");
+        PP.assets.sprite.animation_stop(cage_3, "closed");
+        PP.assets.sprite.animation_play(cage_3, "opened");
     }
 }
 
@@ -162,8 +189,8 @@ function open_cage_4(s, player) {
         console.log("Tasto C premuto");
         // Cambia animazione della gabbia
         cage_4_opened = true;
-        PP.assets.sprite.animation_stop(cage_1, "closed");
-        PP.assets.sprite.animation_play(cage_1, "opened");
+        PP.assets.sprite.animation_stop(cage_4, "closed");
+        PP.assets.sprite.animation_play(cage_4, "opened");
     }
 }
 
@@ -172,11 +199,20 @@ function open_cage_5(s, player) {
         console.log("Tasto C premuto");
         // Cambia animazione della gabbia
         cage_5_opened = true;
-        PP.assets.sprite.animation_stop(cage_1, "closed");
-        PP.assets.sprite.animation_play(cage_1, "opened");
+        PP.assets.sprite.animation_stop(cage_5, "closed");
+        PP.assets.sprite.animation_play(cage_5, "opened");
     }
 }
 
+function open_cage_6(s, player) {
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        console.log("Tasto C premuto");
+        // Cambia animazione della gabbia
+        cage_6_opened = true;
+        PP.assets.sprite.animation_stop(cage_6, "closed");
+        PP.assets.sprite.animation_play(cage_6, "opened");
+    }
+}
 
 function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
@@ -208,44 +244,6 @@ function open_map(s) {
         map_created = false;
     }
 }
-
-/*function open_map (s, player, map) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K) && map_created == false) {
-        console.log ("mappa");  
-        lil_map = PP.assets.image.add(s, img_lil_map, 1350, -50, 0, 0);
-        
-        map_created = true;
-    } else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_created == true) {
-        console.log ("creata")    
-        map_created = false; 
-        PP.assets.destroy(lil_map);
-        
-    }
-}*/
-
-//function get_kit (s, player) {
-    //if(PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
-        //console.log ("Hai ottenuto kit");
-        //PP.assets.destroy(obj2);
-    //}
-    
-//}
-
-//function get_pergamena (s, player) {
-   // if(PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
-        //console.log ("Hai ottenuto pergamena");
-        //PP.assets.destroy(obj2);
-    //}
-    
-//}
-
-//function get_key (s, player) {
-    //if(PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
-        //console.log ("Hai ottenuto chiave");
-        //PP.assets.destroy(obj2);
-    //}
-    
-//}
 
 function create_collectibles(s) {
     key = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
