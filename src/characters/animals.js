@@ -41,8 +41,8 @@ function create_animals (s) {
     PP.physics.set_immovable(coniglio, true);
     PP.physics.set_allow_gravity(coniglio, false); 
 
-    //TOPO
-    topo = PP.assets.sprite.add(s, img_topo, 800, 350, 0.5, 1); 
+    //TOPO 8360, 4435
+    topo = PP.assets.sprite.add(s, img_topo, 8360, 4435, 0.5, 1); 
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
@@ -109,12 +109,12 @@ function update_animals (s) {
         coniglio.geometry.flip_x = true;
    }
 
-   //movimento topo 
-   if (topo.geometry.x >= 1500) {
+   //movimento topo 8360
+   if (topo.geometry.x >= 8360) {
     PP.physics.set_velocity_x(topo, -250);
     topo.geometry.flip_x = false;
 } 
-else if (topo.geometry.x <= 500) {
+else if (topo.geometry.x <= 8060) {
     PP.physics.set_velocity_x(topo, 250);
     topo.geometry.flip_x = true;
 }
