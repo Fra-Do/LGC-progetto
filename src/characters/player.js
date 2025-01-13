@@ -5,21 +5,21 @@ let player_speed      = 400;
 let jump_init_speed   = 500;
 let step_lenght       = 10;
 let height            = 8;
+
 let curr_anim         = "stop";
+
 let verifica_platform = true;
 let verifica_floor    = true;
 
 let is_on_platform;
 
-
-
 function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4], 10, -1);  
-    PP.assets.sprite.animation_add(player, "stop", 0, 0, 10, 0);  
+    PP.assets.sprite.animation_add     (player, "stop", 0, 0, 10, 0);  
     PP.assets.sprite.animation_add_list(player, "jump_up", [5, 6, 7, 8, 9], 10, 0);
     PP.assets.sprite.animation_add_list(player, "jump_down", [10, 11, 12, 13], 10, 0);
     PP.assets.sprite.animation_add_list(player, "weapon", [14, 15, 16, 17, 18, 19, 20], 10, -1);
-    PP.assets.sprite.animation_play(player, "stop");  // avvia l'animazione "stop" di default
+    PP.assets.sprite.animation_play    (player, "stop");  // avvia l'animazione "stop" di default
 }
 
 function preload_player(s) {
@@ -36,7 +36,6 @@ function collision_platform(s, player, platform) {
 }
 
 function create_player(s) {
-
     //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
     player = PP.assets.sprite.add(s, img_player, 8360, 4435, 0.5, 1);  
 
