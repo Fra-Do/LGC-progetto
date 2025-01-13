@@ -84,7 +84,7 @@ function create_animals (s) {
     PP.physics.set_allow_gravity(maiale, false);
 
     //SCIENZIATA
-    scientist = PP.assets.sprite.add(s, img_scientist, 7000, 3100, 0.5, 1); 
+    scientist = PP.assets.sprite.add(s, img_scientist, 6700, 3147, 0.5, 1); 
     PP.physics.add(s, scientist, PP.physics.type.DYNAMIC);
     scientist.geometry.flip_x = false;
 
@@ -139,12 +139,12 @@ else if (maiale.geometry.x <= 0) {
     maiale.geometry.flip_x = true;
 }
 
-// movimento scienziata  6120
-if (scientist.geometry.x >= 6500) {
+// movimento scienziata  
+if (scientist.geometry.x >= 7000) {
     PP.physics.set_velocity_x(scientist, -250);
     scientist.geometry.flip_x = true;
 } 
-else if (scientist.geometry.x <= 5800) {
+else if (scientist.geometry.x <= 6210) {
     PP.physics.set_velocity_x(scientist, 250);
     scientist.geometry.flip_x = false;
 }
