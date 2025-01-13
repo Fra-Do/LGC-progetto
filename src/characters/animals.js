@@ -84,7 +84,7 @@ function create_animals (s) {
     PP.physics.set_allow_gravity(maiale, false);
 
     //SCIENZIATA
-    scientist = PP.assets.sprite.add(s, img_scientist, 6500, 3025, 0.5, 1); 
+    scientist = PP.assets.sprite.add(s, img_scientist, 7000, 3100, 0.5, 1); 
     PP.physics.add(s, scientist, PP.physics.type.DYNAMIC);
     scientist.geometry.flip_x = false;
 
