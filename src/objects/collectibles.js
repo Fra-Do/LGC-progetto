@@ -6,16 +6,17 @@ let kit_4;
 let kit_5;
 
 let img_map;
-let img_lil_map;
-let map_created = false;
-let lil_map; // Variabile per l'immagine da mostrare
-let image_visible = false; // Stato della visibilità dell'immagine
 let map;
+let img_lil_map;
+let lil_map; // Variabile per l'immagine da mostrare
+let map_created = false;
+let image_visible = false; // Stato della visibilità dell'immagine
 
 let key;
 let img_key;
 
-let txt_score;
+let img_fiale;
+let fiale;
 
 let img_cage_topo;
 let cage_topo;
@@ -44,18 +45,12 @@ let cage_4_opened = false;
 let cage_5_opened = false;
 let cage_6_opened = false;
 
-
-
-
-
-
-
-
 function preload_collectibles(s) {
     //IMMAGINI PER OGGETTI DA RACCOGLIERE NELLA MAPPA
     img_kit           = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
     img_map           = PP.assets.image.load(s, "assets/images/oggetti/map.png");
     img_lil_map       = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
+    img_fiale          = PP.assets.image.load(s, "assets/images/oggetti/fiale.png");
     img_key           = PP.assets.image.load(s, "assets/images/oggetti/key.png");
 
     //GABBIE
@@ -63,9 +58,83 @@ function preload_collectibles(s) {
     img_cage_coniglio = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_conigliogabbia.png", 134, 105);
     img_cage_maiale   = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_maialegabbia.png", 134, 105);
     img_cage_scimmia  = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_scimmiagabbia.png", 134, 105);
+}
 
+function configure_cage_animations(s) {
+    //topo
+    PP.assets.sprite.animation_add(cage_1, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_1, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_1, "closed");
+
+    //coniglio
+    PP.assets.sprite.animation_add(cage_2, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_2, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_2, "closed");
+
+    //maiale
+    PP.assets.sprite.animation_add(cage_3, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_3, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_3, "closed");
+
+    //scimmia
+    PP.assets.sprite.animation_add(cage_4, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_4, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_4, "closed");
+
+    //topo2
+    PP.assets.sprite.animation_add(cage_5, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_5, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_5, "closed");
+
+    //coniglio2
+    PP.assets.sprite.animation_add(cage_6, "closed", 0, 0, 10, 0); 
+    PP.assets.sprite.animation_add(cage_6, "opened", 1, 1, 10, 0);
+    PP.assets.sprite.animation_play(cage_6, "closed");
+}
+
+function create_collectibles(s) {
+    key = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
+    PP.physics.add(s, key, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, key, collision_collectibles);
+
+    // primo kit
+    let kit_1 = PP.assets.image.add(s, img_kit, 1330, 240, 0, 0);
+    PP.physics.add(s, kit_1, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_1, collision_collectibles);
+
+    // secondo kit
+    let kit_2 = PP.assets.image.add(s, img_kit, 2575, 1500, 0, 0);
+    PP.physics.add(s, kit_2, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_2, collision_collectibles);
+
+    // terzo kit
+    let kit_3 = PP.assets.image.add(s, img_kit, 8055, 1330, 0, 0);
+    PP.physics.add(s, kit_3, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_3, collision_collectibles);
+
+
+    // liv 2 primo kit
+    let kit_4 = PP.assets.image.add(s, img_kit, 6120, 3025, 0, 0);
+    PP.physics.add(s, kit_4, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_4, collision_collectibles);
+
+    // liv 2 second kit
+    let kit_5 = PP.assets.image.add(s, img_kit, 8360, 4435, 0, 0);
+    PP.physics.add(s, kit_5, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_5, collision_collectibles);
     
+    
+    /*let kit_down = PP.assets.image.add(s, img_kit, 1130, 240, 0, 0);
+    PP.physics.add(s, kit_down, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, kit_down, collision_collectibles);*/   
 
+    map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
+    PP.physics.add(s, map, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, map, open_map);
+
+    fiale = PP.assets.image.add(s, img_fiale, 9400, 3610, 0, 0);
+    PP.physics.add(s, fiale, PP.physics.type.STATIC);
+    PP.physics.add_overlap_f(s, player, fiale, collision_collectibles);
 }
 
 function create_cage(s, player) {
@@ -110,62 +179,6 @@ function create_cage(s, player) {
     PP.physics.add_overlap_f(s, player, cage_6, function () {
         open_cage_6(s, player);
     });
-    
-}
-
-
-/*function collision_cage(s, player, cage) {
-    // In caso di collisione procedo come segue:
-
-    // Ottieni lo score attuale
-    let prev_score = PP.game_state.get_variable("score");
-    // Aggiorna lo score
-    PP.game_state.set_variable("score", prev_score + 1);
-
-     // Aggiorna il testo visibile
-     txt_score.text = "Test Score Update"; // Test temporaneo per verificare l'aggiornamento
-
-
-    // Aggiorna il testo visibile
-    let curr_score = PP.game_state.get_variable("score");
-    PP.shapes.text_change(txt_score, "Score: " + curr_score);
-
-    // Debug per verificare lo stato
-    console.log("Nuovo score: " + PP.game_state.get_variable("score"));
-    console.log("Testo aggiornato: " + txt_score.text);
-
-}*/
-
-function configure_cage_animations(s) {
-    //topo
-    PP.assets.sprite.animation_add(cage_1, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage_1, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage_1, "closed");
-
-    //coniglio
-    PP.assets.sprite.animation_add(cage_2, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage_2, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage_2, "closed");
-
-    //maiale
-    PP.assets.sprite.animation_add(cage_3, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage_3, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage_3, "closed");
-
-    //scimmia
-    PP.assets.sprite.animation_add(cage_4, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage_4, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage_4, "closed");
-
-    //topo2
-    PP.assets.sprite.animation_add(cage_5, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage_5, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage_5, "closed");
-
-    //coniglio2
-    PP.assets.sprite.animation_add(cage_6, "closed", 0, 0, 10, 0); 
-    PP.assets.sprite.animation_add(cage_6, "opened", 1, 1, 10, 0);
-    PP.assets.sprite.animation_play(cage_6, "closed");
 }
 
 function open_cage_1(s, player) {
@@ -232,6 +245,14 @@ function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
         PP.assets.destroy(kit); 
     }
+
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
+        PP.assets.destroy(key); 
+    }
+
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)) {
+        PP.assets.destroy(fiale); 
+    }
 }
 
 function open_map(s) {
@@ -259,51 +280,7 @@ function open_map(s) {
     }
 }
 
-function create_collectibles(s) {
-     
-    
-    
 
-
-    key = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
-    PP.physics.add(s, key, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, key, collision_collectibles);
-
-    // primo kit
-    let kit_1 = PP.assets.image.add(s, img_kit, 1330, 240, 0, 0);
-    PP.physics.add(s, kit_1, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_1, collision_collectibles);
-
-    // secondo kit
-    let kit_2 = PP.assets.image.add(s, img_kit, 2575, 1500, 0, 0);
-    PP.physics.add(s, kit_2, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_2, collision_collectibles);
-
-    // terzo kit
-    let kit_3 = PP.assets.image.add(s, img_kit, 8055, 1330, 0, 0);
-    PP.physics.add(s, kit_3, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_3, collision_collectibles);
-
-
-    // liv 2 primo kit
-    let kit_4 = PP.assets.image.add(s, img_kit, 6120, 3025, 0, 0);
-    PP.physics.add(s, kit_4, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_4, collision_collectibles);
-
-    // liv 2 second kit
-    let kit_5 = PP.assets.image.add(s, img_kit, 8360, 4435, 0, 0);
-    PP.physics.add(s, kit_5, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_5, collision_collectibles);
-    
-    
-    /*let kit_down = PP.assets.image.add(s, img_kit, 1130, 240, 0, 0);
-    PP.physics.add(s, kit_down, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_down, collision_collectibles);*/   
-
-    map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
-    PP.physics.add(s, map, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, map, open_map);
-}
 
 
 function upload_collectibles(s) {

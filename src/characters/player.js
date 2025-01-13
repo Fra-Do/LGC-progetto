@@ -112,7 +112,6 @@ function update_player(s, player) {
     else if (PP.physics.get_velocity_x(player) > 0) {
         player.geometry.flip_x = false;
     }
-
 }
 
 function destroy_player(s) {
