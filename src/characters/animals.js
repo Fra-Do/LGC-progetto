@@ -42,7 +42,7 @@ function create_animals (s) {
     PP.physics.set_allow_gravity(coniglio, false); 
 
     //TOPO 8360, 4435
-    topo = PP.assets.sprite.add(s, img_topo, 8360, 4435, 0.5, 1); 
+    topo = PP.assets.sprite.add(s, img_topo, 8360, 4560, 0.5, 1); 
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
