@@ -36,8 +36,8 @@ function collision_platform(s, player, platform) {
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-
+    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 6120, 3025
+    player = PP.assets.sprite.add(s, img_player, 7845, 3435, 0.5, 1);
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
 

@@ -51,7 +51,7 @@ function create_animals (s) {
     PP.physics.set_allow_gravity(topo, false); 
 
     //SCIMMIA
-    scimmia = PP.assets.sprite.add(s, img_scimmia, 800, 350, 0.5, 1); 
+    scimmia = PP.assets.sprite.add(s, img_scimmia, 8345, 3735, 0.5, 1); 
     PP.physics.add(s, scimmia, PP.physics.type.DYNAMIC);
     scimmia.geometry.flip_x = true;
 
@@ -60,7 +60,7 @@ function create_animals (s) {
     PP.assets.sprite.animation_add(scimmia, "walk", 0, 6, 8, -1);
     PP.assets.sprite.animation_play(scimmia, "walk");
 
-    PP.physics.set_velocity_x(scimmia, 250);
+    PP.physics.set_velocity_x(scimmia, 280);
     PP.physics.set_immovable(scimmia, true);
     PP.physics.set_allow_gravity(scimmia, false);
 
@@ -100,24 +100,24 @@ else if (topo.geometry.x <= 500) {
     topo.geometry.flip_x = true;
 }
 
-// movimento scimmia
-if (scimmia.geometry.x >= 1000) {
-    PP.physics.set_velocity_x(scimmia, -250);
+// movimento scimmia  7845, 3535
+if (scimmia.geometry.x >= 9145) {
+    PP.physics.set_velocity_x(scimmia, -280);
     scimmia.geometry.flip_x = true;
 } 
-else if (coniglio.geometry.x <= 0) {
-    PP.physics.set_velocity_x(scimmia, 250);
-    coniglio.geometry.flip_x = false;
+else if (scimmia.geometry.x <= 8345) {
+    PP.physics.set_velocity_x(scimmia, 280);
+    scimmia.geometry.flip_x = false;
 }
 
 // movimento maiale
-if (maiale.geometry.x >= 1000) {
+if (maiale.geometry.x >= 6120) {
     PP.physics.set_velocity_x(maiale, -250);
-    maiale.geometry.flip_x = true;
+    maiale.geometry.flip_x = false;
 } 
 else if (maiale.geometry.x <= 0) {
     PP.physics.set_velocity_x(maiale, 250);
-    maiale.geometry.flip_x = false;
+    maiale.geometry.flip_x = true;
 }
 }
 
