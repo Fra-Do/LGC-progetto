@@ -1,7 +1,7 @@
 let img_player;
 let player;
 
-let player_speed      = 350;
+let player_speed      = 400;
 let jump_init_speed   = 500;
 let step_lenght       = 10;
 let height            = 8;
@@ -16,8 +16,9 @@ let is_on_platform;
 function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4], 10, -1);  
     PP.assets.sprite.animation_add(player, "stop", 0, 0, 10, 0);  
-    PP.assets.sprite.animation_add(player, "jump_up", 5, 8, 10, 0);
-    PP.assets.sprite.animation_add(player, "jump_down", 9, 12, 10, 0);
+    PP.assets.sprite.animation_add_list(player, "jump_up", [5, 6, 7, 8, 9], 10, 0);
+    PP.assets.sprite.animation_add_list(player, "jump_down", [10, 11, 12, 13], 10, 0);
+    PP.assets.sprite.animation_add_list(player, "weapon", [14, 15, 16, 17, 18, 19, 20], 10, -1);
     PP.assets.sprite.animation_play(player, "stop");  // avvia l'animazione "stop" di default
 }
 
@@ -90,9 +91,12 @@ function update_player(s, player) {
     }
     else if(PP.physics.get_velocity_y(player) > 0 && !is_on_ground) {
             next_anim = "jump_down";
-        }
-    
+    }
 
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.L) && 
+        PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)) {
+        next_anim = "weapon";
+    }
 
     // Se l'animazione è cambiata, la aggiorniamo
     if (next_anim != curr_anim) {

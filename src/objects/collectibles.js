@@ -44,15 +44,28 @@ let cage_4_opened = false;
 let cage_5_opened = false;
 let cage_6_opened = false;
 
+
+
+
+
+
+
+
 function preload_collectibles(s) {
+    //IMMAGINI PER OGGETTI DA RACCOGLIERE NELLA MAPPA
     img_kit           = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
     img_map           = PP.assets.image.load(s, "assets/images/oggetti/map.png");
     img_lil_map       = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
+    img_key           = PP.assets.image.load(s, "assets/images/oggetti/key.png");
+
+    //GABBIE
     img_cage_topo     = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_topogabbia.png", 134, 105);
     img_cage_coniglio = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_conigliogabbia.png", 134, 105);
     img_cage_maiale   = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_maialegabbia.png", 134, 105);
     img_cage_scimmia  = PP.assets.sprite.load_spritesheet(s, "assets/images/oggetti/gabbie/ss_scimmiagabbia.png", 134, 105);
-    img_key           = PP.assets.image.load(s, "assets/images/oggetti/key.png");
+
+    
+
 }
 
 function create_cage(s, player) {
@@ -99,6 +112,7 @@ function create_cage(s, player) {
     });
     
 }
+
 
 /*function collision_cage(s, player, cage) {
     // In caso di collisione procedo come segue:
@@ -246,6 +260,11 @@ function open_map(s) {
 }
 
 function create_collectibles(s) {
+     
+    
+    
+
+
     key = PP.assets.image.add(s, img_key, 9450, 2000, 0, 0);
     PP.physics.add(s, key, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, key, collision_collectibles);
