@@ -17,7 +17,7 @@ let pl_3_speed = 250;
 let pl_4_speed = 100;
 let pl_5_speed = 100;
 let pl_7_speed = 200;
-let pl_8_speed = 350;
+let pl_8_speed = 200;
 
 
 function preload_platforms(s) {
@@ -431,16 +431,12 @@ function update_platforms(s) {
         PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
     }
     
-    
-    
     /*// 7.1 roba che ci aveva fatto fare l'assistente
     if(pl_7_1.geometry.y >= 1260 || pl_7_1.geometry.y <= 900) {
         pl_7_speed = -pl_7_speed;
     }
 
     PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
-
-    
 
     // 7.2
     if(pl_7_2.geometry.y >= 1260) {
@@ -463,10 +459,10 @@ function update_platforms(s) {
     }
 
     //8.2
-    if(pl_8_2.geometry.y >= 2000) {
+    if(pl_8_2.geometry.y >= 2100) {
         PP.physics.set_velocity_y(pl_8_2, -pl_8_speed);
     }
-    else if(pl_8_2.geometry.y <= 1250) {
+    else if(pl_8_2.geometry.y <= 1300) {
         PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
     }
 

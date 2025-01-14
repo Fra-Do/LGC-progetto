@@ -212,9 +212,9 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //7.4
-    wall = PP.shapes.rectangle_add(s, 9222, 610, 1556, 1090, "0x000000", 0); 
+    /*wall = PP.shapes.rectangle_add(s, 9222, 610, 1556, 1090, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    PP.physics.add_collider(s, player, wall);*/
 
     //7.5
     wall = PP.shapes.rectangle_add(s, 8080, 795, 746, 714, "0x000000", 0); 

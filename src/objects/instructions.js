@@ -67,10 +67,10 @@ function preload_instruction(s) {
     img_istruzioni_cage6 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
 
     //key
-    img_istruzioni_key = PP.assets.image.load(s, "assets/images/istruzioni/k.png"); //da cambiare
+    img_istruzioni_key = PP.assets.image.load(s, "assets/images/istruzioni/E.png"); //da cambiare
 
     //fiale
-    img_istruzioni_fiale = PP.assets.image.load(s, "assets/images/istruzioni/k.png"); //da cambiare
+    img_istruzioni_fiale = PP.assets.image.load(s, "assets/images/istruzioni/L.png"); //da cambiare
 
 
 }

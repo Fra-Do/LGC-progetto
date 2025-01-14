@@ -34,7 +34,7 @@ let isCPressed = false; // Flag per tracciare lo stato del tasto C
 
 
 function preload_HUD(s) {
-    //img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/gabbie.png");
+    img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/countergabbie.png");
     ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/spriteskit.png", 70, 51);
     img_ss_key        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_key.png", 65, 52);
     img_ss_fiale      = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_fiale.png", 65, 52);
@@ -69,6 +69,11 @@ function configure_ss_fiale_animations (s) {
 }
 
 function create_HUD(s) { 
+    counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
+    counter_cage.tile_geometry.scroll_factor_x = 0;
+    counter_cage.tile_geometry.scroll_factor_y = 0;
+
+
     ss_map    = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
     configure_ss_map_animations(s); // Configura le animazioni qui
     
@@ -99,20 +104,18 @@ function create_HUD(s) {
     ss_fiale.tile_geometry.scroll_factor_x = 0;
     ss_fiale.tile_geometry.scroll_factor_y = 0;
 
-    txt_score = PP.shapes.text_styled_add(s, 1050, 50, "Gabbie:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+    txt_score = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, ss_fiale);
-    PP.layers.set_z_index(nome_layer, 3);
+    PP.layers.set_z_index(nome_layer, 4);
 
     txt_score.tile_geometry.scroll_factor_x = 0;
     txt_score.tile_geometry.scroll_factor_y = 0;
 
     PP.game_state.set_variable("score", 0);
 
-    /*counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
-    counter_cage.tile_geometry.scroll_factor_x = 0;
-    counter_cage.tile_geometry.scroll_factor_y = 0;*/
+    
 
   // Variabili HUD
   health = 3;
