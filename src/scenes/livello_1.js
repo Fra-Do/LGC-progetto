@@ -119,25 +119,3 @@ function destroy(s) {
 }
 
 PP.scenes.add("livello_1", preload, create, update, destroy);
-
-
-/*let prev_score = PP.game_state.get_variable("score");
-
-
-// Aggiorna lo score
-PP.game_state.set_variable("score", prev_score + 1);
-
-
- // Aggiorna il testo visibile
- txt_score.text = "Test Score Update"; // Test temporaneo per verificare l'aggiornamento
-
-
-
-
-// Aggiorna il testo visibile
-txt_score.text = "Score:" + (prev_score + 1);
-
-
-// Debug per verificare lo stato
-console.log("Nuovo score: " + PP.game_state.get_variable("score"));
-console.log("Testo aggiornato: " + txt_score.text);*/

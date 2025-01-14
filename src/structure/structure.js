@@ -1,3 +1,4 @@
+
 let wall;
 let img_acid;
 let img_acid_2;
@@ -10,15 +11,15 @@ let img_tubi_4;
 
 
 function preload_structure(s) {
-    //Acido game over
-    img_acid   = PP.assets.image.load(s, "assets/images/struttura/acid.png");
-    img_acid_2 = PP.assets.image.load(s, "assets/images/struttura/acid_2.png");
-    img_acid_3 = PP.assets.image.load(s, "assets/images/struttura/acid_3.png");
-
     //Tubi statici
     img_tubi   = PP.assets.image.load(s, "assets/images/struttura/tubo_st_1.png");
     img_tubi_2 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_2.png");
     img_tubi_3 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_3.png");
+
+    //Acido gameover
+    img_acid   = PP.assets.image.load(s, "assets/images/struttura/acid.png");
+    img_acid_2 = PP.assets.image.load(s, "assets/images/struttura/acid_2.png");
+    img_acid_3 = PP.assets.image.load(s, "assets/images/struttura/acid_3.png");
    
 }
 
@@ -30,12 +31,14 @@ function goto_gameover(s) {
     PP.scenes.start("gameover");
 }
 
+
+
 function create_structure(s) {
+    //Acido
     background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_3, 8450, 2190, 0, 0);
    
-     
     //Tubi statici
     background = PP.assets.image.add(s, img_tubi, 1785, 213, 0, 0);
     background = PP.assets.image.add(s, img_tubi, 2120, 330, 0, 0);
@@ -352,10 +355,11 @@ function create_structure(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
+    
 }
 
 function update_structure(s, player) {
-    //collision_wall(s);
+    
 
 }
 

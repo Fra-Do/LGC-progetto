@@ -1,6 +1,7 @@
 let nome_layer;
 
 let txt_score;
+let curr_score
 
 let img_counter_cage
 let counter_cage;
@@ -28,9 +29,15 @@ let ss_map_opened   = false;
 let ss_key_opened   = false;
 let ss_fiale_opened = false;
 
-let isCPressed = false; // Flag per tracciare lo stato del tasto C
+let isCPressed      = false; // Flag per tracciare lo stato del tasto C
 
+function goto_finale1(s) {
+    PP.scenes.start("finale1");
+}
 
+function goto_finale2(s) {
+    PP.scenes.start("finale2");
+}
 
 
 function preload_HUD(s) {
@@ -74,7 +81,7 @@ function create_HUD(s) {
     counter_cage.tile_geometry.scroll_factor_y = 0;
 
 
-    ss_map    = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
+    ss_map     = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
     configure_ss_map_animations(s); // Configura le animazioni qui
     
     nome_layer = PP.layers.create(s);
@@ -84,7 +91,7 @@ function create_HUD(s) {
     ss_map.tile_geometry.scroll_factor_x = 0;
     ss_map.tile_geometry.scroll_factor_y = 0;
 
-    ss_key   = PP.assets.sprite.add(s, img_ss_key, 580, 50, 0, 0); 
+    ss_key     = PP.assets.sprite.add(s, img_ss_key, 580, 50, 0, 0); 
     configure_ss_key_animations(s);
 
     nome_layer = PP.layers.create(s);
@@ -94,7 +101,7 @@ function create_HUD(s) {
     ss_key.tile_geometry.scroll_factor_x = 0;
     ss_key.tile_geometry.scroll_factor_y = 0;
     
-    ss_fiale = PP.assets.sprite.add(s, img_ss_fiale, 660, 50, 0, 0);
+    ss_fiale   = PP.assets.sprite.add(s, img_ss_fiale, 660, 50, 0, 0);
     configure_ss_fiale_animations(s);
 
     nome_layer = PP.layers.create(s);
@@ -104,7 +111,7 @@ function create_HUD(s) {
     ss_fiale.tile_geometry.scroll_factor_x = 0;
     ss_fiale.tile_geometry.scroll_factor_y = 0;
 
-    txt_score = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+    txt_score  = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, ss_fiale);
@@ -114,8 +121,6 @@ function create_HUD(s) {
     txt_score.tile_geometry.scroll_factor_y = 0;
 
     PP.game_state.set_variable("score", 0);
-
-    
 
   // Variabili HUD
   health = 3;
@@ -131,6 +136,16 @@ function create_HUD(s) {
     PP.assets.sprite.animation_add(counter_health, "health: 1", 1, 1, 1, 0);
     PP.assets.sprite.animation_add(counter_health, "health: 0", 0, 0, 1, 0);
     PP.assets.sprite.animation_play(counter_health, "health: 0");
+
+    //Uscita per finali
+    let wall = PP.shapes.rectangle_add(s, 9880, 5100, 100, 300, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC);
+    
+    if (txt_score == 6){
+        PP.physics.add_overlap_f(s, player, wall, goto_finale1);
+    } else {
+        PP.physics.add_overlap_f(s, player, wall, goto_finale2);
+    }
 }
 
 
@@ -142,7 +157,7 @@ function score_update(s) {
             console.log("Tasto C premuto");
 
         //ottengo il punteggio corrente
-        let curr_score = PP.game_state.get_variable("score");
+        curr_score = PP.game_state.get_variable("score");
 
         // Incrementa il punteggio solo se è inferiore a 6
         if (curr_score < 6) {
