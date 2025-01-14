@@ -33,9 +33,7 @@ function preload_platforms(s) {
 
 }
 
-function collision_platform(s, player, platforms) {
-    player.is_on_platform = true;
-}
+
 
 function create_platforms(s) {
     // Piattaforma mobile

@@ -20,19 +20,17 @@ function preload_animals (s) {
     img_scimmia    = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scimmia.png", 248, 125);
     img_maiale     = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_maiale.png", 171, 87);
     img_scientist  = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scientist.png", 94, 170);
-
 }
 
 function goto_gameover (s) {
     PP.scenes.start("gameover");
 }
+
 function create_animals (s) {
     // CONIGLIO
     coniglio = PP.assets.sprite.add(s, img_coniglio, 400, 350, 0.5, 1); 
     PP.physics.add(s, coniglio, PP.physics.type.DYNAMIC);
     coniglio.geometry.flip_x = true;
-
-    //PP.physics.add_collider_f(s, coniglio, player, goto_gameover);
 
     PP.assets.sprite.animation_add(coniglio, "walk", 0, 10, 15, -1);
     PP.assets.sprite.animation_play(coniglio, "walk");
@@ -46,8 +44,6 @@ function create_animals (s) {
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
-    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
-
     PP.assets.sprite.animation_add(topo, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(topo, "walk");
 
@@ -59,8 +55,6 @@ function create_animals (s) {
     scimmia = PP.assets.sprite.add(s, img_scimmia, 8345, 3735, 0.5, 1); 
     PP.physics.add(s, scimmia, PP.physics.type.DYNAMIC);
     scimmia.geometry.flip_x = true;
-
-    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
 
     PP.assets.sprite.animation_add(scimmia, "walk", 0, 6, 8, -1);
     PP.assets.sprite.animation_play(scimmia, "walk");
@@ -74,8 +68,6 @@ function create_animals (s) {
     PP.physics.add(s, maiale, PP.physics.type.DYNAMIC);
     maiale.geometry.flip_x = true;
 
-    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
-
     PP.assets.sprite.animation_add(maiale, "walk", 0, 8, 8, -1);
     PP.assets.sprite.animation_play(maiale, "walk");
 
@@ -88,7 +80,8 @@ function create_animals (s) {
     PP.physics.add(s, scientist, PP.physics.type.DYNAMIC);
     scientist.geometry.flip_x = false;
 
-    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
+    //Quando la protagonista collide con la scienziata è gameover 
+    PP.physics.add_collider_f(s, scientist, player, goto_gameover);
 
     PP.assets.sprite.animation_add(scientist, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(scientist, "walk");
@@ -109,7 +102,7 @@ function update_animals (s) {
         coniglio.geometry.flip_x = true;
    }
 
-   //movimento topo 8360
+   //movimento topo 
    if (topo.geometry.x >= 8360) {
     PP.physics.set_velocity_x(topo, -250);
     topo.geometry.flip_x = false;
