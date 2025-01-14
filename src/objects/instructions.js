@@ -25,9 +25,17 @@ let istruzioni_kit_created5 = false;
 let istruzioni_map_created  = false;
 
 let img_istruzioni_cage;
-let istruzioni_cage;
+let img_istruzioni_cage2;
+let img_istruzioni_cage3;
+let img_istruzioni_cage4;
+let img_istruzioni_cage5;
+let img_istruzioni_cage6;
 let istruzioni_cage_created = false; 
 let istruzioni_cage_created2 = false; 
+let istruzioni_cage_created3 = false;
+let istruzioni_cage_created4 = false;
+let istruzioni_cage_created5 = false;
+let istruzioni_cage_created6 = false;
 
 function preload_instruction(s) {
     img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
@@ -45,6 +53,11 @@ function preload_instruction(s) {
 
     //cage
     img_istruzioni_cage = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+    img_istruzioni_cage2 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+    img_istruzioni_cage3 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+    img_istruzioni_cage4 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+    img_istruzioni_cage5 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+    img_istruzioni_cage6 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
 }
 
 function create_instruction(s) {
@@ -163,7 +176,7 @@ function update_instruction(s) {
     }
 
 
-     // CAGE 1
+     // CAGE 1 (topo)
      if (player.geometry.x > 2700 && player.geometry.x < 2900 &&
         player.geometry.y > 800 && player.geometry.y < 900) {
         
@@ -178,20 +191,83 @@ function update_instruction(s) {
         istruzioni_cage_created = false;
     }
 
-    //CAGE 2
-    if (player.geometry.x > 5500 && player.geometry.x < 5700 &&
+    //CAGE 2 (coniglio)
+    if (player.geometry.x > 5550 && player.geometry.x < 5750 &&
         player.geometry.y > 1400 && player.geometry.y < 1500) {
         
         if (istruzioni_cage_created2 == false) {
-            istruzioni_interaction_cage = PP.assets.image.add(s, img_istruzioni_cage, 2820, 650, 0.5, 1); 
+            istruzioni_interaction_cage2 = PP.assets.image.add(s, img_istruzioni_cage2, 5630, 1200, 0.5, 1); 
         }
         istruzioni_cage_created2 = true;
 
-    } else if ((player.geometry.x < 5500 || player.geometry.x > 5700 &&
+    } else if ((player.geometry.x < 5550 || player.geometry.x > 5750 &&
                 player.geometry.y > 1400 && player.geometry.y < 1500) && istruzioni_cage_created2 == true){
-        PP.assets.destroy(istruzioni_interaction_cage);
+        PP.assets.destroy(istruzioni_interaction_cage2);
         istruzioni_cage_created2 = false;
     }
+
+    //CAGE 3 (maiale) 4503, -35
+    if (player.geometry.x > 4403 && player.geometry.x < 4603 &&
+        player.geometry.y > -50 && player.geometry.y < 100) {
+        
+        if (istruzioni_cage_created3 == false) {
+            istruzioni_interaction_cage3 = PP.assets.image.add(s, img_istruzioni_cage3, 4503, -160, 0.5, 1); 
+        }
+        istruzioni_cage_created3 = true;
+
+    } else if ((player.geometry.x < 4403 || player.geometry.x > 4603 &&
+                player.geometry.y > -50 && player.geometry.y < 100) && istruzioni_cage_created3 == true){
+        PP.assets.destroy(istruzioni_interaction_cage3);
+        istruzioni_cage_created3 = false;
+    }
+
+    //CAGE 4 (scimmia) 5652, 147
+    if (player.geometry.x > 5552 && player.geometry.x < 5752 &&
+        player.geometry.y > 50 && player.geometry.y < 300) {
+        
+        if (istruzioni_cage_created4 == false) {
+            istruzioni_interaction_cage4 = PP.assets.image.add(s, img_istruzioni_cage4, 5652, 10, 0.5, 1); 
+        }
+        istruzioni_cage_created4 = true;
+
+    } else if ((player.geometry.x < 5552 || player.geometry.x > 5752 &&
+                player.geometry.y > 50 && player.geometry.y < 300) && istruzioni_cage_created4 == true){
+        PP.assets.destroy(istruzioni_interaction_cage4);
+        istruzioni_cage_created4 = false;
+    }
+
+    //CAGE 5 (topo2) 8295, 320
+    if (player.geometry.x > 8195 && player.geometry.x < 8395 &&
+        player.geometry.y > 150 && player.geometry.y < 450) {
+        
+        if (istruzioni_cage_created5 == false) {
+            istruzioni_interaction_cage5 = PP.assets.image.add(s, img_istruzioni_cage5, 8295, 190, 0.5, 1); 
+        }
+        istruzioni_cage_created5 = true;
+
+    } else if ((player.geometry.x < 8195 || player.geometry.x > 8395 &&
+                player.geometry.y > 150 && player.geometry.y < 450) && istruzioni_cage_created5 == true){
+        PP.assets.destroy(istruzioni_interaction_cage5);
+        istruzioni_cage_created5 = false;
+    }
+
+    //CAGE 6 (coniglio2)  6060, 1988
+    if (player.geometry.x > 5960 && player.geometry.x < 6160 &&
+        player.geometry.y > 1980 && player.geometry.y < 2200) {
+        
+        if (istruzioni_cage_created6 == false) {
+            istruzioni_interaction_cage6 = PP.assets.image.add(s, img_istruzioni_cage6, 6058, 1850, 0.5, 1); 
+        }
+        istruzioni_cage_created6 = true;
+
+    } else if ((player.geometry.x < 5960 || player.geometry.x > 6160 &&
+                player.geometry.y > 1980 && player.geometry.y < 2200) && istruzioni_cage_created6 == true){
+        PP.assets.destroy(istruzioni_interaction_cage6);
+        istruzioni_cage_created6 = false;
+    }
+
+
+
 } 
 
 function destroy_instruction(s) {

@@ -12,6 +12,7 @@ let maiale;
 
 let img_scientist;
 let scientist;
+let scientist2;
 
 
 function preload_animals (s) {
@@ -28,7 +29,7 @@ function goto_gameover (s) {
 }
 function create_animals (s) {
     // CONIGLIO
-    coniglio = PP.assets.sprite.add(s, img_coniglio, 400, 350, 0.5, 1); 
+    coniglio = PP.assets.sprite.add(s, img_coniglio, 6560, 4560, 0.5, 1); 
     PP.physics.add(s, coniglio, PP.physics.type.DYNAMIC);
     coniglio.geometry.flip_x = true;
 
@@ -41,8 +42,8 @@ function create_animals (s) {
     PP.physics.set_immovable(coniglio, true);
     PP.physics.set_allow_gravity(coniglio, false); 
 
-    //TOPO 8360, 4435
-    topo = PP.assets.sprite.add(s, img_topo, 8360, 4560, 0.5, 1); 
+    //TOPO 
+    topo = PP.assets.sprite.add(s, img_topo, 8060, 4560, 0.5, 1); 
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
@@ -70,7 +71,7 @@ function create_animals (s) {
     PP.physics.set_allow_gravity(scimmia, false);
 
     //MAIALE
-    maiale = PP.assets.sprite.add(s, img_maiale, 800, 350, 0.5, 1); 
+    maiale = PP.assets.sprite.add(s, img_maiale, 6560, 5190, 0.5, 1); 
     PP.physics.add(s, maiale, PP.physics.type.DYNAMIC);
     maiale.geometry.flip_x = true;
 
@@ -79,7 +80,7 @@ function create_animals (s) {
     PP.assets.sprite.animation_add(maiale, "walk", 0, 8, 8, -1);
     PP.assets.sprite.animation_play(maiale, "walk");
 
-    PP.physics.set_velocity_x(maiale, 250);
+    PP.physics.set_velocity_x(maiale, 270);
     PP.physics.set_immovable(maiale, true);
     PP.physics.set_allow_gravity(maiale, false);
 
@@ -93,33 +94,47 @@ function create_animals (s) {
     PP.assets.sprite.animation_add(scientist, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(scientist, "walk");
 
-    PP.physics.set_velocity_x(scientist, 250);
+    PP.physics.set_velocity_x(scientist, 270);
     PP.physics.set_immovable(scientist, true);
     PP.physics.set_allow_gravity(scientist, false);
+
+    //SCIENZIATA 2
+    scientist2 = PP.assets.sprite.add(s, img_scientist, 7660, 5190, 0.5, 1); 
+    PP.physics.add(s, scientist2, PP.physics.type.DYNAMIC);
+    scientist2.geometry.flip_x = false;
+
+    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
+
+    PP.assets.sprite.animation_add(scientist2, "walk", 0, 5, 8, -1);
+    PP.assets.sprite.animation_play(scientist2, "walk");
+
+    PP.physics.set_velocity_x(scientist2, 270);
+    PP.physics.set_immovable(scientist2, true);
+    PP.physics.set_allow_gravity(scientist2, false);
 }
 
 function update_animals (s) {
-     // movimento coniglio 
-    if (coniglio.geometry.x >= 1000) {
-        PP.physics.set_velocity_x(coniglio, -250);
-        coniglio.geometry.flip_x = false;
-   } 
-    else if (coniglio.geometry.x <= 0) {
-        PP.physics.set_velocity_x(coniglio, 250);
-        coniglio.geometry.flip_x = true;
-   }
+ // movimento coniglio  
+if (coniglio.geometry.x >= 6560) {
+    PP.physics.set_velocity_x(coniglio, -250);
+    coniglio.geometry.flip_x = false;
+} 
+else if (coniglio.geometry.x <= 5560) {
+    PP.physics.set_velocity_x(coniglio, 250);
+    coniglio.geometry.flip_x = true;
+}
 
-   //movimento topo 8360
-   if (topo.geometry.x >= 8360) {
+//movimento topo 
+if (topo.geometry.x >= 8060) {
     PP.physics.set_velocity_x(topo, -250);
     topo.geometry.flip_x = false;
 } 
-else if (topo.geometry.x <= 8060) {
+else if (topo.geometry.x <= 7460) {
     PP.physics.set_velocity_x(topo, 250);
     topo.geometry.flip_x = true;
 }
 
-// movimento scimmia  7845, 3535
+// movimento scimmia  
 if (scimmia.geometry.x >= 9145) {
     PP.physics.set_velocity_x(scimmia, -280);
     scimmia.geometry.flip_x = true;
@@ -129,25 +144,36 @@ else if (scimmia.geometry.x <= 8345) {
     scimmia.geometry.flip_x = false;
 }
 
-// movimento maiale
-if (maiale.geometry.x >= 6120) {
-    PP.physics.set_velocity_x(maiale, -250);
-    maiale.geometry.flip_x = false;
-} 
-else if (maiale.geometry.x <= 0) {
-    PP.physics.set_velocity_x(maiale, 250);
+// movimento maiale 
+if (maiale.geometry.x >= 6560) {
+    PP.physics.set_velocity_x(maiale, -270);
     maiale.geometry.flip_x = true;
+} 
+else if (maiale.geometry.x <= 5160) {
+    PP.physics.set_velocity_x(maiale, 270);
+    maiale.geometry.flip_x = false;
 }
 
 // movimento scienziata  
 if (scientist.geometry.x >= 7000) {
-    PP.physics.set_velocity_x(scientist, -250);
+    PP.physics.set_velocity_x(scientist, -270);
     scientist.geometry.flip_x = true;
 } 
 else if (scientist.geometry.x <= 6210) {
-    PP.physics.set_velocity_x(scientist, 250);
+    PP.physics.set_velocity_x(scientist, 270);
     scientist.geometry.flip_x = false;
 }
+
+// movimento scienziata2  
+if (scientist2.geometry.x >= 9060) {
+    PP.physics.set_velocity_x(scientist2, -270);
+    scientist2.geometry.flip_x = true;
+} 
+else if (scientist2.geometry.x <= 7660) {
+    PP.physics.set_velocity_x(scientist2, 270);
+    scientist2.geometry.flip_x = false;
+}
+
 }
 
 function destroy_animals (s) {
