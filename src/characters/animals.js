@@ -17,7 +17,7 @@ let scientist;
 function preload_animals (s) {
     img_coniglio   = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_coniglio2.png", 110.6, 90);
     img_topo       = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topo.png", 198, 65);
-    img_scimmia    = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scimmia.png", 248, 125);
+    img_scimmia    = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scimmia.png", 248, 214);
     img_maiale     = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_maiale.png", 171, 87);
     img_scientist  = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scientist.png", 94, 170);
 }
