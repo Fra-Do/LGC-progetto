@@ -71,7 +71,7 @@ function create_structure(s) {
 
 
     //pavimento (2)
-    wall = PP.shapes.rectangle_add(s, 9440, 2270, 520, 300, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 9440, 2273, 520, 300, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
@@ -99,27 +99,27 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
     
     //3.4
-    wall = PP.shapes.rectangle_add(s, 1876+30, 233+30, 190, 66, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1876+30, 233+35, 190, 66, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.5 
-    wall = PP.shapes.rectangle_add(s, 2210+30, 350+30, 190, 66, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 2210+30, 350+35, 190, 66, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.6
-    wall = PP.shapes.rectangle_add(s, 2210+30, 789+30, 190, 66, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 2210+30, 789+35, 190, 66, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.7
-    wall = PP.shapes.rectangle_add(s, 1900+30, 580+30, 190, 66, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1900+15, 580+35, 190, 66, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
     //3.8
-    wall = PP.shapes.rectangle_add(s, 1920+30, 950+30, 190, 66, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 1920+30, 950+35, 190, 66, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
     
@@ -142,12 +142,12 @@ function create_structure(s) {
     // 5.2
     wall = PP.shapes.rectangle_add(s, 2590, 1640, 220, 40, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    //PP.physics.add_collider(s, player, wall);
+    PP.physics.add_collider(s, player, wall);
 
     // 5.3
     wall = PP.shapes.rectangle_add(s, 3080, 1550, 140, 260, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
-    PP.physics.add_collider(s, player, wall);
+    //PP.physics.add_collider(s, player, wall);
 
     //PIATTAFORMA 6
     wall = PP.shapes.rectangle_add(s, 4845, 700, 1970, 880, "0x000000", 0); 
