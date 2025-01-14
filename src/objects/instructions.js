@@ -37,6 +37,13 @@ let istruzioni_cage_created4 = false;
 let istruzioni_cage_created5 = false;
 let istruzioni_cage_created6 = false;
 
+let img_istruzioni_key;
+let istruzioni_key_created = false; 
+
+let img_istruzioni_fiale;
+let istruzioni_fiale_created = false; 
+
+
 function preload_instruction(s) {
     img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
     img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
@@ -58,6 +65,14 @@ function preload_instruction(s) {
     img_istruzioni_cage4 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
     img_istruzioni_cage5 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
     img_istruzioni_cage6 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+
+    //key
+    img_istruzioni_key = PP.assets.image.load(s, "assets/images/istruzioni/k.png"); //da cambiare
+
+    //fiale
+    img_istruzioni_fiale = PP.assets.image.load(s, "assets/images/istruzioni/k.png"); //da cambiare
+
+
 }
 
 function create_instruction(s) {
@@ -264,6 +279,42 @@ function update_instruction(s) {
                 player.geometry.y > 1980 && player.geometry.y < 2200) && istruzioni_cage_created6 == true){
         PP.assets.destroy(istruzioni_interaction_cage6);
         istruzioni_cage_created6 = false;
+    }
+
+
+
+
+
+
+
+    //KEY 9450, 2000
+    if (player.geometry.x > 9360 && player.geometry.x < 9590 &&
+        player.geometry.y > 1900 && player.geometry.y < 2200) {
+        
+        if (istruzioni_key_created == false) {
+            istruzioni_interaction_key = PP.assets.image.add(s, img_istruzioni_key, 9480, 1960, 0.5, 1); 
+        }
+        istruzioni_key_created = true;
+
+    } else if ((player.geometry.x < 9360 || player.geometry.x > 9590 &&
+                player.geometry.y > 1900 && player.geometry.y < 2200) && istruzioni_key_created == true){
+        PP.assets.destroy(istruzioni_interaction_key);
+        istruzioni_key_created = false;
+    }
+
+    //FIALE 9400, 3610
+    if (player.geometry.x > 9300 && player.geometry.x < 9550 &&
+        player.geometry.y > 3610 && player.geometry.y < 3810) {
+        
+        if (istruzioni_fiale_created == false) {
+            istruzioni_interaction_fiale = PP.assets.image.add(s, img_istruzioni_fiale, 9425, 3580, 0.5, 1); 
+        }
+        istruzioni_fiale_created = true;
+
+    } else if ((player.geometry.x < 9300 || player.geometry.x > 9550 &&
+                player.geometry.y > 3610 && player.geometry.y < 3810) && istruzioni_fiale_created == true){
+        PP.assets.destroy(istruzioni_interaction_fiale);
+        istruzioni_fiale_created = false;
     }
 
 

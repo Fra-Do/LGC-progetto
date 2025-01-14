@@ -95,8 +95,9 @@ function create_animals (s) {
     scientist2 = PP.assets.sprite.add(s, img_scientist, 7660, 5190, 0.5, 1); 
     PP.physics.add(s, scientist2, PP.physics.type.DYNAMIC);
     scientist2.geometry.flip_x = false;
-
-    //PP.physics.add_collider_f(s, topo, player, goto_gameover);
+    
+    //Quando la protagonista collide con la scienziata è gameover 
+    PP.physics.add_collider_f(s, scientist2, player, goto_gameover);
 
     PP.assets.sprite.animation_add(scientist2, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(scientist2, "walk");
