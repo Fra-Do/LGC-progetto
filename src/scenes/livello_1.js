@@ -25,7 +25,7 @@ function preload(s) {
     img_background  = PP.assets.image.load(s, "assets/images/mappa/sfondo.png");
     img_tubi        = PP.assets.image.load(s, "assets/images/mappa/liv1e2.png"); 
     
-    
+    preload_HUD(s)
     preload_collectibles(s);
     preload_instruction(s)
     preload_player(s);
@@ -33,7 +33,7 @@ function preload(s) {
     preload_structure(s)
     preload_collectibles(s)
     preload_platforms(s)
-    preload_HUD(s)
+    
 }
 
 function create(s) {
@@ -51,7 +51,7 @@ function create(s) {
     //Tubi struttura
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
     
-    create_HUD(s)
+    
     create_instruction(s) 
     create_player(s);
     create_animals (s);
@@ -62,6 +62,10 @@ function create(s) {
     configure_player_animations(s, player);
     create_cage(s, player);
     configure_cage_animations(s)
+    create_HUD(s)
+
+    
+
     
     //Gestione camera
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
@@ -70,8 +74,12 @@ function create(s) {
     
 
 }
+
+
+
 function update(s) {
     //update_collectibles(s);
+    score_update(s)
     update_instruction(s)
     update_player(s, player);
     update_platforms(s);
@@ -96,8 +104,6 @@ function update(s) {
     if (player.geometry.body_y >= 4770-120) {
         PP.camera.set_follow_offset (s, 0, -4770 + player.geometry.body_y);
     } 
-    
-
     update_instruction(s, player);
     open_map(s); // Controlla i tasti M e X per gestire la mappa
     update_HUD(s)
