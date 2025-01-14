@@ -2,6 +2,7 @@ let img_background;
 let img_piattaforme;
 let img_parallax01;
 let img_parallax02;
+
 let img_tubi;
 
 let tubi;
@@ -11,18 +12,16 @@ let piattaforme;
 let parallax01;
 let parallax02;
 
-let istruzioni_A;
-let istruzioni_B;
-let istruzioni_C;
-
-
-
-
 
 function preload(s) {
+    //PARALLASSE
     img_parallax01  = PP.assets.image.load(s, "assets/images/mappa/livello1_2_tubi.png");
     img_parallax02  = PP.assets.image.load(s, "assets/images/mappa/livello1_3_tubi.png");
+    
+    //SFONDO
     img_background  = PP.assets.image.load(s, "assets/images/mappa/sfondo.png");
+    
+    //STRUTTURA
     img_tubi        = PP.assets.image.load(s, "assets/images/mappa/liv1e2.png"); 
     
     preload_HUD(s)
@@ -51,7 +50,6 @@ function create(s) {
     //Tubi struttura
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
     
-    
     create_instruction(s) 
     create_player(s);
     create_animals (s);
@@ -64,18 +62,10 @@ function create(s) {
     configure_cage_animations(s)
     create_HUD(s)
 
-    
-
-    
     //Gestione camera
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120);
-
-    
-
 }
-
-
 
 function update(s) {
     //update_collectibles(s);

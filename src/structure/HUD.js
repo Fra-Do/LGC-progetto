@@ -1,8 +1,11 @@
+//VARIABILE PER PORRE L'HUD DAVANTI A TUTTO
 let nome_layer;
 
+//VARIABILI PER CONTEGGIO GABBIE
 let txt_score;
 let curr_score
 
+//SFONDO PER CONTEGGIO GABBIE
 let img_counter_cage
 let counter_cage;
 
@@ -16,15 +19,19 @@ let health;
 
 let img_health;
 
+//MAPPA
 let img_ss_map;
 let ss_map;
 
+//CHIAVE
 let img_ss_key;
 let ss_key;
 
+//FIALE
 let img_ss_fiale;
 let ss_fiale;
 
+//GESTIONE ANIMAZIONI OGGETTI
 let ss_map_opened   = false;
 let ss_key_opened   = false;
 let ss_fiale_opened = false;
@@ -39,7 +46,6 @@ function goto_finale2(s) {
     PP.scenes.start("finale2");
 }
 
-
 function preload_HUD(s) {
     img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/countergabbie.png");
     ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/spriteskit.png", 70, 51);
@@ -49,38 +55,36 @@ function preload_HUD(s) {
 }
 
 function configure_ss_map_animations (s) {
-    // Aggiungi animazioni alla sprite
+    //ANIMAZIONI MAPPA
     PP.assets.sprite.animation_add(ss_map, "closed", 0, 0, 1, 0); // Frame iniziale
     PP.assets.sprite.animation_add(ss_map, "opened", 1, 1, 1, 0); // Frame successivo
 
-    // Avvia animazione iniziale
     PP.assets.sprite.animation_play(ss_map, "closed");
 }
 
 function configure_ss_key_animations (s) {
-    // Aggiungi animazioni alla sprite
+    // ANIMAZIONI CHIAVE
     PP.assets.sprite.animation_add(ss_key, "closed", 0, 0, 1, 0); // Frame iniziale
     PP.assets.sprite.animation_add(ss_key, "opened", 1, 1, 1, 0); // Frame successivo
 
-    // Avvia animazione iniziale
     PP.assets.sprite.animation_play(ss_key, "closed");
 }
 
 function configure_ss_fiale_animations (s) {
-    // Aggiungi animazioni alla sprite
+    // ANIMAZIONI FIALE
     PP.assets.sprite.animation_add(ss_fiale, "closed", 0, 0, 1, 0); // Frame iniziale
     PP.assets.sprite.animation_add(ss_fiale, "opened", 1, 1, 1, 0); // Frame successivo
 
-    // Avvia animazione iniziale
     PP.assets.sprite.animation_play(ss_fiale, "closed");
 }
 
-function create_HUD(s) { 
+function create_HUD(s) {
+    //CONTEGGIO GABBIE 
     counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
     counter_cage.tile_geometry.scroll_factor_x = 0;
     counter_cage.tile_geometry.scroll_factor_y = 0;
 
-
+    //MAPPA
     ss_map     = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
     configure_ss_map_animations(s); // Configura le animazioni qui
     
@@ -91,6 +95,7 @@ function create_HUD(s) {
     ss_map.tile_geometry.scroll_factor_x = 0;
     ss_map.tile_geometry.scroll_factor_y = 0;
 
+    //CHIAVE
     ss_key     = PP.assets.sprite.add(s, img_ss_key, 580, 50, 0, 0); 
     configure_ss_key_animations(s);
 
@@ -101,6 +106,7 @@ function create_HUD(s) {
     ss_key.tile_geometry.scroll_factor_x = 0;
     ss_key.tile_geometry.scroll_factor_y = 0;
     
+    //FIALE
     ss_fiale   = PP.assets.sprite.add(s, img_ss_fiale, 660, 50, 0, 0);
     configure_ss_fiale_animations(s);
 
@@ -111,7 +117,8 @@ function create_HUD(s) {
     ss_fiale.tile_geometry.scroll_factor_x = 0;
     ss_fiale.tile_geometry.scroll_factor_y = 0;
 
-    txt_score  = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie:0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+    //CREAZIONE DEL CONTEGGIO
+    txt_score  = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie: 0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, ss_fiale);
@@ -148,12 +155,12 @@ function create_HUD(s) {
     }
 }
 
-
-
+//SPIEGAZIONE SISTEMA DELLE GABBIE: IL TASTO C VIENE USATO PER APRIRE LE VARIE GABBIE CON GLI ANIMALI INTRAPPOLATI. IN TUTTO SONO 6.
+//OGNI VOLTA CHE IL TASTO C VIENE PREMUTO, IL CONTEGGIO DELLE GABBIE AUMENTA DI 1 FINO A UN MASSIMO DI 6
 function score_update(s) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)){
-        if (!isCPressed) { // Procedi solo se il tasto era rilasciato
-            isCPressed = true; // Imposta il flag a true
+        if (!isCPressed) { //Lo score aumenta quando il tasto viene rilasciato
+            isCPressed = true; 
             console.log("Tasto C premuto");
 
         //ottengo il punteggio corrente
@@ -172,20 +179,12 @@ function score_update(s) {
         // Resetta il flag quando il tasto è rilasciato
         isCPressed = false;
     }
-        /*let prev_score = PP.game_state.get_variable("score");
-        PP.game_state.set_variable("score", prev_score+1);
-
-        PP.shapes.text_change(txt_score, "Score: " + (prev_score+1));*/
-
-    } 
-    
+    }   
 } 
 
-
-
-// Funzione update per aggiornare l'HUD quando la salute cambia
+// Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
-    // Controlla pressione del tasto M
+    //MAPPA
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.M)) {
         console.log("Tasto M premuto");
         // Cambia animazione della gabbia
@@ -194,7 +193,7 @@ function update_HUD(s, player) {
         PP.assets.sprite.animation_play(ss_map, "opened");
     }
 
-    // Controlla pressione del tasto E
+    //CHIAVE
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
         console.log("Tasto M premuto");
         // Cambia animazione della gabbia
@@ -203,8 +202,8 @@ function update_HUD(s, player) {
         PP.assets.sprite.animation_play(ss_key, "opened");
     }
 
-     // Controlla pressione del tasto E
-     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)) {
+    //FIALE
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)) {
         console.log("Tasto M premuto");
         // Cambia animazione della gabbia
         ss_fiale_opened = true;

@@ -1,3 +1,6 @@
+//Nel gioco si può raccogliere: la mappa, i kit per curare la vita, una chiave e le fiale per attaccare
+
+//KIT
 let img_kit;
 let kit_1;
 let kit_2;
@@ -5,6 +8,7 @@ let kit_3;
 let kit_4;
 let kit_5;
 
+//MAPPA
 let img_map;
 let map;
 let img_lil_map;
@@ -12,25 +16,32 @@ let lil_map; // Variabile per l'immagine da mostrare
 let map_created = false;
 let image_visible = false; // Stato della visibilità dell'immagine
 
+//CHIAVE
 let key;
 let img_key;
 
+//FIALE
 let img_fiale;
 let fiale;
 
+//GABBIE ANIMALI DA SALVARE
+//TOPO
 let img_cage_topo;
 let cage_topo;
 
+//CONIGLIO
 let img_cage_coniglio;
 let cage_coniglio;
 
+//MAIALE
 let img_cage_maiale;
 let cage_maiale;
 
+//SCIMMIA
 let img_cage_scimmia;
 let cage_scimmia;
 
-
+//VARIABILI PER LE GABBIE
 let cage_1;
 let cage_2;
 let cage_3;
@@ -38,6 +49,7 @@ let cage_4;
 let cage_5;
 let cage_6;
 
+//VARIABILI PER ANIMAZIONI APERTURA GABBIE
 let cage_1_opened = false;
 let cage_2_opened = false;
 let cage_3_opened = false;
@@ -121,12 +133,7 @@ function create_collectibles(s) {
     // liv 2 second kit
     let kit_5 = PP.assets.image.add(s, img_kit, 8360, 4435, 0, 0);
     PP.physics.add(s, kit_5, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_5, collision_collectibles);
-    
-    
-    /*let kit_down = PP.assets.image.add(s, img_kit, 1130, 240, 0, 0);
-    PP.physics.add(s, kit_down, PP.physics.type.STATIC);
-    PP.physics.add_overlap_f(s, player, kit_down, collision_collectibles);*/   
+    PP.physics.add_overlap_f(s, player, kit_5, collision_collectibles); 
 
     map = PP.assets.image.add(s, img_map, 1600+280, 175, 0, 0);
     PP.physics.add(s, map, PP.physics.type.STATIC);
@@ -137,6 +144,7 @@ function create_collectibles(s) {
     PP.physics.add_overlap_f(s, player, fiale, collision_collectibles);
 }
 
+//FUNZIONE PER GESTIRE LE GABBIE
 function create_cage(s, player) {
     // Creazione gabbia topo
     cage_1 = PP.assets.sprite.add(s, img_cage_topo, 2817, 777, 0.5, 1);
@@ -181,6 +189,7 @@ function create_cage(s, player) {
     });
 }
 
+//QUANDO VIENE PREMUTO IL TASTO C LA GABBIA SI APRE
 function open_cage_1(s, player) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         console.log("Tasto C premuto");
@@ -241,6 +250,7 @@ function open_cage_6(s, player) {
     }
 }
 
+//FUNZIONI PER RACCOLTA DI OGGETTI
 function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
         PP.assets.destroy(kit); 
@@ -255,6 +265,7 @@ function collision_collectibles(s, player, kit) {
     }
 }
 
+//ALL'INIZIO DEL GIOCO LA PROTAGONISTA TROVA LA MAPPA, CHE APRE IN QUALUNQUE MOMENTO
 function open_map(s) {
     // Controlla se il tasto M viene premuto e la mappa non è ancora visibile
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_created) {
@@ -265,7 +276,7 @@ function open_map(s) {
         lil_map.tile_geometry.scroll_factor_y = 0;
         map_created = true;
 
-        //codice per creare un layer sopra tutti 
+    //codice per creare un layer sopra tutti 
     let nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, lil_map);
     PP.layers.set_z_index(nome_layer, 2);
@@ -279,9 +290,6 @@ function open_map(s) {
         map_created = false;
     }
 }
-
-
-
 
 function upload_collectibles(s) {
     

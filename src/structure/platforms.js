@@ -1,3 +1,4 @@
+//GESTIONE PIATTAFORME MOBILI
 let img_pl1;
 let img_diagonal;
 let img_pl3;
@@ -29,11 +30,7 @@ function preload_platforms(s) {
     img_pl5s      = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_5sx.png");
     img_pl8       = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_8.png");
     img_pl7       = PP.assets.image.load(s, "assets/images/piattaforme/tubo_mob_7.png");
-
-
 }
-
-
 
 function create_platforms(s) {
     // Piattaforma mobile
@@ -465,8 +462,6 @@ function update_platforms(s) {
     else if(pl_8_2.geometry.y <= 1300) {
         PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
     }
-
-    
 }
  
 

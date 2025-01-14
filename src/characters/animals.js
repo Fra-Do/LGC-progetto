@@ -1,3 +1,4 @@
+//5 tipi di animali mutati diversi: un coniglio, un topo, una scimmia, un maiale e una scienziata
 let img_coniglio;
 let coniglio;
 
@@ -81,7 +82,7 @@ function create_animals (s) {
     PP.physics.add(s, scientist, PP.physics.type.DYNAMIC);
     scientist.geometry.flip_x = false;
 
-    //Quando la protagonista collide con la scienziata è gameover 
+    //Quando la protagonista collide con la scienziata è subito gameover 
     PP.physics.add_collider_f(s, scientist, player, goto_gameover);
 
     PP.assets.sprite.animation_add(scientist, "walk", 0, 5, 8, -1);
@@ -96,7 +97,7 @@ function create_animals (s) {
     PP.physics.add(s, scientist2, PP.physics.type.DYNAMIC);
     scientist2.geometry.flip_x = false;
     
-    //Quando la protagonista collide con la scienziata è gameover 
+    //Quando la protagonista collide con la scienziata è subito gameover 
     PP.physics.add_collider_f(s, scientist2, player, goto_gameover);
 
     PP.assets.sprite.animation_add(scientist2, "walk", 0, 5, 8, -1);
@@ -117,7 +118,6 @@ else if (coniglio.geometry.x <= 5560) {
     PP.physics.set_velocity_x(coniglio, 250);
     coniglio.geometry.flip_x = true;
 }
-
 
    //movimento topo 8060
    if (topo.geometry.x >= 8360) {

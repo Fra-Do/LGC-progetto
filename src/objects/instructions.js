@@ -1,22 +1,21 @@
+//PER INTERAGIRE CON GLI OGGETTI NELLA MAPPA, APPAIONO DELLE ISTRUZIONI
+
+//FRECCE SU, DESTRA, SINISTRA
 let img_up;
 let img_arrows;
-
 let arrows
 let up
 
 let istruzioni_arrows = false;
+let istruzioni_leftright    = false;
 
+//ISTRUZIONI KIT (TASTO K)
 let img_istruzioni_kit1;
 let img_istruzioni_kit2;
 let img_istruzioni_kit3;
 let img_istruzioni_kit4;
 let img_istruzioni_kit5;
-let img_istruzioni_map;
 
-let istruzioni_kit;
-let istruzioni_map;
-
-let istruzioni_leftright    = false;
 let istruzioni_kit_created1 = false;
 let istruzioni_kit_created2 = false;
 let istruzioni_kit_created3 = false;
@@ -24,6 +23,13 @@ let istruzioni_kit_created4 = false;
 let istruzioni_kit_created5 = false;
 let istruzioni_map_created  = false;
 
+let istruzioni_kit;
+
+//ISTRUZIONI MAPPA (TASTO M)
+let img_istruzioni_map;
+let istruzioni_map;
+
+//ISTRUZIONI GABBIE (TASTO C)
 let img_istruzioni_cage;
 let img_istruzioni_cage2;
 let img_istruzioni_cage3;
@@ -37,14 +43,16 @@ let istruzioni_cage_created4 = false;
 let istruzioni_cage_created5 = false;
 let istruzioni_cage_created6 = false;
 
+//ISTRUZIONI CHIAVE (TASTO E)
 let img_istruzioni_key;
 let istruzioni_key_created = false; 
 
+//ISTRUZIONI FIALE (TASTO L)
 let img_istruzioni_fiale;
 let istruzioni_fiale_created = false; 
 
-
 function preload_instruction(s) {
+    //FRECCE
     img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
     img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
 
@@ -281,13 +289,7 @@ function update_instruction(s) {
         istruzioni_cage_created6 = false;
     }
 
-
-
-
-
-
-
-    //KEY 9450, 2000
+    //KEY 
     if (player.geometry.x > 9360 && player.geometry.x < 9590 &&
         player.geometry.y > 1900 && player.geometry.y < 2200) {
         
@@ -302,7 +304,7 @@ function update_instruction(s) {
         istruzioni_key_created = false;
     }
 
-    //FIALE 9400, 3610
+    //FIALE 
     if (player.geometry.x > 9300 && player.geometry.x < 9550 &&
         player.geometry.y > 3610 && player.geometry.y < 3810) {
         
@@ -316,9 +318,6 @@ function update_instruction(s) {
         PP.assets.destroy(istruzioni_interaction_fiale);
         istruzioni_fiale_created = false;
     }
-
-
-
 } 
 
 function destroy_instruction(s) {
