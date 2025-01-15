@@ -16,7 +16,7 @@ let scientist;
 let scientist2;
 
 
-function preload_animals (s) {
+function preload_animals(s) {
     img_coniglio   = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_coniglio2.png", 110.6, 90);
     img_topo       = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topo.png", 198, 65);
     img_scimmia    = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scimmia.png", 248, 160);
@@ -34,6 +34,8 @@ function create_animals (s) {
     PP.physics.add(s, coniglio, PP.physics.type.DYNAMIC);
     coniglio.geometry.flip_x = true;
 
+    //PP.physics.add_collider_f(s, coniglio, weapon, hit_animals);
+
     PP.assets.sprite.animation_add(coniglio, "walk", 0, 10, 15, -1);
     PP.assets.sprite.animation_play(coniglio, "walk");
 
@@ -45,6 +47,8 @@ function create_animals (s) {
     topo = PP.assets.sprite.add(s, img_topo, 8060, 4560, 0.5, 1); 
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
+
+   // PP.physics.add_collider_f(s, topo, weapon, hit_animals);
 
     PP.assets.sprite.animation_add(topo, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(topo, "walk");
@@ -58,6 +62,8 @@ function create_animals (s) {
     PP.physics.add(s, scimmia, PP.physics.type.DYNAMIC);
     scimmia.geometry.flip_x = true;
 
+    //PP.physics.add_collider_f(s, scimmia, weapon, hit_animals);
+
     PP.assets.sprite.animation_add(scimmia, "walk", 0, 6, 8, -1);
     PP.assets.sprite.animation_play(scimmia, "walk");
 
@@ -69,6 +75,8 @@ function create_animals (s) {
     maiale = PP.assets.sprite.add(s, img_maiale, 6560, 5190, 0.5, 1); 
     PP.physics.add(s, maiale, PP.physics.type.DYNAMIC);
     maiale.geometry.flip_x = true;
+
+    //PP.physics.add_collider_f(s, maiale, weapon, hit_animals);
 
     PP.assets.sprite.animation_add(maiale, "walk", 0, 8, 8, -1);
     PP.assets.sprite.animation_play(maiale, "walk");
@@ -83,7 +91,7 @@ function create_animals (s) {
     scientist.geometry.flip_x = false;
 
     //Quando la protagonista collide con la scienziata è subito gameover 
-    PP.physics.add_collider_f(s, scientist, player, goto_gameover);
+    PP.physics.add_collider_f(s, scientist, player, goto_gameover, hit_animals);
 
     PP.assets.sprite.animation_add(scientist, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(scientist, "walk");
@@ -98,7 +106,7 @@ function create_animals (s) {
     scientist2.geometry.flip_x = false;
     
     //Quando la protagonista collide con la scienziata è subito gameover 
-    PP.physics.add_collider_f(s, scientist2, player, goto_gameover);
+    PP.physics.add_collider_f(s, scientist2, player, goto_gameover, hit_animals);
 
     PP.assets.sprite.animation_add(scientist2, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(scientist2, "walk");

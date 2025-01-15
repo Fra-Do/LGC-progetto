@@ -10,14 +10,7 @@ let img_counter_cage
 let counter_cage;
 
 let ss_counter_health;
-
 let counter_health;
-
-let player_health;
-
-let health;
-
-let img_health;
 
 //MAPPA
 let img_ss_map;
@@ -48,37 +41,63 @@ function goto_finale2(s) {
 
 function preload_HUD(s) {
     img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/countergabbie.png");
-    ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/spriteskit.png", 70, 51);
+    ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_kit.png", 210, 51);
     img_ss_key        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_key.png", 65, 52);
     img_ss_fiale      = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_fiale.png", 65, 52);
     img_ss_map        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_mappa.png", 65, 52);
 }
 
+function configure_ss_counter_health_animations (s) {
+    PP.assets.sprite.animation_add(counter_health, "health: 2", 2, 2, 1, 0);
+    PP.assets.sprite.animation_add(counter_health, "health: 1", 1, 1, 1, 0);
+    PP.assets.sprite.animation_add(counter_health, "health: 0", 0, 0, 1, 0);
+    
+    PP.assets.sprite.animation_play(counter_health, "health: 0");
+    console.log(PP.assets.sprite.animation_play(counter_health, "health: 2"));
+
+}
+
 function configure_ss_map_animations (s) {
     //ANIMAZIONI MAPPA
-    PP.assets.sprite.animation_add(ss_map, "closed", 0, 0, 1, 0); // Frame iniziale
-    PP.assets.sprite.animation_add(ss_map, "opened", 1, 1, 1, 0); // Frame successivo
+    PP.assets.sprite.animation_add(ss_map, "closed", 0, 0, 1, 0); 
+    PP.assets.sprite.animation_add(ss_map, "opened", 1, 1, 1, 0); 
 
     PP.assets.sprite.animation_play(ss_map, "closed");
 }
 
 function configure_ss_key_animations (s) {
     // ANIMAZIONI CHIAVE
-    PP.assets.sprite.animation_add(ss_key, "closed", 0, 0, 1, 0); // Frame iniziale
-    PP.assets.sprite.animation_add(ss_key, "opened", 1, 1, 1, 0); // Frame successivo
+    PP.assets.sprite.animation_add(ss_key, "closed", 0, 0, 1, 0); 
+    PP.assets.sprite.animation_add(ss_key, "opened", 1, 1, 1, 0); 
 
     PP.assets.sprite.animation_play(ss_key, "closed");
 }
 
 function configure_ss_fiale_animations (s) {
     // ANIMAZIONI FIALE
-    PP.assets.sprite.animation_add(ss_fiale, "closed", 0, 0, 1, 0); // Frame iniziale
-    PP.assets.sprite.animation_add(ss_fiale, "opened", 1, 1, 1, 0); // Frame successivo
+    PP.assets.sprite.animation_add(ss_fiale, "closed", 0, 0, 1, 0); 
+    PP.assets.sprite.animation_add(ss_fiale, "opened", 1, 1, 1, 0); 
 
     PP.assets.sprite.animation_play(ss_fiale, "closed");
 }
 
 function create_HUD(s) {
+    // Variabili HUD
+    //health = 2;
+
+    // Creazione counter kit
+    counter_health = PP.assets.sprite.add(s, ss_counter_health, 210, 50, 0, 0);
+    console.log(ss_counter_health); // Controlla che la sprite sia caricata
+
+    configure_ss_counter_health_animations(s);
+
+    nome_layer = PP.layers.create(s);
+    PP.layers.add_to_layer(nome_layer, counter_health);
+    PP.layers.set_z_index(nome_layer, 3);
+
+    counter_health.tile_geometry.scroll_factor_x = 0;
+    counter_health.tile_geometry.scroll_factor_y = 0;
+
     //CONTEGGIO GABBIE 
     counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
     counter_cage.tile_geometry.scroll_factor_x = 0;
@@ -86,7 +105,7 @@ function create_HUD(s) {
 
     //MAPPA
     ss_map     = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
-    configure_ss_map_animations(s); // Configura le animazioni qui
+    configure_ss_map_animations(s); 
     
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, ss_map);
@@ -128,21 +147,6 @@ function create_HUD(s) {
     txt_score.tile_geometry.scroll_factor_y = 0;
 
     PP.game_state.set_variable("score", 0);
-
-  // Variabili HUD
-  health = 3;
-
-  // Creazione counter cuori
-  counter_health = PP.assets.sprite.add(s, ss_counter_health, 100, -70, 0, 0);
-  
-
-    PP.assets.sprite.animation_add(counter_health, "health: 5", 5, 5, 1, 0); 
-    PP.assets.sprite.animation_add(counter_health, "health: 4", 4, 4, 1, 0);
-    PP.assets.sprite.animation_add(counter_health, "health: 3", 3, 3, 1, 0); 
-    PP.assets.sprite.animation_add(counter_health, "health: 2", 2, 2, 1, 0);
-    PP.assets.sprite.animation_add(counter_health, "health: 1", 1, 1, 1, 0);
-    PP.assets.sprite.animation_add(counter_health, "health: 0", 0, 0, 1, 0);
-    PP.assets.sprite.animation_play(counter_health, "health: 0");
 
     //Uscita per finali
     let wall = PP.shapes.rectangle_add(s, 9880, 5100, 100, 300, "0x000000", 0); 
@@ -210,37 +214,6 @@ function update_HUD(s, player) {
         PP.assets.sprite.animation_stop(ss_fiale, "closed");
         PP.assets.sprite.animation_play(ss_fiale, "opened");
     }
-
-   // Gestione ss_counter_health
-   /*if (health == 5) {
-    PP.assets.sprite.animation_stop(counter_health, "health: 0");
-    PP.assets.sprite.animation_play(counter_health, "health: 5");    
-}
-
-if (health == 4) {
-    PP.assets.sprite.animation_stop(counter_health, "health: 5");
-    PP.assets.sprite.animation_play(counter_health, "health: 4");    
-}
-
-if (health == 3) {
-    PP.assets.sprite.animation_stop(counter_health, "health: 4");
-    PP.assets.sprite.animation_play(counter_health, "health: 3");    
-}
-
-if (health == 2) {
-    PP.assets.sprite.animation_stop(counter_health, "health: 3");
-    PP.assets.sprite.animation_play(counter_health, "health: 2");
-}
-
-if (health == 1) {
-    PP.assets.sprite.animation_stop(counter_health, "health: 2");
-    PP.assets.sprite.animation_play(counter_health, "health: 1");
-}
-
-if (health == 0) {
-    PP.assets.sprite.animation_stop(counter_health, "health: 1");
-    PP.assets.sprite.animation_play(counter_health, "health: 0");
-}*/
 }
 
 // Funzione per distruggere l'HUD

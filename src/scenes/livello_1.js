@@ -98,7 +98,6 @@ function update(s) {
     open_map(s); // Controlla i tasti M e X per gestire la mappa
     update_HUD(s)
     manage_player_weapon(s);
-    
 }
 
 function destroy(s) {
