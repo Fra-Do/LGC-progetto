@@ -1,6 +1,11 @@
 let img_player;
 let player;
 
+let img_weapon;
+let weapon;
+
+let weapon_disable = false;
+
 let player_speed      = 400;
 let jump_init_speed   = 500;
 let step_lenght       = 10;
@@ -26,6 +31,8 @@ function configure_player_animations(s, player) {
 
 function preload_player(s) {
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_protagonista.png", 94, 136, 1, 12);
+    img_weapon = PP.assets.image.load             (s, "assets/images/oggetti/arma.png", 50, 50);
+
 }
 
 /*function collision_platform(s, player, platform) {
@@ -41,6 +48,9 @@ function preload_player(s) {
 function create_player(s) {
     //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
     player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
+
+   //weapon = PP.assets.image.add(s, img_weapon, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
@@ -110,6 +120,82 @@ function update_player(s, player) {
     } 
     else if (PP.physics.get_velocity_x(player) > 0) {
         player.geometry.flip_x = false;
+    }
+
+    manage_player_weapon(s);
+}
+
+//FUNZIONE PR COLPIRE I NEMICI
+function hit_animals (s, weapon, coniglio, topo, scimmia, maiale, scientist, scientist2){
+    PP.assets.destroy(weapon);
+    PP.assets.destroy(coniglio);
+    PP.assets.destroy(topo);
+    PP.assets.destroy(scimmia);
+    PP.assets.destroy(maiale);
+    PP.assets.destroy(scientist);
+    PP.assets.destroy(scientist2);
+}
+
+//LANCIO ARMA
+function reenable_weapon(s) {
+    weapon_disable = false;
+}
+
+// Funzione globale per lanciare l'arma
+function launch_weapon(s, offset, velocity) {
+    weapon = PP.assets.image.add(s, img_weapon,
+        player.geometry.x + offset,
+        player.geometry.y - 70,
+        0.5, 0.5
+    );
+
+    PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
+    PP.physics.set_allow_gravity(weapon, false);
+    PP.physics.set_rotation(weapon, 360);
+    PP.physics.set_velocity_x(weapon, velocity);
+    //PP.physics.add_collider_f(s, weapon, enemy, hit_enemy);
+
+    PP.timers.add_timer(s, 700, reenable_weapon, false); // Riabilita l'arma dopo 700ms
+    weapon_disable = true;
+}
+
+function manage_player_weapon(s) {
+    let offset   = 70;
+    let velocity = 1000;
+
+    if (player.geometry.flip_x == true) {
+        offset   = - offset;
+        velocity = - velocity;
+    }
+
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)){
+
+        //Codice per lanciare l'arma dopo che l'animazione di lancio è finita
+        if (!weapon_disable) { // Controlla se è permesso lanciare l'arma
+            weapon_disable = true; // Blocca ulteriori lanci fino a quando non viene riabilitata
+            PP.timers.add_timer(s, 290, () => launch_weapon(s, offset, velocity), false); // Ritardo di 300ms
+        }
+
+        if (weapon_disable == false){
+            weapon = PP.assets.image.add(s, img_weapon,
+                player.geometry.x + offset,
+                player.geometry.y - 70,
+                0.5, 0.5
+            );
+    
+            PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
+            PP.physics.set_allow_gravity(weapon, false);
+            PP.physics.set_rotation(weapon, 360);
+            PP.physics.set_velocity_x(weapon, velocity);
+            PP.physics.add_collider_f(s, weapon, coniglio, hit_animals);
+            PP.physics.add_collider_f(s, weapon, topo, hit_animals);
+            PP.physics.add_collider_f(s, weapon, scimmia, hit_animals);
+            PP.physics.add_collider_f(s, weapon, maiale, hit_animals);
+            PP.physics.add_collider_f(s, weapon, scientist, hit_animals);
+            PP.physics.add_collider_f(s, weapon, scientist2, hit_animals);
+            PP.timers.add_timer(s, 700, reenable_weapon, false);
+            weapon_disable = true;
+        } 
     }
 }
 

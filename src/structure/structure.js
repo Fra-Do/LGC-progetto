@@ -3,14 +3,20 @@ let img_acid;
 let img_acid_2;
 let img_acid_3;
 
+let acid;
+
 let img_tubi;
 let img_tubi_2;
 let img_tubi_3;
 let img_tubi_4;
 
 
+
+
 function preload_structure(s) {
     //Tubi statici
+    
+
     img_tubi   = PP.assets.image.load(s, "assets/images/struttura/tubo_st_1.png");
     img_tubi_2 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_2.png");
     img_tubi_3 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_3.png");
@@ -31,7 +37,6 @@ function goto_gameover(s) {
 }
 
 function create_structure(s) {
-    //Acido
     background = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_2, 7047, 2190, 0, 0);
     background = PP.assets.image.add(s, img_acid_3, 8450, 2190, 0, 0);
