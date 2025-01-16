@@ -47,8 +47,8 @@ function preload_player(s) {
 }*/
 
 function create_player(s) {
-    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
+    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    //player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
 
    //weapon = PP.assets.image.add(s, img_weapon, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
 

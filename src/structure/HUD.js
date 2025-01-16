@@ -82,6 +82,7 @@ function configure_ss_fiale_animations (s) {
 }
 
 function create_HUD(s) {
+    //score_update(s);
     // Variabili HUD
     //health = 2;
 
@@ -174,14 +175,13 @@ function score_update(s) {
             console.log("Tasto C premuto");
 
         //ottengo il punteggio corrente
-        curr_score = PP.game_state.get_variable("score");
+        let curr_score = PP.game_state.get_variable("score");
 
         // Incrementa il punteggio solo se è inferiore a 6
         if (curr_score < 6) {
             curr_score++; // Incrementa il punteggio
             PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-
-        PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+            PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
         } else {
             console.log ("Hai aperto tutte e 6 le gabbie")
         }
@@ -189,7 +189,7 @@ function score_update(s) {
         // Resetta il flag quando il tasto è rilasciato
         isCPressed = false;
     }
-    }   
+}
 } 
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
