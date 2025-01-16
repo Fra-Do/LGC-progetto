@@ -59,8 +59,8 @@ function create(s) {
     create_platforms (s);
     configure_player_animations(s, player);
     create_cage(s, player);
-    configure_cage_animations(s)
-    create_HUD(s)
+    configure_cage_animations(s);
+    create_HUD(s);
 
     //Gestione camera
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
@@ -69,8 +69,8 @@ function create(s) {
 
 function update(s) {
     //update_collectibles(s);
-    score_update(s)
-    update_instruction(s)
+   
+    update_instruction(s);
     update_player(s, player);
     update_platforms(s);
     update_animals (s);
@@ -96,7 +96,8 @@ function update(s) {
     } 
     update_instruction(s, player);
     open_map(s); // Controlla i tasti M e X per gestire la mappa
-    update_HUD(s)
+    update_HUD(s);
+    score_update(s)
     manage_player_weapon(s);
 }
 
@@ -105,7 +106,7 @@ function destroy(s) {
     destroy_instruction(s);
     destroy_player(s);
     destroy_platforms(s);
-    destroy_HUD(s)
+    destroy_HUD(s);
     destroy_animals (s);
 }
 
