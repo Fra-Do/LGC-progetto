@@ -14,17 +14,15 @@ let img_tubi_4;
 
 
 function preload_structure(s) {
-    //Tubi statici
-    
-
-    img_tubi   = PP.assets.image.load(s, "assets/images/struttura/tubo_st_1.png");
-    img_tubi_2 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_2.png");
-    img_tubi_3 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_3.png");
-
     //Acido gameover
     img_acid   = PP.assets.image.load(s, "assets/images/struttura/acid.png");
     img_acid_2 = PP.assets.image.load(s, "assets/images/struttura/acid_2.png");
     img_acid_3 = PP.assets.image.load(s, "assets/images/struttura/acid_3.png");
+
+    //Tubi statici
+    img_tubi   = PP.assets.image.load(s, "assets/images/struttura/tubo_st_1.png");
+    img_tubi_2 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_2.png");
+    img_tubi_3 = PP.assets.image.load(s, "assets/images/struttura/tubo_st_3.png");
 }
 
 function collision_platform(s,player, platform) {

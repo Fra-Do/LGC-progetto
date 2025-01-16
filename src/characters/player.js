@@ -7,7 +7,7 @@ let weapon;
 let weapon_disable = false;
 
 let player_speed      = 400;
-let jump_init_speed   = 500;
+let jump_init_speed   = 330;
 let step_lenght       = 10;
 let height            = 8;
 
@@ -47,14 +47,15 @@ function preload_player(s) {
 }*/
 
 function create_player(s) {
-    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
+    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    //player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
 
    //weapon = PP.assets.image.add(s, img_weapon, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
 
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
+    
 
     //codice per creare un layer sopra tutti 
     let nome_layer = PP.layers.create(s);
@@ -72,6 +73,7 @@ function update_player(s, player) {
     if (is_on_ground || is_on_platform) {
         verifica_floor = true;
         verifica_platform = true;
+        can_jump = true;
     }
 
     // Movimento orizzontale
@@ -93,7 +95,7 @@ function update_player(s, player) {
         // Reset del flag a false quando il player è su una piattaforma
         //verifica_floor = false;
         //verifica_platform = false;
-    }
+    } 
 
     // Animazioni di salto gestite in base alla velocità verticale
     if(PP.physics.get_velocity_y(player) < 0 ) {

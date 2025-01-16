@@ -148,7 +148,7 @@ function create_HUD(s) {
 
     PP.game_state.set_variable("score", 0);
 
-    //------------Uscita per finali----------------
+    //GESTIONE USCITA PER ARRIVARE AI FINALI
     //Aggiungiamo il rettangolo per la collisione
     let wall = PP.shapes.rectangle_add(s, 9880, 5100, 100, 300, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC);
