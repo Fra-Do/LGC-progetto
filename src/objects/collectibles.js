@@ -265,6 +265,7 @@ function collision_collectibles(s, player, kit) {
     }
 }
 
+
 //ALL'INIZIO DEL GIOCO LA PROTAGONISTA TROVA LA MAPPA, CHE APRE IN QUALUNQUE MOMENTO
 function open_map(s) {
     // Controlla se il tasto M viene premuto e la mappa non è ancora visibile
@@ -291,7 +292,7 @@ function open_map(s) {
     }
 }
 
-function upload_collectibles(s) {
+function update_collectibles(s) {
     
 }
 
