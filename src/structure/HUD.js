@@ -159,9 +159,9 @@ function create_HUD(s) {
 //OGNI VOLTA CHE IL TASTO C VIENE PREMUTO, IL CONTEGGIO DELLE GABBIE AUMENTA DI 1 FINO A UN MASSIMO DI 6
 
 // Flag per monitorare la pressione del tasto
-let isCPressed = false;
+//let isCPressed = false;
 
-function score_update(s) {
+/*function score_update(s) {
     // Controlla se il tasto C è premuto
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
@@ -187,7 +187,7 @@ function score_update(s) {
         }
         isCPressed = false;
     }
-}
+} */
 
 let enable_damage = true;
  
@@ -214,45 +214,8 @@ function get_kit (s, player, kit_gen) {
     }
 }
 
-let isKPressed = false;
 
-<<<<<<< HEAD
-function score_kit_update(s) {
 
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isKPressed = true; 
-            console.log("Tasto K premuto");
-=======
-/*function score_kit_update(s) {
-    // Controlla se il tasto C è premuto
-    if (istruzioni_kit_created1) {
-        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-                isKPressed = true; 
-                console.log("Tasto K premuto");
->>>>>>> dc411629f634ed98b140e2429af209cafe83442a
-    
-            // Ottieni il punteggio corrente
-            let curr_kit = PP.game_state.get_variable("kit");
-    
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_kit < 5) {
-                curr_kit++; // Incrementa il punteggio
-                PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
-            } else {
-                console.log("Hai raccolto tutti e 5 i kit");
-            }
-        }
-    } else {
-        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
-        if (isKPressed) {
-            console.log("Tasto K rilasciato");
-        }
-        isKPressed = false;
-    }
-} */
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
@@ -314,7 +277,7 @@ function update_HUD(s, player) {
 
     //chiamo qui la funzione altrimenti non funziona correttamente
     //score_kit_update(s)
-    score_update(s)
+    //score_update(s)
     
 }
 

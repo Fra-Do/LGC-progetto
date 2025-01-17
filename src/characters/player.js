@@ -31,10 +31,6 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-<<<<<<< HEAD
-
-=======
->>>>>>> dc411629f634ed98b140e2429af209cafe83442a
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
     //player = PP.assets.sprite.add(s, img_player, 9200, 4000, 0.5, 1);  
 

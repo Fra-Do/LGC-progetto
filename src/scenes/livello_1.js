@@ -104,7 +104,7 @@ function update(s) {
     update_instruction(s, player);
     open_map(s); // Controlla i tasti M e X per gestire la mappa
     update_HUD(s);
-    score_update(s)
+    //score_update(s)
     manage_player_weapon(s);
 }
 
