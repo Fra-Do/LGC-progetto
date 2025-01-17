@@ -7,14 +7,13 @@ let weapon;
 let weapon_disable = false;
 
 let player_speed      = 400;
-let jump_init_speed   = 330;
+let jump_init_speed   = 350;
 let step_lenght       = 10;
 let height            = 8;
 
 let curr_anim         = "stop";
 
-let verifica_platform = true;
-let verifica_floor    = true;
+
 
 let is_on_platform;
 let is_on_ground;
@@ -34,17 +33,6 @@ function preload_player(s) {
     img_weapon = PP.assets.image.load             (s, "assets/images/oggetti/arma.png", 50, 50);
 
 }
-
-/*function collision_platform(s, player, platform) {
-    player.is_on_platform = true;
-    player.platform_velocity_y = PP.physics.get_velocity_y(platform); // Salva la velocità della piattaforma
-   
-    if( platform.geometry.y = player.geometry.y) {
-        verifica_platform = false;
-        console.log(verifica_platform); 
-        next_anim = "stop";
-    }
-}*/
 
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
@@ -73,7 +61,6 @@ function update_player(s, player) {
     if (is_on_ground || is_on_platform) {
         verifica_floor = true;
         verifica_platform = true;
-        can_jump = true;
     }
 
     // Movimento orizzontale
@@ -91,19 +78,33 @@ function update_player(s, player) {
 
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
         PP.physics.set_velocity_y(player, -jump_init_speed);  // Impostiamo la velocità verticale per il salto
-        
-        // Reset del flag a false quando il player è su una piattaforma
-        //verifica_floor = false;
-        //verifica_platform = false;
     } 
+    
 
-    // Animazioni di salto gestite in base alla velocità verticale
-    if(PP.physics.get_velocity_y(player) < 0 ) {
+    /*if (verifica_floor == true || verifica_platform == true ) {
+        if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
+            PP.physics.set_velocity_y(player, -jump_init_speed);  // Impostiamo la velocità verticale per il salto
+            
+            // Reset del flag a false quando il player è su una piattaforma
+            verifica_floor    = false;
+            verifica_platform = false;
+        } 
+    }*/
+
+    if(PP.physics.get_velocity_y(player) < 0) {
         next_anim = "jump_up";
     }
-    else if(PP.physics.get_velocity_y(player) > 0 ) {
-            next_anim = "jump_down";
+    else if(PP.physics.get_velocity_y(player) > 0) {
+        next_anim = "jump_down";
     }
+
+    // Animazioni di salto gestite in base alla velocità verticale
+   /* if(PP.physics.get_velocity_y(player) < 0 && verifica_platform == false) {
+        next_anim = "jump_up";
+    }
+    else if(PP.physics.get_velocity_y(player) > 0 && verifica_platform == false) {
+        next_anim = "jump_down";
+    }*/
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L) && 
         PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)) {

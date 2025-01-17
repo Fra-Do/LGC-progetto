@@ -29,7 +29,7 @@ let ss_map_opened   = false;
 let ss_key_opened   = false;
 let ss_fiale_opened = false;
 
-let isCPressed      = false; // Flag per tracciare lo stato del tasto C
+//let isCPressed      = false; // Flag per tracciare lo stato del tasto C
 
 function goto_finale1(s) {
     PP.scenes.start("finale1");
@@ -168,29 +168,62 @@ function create_HUD(s) {
 
 //SPIEGAZIONE SISTEMA DELLE GABBIE: IL TASTO C VIENE USATO PER APRIRE LE VARIE GABBIE CON GLI ANIMALI INTRAPPOLATI. IN TUTTO SONO 6.
 //OGNI VOLTA CHE IL TASTO C VIENE PREMUTO, IL CONTEGGIO DELLE GABBIE AUMENTA DI 1 FINO A UN MASSIMO DI 6
+// Flag per monitorare la pressione del tasto
+let isCPressed = false;
+
+/*function score_update(s) {
+    // Listener per pressione del tasto
+    PP.interactive.kb.is_key_down(s, PP.key_codes.C, function () {
+        if (!isCPressed) {
+            isCPressed = true; // Imposta il flag
+
+            // Ottieni il punteggio corrente
+            let curr_score = PP.game_state.get_variable("score");
+
+            // Incrementa il punteggio solo se è inferiore a 6
+            if (curr_score < 6) {
+                curr_score++; // Incrementa il punteggio
+                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
+                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                console.log("Punteggio aggiornato: " + curr_score);
+            } else {
+                console.log("Hai già aperto tutte e 6 le gabbie");
+            }
+        }
+    });
+
+    // Listener per rilascio del tasto
+    PP.interactive.kb.is_key_up(s, PP.key_codes.C, function () {
+        isCPressed = false; // Resetta il flag
+    });
+}*/
 function score_update(s) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)){
-        if (!isCPressed) { //Lo score aumenta quando il tasto viene rilasciato
+    // Controlla se il tasto C è premuto
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
             isCPressed = true; 
             console.log("Tasto C premuto");
 
-        //ottengo il punteggio corrente
-        let curr_score = PP.game_state.get_variable("score");
+            // Ottieni il punteggio corrente
+            let curr_score = PP.game_state.get_variable("score");
 
-        // Incrementa il punteggio solo se è inferiore a 6
-        if (curr_score < 6) {
-            curr_score++; // Incrementa il punteggio
-            PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-            PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
-        } else {
-            console.log ("Hai aperto tutte e 6 le gabbie")
+            // Incrementa il punteggio solo se è inferiore a 6
+            if (curr_score < 6) {
+                curr_score++; // Incrementa il punteggio
+                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
+                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+            } else {
+                console.log("Hai aperto tutte e 6 le gabbie");
+            }
         }
-    } else if (isCPressed){
-        // Resetta il flag quando il tasto è rilasciato
+    } else {
+        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
+        if (isCPressed) {
+            console.log("Tasto C rilasciato");
+        }
         isCPressed = false;
     }
 }
-} 
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
@@ -220,6 +253,9 @@ function update_HUD(s, player) {
         PP.assets.sprite.animation_stop(ss_fiale, "closed");
         PP.assets.sprite.animation_play(ss_fiale, "opened");
     }
+
+    //chiamo qui la funzione altrimenti non funziona correttamente
+    score_update(s)
 }
 
 // Funzione per distruggere l'HUD
