@@ -92,8 +92,15 @@ function update(s) {
 
     //margine inferiore 
     if (player.geometry.body_y >= 4770-120) {
-        PP.camera.set_follow_offset (s, 0, -4770 + player.geometry.body_y);
+        if (player.geometry.body_x > 9320) {
+            PP.camera.set_follow_offset (s, -9320 + player.geometry.body_x, -4770 + player.geometry.body_y);
+        }
+        else {
+            PP.camera.set_follow_offset (s, 0, -4770 + player.geometry.body_y);
+        }
+        
     } 
+
     update_instruction(s, player);
     open_map(s); // Controlla i tasti M e X per gestire la mappa
     update_HUD(s);
