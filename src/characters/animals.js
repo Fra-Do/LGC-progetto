@@ -106,7 +106,7 @@ function create_animals (s) {
     scientist2.geometry.flip_x = false;
     
     //Quando la protagonista collide con la scienziata è subito gameover 
-    PP.physics.add_collider_f(s, scientist2, player, goto_gameover, hit_animals);
+    PP.physics.add_collider_f(s, scientist2, player, goto_gameover);
 
     PP.assets.sprite.animation_add(scientist2, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(scientist2, "walk");

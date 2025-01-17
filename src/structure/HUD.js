@@ -85,7 +85,7 @@ function create_HUD(s) {
     //health = 2;
 
     // Creazione counter kit
-    /*counter_health = PP.assets.sprite.add(s, ss_counter_health, 210, 50, 0, 0);
+    counter_health = PP.assets.sprite.add(s, ss_counter_health, 70, 50, 0, 0);
     console.log(ss_counter_health); 
 
     configure_ss_counter_health_animations(s);
@@ -95,7 +95,7 @@ function create_HUD(s) {
     PP.layers.set_z_index(nome_layer, 3);
 
     counter_health.tile_geometry.scroll_factor_x = 0;
-    counter_health.tile_geometry.scroll_factor_y = 0;*/
+    counter_health.tile_geometry.scroll_factor_y = 0;
 
     //CONTEGGIO GABBIE 
     counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
