@@ -188,6 +188,25 @@ function score_update(s) {
     }
 }
 
+let enable_damage = true;
+ 
+function reenable_damage (s) {
+    enable_damage = true;
+}
+
+function reduce_kit (s, player, animal) {
+    let curr_kit = PP.game_state.get_variable("kit");
+    if (curr_kit > 0 && enable_damage) {
+        curr_kit--; // Incrementa il punteggio
+        PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+        PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+        PP.timers.add_timer(s, 300, reenable_damage, false);
+        enable_damage = false;
+    } else {
+        console.log("Gameover");
+    }
+}
+
 let isKPressed = false;
 
 function score_kit_update(s) {

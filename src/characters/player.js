@@ -7,7 +7,7 @@ let weapon;
 let weapon_disable = false;
 
 let player_speed      = 400;
-let jump_init_speed   = 600;
+let jump_init_speed   = 500;
 let step_lenght       = 10;
 let height            = 8;
 
@@ -35,8 +35,8 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 7000, 5000, 0.5, 1);  
+    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    player = PP.assets.sprite.add(s, img_player, 7000, 5000, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
