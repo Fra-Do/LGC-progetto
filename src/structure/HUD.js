@@ -114,7 +114,7 @@ function create_HUD(s) {
     ss_fiale.tile_geometry.scroll_factor_x = 0;
     ss_fiale.tile_geometry.scroll_factor_y = 0;
 
-    //CREAZIONE DEL CONTEGGIO
+    //CREAZIONE DEL CONTEGGIO GABBIE
     txt_score  = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie: 0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
@@ -126,6 +126,7 @@ function create_HUD(s) {
 
     PP.game_state.set_variable("score", 0);
 
+    //CREAZIONE DEL CONTEGGIO KIT
     txt_kit  = PP.shapes.text_styled_add(s, 70, 52, "Kit= 1", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
@@ -188,36 +189,56 @@ function score_update(s) {
     }
 }
 
+let enable_damage = true;
+ 
+function reenable_damage (s) {
+    enable_damage = true;
+}
+
+function reduce_kit (s, player, animal) {
+    let curr_kit = PP.game_state.get_variable("kit");
+    if (curr_kit > 0 && enable_damage) {
+        curr_kit--; // Incrementa il punteggio
+        PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+        PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+        PP.timers.add_timer(s, 500, reenable_damage, false);
+        enable_damage = false;
+    } else {
+        console.log("Gameover");
+    }
+}
+
 let isKPressed = false;
 
 function score_kit_update(s) {
     // Controlla se il tasto C è premuto
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isKPressed = true; 
-            console.log("Tasto K premuto");
-
-            // Ottieni il punteggio corrente
-            let curr_kit = PP.game_state.get_variable("kit");
-
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_kit < 5) {
-                curr_kit++; // Incrementa il punteggio
-                PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
-            } else {
-                console.log("Hai raccolto tutti e 5 i kit");
+    if (istruzioni_kit_created1) {
+        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
+                isKPressed = true; 
+                console.log("Tasto K premuto");
+    
+                // Ottieni il punteggio corrente
+                let curr_kit = PP.game_state.get_variable("kit");
+    
+                // Incrementa il punteggio solo se è inferiore a 6
+                if (curr_kit < 5) {
+                    curr_kit++; // Incrementa il punteggio
+                    PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+                    PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+                } else {
+                    console.log("Hai raccolto tutti e 5 i kit");
+                }
             }
+        } else {
+            // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
+            if (isKPressed) {
+                console.log("Tasto K rilasciato");
+            }
+            isKPressed = false;
         }
-    } else {
-        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
-        if (isKPressed) {
-            console.log("Tasto K rilasciato");
-        }
-        isKPressed = false;
     }
 }
-
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
@@ -225,27 +246,56 @@ function update_HUD(s, player) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.M)) {
         console.log("Tasto M premuto");
         // Cambia animazione della gabbia
-        ss_key_opened = true;
-        PP.assets.sprite.animation_stop(ss_map, "closed");
-        PP.assets.sprite.animation_play(ss_map, "opened");
+        
+        // Controlla se l'istruzione per la mappa è stata creata
+        if (istruzioni_map_created) {
+            // Cambia animazione della mappa
+            if (!ss_map_opened) { 
+                ss_map_opened = true;
+                PP.assets.sprite.animation_stop(ss_map, "closed");
+                PP.assets.sprite.animation_play(ss_map, "opened");
+                PP.assets.destroy(map); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
+
+                console.log("Mappa raccolta!");
+            }
+        } else {
+            console.log("Non puoi raccogliere la mappa senza aver visualizzato l'istruzione.");
+        }
     }
 
     //CHIAVE
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
-        console.log("Tasto M premuto");
-        // Cambia animazione della gabbia
-        ss_key_opened = true;
-        PP.assets.sprite.animation_stop(ss_key, "closed");
-        PP.assets.sprite.animation_play(ss_key, "opened");
+        console.log("Tasto E premuto");
+        if (istruzioni_key_created) {
+            // Cambia animazione della mappa
+            if (!ss_key_opened) { 
+                ss_key_opened = true;
+                PP.assets.sprite.animation_stop(ss_key, "closed");
+                PP.assets.sprite.animation_play(ss_key, "opened");
+                PP.assets.destroy(key); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
+                console.log("Chiave raccolta!");
+            }
+        } else {
+            console.log("Non puoi raccogliere la chiave senza aver visualizzato l'istruzione.");
+        }
     }
 
     //FIALE
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)) {
-        console.log("Tasto M premuto");
-        // Cambia animazione della gabbia
-        ss_fiale_opened = true;
-        PP.assets.sprite.animation_stop(ss_fiale, "closed");
-        PP.assets.sprite.animation_play(ss_fiale, "opened");
+        console.log("Tasto L premuto");
+        if (istruzioni_fiale_created) {
+            // Cambia animazione della mappa
+            if (!ss_fiale_opened) { 
+                ss_fiale_opened = true;
+                PP.assets.sprite.animation_stop(ss_fiale, "closed");
+                PP.assets.sprite.animation_play(ss_fiale, "opened");
+                PP.assets.destroy(fiale); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
+
+                console.log("fiale raccolte!");
+            }
+        } else {
+            console.log("Non puoi raccogliere le fiale senza aver visualizzato l'istruzione.");
+        }
     }
 
     //chiamo qui la funzione altrimenti non funziona correttamente

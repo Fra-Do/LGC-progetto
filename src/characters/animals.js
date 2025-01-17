@@ -76,7 +76,7 @@ function create_animals (s) {
     PP.physics.add(s, maiale, PP.physics.type.DYNAMIC);
     maiale.geometry.flip_x = true;
 
-    //PP.physics.add_collider_f(s, maiale, weapon, hit_animals);
+    PP.physics.add_overlap_f(s, maiale, player, reduce_kit);
 
     PP.assets.sprite.animation_add(maiale, "walk", 0, 8, 8, -1);
     PP.assets.sprite.animation_play(maiale, "walk");
