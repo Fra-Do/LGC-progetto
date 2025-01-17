@@ -113,6 +113,7 @@ function create_collectibles(s) {
     let kit_1 = PP.assets.image.add(s, img_kit, 1330, 240, 0, 0);
     PP.physics.add(s, kit_1, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, kit_1, collision_collectibles);
+   
 
     // secondo kit
     let kit_2 = PP.assets.image.add(s, img_kit, 2575, 1500, 0, 0);
@@ -251,10 +252,36 @@ function open_cage_6(s, player) {
 }
 
 //FUNZIONI PER RACCOLTA DI OGGETTI
-function collision_collectibles(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        PP.assets.destroy(kit); 
-    }
+function collision_collectibles(s, player, kit) {
+    
+        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+            PP.assets.destroy(kit); 
+            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
+                isKPressed = true; 
+                console.log("Tasto K premuto");
+                
+    
+                // Ottieni il punteggio corrente
+                let curr_kit = PP.game_state.get_variable("kit");
+    
+                // Incrementa il punteggio solo se è inferiore a 6
+                if (curr_kit < 5) {
+                    curr_kit++; // Incrementa il punteggio
+                    PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+                    PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+                } else {
+                    console.log("Hai raccolto tutti e 5 i kit");
+                }
+            }
+        } else {
+            // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
+            if (isKPressed) {
+                console.log("Tasto K rilasciato");
+            }
+            isKPressed = false;
+        }
+
+
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
         PP.assets.destroy(key); 

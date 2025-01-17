@@ -210,7 +210,7 @@ function reduce_kit (s, player, animal) {
 
 let isKPressed = false;
 
-function score_kit_update(s) {
+/*function score_kit_update(s) {
     // Controlla se il tasto C è premuto
     if (istruzioni_kit_created1) {
         if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
@@ -238,7 +238,7 @@ function score_kit_update(s) {
             isKPressed = false;
         }
     }
-}
+} */
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
@@ -299,7 +299,7 @@ function update_HUD(s, player) {
     }
 
     //chiamo qui la funzione altrimenti non funziona correttamente
-    score_kit_update(s)
+    //score_kit_update(s)
     score_update(s)
     
 }
