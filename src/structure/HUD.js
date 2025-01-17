@@ -216,12 +216,22 @@ function get_kit (s, player, kit_gen) {
 
 let isKPressed = false;
 
+<<<<<<< HEAD
 function score_kit_update(s) {
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
         if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
             isKPressed = true; 
             console.log("Tasto K premuto");
+=======
+/*function score_kit_update(s) {
+    // Controlla se il tasto C è premuto
+    if (istruzioni_kit_created1) {
+        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
+                isKPressed = true; 
+                console.log("Tasto K premuto");
+>>>>>>> dc411629f634ed98b140e2429af209cafe83442a
     
             // Ottieni il punteggio corrente
             let curr_kit = PP.game_state.get_variable("kit");
@@ -242,7 +252,7 @@ function score_kit_update(s) {
         }
         isKPressed = false;
     }
-}
+} */
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
@@ -303,7 +313,7 @@ function update_HUD(s, player) {
     }
 
     //chiamo qui la funzione altrimenti non funziona correttamente
-    score_kit_update(s)
+    //score_kit_update(s)
     score_update(s)
     
 }
