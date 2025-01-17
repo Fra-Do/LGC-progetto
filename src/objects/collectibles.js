@@ -251,7 +251,7 @@ function open_cage_6(s, player) {
 }
 
 //FUNZIONI PER RACCOLTA DI OGGETTI
-function collision_collectibles(s, player, kit) {
+function collision_collectibles(s, player) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
         PP.assets.destroy(kit); 
     }

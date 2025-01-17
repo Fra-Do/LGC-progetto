@@ -7,7 +7,7 @@ let weapon;
 let weapon_disable = false;
 
 let player_speed      = 400;
-let jump_init_speed   = 500;
+let jump_init_speed   = 550;
 let step_lenght       = 10;
 let height            = 8;
 
@@ -31,8 +31,8 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    player = PP.assets.sprite.add(s, img_player, 9000, 350, 0.5, 1);  
+    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    //player = PP.assets.sprite.add(s, img_player, 9000, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
@@ -83,27 +83,12 @@ function update_player(s, player) {
         next_anim = "jump_down";
     }
 
-    /*if (verifica_floor == true || verifica_platform == true ) {
-        if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
-            PP.physics.set_velocity_y(player, -jump_init_speed);  // Impostiamo la velocità verticale per il salto
-            
-            // Reset del flag a false quando il player è su una piattaforma
-            verifica_floor    = false;
-            verifica_platform = false;
-        } 
-    }*/
-
-    // Animazioni di salto gestite in base alla velocità verticale
-   /* if(PP.physics.get_velocity_y(player) < 0 && verifica_platform == false) {
-        next_anim = "jump_up";
-    }
-    else if(PP.physics.get_velocity_y(player) > 0 && verifica_platform == false) {
-        next_anim = "jump_down";
-    }*/
-
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L) && 
         PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)) {
-        next_anim = "weapon";
+        if (ss_fiale_opened) {
+            next_anim = "weapon";
+        }
+            
     }
 
     // Se l'animazione è cambiata, la aggiorniamo
@@ -143,13 +128,14 @@ function reenable_weapon(s) {
 
 // Funzione globale per lanciare l'arma
 function launch_weapon(s, offset, velocity) {
-    weapon = PP.assets.image.add(s, img_weapon,
-        player.geometry.x + offset,
-        player.geometry.y - 70,
-        0.5, 0.5
-    );
+    if (ss_fiale_opened) {
+        weapon = PP.assets.image.add(s, img_weapon,
+            player.geometry.x + offset,
+            player.geometry.y - 70,
+            0.5, 0.5
+        );
 
-    PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
+        PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(weapon, false);
     PP.physics.set_rotation(weapon, 360);
     PP.physics.set_velocity_x(weapon, velocity);
@@ -162,11 +148,11 @@ function launch_weapon(s, offset, velocity) {
 
     PP.timers.add_timer(s, 700, reenable_weapon, false); // Riabilita l'arma dopo 700ms
     weapon_disable = true;
-
-
+    } 
 }
 
 function manage_player_weapon(s) {
+    if (ss_fiale_opened) {
     let offset   = 70;
     let velocity = 1000;
 
@@ -182,10 +168,10 @@ function manage_player_weapon(s) {
             weapon_disable = true; // Blocca ulteriori lanci fino a quando non viene riabilitata
             PP.timers.add_timer(s, 290, () => launch_weapon(s, offset, velocity), false); // Ritardo di 290ms
         }
-
-        
     }
 }
+}
+
 
 function destroy_player(s) {
     
