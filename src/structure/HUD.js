@@ -1,4 +1,4 @@
-//VARIABILE PER PORRE L'HUD DAVANTI A TUTTO
+//VARIABILE PER PORRE L'HUD NEL PRIMO LIVELLO
 let nome_layer;
 
 //VARIABILI PER CONTEGGIO GABBIE
@@ -29,8 +29,6 @@ let ss_map_opened   = false;
 let ss_key_opened   = false;
 let ss_fiale_opened = false;
 
-//let isCPressed      = false; // Flag per tracciare lo stato del tasto C
-
 function goto_finale1(s) {
     PP.scenes.start("finale1");
 }
@@ -41,13 +39,13 @@ function goto_finale2(s) {
 
 function preload_HUD(s) {
     img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/countergabbie.png");
-    //ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_kit.png", 210, 51);
+    ss_counter_health = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_kit.png", 70, 51);
     img_ss_key        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_key.png", 65, 52);
     img_ss_fiale      = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_fiale.png", 65, 52);
     img_ss_map        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_mappa.png", 65, 52);
 }
 
-/*function configure_ss_counter_health_animations (s) {
+function configure_ss_counter_health_animations (s) {
     PP.assets.sprite.animation_add(counter_health, "health: 2", 2, 2, 1, 0);
     PP.assets.sprite.animation_add(counter_health, "health: 1", 1, 1, 1, 0);
     PP.assets.sprite.animation_add(counter_health, "health: 0", 0, 0, 1, 0);
@@ -55,7 +53,7 @@ function preload_HUD(s) {
     PP.assets.sprite.animation_play(counter_health, "health: 0");
     console.log(PP.assets.sprite.animation_play(counter_health, "health: 2"));
 
-}*/
+}
 
 function configure_ss_map_animations (s) {
     //ANIMAZIONI MAPPA
@@ -168,35 +166,10 @@ function create_HUD(s) {
 
 //SPIEGAZIONE SISTEMA DELLE GABBIE: IL TASTO C VIENE USATO PER APRIRE LE VARIE GABBIE CON GLI ANIMALI INTRAPPOLATI. IN TUTTO SONO 6.
 //OGNI VOLTA CHE IL TASTO C VIENE PREMUTO, IL CONTEGGIO DELLE GABBIE AUMENTA DI 1 FINO A UN MASSIMO DI 6
+
 // Flag per monitorare la pressione del tasto
 let isCPressed = false;
 
-/*function score_update(s) {
-    // Listener per pressione del tasto
-    PP.interactive.kb.is_key_down(s, PP.key_codes.C, function () {
-        if (!isCPressed) {
-            isCPressed = true; // Imposta il flag
-
-            // Ottieni il punteggio corrente
-            let curr_score = PP.game_state.get_variable("score");
-
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_score < 6) {
-                curr_score++; // Incrementa il punteggio
-                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
-                console.log("Punteggio aggiornato: " + curr_score);
-            } else {
-                console.log("Hai già aperto tutte e 6 le gabbie");
-            }
-        }
-    });
-
-    // Listener per rilascio del tasto
-    PP.interactive.kb.is_key_up(s, PP.key_codes.C, function () {
-        isCPressed = false; // Resetta il flag
-    });
-}*/
 function score_update(s) {
     // Controlla se il tasto C è premuto
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {

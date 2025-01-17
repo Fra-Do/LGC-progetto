@@ -35,8 +35,8 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
+    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
 
    //weapon = PP.assets.image.add(s, img_weapon, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
 
@@ -79,7 +79,13 @@ function update_player(s, player) {
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
         PP.physics.set_velocity_y(player, -jump_init_speed);  // Impostiamo la velocità verticale per il salto
     } 
-    
+
+    if(PP.physics.get_velocity_y(player) < 0) {
+        next_anim = "jump_up";
+    }
+    else if(PP.physics.get_velocity_y(player) > 0) {
+        next_anim = "jump_down";
+    }
 
     /*if (verifica_floor == true || verifica_platform == true ) {
         if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
@@ -90,13 +96,6 @@ function update_player(s, player) {
             verifica_platform = false;
         } 
     }*/
-
-    if(PP.physics.get_velocity_y(player) < 0) {
-        next_anim = "jump_up";
-    }
-    else if(PP.physics.get_velocity_y(player) > 0) {
-        next_anim = "jump_down";
-    }
 
     // Animazioni di salto gestite in base alla velocità verticale
    /* if(PP.physics.get_velocity_y(player) < 0 && verifica_platform == false) {
