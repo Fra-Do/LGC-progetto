@@ -225,11 +225,28 @@ function open_cage_1(s, player) {
 
 function open_cage_2(s, player) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
-        console.log("Tasto C premuto");
         // Cambia animazione della gabbia
         cage_2_opened = true;
         PP.assets.sprite.animation_stop(cage_2, "closed");
         PP.assets.sprite.animation_play(cage_2, "opened");
+        
+        if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
+            isCPressed = true; 
+            console.log("Tasto C premuto");
+
+            // Ottieni il punteggio corrente
+            let curr_score = PP.game_state.get_variable("score");
+
+            // Incrementa il punteggio solo se è inferiore a 6
+            if (curr_score < 6) {
+                curr_score++; // Incrementa il punteggio
+                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
+                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+            } else {
+                console.log("Hai aperto tutte e 6 le gabbie");
+            }
+        }
+    
     }
 }
 
