@@ -5,7 +5,7 @@ let img_arrows;
 let arrows
 let up
 
-let istruzioni_arrows = false;
+let istruzioni_arrows       = false;
 let istruzioni_leftright    = false;
 
 //ISTRUZIONI KIT (TASTO K)
@@ -20,6 +20,7 @@ let istruzioni_kit_created2 = false;
 let istruzioni_kit_created3 = false;
 let istruzioni_kit_created4 = false;
 let istruzioni_kit_created5 = false;
+
 let istruzioni_map_created  = false;
 
 let istruzioni_kit;
@@ -66,7 +67,7 @@ function preload_instruction(s) {
     img_istruzioni_map = PP.assets.image.load(s, "assets/images/istruzioni/M.png");
 
     //cage
-    img_istruzioni_cage = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
+    img_istruzioni_cage  = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
     img_istruzioni_cage2 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
     img_istruzioni_cage3 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
     img_istruzioni_cage4 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");

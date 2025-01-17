@@ -208,35 +208,39 @@ function reduce_kit (s, player, animal) {
     }
 }
 
+function get_kit (s, player, kit_gen) {
+    if (struzioni_kit_created1) {
+        score_kit_update(s)
+    }
+}
+
 let isKPressed = false;
 
 function score_kit_update(s) {
-    // Controlla se il tasto C è premuto
-    if (istruzioni_kit_created1) {
-        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-                isKPressed = true; 
-                console.log("Tasto K premuto");
+
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+        if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
+            isKPressed = true; 
+            console.log("Tasto K premuto");
     
-                // Ottieni il punteggio corrente
-                let curr_kit = PP.game_state.get_variable("kit");
+            // Ottieni il punteggio corrente
+            let curr_kit = PP.game_state.get_variable("kit");
     
-                // Incrementa il punteggio solo se è inferiore a 6
-                if (curr_kit < 5) {
-                    curr_kit++; // Incrementa il punteggio
-                    PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
-                    PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
-                } else {
-                    console.log("Hai raccolto tutti e 5 i kit");
-                }
+            // Incrementa il punteggio solo se è inferiore a 6
+            if (curr_kit < 5) {
+                curr_kit++; // Incrementa il punteggio
+                PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+                PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+            } else {
+                console.log("Hai raccolto tutti e 5 i kit");
             }
-        } else {
-            // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
-            if (isKPressed) {
-                console.log("Tasto K rilasciato");
-            }
-            isKPressed = false;
         }
+    } else {
+        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
+        if (isKPressed) {
+            console.log("Tasto K rilasciato");
+        }
+        isKPressed = false;
     }
 }
 
@@ -254,7 +258,7 @@ function update_HUD(s, player) {
                 ss_map_opened = true;
                 PP.assets.sprite.animation_stop(ss_map, "closed");
                 PP.assets.sprite.animation_play(ss_map, "opened");
-                PP.assets.destroy(map); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
+                PP.assets.destroy(map); 
 
                 console.log("Mappa raccolta!");
             }
@@ -272,7 +276,7 @@ function update_HUD(s, player) {
                 ss_key_opened = true;
                 PP.assets.sprite.animation_stop(ss_key, "closed");
                 PP.assets.sprite.animation_play(ss_key, "opened");
-                PP.assets.destroy(key); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
+                PP.assets.destroy(key); 
                 console.log("Chiave raccolta!");
             }
         } else {
@@ -289,7 +293,7 @@ function update_HUD(s, player) {
                 ss_fiale_opened = true;
                 PP.assets.sprite.animation_stop(ss_fiale, "closed");
                 PP.assets.sprite.animation_play(ss_fiale, "opened");
-                PP.assets.destroy(fiale); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
+                PP.assets.destroy(fiale); 
 
                 console.log("fiale raccolte!");
             }
