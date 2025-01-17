@@ -160,9 +160,13 @@ function create_HUD(s) {
 //OGNI VOLTA CHE IL TASTO C VIENE PREMUTO, IL CONTEGGIO DELLE GABBIE AUMENTA DI 1 FINO A UN MASSIMO DI 6
 
 // Flag per monitorare la pressione del tasto
+<<<<<<< HEAD
 /*let isCPressed = false;
+=======
+//let isCPressed = false;
+>>>>>>> 75a5de47560412dab68eaeb80d252602d65e1527
 
-function score_update(s) {
+/*function score_update(s) {
     // Controlla se il tasto C è premuto
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
@@ -188,7 +192,11 @@ function score_update(s) {
         }
         isCPressed = false;
     }
+<<<<<<< HEAD
 }*/
+=======
+} */
+>>>>>>> 75a5de47560412dab68eaeb80d252602d65e1527
 
 let enable_damage = true;
  
@@ -209,6 +217,18 @@ function reduce_kit (s, player, animal) {
     }
 }
 
+<<<<<<< HEAD
+=======
+function get_kit (s, player, kit_gen) {
+    if (struzioni_kit_created1) {
+        score_kit_update(s)
+    }
+}
+
+
+
+
+>>>>>>> 75a5de47560412dab68eaeb80d252602d65e1527
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
     //MAPPA
@@ -269,7 +289,7 @@ function update_HUD(s, player) {
 
     //chiamo qui la funzione altrimenti non funziona correttamente
     //score_kit_update(s)
-    score_update(s)
+    //score_update(s)
     
 }
 

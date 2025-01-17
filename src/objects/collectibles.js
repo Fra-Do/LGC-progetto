@@ -190,6 +190,7 @@ function create_cage(s, player) {
     });
 }
 
+let isCPressed = false;
 //QUANDO VIENE PREMUTO IL TASTO C LA GABBIA SI APRE
 function open_cage_1(s, player) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
@@ -220,7 +221,35 @@ function open_cage_1(s, player) {
         cage_1_opened = true;
         PP.assets.sprite.animation_stop(cage_1, "closed");
         PP.assets.sprite.animation_play(cage_1, "opened");
+        
+        if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
+            isCPressed = true; 
+            console.log("Tasto C premuto");
+
+            // Ottieni il punteggio corrente
+            let curr_score = PP.game_state.get_variable("score");
+
+            // Incrementa il punteggio solo se è inferiore a 6
+            if (curr_score < 6) {
+                curr_score++; // Incrementa il punteggio
+                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
+                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+            } else {
+                console.log("Hai aperto tutte e 6 le gabbie");
+            }
+        }
+    } else {
+        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
+        if (isCPressed) {
+            console.log("Tasto C rilasciato");
+        }
+        isCPressed = false;
     }
+
+
+
+    
+        
 }
 
 function open_cage_2(s, player) {
@@ -274,14 +303,13 @@ function open_cage_6(s, player) {
 }
 
 let isKPressed = false;
-
 //FUNZIONI PER RACCOLTA DI OGGETTI
 function collision_collectibles(s, player, kit) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        PP.assets.destroy(kit); 
-        if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isKPressed = true; 
-            console.log("Tasto K premuto");
+        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+            PP.assets.destroy(kit); 
+            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
+                isKPressed = true; 
+                console.log("Tasto K premuto");
                 
             // Ottieni il punteggio corrente
             let curr_kit = PP.game_state.get_variable("kit");
@@ -295,13 +323,6 @@ function collision_collectibles(s, player, kit) {
                 console.log("Hai raccolto tutti e 5 i kit");
             }
         }
-    } else {
-        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
-        if (isKPressed) {
-            console.log("Tasto K rilasciato");
-        }
-        isKPressed = false;
-    }
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
         PP.assets.destroy(key); 
@@ -310,6 +331,7 @@ function collision_collectibles(s, player, kit) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)) {
         PP.assets.destroy(fiale); 
     }
+
 }
 
 //ALL'INIZIO DEL GIOCO LA PROTAGONISTA TROVA LA MAPPA, CHE APRE IN QUALUNQUE MOMENTO
