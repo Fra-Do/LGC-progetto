@@ -26,7 +26,9 @@ function preload_structure(s) {
 }
 
 function collision_platform(s,player, platform) {
-    player.is_on_platform = true;
+    if (player.geometry.y >= platform.geometry.y -platform.geometry.display_height) {
+        player.is_on_platform = true;
+    } 
 }
 
 //FUNZIONE DI GAMEOVER QUANDO SI COLLIDE CON L'ACIDO
@@ -71,12 +73,15 @@ function create_structure(s) {
     wall = PP.shapes.rectangle_add(s, 5700, 2630, 8000, 360, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
+    PP.physics.add_collider_f(s, player, wall, collision_platform);
+
 
 
     //pavimento (2)
     wall = PP.shapes.rectangle_add(s, 9440, 2273, 520, 300, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
+    //PP.physics.add_collider_f(s, player, wall, collision_platform);
 
 
     //ACIDO GAMEOVER
@@ -89,6 +94,8 @@ function create_structure(s) {
     wall = PP.shapes.rectangle_add(s, 900, 1860, 1500, 3000, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
+    //PP.physics.add_collider_f(s, player, wall, collision_platform);
+
 
     //3.2
     wall = PP.shapes.rectangle_add(s, 918, 273, 168, 54, "0x000000", 0); 

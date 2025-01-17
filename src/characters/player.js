@@ -7,7 +7,7 @@ let weapon;
 let weapon_disable = false;
 
 let player_speed      = 400;
-let jump_init_speed   = 350;
+let jump_init_speed   = 600;
 let step_lenght       = 10;
 let height            = 8;
 
@@ -36,7 +36,7 @@ function preload_player(s) {
 
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 9200, 5000, 0.5, 1);  
+    //player = PP.assets.sprite.add(s, img_player, 7000, 5000, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
@@ -73,14 +73,17 @@ function update_player(s, player) {
         next_anim = "stop"; 
     }
 
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP)) {
+    if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && player.ph_obj.body.blocked.down) {
         PP.physics.set_velocity_y(player, -jump_init_speed);  // Impostiamo la velocità verticale per il salto
+        player.is_on_platform = false;
     } 
 
-    if(PP.physics.get_velocity_y(player) < 0) {
+    if(PP.physics.get_velocity_y(player) < 0 && !player.is_on_platform) {
         next_anim = "jump_up";
     }
-    else if(PP.physics.get_velocity_y(player) > 0) {
+
+    if(PP.physics.get_velocity_y(player) > 0 && !player.ph_obj.body.blocked.down) {
+        player.is_on_platform = false;
         next_anim = "jump_down";
     }
 
@@ -131,14 +134,10 @@ function hit_scientist2 (s, weapon, scientist2) {
     PP.assets.destroy (weapon);
 }
 
-function hit_animals (s, weapon, coniglio, topo, scimmia, maiale, scientist, scientist2){
+function hit_animals (s, weapon, animal){
     PP.assets.destroy(weapon);
-    PP.assets.destroy(coniglio);
-    PP.assets.destroy(topo);
-    PP.assets.destroy(scimmia);
-    PP.assets.destroy(maiale);
-    PP.assets.destroy(scientist);
-    PP.assets.destroy(scientist2);
+    PP.assets.destroy(animal);
+    console.log ("colpito animale");
 }
 
 //LANCIO ARMA
@@ -158,10 +157,17 @@ function launch_weapon(s, offset, velocity) {
     PP.physics.set_allow_gravity(weapon, false);
     PP.physics.set_rotation(weapon, 360);
     PP.physics.set_velocity_x(weapon, velocity);
-    //PP.physics.add_collider_f(s, weapon, enemy, hit_enemy);
+    PP.physics.add_collider_f(s, weapon, coniglio, hit_animals);
+    PP.physics.add_collider_f(s, weapon, topo, hit_animals);
+    PP.physics.add_collider_f(s, weapon, scimmia, hit_animals);
+    PP.physics.add_collider_f(s, weapon, maiale, hit_animals);
+    PP.physics.add_collider_f(s, weapon, scientist, hit_animals);
+    PP.physics.add_collider_f(s, weapon, scientist2, hit_scientist2);
 
     PP.timers.add_timer(s, 700, reenable_weapon, false); // Riabilita l'arma dopo 700ms
     weapon_disable = true;
+
+
 }
 
 function manage_player_weapon(s) {
@@ -181,26 +187,7 @@ function manage_player_weapon(s) {
             PP.timers.add_timer(s, 290, () => launch_weapon(s, offset, velocity), false); // Ritardo di 290ms
         }
 
-        if (weapon_disable == false){
-            weapon = PP.assets.image.add(s, img_weapon,
-                player.geometry.x + offset,
-                player.geometry.y - 70,
-                0.5, 0.5
-            );
-    
-            PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
-            PP.physics.set_allow_gravity(weapon, false);
-            PP.physics.set_rotation(weapon, 360);
-            PP.physics.set_velocity_x(weapon, velocity);
-            PP.physics.add_collider_f(s, weapon, coniglio, hit_animals);
-            PP.physics.add_collider_f(s, weapon, topo, hit_animals);
-            PP.physics.add_collider_f(s, weapon, scimmia, hit_animals);
-            PP.physics.add_collider_f(s, weapon, maiale, hit_animals);
-            PP.physics.add_collider_f(s, weapon, scientist, hit_animals);
-            PP.physics.add_collider_f(s, weapon, scientist2, hit_scientist2);
-            PP.timers.add_timer(s, 700, reenable_weapon, false);
-            weapon_disable = true;
-        } 
+        
     }
 }
 
