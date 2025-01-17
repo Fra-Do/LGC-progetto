@@ -1,4 +1,3 @@
-//PER INTERAGIRE CON GLI OGGETTI NELLA MAPPA, APPAIONO DELLE ISTRUZIONI
 
 //FRECCE SU, DESTRA, SINISTRA
 let img_up;
@@ -75,12 +74,10 @@ function preload_instruction(s) {
     img_istruzioni_cage6 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
 
     //key
-    img_istruzioni_key = PP.assets.image.load(s, "assets/images/istruzioni/E.png"); //da cambiare
+    img_istruzioni_key = PP.assets.image.load(s, "assets/images/istruzioni/E.png"); 
 
     //fiale
-    img_istruzioni_fiale = PP.assets.image.load(s, "assets/images/istruzioni/L.png"); //da cambiare
-
-
+    img_istruzioni_fiale = PP.assets.image.load(s, "assets/images/istruzioni/L.png"); 
 }
 
 function create_instruction(s) {
@@ -89,24 +86,6 @@ function create_instruction(s) {
 }
 
 function update_instruction(s) {
-
-    //FRECCE
-    //LEFT e RIGHT
-    /*if (player.geometry.x > 100 && player.geometry.x < 300 &&
-        player.geometry.y > 90 && player.geometry.y < 140) {
-        
-        if (istruzioni_arrows == false) {
-            istruzioni_interaction1 = PP.assets.image.add(s, img_arrows, 400, 300, 0.5, 1); 
-        }
-        istruzioni_arrows = true;
-
-    } else if ((player.geometry.x < 100 || player.geometry.x > 300 &&
-                player.geometry.y > 90 && player.geometry.y < 140) && istruzioni_arrows == true){
-        PP.assets.destroy(istruzioni_interaction1);
-        istruzioni_arrows = false;
-    }*/
-
-
     // KIT
     // ISTRUZIONE: kit 1
     if (player.geometry.x > 1300 && player.geometry.x < 1500 &&
@@ -151,9 +130,9 @@ function update_instruction(s) {
                 player.geometry.y > 1400 && player.geometry.y < 1500) && istruzioni_kit_created3 == true){
         PP.assets.destroy(istruzioni_interaction3);
         istruzioni_kit_created3 = false;
-}
+    }
 
-    // ISTRUZIONE: kit 4   6120, 3025,
+    // ISTRUZIONE: kit 4    
     if (player.geometry.x > 6040 && player.geometry.x < 6260 &&
         player.geometry.y > 2900 && player.geometry.y < 3200) {
         

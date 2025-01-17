@@ -62,7 +62,7 @@ function preload_collectibles(s) {
     img_kit           = PP.assets.image.load(s, "assets/images/oggetti/kit.png");
     img_map           = PP.assets.image.load(s, "assets/images/oggetti/map.png");
     img_lil_map       = PP.assets.image.load(s, "assets/images/oggetti/lil_map.png");
-    img_fiale          = PP.assets.image.load(s, "assets/images/oggetti/fiale.png");
+    img_fiale         = PP.assets.image.load(s, "assets/images/oggetti/fiale.png");
     img_key           = PP.assets.image.load(s, "assets/images/oggetti/key.png");
 
     //GABBIE
@@ -265,7 +265,6 @@ function collision_collectibles(s, player, kit) {
     }
 }
 
-
 //ALL'INIZIO DEL GIOCO LA PROTAGONISTA TROVA LA MAPPA, CHE APRE IN QUALUNQUE MOMENTO
 function open_map(s) {
     // Controlla se il tasto M viene premuto e la mappa non è ancora visibile
@@ -285,7 +284,6 @@ function open_map(s) {
     // Controlla se il tasto X viene premuto e la mappa è visibile
     else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_created) {
         console.log("Mappa chiusa");
-        PP.assets.destroy(map); // Distruggi immagine mappa, questo codice eseguito qui perché se no in altri modi non funziona
         PP.assets.destroy(lil_map); // Rimuove la mappa dalla scena
         lil_map = null; // Resetta il riferimento
         map_created = false;

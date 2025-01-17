@@ -13,10 +13,7 @@ let height            = 8;
 
 let curr_anim         = "stop";
 
-
-
 let is_on_platform;
-let is_on_ground;
 
 function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4], 10, -1);  
@@ -31,12 +28,11 @@ function configure_player_animations(s, player) {
 function preload_player(s) {
     img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_protagonista.png", 94, 136, 1, 12);
     img_weapon = PP.assets.image.load             (s, "assets/images/oggetti/arma.png", 50, 50);
-
 }
 
 function create_player(s) {
     //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    player = PP.assets.sprite.add(s, img_player, 7000, 5000, 0.5, 1);  
+    player = PP.assets.sprite.add(s, img_player, 9000, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
