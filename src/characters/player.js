@@ -31,10 +31,6 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-<<<<<<< HEAD
-
-=======
->>>>>>> dc411629f634ed98b140e2429af209cafe83442a
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
     //player = PP.assets.sprite.add(s, img_player, 9200, 4000, 0.5, 1);  
 
@@ -63,11 +59,11 @@ function update_player(s, player) {
     // Movimento orizzontale
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.RIGHT)) {
         PP.physics.set_velocity_x(player, player_speed);
-        next_anim = "run";  // quando si preme freccia destra, l'animazione è "run"
+        next_anim = "run";  
     } 
     else if (PP.interactive.kb.is_key_down(s, PP.key_codes.LEFT)) {
         PP.physics.set_velocity_x(player, -player_speed);
-        next_anim = "run";  // quando si preme freccia sinistra, l'animazione è "run"
+        next_anim = "run";  
     } else {
         PP.physics.set_velocity_x(player, 0);
         next_anim = "stop"; 
@@ -139,7 +135,7 @@ function launch_weapon(s, offset, velocity) {
             0.5, 0.5
         );
 
-        PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
+    PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(weapon, false);
     PP.physics.set_rotation(weapon, 360);
     PP.physics.set_velocity_x(weapon, velocity);

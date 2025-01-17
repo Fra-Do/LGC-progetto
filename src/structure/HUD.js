@@ -82,7 +82,7 @@ function create_HUD(s) {
     counter_cage.tile_geometry.scroll_factor_y = 0;
 
     //MAPPA
-    ss_map     = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
+    ss_map = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
     configure_ss_map_animations(s); 
     
     nome_layer = PP.layers.create(s);
@@ -93,7 +93,7 @@ function create_HUD(s) {
     ss_map.tile_geometry.scroll_factor_y = 0;
 
     //CHIAVE
-    ss_key     = PP.assets.sprite.add(s, img_ss_key, 580, 50, 0, 0); 
+    ss_key = PP.assets.sprite.add(s, img_ss_key, 580, 50, 0, 0); 
     configure_ss_key_animations(s);
 
     nome_layer = PP.layers.create(s);
@@ -104,7 +104,7 @@ function create_HUD(s) {
     ss_key.tile_geometry.scroll_factor_y = 0;
     
     //FIALE
-    ss_fiale   = PP.assets.sprite.add(s, img_ss_fiale, 660, 50, 0, 0);
+    ss_fiale = PP.assets.sprite.add(s, img_ss_fiale, 660, 50, 0, 0);
     configure_ss_fiale_animations(s);
 
     nome_layer = PP.layers.create(s);
@@ -127,7 +127,7 @@ function create_HUD(s) {
     PP.game_state.set_variable("score", 0);
 
     //CREAZIONE DEL CONTEGGIO KIT
-    txt_kit  = PP.shapes.text_styled_add(s, 70, 52, "Kit= 1", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+    txt_kit    = PP.shapes.text_styled_add(s, 70, 52, "Kit= 1", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, txt_kit);
@@ -144,7 +144,8 @@ function create_HUD(s) {
     PP.physics.add(s, wall, PP.physics.type.STATIC);
     
     // Aggiungi overlap dinamico in base al punteggio
-    PP.physics.add_overlap_f(s, player, wall, function () { //funziona anonima di callback perché viene usata solo in questo punto del codice
+    PP.physics.add_overlap_f(s, player, wall, function () { //funzione anonima di callback perché viene usata solo in questo punto del codice
+        
         //Se le gabbie aperte sono minori di 6 si ha il finale 2, se sono 6 le gabbie aperte si ha il finale 1
         let currentScore = PP.game_state.get_variable("score");
         if (currentScore < 6) {
@@ -159,7 +160,7 @@ function create_HUD(s) {
 //OGNI VOLTA CHE IL TASTO C VIENE PREMUTO, IL CONTEGGIO DELLE GABBIE AUMENTA DI 1 FINO A UN MASSIMO DI 6
 
 // Flag per monitorare la pressione del tasto
-let isCPressed = false;
+/*let isCPressed = false;
 
 function score_update(s) {
     // Controlla se il tasto C è premuto
@@ -187,7 +188,7 @@ function score_update(s) {
         }
         isCPressed = false;
     }
-}
+}*/
 
 let enable_damage = true;
  
@@ -207,52 +208,6 @@ function reduce_kit (s, player, animal) {
         console.log("Gameover");
     }
 }
-
-function get_kit (s, player, kit_gen) {
-    if (struzioni_kit_created1) {
-        score_kit_update(s)
-    }
-}
-
-let isKPressed = false;
-
-<<<<<<< HEAD
-function score_kit_update(s) {
-
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-        if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isKPressed = true; 
-            console.log("Tasto K premuto");
-=======
-/*function score_kit_update(s) {
-    // Controlla se il tasto C è premuto
-    if (istruzioni_kit_created1) {
-        if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
-            if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
-                isKPressed = true; 
-                console.log("Tasto K premuto");
->>>>>>> dc411629f634ed98b140e2429af209cafe83442a
-    
-            // Ottieni il punteggio corrente
-            let curr_kit = PP.game_state.get_variable("kit");
-    
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_kit < 5) {
-                curr_kit++; // Incrementa il punteggio
-                PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
-            } else {
-                console.log("Hai raccolto tutti e 5 i kit");
-            }
-        }
-    } else {
-        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
-        if (isKPressed) {
-            console.log("Tasto K rilasciato");
-        }
-        isKPressed = false;
-    }
-} */
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
