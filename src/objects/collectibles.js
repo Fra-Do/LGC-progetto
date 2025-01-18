@@ -1,5 +1,9 @@
 //Nel gioco si può raccogliere: la mappa, i kit per curare la vita, una chiave e le fiale per attaccare
+let txt_score;
+let curr_score
 
+let txt_kit;
+let curr_kit;
 //KIT
 let img_kit;
 let kit_1;
@@ -210,7 +214,7 @@ function open_cage_1(s, player) {
             if (curr_score < 6) {
                 curr_score++; // Incrementa il punteggio
                 PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                PP.shapes.text_change(txt_score, "= " + curr_score);
             } else {
                 console.log("Hai aperto tutte e 6 le gabbie");
             }

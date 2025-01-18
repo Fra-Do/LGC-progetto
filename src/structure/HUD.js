@@ -4,18 +4,16 @@ let nome_layer;
 let health;
 
 //VARIABILI PER CONTEGGIO GABBIE
-let txt_score;
-let curr_score
+let img_sfondo;
+let sfondo;
 
-let txt_kit;
-let curr_kit;
-
-//SFONDO PER CONTEGGIO GABBIE
+//CONTEGGIO GABBIE
 let img_counter_cage
 let counter_cage;
 
-let ss_counter_health;
-let counter_health;
+//CONTEGGIO KIT
+let img_counter_kit;
+let counter_kit;
 
 //MAPPA
 let img_ss_map;
@@ -43,7 +41,9 @@ function goto_finale2(s) {
 }
 
 function preload_HUD(s) {
-    img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/countergabbie.png");
+    img_sfondo        = PP.assets.image.load             (s, "assets/images/HUD/sfondohud.png");
+    img_counter_cage  = PP.assets.image.load             (s, "assets/images/HUD/gabbiahud.png");
+    img_counter_kit   = PP.assets.image.load             (s, "assets/images/HUD/kithud.png");
     img_ss_key        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_key.png", 65, 52);
     img_ss_fiale      = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_fiale.png", 65, 52);
     img_ss_map        = PP.assets.sprite.load_spritesheet(s, "assets/images/HUD/ss_mappa.png", 65, 52);
@@ -74,15 +74,23 @@ function configure_ss_fiale_animations (s) {
 }
 
 function create_HUD(s) {
-    // Variabili HUD
+    // SFONDO HUD
+    sfondo       = PP.assets.image.add(s, img_sfondo, 57, 17, 0, 0);
+    sfondo.tile_geometry.scroll_factor_x = 0;
+    sfondo.tile_geometry.scroll_factor_y = 0;
 
     //CONTEGGIO GABBIE 
-    counter_cage = PP.assets.image.add(s, img_counter_cage, 1050, 30, 0, 0);
+    counter_cage = PP.assets.image.add(s, img_counter_cage, 230, 35, 0, 0);
     counter_cage.tile_geometry.scroll_factor_x = 0;
     counter_cage.tile_geometry.scroll_factor_y = 0;
 
+    //CONTEGGIO KIT
+    counter_kit = PP.assets.image.add(s, img_counter_kit, 70, 30, 0, 0);
+    counter_kit.tile_geometry.scroll_factor_x = 0;
+    counter_kit.tile_geometry.scroll_factor_y = 0;
+
     //MAPPA
-    ss_map = PP.assets.sprite.add(s, img_ss_map, 500, 50, 0, 0);
+    ss_map = PP.assets.sprite.add(s, img_ss_map, 60, 120, 0, 0);
     configure_ss_map_animations(s); 
     
     nome_layer = PP.layers.create(s);
@@ -93,7 +101,7 @@ function create_HUD(s) {
     ss_map.tile_geometry.scroll_factor_y = 0;
 
     //CHIAVE
-    ss_key = PP.assets.sprite.add(s, img_ss_key, 580, 50, 0, 0); 
+    ss_key = PP.assets.sprite.add(s, img_ss_key, 131, 120, 0, 0); 
     configure_ss_key_animations(s);
 
     nome_layer = PP.layers.create(s);
@@ -104,7 +112,7 @@ function create_HUD(s) {
     ss_key.tile_geometry.scroll_factor_y = 0;
     
     //FIALE
-    ss_fiale = PP.assets.sprite.add(s, img_ss_fiale, 660, 50, 0, 0);
+    ss_fiale = PP.assets.sprite.add(s, img_ss_fiale, 203, 120, 0, 0);
     configure_ss_fiale_animations(s);
 
     nome_layer = PP.layers.create(s);
@@ -115,7 +123,7 @@ function create_HUD(s) {
     ss_fiale.tile_geometry.scroll_factor_y = 0;
 
     //CREAZIONE DEL CONTEGGIO GABBIE
-    txt_score  = PP.shapes.text_styled_add(s, 1083, 52, "Gabbie: 0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+    txt_score  = PP.shapes.text_styled_add(s, 315, 48, "= 0", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, txt_score);
@@ -127,7 +135,7 @@ function create_HUD(s) {
     PP.game_state.set_variable("score", 0);
 
     //CREAZIONE DEL CONTEGGIO KIT
-    txt_kit    = PP.shapes.text_styled_add(s, 70, 52, "Kit= 1", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
+    txt_kit    = PP.shapes.text_styled_add(s, 150, 48, "= 1", 30, "Helvetica", "normal", "0xFFFFFF", null, 0, 0);
 
     nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, txt_kit);
@@ -214,9 +222,6 @@ function get_kit (s, player, kit_gen) {
         score_kit_update(s)
     }
 }
-
-
-
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
