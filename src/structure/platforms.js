@@ -14,7 +14,7 @@ let platforms;
 
 let pl_1_speed = 250;
 let pl_2_speed = 150;
-let pl_3_speed = 250;
+let pl_3_speed = 350;
 let pl_4_speed = 100;
 let pl_5_speed = 100;
 let pl_7_speed = 200;
