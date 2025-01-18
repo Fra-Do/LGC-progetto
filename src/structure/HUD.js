@@ -210,15 +210,39 @@ function reduce_kit (s, player, animal) {
         curr_kit--; // Incrementa il punteggio
         PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
         PP.shapes.text_change(txt_kit, "= " + curr_kit);
-        PP.timers.add_timer(s, 800, reenable_damage, false);
         enable_damage = false;
 
-        PP.assets.sprite.animation_play(player, "hurt");
+        PP.timers.add_timer(s, 200, reenable_damage, false);
+        
+
+       //PP.assets.sprite.animation_play(player, "hurt");
     } else {
         goto_gameover (s)
         console.log("Gameover");
     }
-}
+} 
+/*  funziona ma va al game over non a 0 kit ma se viene colpita di nuovo quando ci sono 0 kit
+function reduce_kit(s, player, animal) {
+    // Verifica se il danno è attualmente abilitato
+    if (enable_damage) {
+        let curr_kit = PP.game_state.get_variable("kit");
+    if (curr_kit > 0 && enable_damage) {
+        curr_kit--; // Incrementa il punteggio
+        PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+        PP.shapes.text_change(txt_kit, "= " + curr_kit);
+        enable_damage = false;
+
+        PP.timers.add_timer(s, 2000, reenable_damage, false);
+        
+
+       //PP.assets.sprite.animation_play(player, "hurt");
+    } 
+    if (curr_kit = 0) {
+        goto_gameover (s);
+        console.log("Gameover");
+    }
+    }
+} */
 
 function get_kit (s, player, kit_gen) {
     if (struzioni_kit_created1) {
