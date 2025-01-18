@@ -21,19 +21,19 @@ function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add_list(player, "jump_up", [5, 6, 7, 8, 9], 10, 0);
     PP.assets.sprite.animation_add_list(player, "jump_down", [10, 11, 12, 13], 10, 0);
     PP.assets.sprite.animation_add_list(player, "weapon", [14, 15, 16, 17, 18, 19, 20], 10, -1);
-    PP.assets.sprite.animation_add_list(player, "hurt", [8, 15, 10, 17], 10, -1);
+    PP.assets.sprite.animation_add_list(player, "hurt", [8, 14, 10, 15], 10, -1);
     
     PP.assets.sprite.animation_play    (player, "stop");  // avvia l'animazione "stop" di default
 }
 
 function preload_player(s) {
-    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_protagonista.png", 94, 136, 1, 12);
+    img_player = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_bambina.png", 94, 136, 1, 12);
     img_weapon = PP.assets.image.load             (s, "assets/images/oggetti/arma.png", 50, 50);
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 9200, 4000, 0.5, 1); 
+    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    player = PP.assets.sprite.add(s, img_player, 9200, 4000, 0.5, 1); 
     //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);

@@ -213,7 +213,9 @@ function reduce_kit (s, player, animal) {
         PP.timers.add_timer(s, 800, reenable_damage, false);
         enable_damage = false;
 
-        PP.assets.sprite.animation_play(player, "hurt");
+        /*PP.assets.sprite.animation_stop(player, "run");
+        PP.assets.sprite.animation_play(player, "hurt");*/
+
     } else {
         goto_gameover (s)
         console.log("Gameover");
@@ -283,7 +285,7 @@ function update_HUD(s, player) {
             console.log("Non puoi raccogliere le fiale senza aver visualizzato l'istruzione.");
         }
     }
-
+    
     //chiamo qui la funzione altrimenti non funziona correttamente
     //score_kit_update(s)
     //score_update(s)
