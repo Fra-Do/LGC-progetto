@@ -210,8 +210,10 @@ function reduce_kit (s, player, animal) {
         curr_kit--; // Incrementa il punteggio
         PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
         PP.shapes.text_change(txt_kit, "= " + curr_kit);
-        PP.timers.add_timer(s, 500, reenable_damage, false);
+        PP.timers.add_timer(s, 800, reenable_damage, false);
         enable_damage = false;
+
+        PP.assets.sprite.animation_play(player, "hurt");
     } else {
         goto_gameover (s)
         console.log("Gameover");

@@ -91,7 +91,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_1, true);
     PP.physics.set_allow_gravity(pl_4_1, false);    
-    PP.physics.add_collider_f(s, player, pl_4_1, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_1, reduce_kit);
     PP.physics.set_velocity_y(pl_4_1, pl_4_speed);
     
     //4.2
@@ -99,7 +99,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_2, true);
     PP.physics.set_allow_gravity(pl_4_2, false);    
-    PP.physics.add_collider_f(s, player, pl_4_2, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_2, reduce_kit);
     PP.physics.set_velocity_y(pl_4_2, pl_4_speed);
 
     //4.3
@@ -107,7 +107,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_3, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_3, true);
     PP.physics.set_allow_gravity(pl_4_3, false);    
-    PP.physics.add_collider_f(s, player, pl_4_3, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_3, reduce_kit);
     PP.physics.set_velocity_y(pl_4_3, pl_4_speed);
 
     //4.4
@@ -115,7 +115,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_4, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_4, true);
     PP.physics.set_allow_gravity(pl_4_4, false);    
-    PP.physics.add_collider_f(s, player, pl_4_4, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_4, reduce_kit);
     PP.physics.set_velocity_y(pl_4_4, pl_4_speed);
 
     //4.5
@@ -123,7 +123,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_5, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_5, true);
     PP.physics.set_allow_gravity(pl_4_5, false);    
-    PP.physics.add_collider_f(s, player, pl_4_5, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_5, reduce_kit);
     PP.physics.set_velocity_y(pl_4_5, pl_4_speed);
 
     //secondo gruppo
@@ -132,7 +132,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_6, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_6, true);
     PP.physics.set_allow_gravity(pl_4_6, false);    
-    PP.physics.add_collider_f(s, player, pl_4_6, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_6, reduce_kit);
     PP.physics.set_velocity_y(pl_4_6, pl_4_speed);
     
     //4.7
@@ -140,7 +140,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_7, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_7, true);
     PP.physics.set_allow_gravity(pl_4_7, false);    
-    PP.physics.add_collider_f(s, player, pl_4_7, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_7, reduce_kit);
     PP.physics.set_velocity_y(pl_4_7, pl_4_speed);
 
     //4.8
@@ -148,7 +148,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_8, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_8, true);
     PP.physics.set_allow_gravity(pl_4_8, false);    
-    PP.physics.add_collider_f(s, player, pl_4_8, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_8, reduce_kit);
     PP.physics.set_velocity_y(pl_4_8, pl_4_speed);
 
     //4.9
@@ -156,7 +156,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_9, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_9, true);
     PP.physics.set_allow_gravity(pl_4_9, false);    
-    PP.physics.add_collider_f(s, player, pl_4_9, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_9, reduce_kit);
     PP.physics.set_velocity_y(pl_4_9, pl_4_speed);
 
     //4.10
@@ -164,7 +164,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_4_10, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_4_10, true);
     PP.physics.set_allow_gravity(pl_4_10, false);    
-    PP.physics.add_collider_f(s, player, pl_4_10, collision_platform);
+    PP.physics.add_overlap_f(s, player, pl_4_10, reduce_kit);
     PP.physics.set_velocity_y(pl_4_10, pl_4_speed);
 
     
@@ -237,7 +237,6 @@ function create_platforms(s) {
     PP.physics.add_collider_f(s, player, pl_8_2, collision_platform);
     PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
 
-    
 }
 
 function update_platforms(s) {

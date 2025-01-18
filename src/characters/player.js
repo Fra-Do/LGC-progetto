@@ -4,7 +4,7 @@ let player;
 let img_weapon;
 let weapon;
 
-let weapon_disable = false;
+let weapon_disable    = false;
 
 let player_speed      = 400;
 let jump_init_speed   = 550;
@@ -21,6 +21,7 @@ function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add_list(player, "jump_up", [5, 6, 7, 8, 9], 10, 0);
     PP.assets.sprite.animation_add_list(player, "jump_down", [10, 11, 12, 13], 10, 0);
     PP.assets.sprite.animation_add_list(player, "weapon", [14, 15, 16, 17, 18, 19, 20], 10, -1);
+    PP.assets.sprite.animation_add_list(player, "hurt", [8, 15, 10, 17], 10, -1);
     
     PP.assets.sprite.animation_play    (player, "stop");  // avvia l'animazione "stop" di default
 }
@@ -32,7 +33,8 @@ function preload_player(s) {
 
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 9200, 4000, 0.5, 1);  
+    //player = PP.assets.sprite.add(s, img_player, 9200, 4000, 0.5, 1); 
+    //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
