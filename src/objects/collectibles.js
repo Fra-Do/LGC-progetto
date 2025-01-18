@@ -421,6 +421,10 @@ function update_collectibles(s) {
     if (!PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
         isKPressed = false; // Resetta lo stato di pressione
     }
+
+    if (!PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+        isCPressed = false; // Resetta lo stato di pressione
+    }
 }
 
 function destroy_collectibles(s) {
