@@ -242,7 +242,7 @@ function open_cage_2(s, player) {
             if (curr_score < 6) {
                 curr_score++; // Incrementa il punteggio
                 PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                PP.shapes.text_change(txt_score, "= " + curr_score);
             } else {
                 console.log("Hai aperto tutte e 6 le gabbie");
             }
@@ -269,7 +269,7 @@ function open_cage_3(s, player) {
             if (curr_score < 6) {
                 curr_score++; // Incrementa il punteggio
                 PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                PP.shapes.text_change(txt_score, "= " + curr_score);
             } else {
                 console.log("Hai aperto tutte e 6 le gabbie");
             }
@@ -296,7 +296,7 @@ function open_cage_4(s, player) {
             if (curr_score < 6) {
                 curr_score++; // Incrementa il punteggio
                 PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                PP.shapes.text_change(txt_score, "= " + curr_score);
             } else {
                 console.log("Hai aperto tutte e 6 le gabbie");
             }
@@ -323,7 +323,7 @@ function open_cage_5(s, player) {
             if (curr_score < 6) {
                 curr_score++; // Incrementa il punteggio
                 PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                PP.shapes.text_change(txt_score, "= " + curr_score);
             } else {
                 console.log("Hai aperto tutte e 6 le gabbie");
             }
@@ -350,7 +350,7 @@ function open_cage_6(s, player) {
             if (curr_score < 6) {
                 curr_score++; // Incrementa il punteggio
                 PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
+                PP.shapes.text_change(txt_score, "= " + curr_score);
             } else {
                 console.log("Hai aperto tutte e 6 le gabbie");
             }
@@ -376,7 +376,7 @@ function collision_collectibles(s, player, kit) {
             if (curr_kit < 6) {
                 curr_kit++; // Incrementa il punteggio
                 PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+                PP.shapes.text_change(txt_kit, "= " + curr_kit);
             } else {
                 console.log("Hai raccolto tutti e 5 i kit");
             }

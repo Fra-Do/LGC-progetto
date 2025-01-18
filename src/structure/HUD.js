@@ -209,10 +209,11 @@ function reduce_kit (s, player, animal) {
     if (curr_kit > 0 && enable_damage) {
         curr_kit--; // Incrementa il punteggio
         PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
-        PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
+        PP.shapes.text_change(txt_kit, "= " + curr_kit);
         PP.timers.add_timer(s, 500, reenable_damage, false);
         enable_damage = false;
     } else {
+        goto_gameover (s)
         console.log("Gameover");
     }
 }
