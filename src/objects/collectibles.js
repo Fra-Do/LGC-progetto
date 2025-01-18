@@ -362,6 +362,7 @@ function open_cage_6(s, player) {
 let isKPressed = false;
 //FUNZIONI PER RACCOLTA DI OGGETTI
 function collision_collectibles(s, player, kit) {
+    
         if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
             PP.assets.destroy(kit); 
             if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
@@ -372,7 +373,7 @@ function collision_collectibles(s, player, kit) {
             let curr_kit = PP.game_state.get_variable("kit");
     
             // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_kit < 5) {
+            if (curr_kit < 6) {
                 curr_kit++; // Incrementa il punteggio
                 PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
                 PP.shapes.text_change(txt_kit, "Kit= " + curr_kit);
@@ -417,7 +418,9 @@ function open_map(s) {
 }
 
 function update_collectibles(s) {
-    
+    if (!PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
+        isKPressed = false; // Resetta lo stato di pressione
+    }
 }
 
 function destroy_collectibles(s) {

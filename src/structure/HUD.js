@@ -285,6 +285,7 @@ function update_HUD(s, player) {
     //score_kit_update(s)
     //score_update(s)
     
+    
 }
 
 // Funzione per distruggere l'HUD
