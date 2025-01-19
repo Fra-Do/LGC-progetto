@@ -333,11 +333,19 @@ function create_structure(s) {
     PP.physics.add_collider(s, player, wall);
 
     //piattaforme statiche gruppo 1 
-    wall = PP.shapes.rectangle_add(s, 7845, 3535, 190, 60, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 7865, 3577, 190, 60, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 
-    wall = PP.shapes.rectangle_add(s, 7590, 3310, 190, 60, "0x000000", 0); 
+    wall = PP.shapes.rectangle_add(s, 7590, 3413, 190, 60, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    wall = PP.shapes.rectangle_add(s, 7920, 3225, 190, 60, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
+
+    wall = PP.shapes.rectangle_add(s, 7590, 3100, 190, 60, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall);
 

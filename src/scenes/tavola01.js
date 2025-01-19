@@ -16,7 +16,7 @@ function preload_tavola01 (s) {
 
 function create_tavola01 (s) {
     tavola1       = PP.assets.image.add(s, img_tavola1, 0, 0, 0, 0);
-    avanti1       = PP.assets.image.add(s, img_avanti1, 1200, 660, 0, 0);
+    avanti1       = PP.assets.image.add(s, img_avanti1, 1220, 660, 0, 0);
     indietro1     = PP.assets.image.add(s, img_indietro1, 20, 660, 0, 0);
 
     PP.interactive.mouse.add (avanti1, "pointerdown", change_scene_tavola02);

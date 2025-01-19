@@ -22,6 +22,9 @@ function preload_animals(s) {
     img_scimmia    = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scimmia.png", 248, 160);
     img_maiale     = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_maiale.png", 171, 87);
     img_scientist  = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scientist.png", 94, 170);
+
+
+    img_topino = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topino.png", 123, 96);
 }
 
 function goto_gameover (s) {
@@ -114,6 +117,25 @@ function create_animals (s) {
     PP.physics.set_velocity_x(scientist2, 270);
     PP.physics.set_immovable(scientist2, true);
     PP.physics.set_allow_gravity(scientist2, false);
+
+
+
+
+
+
+    // Topino
+    topino = PP.assets.sprite.add(s, img_topino, 9300, 5190, 0.5, 1); 
+    PP.physics.add(s, topino, PP.physics.type.DYNAMIC);
+    
+    PP.physics.add_overlap_f(s, player, topino, topino_free);
+    
+    PP.assets.sprite.animation_add(topino, "locked", 0, 0, 15, 0);
+    PP.assets.sprite.animation_add(topino, "free", 0, 8, 15, 0);
+    PP.assets.sprite.animation_play(topino, "locked");
+   
+    PP.physics.set_immovable(topino, true);
+    PP.physics.set_allow_gravity(topino, false);
+    
 }
 
 function update_animals (s) {
@@ -177,6 +199,11 @@ else if (scientist2.geometry.x <= 7660) {
     scientist2.geometry.flip_x = false;
 }
 
+}
+
+
+function topino_free (s) {
+    PP.assets.sprite.animation_play(topino, "free");
 }
 
 function destroy_animals (s) {

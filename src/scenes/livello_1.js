@@ -102,6 +102,7 @@ function update(s) {
     update_HUD(s);
     manage_player_weapon(s);
     update_collectibles(s);
+    
 }
 
 function destroy(s) {
