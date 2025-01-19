@@ -208,7 +208,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_7_1, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_7_1, true);
     PP.physics.set_allow_gravity(pl_7_1, false);    
-    PP.physics.add_collider_f(s, player, pl_7_1, reduce_kit);
+    PP.physics.add_overlap_f(s, player, pl_7_1, reduce_kit);
     PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
 
     //7.2
@@ -216,7 +216,7 @@ function create_platforms(s) {
     PP.physics.add(s, pl_7_2, PP.physics.type.DYNAMIC); 
     PP.physics.set_immovable(pl_7_2, true);
     PP.physics.set_allow_gravity(pl_7_2, false);    
-    PP.physics.add_collider_f(s, player, pl_7_2, reduce_kit);
+    PP.physics.add_overlap_f(s, player, pl_7_2, reduce_kit);
     PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
 
     //Piattaforme gruppo 8
