@@ -205,24 +205,30 @@ function reenable_damage (s) {
 }
 
  //funziona ma va al game over non a 0 kit ma se viene colpita di nuovo quando ci sono 0 kit
-function reduce_kit(s, player, animal) { 
-    if (enable_damage){
+ function reduce_kit(s, player, animal) { 
+    if (enable_damage) {
         let curr_kit = PP.game_state.get_variable("kit");
-        if (curr_kit > 0 && enable_damage) {
-            curr_kit--; // Incrementa il punteggio
+
+        if (curr_kit > 0) {
+            curr_kit--; // Decrementa il conteggio della vita
             PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
             PP.shapes.text_change(txt_kit, "= " + curr_kit);
             enable_damage = false;
-    
+
             PP.timers.add_timer(s, 2000, reenable_damage, false);
-            
-    
-           //PP.assets.sprite.animation_play(player, "hurt");
-        } else if (curr_kit == 1){
-            goto_gameover(s)
+
+            // Se il conteggio è sceso a 0, vai a gameover
+            if (curr_kit === 0) {
+                goto_gameover(s);
+            }
+
+        } else if (curr_kit === 0) {
+            // Fall-back nel caso in cui il conteggio sia già 0. Altrimenti dovrei far colpire 
+            //il personaggio un'altra volta per andare al gameover
+            goto_gameover(s);
         }
     } 
-} 
+}
 
 /*function reduce_kit (s, player, animal) {
     let curr_kit = PP.game_state.get_variable("kit");
