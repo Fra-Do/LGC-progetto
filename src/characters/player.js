@@ -11,19 +11,19 @@ let jump_init_speed   = 550;
 let step_lenght       = 10;
 let height            = 8;
 
-let curr_anim         = "stop";
+let curr_anim         = "idle";
 
 let is_on_platform;
 
 function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add_list(player, "run", [1, 2, 3, 4], 10, -1);  
-    PP.assets.sprite.animation_add     (player, "stop", 0, 0, 10, 0);  
+    PP.assets.sprite.animation_add     (player, "idle", 0, 0, 10, 0);  
     PP.assets.sprite.animation_add_list(player, "jump_up", [5, 6, 7, 8, 9], 10, 0);
     PP.assets.sprite.animation_add_list(player, "jump_down", [10, 11, 12, 13], 10, 0);
-    PP.assets.sprite.animation_add_list(player, "weapon", [14, 15, 16, 17, 18, 19, 20], 10, -1);
-    PP.assets.sprite.animation_add_list(player, "hurt", [8, 14, 10, 15], 10, -1);
+    PP.assets.sprite.animation_add_list(player, "weapon", [16, 17, 18, 19, 20, 21, 22], 10, -1);
+    PP.assets.sprite.animation_add_list(player, "hurt", [8, 14, 11, 15], 10, -1);
     
-    PP.assets.sprite.animation_play    (player, "stop");  // avvia l'animazione "stop" di default
+    PP.assets.sprite.animation_play    (player, "idle");  // avvia l'animazione "idle" di default
 }
 
 function preload_player(s) {
@@ -33,7 +33,7 @@ function preload_player(s) {
 
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 8055, 1330, 0.5, 1); 
+    // player = PP.assets.sprite.add(s, img_player, 8055, 1330, 0.5, 1); 
     //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
@@ -48,6 +48,11 @@ function create_player(s) {
 
 function update_player(s, player) {
     let next_anim = curr_anim;
+
+    if (player.is_hurt) {
+        // Se il giocatore è "hurt", non cambiare animazione
+        return;
+    }
 
     // Verifica se il personaggio è a terra per evitare che parta con l'animazione di jump_down
     is_on_ground = PP.physics.get_velocity_y(player) === 0; 
@@ -68,7 +73,7 @@ function update_player(s, player) {
         next_anim = "run";  
     } else {
         PP.physics.set_velocity_x(player, 0);
-        next_anim = "stop"; 
+        next_anim = "idle"; 
     }
 
     if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && player.ph_obj.body.blocked.down) {
@@ -109,6 +114,7 @@ function update_player(s, player) {
     }
 
     manage_player_weapon(s);
+    
 }
 
 //FUNZIONE PR COLPIRE I NEMICI
