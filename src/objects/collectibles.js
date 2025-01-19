@@ -4,6 +4,7 @@ let curr_score
 
 let txt_kit;
 let curr_kit;
+
 //KIT
 let img_kit;
 let kit_1;
@@ -45,6 +46,10 @@ let cage_maiale;
 let img_cage_scimmia;
 let cage_scimmia;
 
+//GABBIA TOPOLINO DA SALVARE
+let img_topolino;
+let topolino;
+
 //VARIABILI PER LE GABBIE
 let cage_1;
 let cage_2;
@@ -54,12 +59,13 @@ let cage_5;
 let cage_6;
 
 //VARIABILI PER ANIMAZIONI APERTURA GABBIE
-let cage_1_opened = false;
-let cage_2_opened = false;
-let cage_3_opened = false;
-let cage_4_opened = false;
-let cage_5_opened = false;
-let cage_6_opened = false;
+let cage_1_opened   = false;
+let cage_2_opened   = false;
+let cage_3_opened   = false;
+let cage_4_opened   = false;
+let cage_5_opened   = false;
+let cage_6_opened   = false;
+let topolino_opened = false;
 
 function preload_collectibles(s) {
     //IMMAGINI PER OGGETTI DA RACCOGLIERE NELLA MAPPA
