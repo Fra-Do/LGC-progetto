@@ -20,7 +20,7 @@ function configure_player_animations(s, player) {
     PP.assets.sprite.animation_add     (player, "idle", 0, 0, 10, 0);  
     PP.assets.sprite.animation_add_list(player, "jump_up", [5, 6, 7, 8, 9], 10, 0);
     PP.assets.sprite.animation_add_list(player, "jump_down", [10, 11, 12, 13], 10, 0);
-    PP.assets.sprite.animation_add_list(player, "weapon", [16, 17, 18, 19, 20, 21, 22], 10, -1);
+    PP.assets.sprite.animation_add_list(player, "weapon", [16, 17, 18, 19, 20, 21, 22], 10, 0);
     PP.assets.sprite.animation_add_list(player, "hurt", [8, 14, 11, 15], 10, -1);
     
     PP.assets.sprite.animation_play    (player, "idle");  // avvia l'animazione "idle" di default
@@ -32,8 +32,8 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 9000, 1505-65, 0.5, 1); 
+    //player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    player = PP.assets.sprite.add(s, img_player, 9000, 1505-65, 0.5, 1); 
     //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
@@ -97,9 +97,10 @@ function update_player(s, player) {
 
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L) && 
         PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)) {
+
         if (ss_fiale_opened) {
             next_anim = "weapon";
-        }   
+        }     
     }
 
     // Se l'animazione è cambiata, la aggiorniamo
@@ -172,12 +173,13 @@ function manage_player_weapon(s) {
         velocity = - velocity;
     }
 
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)){
+    if (PP.interactive.kb.is_key_down(s, PP.key_codes.L) && 
+    PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)){
 
         //Codice per lanciare l'arma dopo che l'animazione di lancio è finita
         if (!weapon_disable) { // Controlla se è permesso lanciare l'arma
             weapon_disable = true; // Blocca ulteriori lanci fino a quando non viene riabilitata
-            PP.timers.add_timer(s, 290, () => launch_weapon(s, offset, velocity), false); // Ritardo di 290ms
+            PP.timers.add_timer(s, 350, () => launch_weapon(s, offset, velocity), false); // Ritardo di 290ms
         }
     }
 }
