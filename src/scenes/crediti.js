@@ -1,12 +1,14 @@
-let img_story_1
+let img_crediti;
+let crediti;
 
 function preload_credits (s) {
-    img_story_1 = PP.assets.image.load(s, "assets/images/cover/provvisorie/tavola4.png");
+    img_crediti = PP.assets.image.load(s, "assets/images/cover/crediti.png");
 
 }
 
 function create_credits (s) {
-    
+    crediti  = PP.assets.image.add(s, img_crediti, 0, 0, 0, 0);
+
 }
 
 function update_credits (s) {

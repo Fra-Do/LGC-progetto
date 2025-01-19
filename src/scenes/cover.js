@@ -10,19 +10,20 @@ let button_crediti;
 
 function preload(s) {
     //IMMAGINE COVER
-    img_background_cover = PP.assets.image.load(s, "assets/images/cover/cover.png");
+    img_background_cover = PP.assets.image.load(s, "assets/images/cover/covergame.png");
 
     //BOTTONI
-    img_button_gioca     = PP.assets.image.load(s, "assets/images/cover/gioca.png");
-    img_button_storia    = PP.assets.image.load(s, "assets/images/cover/storia.png");
-    img_button_crediti   = PP.assets.image.load(s, "assets/images/cover/crediti.png");
+    img_button_storia    = PP.assets.image.load(s, "assets/images/cover/bottoni/storia.png");
+    img_button_gioca     = PP.assets.image.load(s, "assets/images/cover/bottoni/gioca.png");
+    img_button_crediti   = PP.assets.image.load(s, "assets/images/cover/bottoni/crediti.png");
 }
 
 function create(s) {
     background_cover  = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
-    button_gioca      = PP.assets.image.add(s, img_button_gioca, 352, 305, 0, 0);
-    button_storia     = PP.assets.image.add(s, img_button_storia, 535, 350, 0, 0);
-    button_crediti    = PP.assets.image.add(s, img_button_crediti, 810, 282, 0, 0);
+
+    button_storia     = PP.assets.image.add(s, img_button_storia, 45, 200, 0, 0);
+    button_gioca      = PP.assets.image.add(s, img_button_gioca, 130, 323, 0, 0);
+    button_crediti    = PP.assets.image.add(s, img_button_crediti, 45, 430, 0, 0);
 
     //GESTIONE BOTTONI
     PP.interactive.mouse.add (button_gioca, "pointerdown", change_scene_livello_1)
