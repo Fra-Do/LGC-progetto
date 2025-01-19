@@ -164,49 +164,13 @@ function create_HUD(s) {
     });
 }
 
-
-
-// Flag per monitorare la pressione del tasto
-//let isCPressed = false;
-
-/*function score_update(s) {
-    // Controlla se il tasto C è premuto
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
-        if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isCPressed = true; 
-            console.log("Tasto C premuto");
-
-            // Ottieni il punteggio corrente
-            let curr_score = PP.game_state.get_variable("score");
-
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_score < 6) {
-                curr_score++; // Incrementa il punteggio
-                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "Gabbie: " + curr_score);
-            } else {
-                console.log("Hai aperto tutte e 6 le gabbie");
-            }
-        }
-    } else {
-        // Resetta il flag quando il tasto è rilasciato. Questo per evitare che lo score aumenti tutto in una volta sola
-        if (isCPressed) {
-            console.log("Tasto C rilasciato");
-        }
-        isCPressed = false;
-    }
-} */
-
-let enable_damage = true;
- 
-function reenable_damage (s) {
-    enable_damage = true;
-}
-
- //funziona ma va al game over non a 0 kit ma se viene colpita di nuovo quando ci sono 0 kit
- function reduce_kit(s, player, animal) { 
+function reduce_kit(s, player, animal) { 
     if (enable_damage) {
         let curr_kit = PP.game_state.get_variable("kit");
+
+        // Imposta lo stato "hurt" e gioca l'animazione
+        player.is_hurt = true;
+        PP.assets.sprite.animation_play(player, "hurt");
 
         if (curr_kit > 0) {
             curr_kit--; // Decrementa il conteggio della vita
@@ -214,9 +178,7 @@ function reenable_damage (s) {
             PP.shapes.text_change(txt_kit, "= " + curr_kit);
             enable_damage = false;
 
-            // Imposta lo stato "hurt" e gioca l'animazione
-            player.is_hurt = true;
-            PP.assets.sprite.animation_play(player, "hurt");
+            
             
             // Timer per reabilitare le altre animazioni dopo "hurt"
             PP.timers.add_timer(s, 500, () => {

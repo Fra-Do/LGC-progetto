@@ -34,7 +34,7 @@ function create_animals (s) {
     PP.physics.add(s, coniglio, PP.physics.type.DYNAMIC);
     coniglio.geometry.flip_x = true;
 
-    PP.physics.add_overlap_f(s, coniglio, player, reduce_kit);
+    PP.physics.add_overlap_f(s, player, coniglio, reduce_kit);
 
     PP.assets.sprite.animation_add(coniglio, "walk", 0, 10, 15, -1);
     PP.assets.sprite.animation_play(coniglio, "walk");
@@ -48,7 +48,7 @@ function create_animals (s) {
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
-    PP.physics.add_overlap_f(s, topo, player, reduce_kit);
+    PP.physics.add_overlap_f(s, player, topo, reduce_kit);
 
     PP.assets.sprite.animation_add(topo, "walk", 0, 5, 8, -1);
     PP.assets.sprite.animation_play(topo, "walk");
@@ -62,7 +62,7 @@ function create_animals (s) {
     PP.physics.add(s, scimmia, PP.physics.type.DYNAMIC);
     scimmia.geometry.flip_x = true;
 
-    PP.physics.add_overlap_f(s, scimmia, player, reduce_kit);
+    PP.physics.add_overlap_f(s, player, scimmia, reduce_kit);
 
     PP.assets.sprite.animation_add(scimmia, "walk", 0, 6, 8, -1);
     PP.assets.sprite.animation_play(scimmia, "walk");
@@ -76,7 +76,7 @@ function create_animals (s) {
     PP.physics.add(s, maiale, PP.physics.type.DYNAMIC);
     maiale.geometry.flip_x = true;
 
-    PP.physics.add_overlap_f(s, maiale, player, reduce_kit);
+    PP.physics.add_overlap_f(s, player, maiale, reduce_kit);
 
     PP.assets.sprite.animation_add(maiale, "walk", 0, 8, 8, -1);
     PP.assets.sprite.animation_play(maiale, "walk");

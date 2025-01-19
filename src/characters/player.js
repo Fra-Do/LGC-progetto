@@ -33,17 +33,22 @@ function preload_player(s) {
 
 function create_player(s) {
     player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    // player = PP.assets.sprite.add(s, img_player, 4540-90, 1505-65, 0.5, 1); 
+    //player = PP.assets.sprite.add(s, img_player, 9000, 1505-65, 0.5, 1); 
     //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
     
-
     //codice per creare un layer sopra tutti 
     let nome_layer = PP.layers.create(s);
     PP.layers.add_to_layer(nome_layer, player);
     PP.layers.set_z_index(nome_layer, 1);
+}
+
+let enable_damage = true;
+ 
+function reenable_damage (s) {
+    enable_damage = true;
 }
 
 function update_player(s, player) {
@@ -94,8 +99,7 @@ function update_player(s, player) {
         PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)) {
         if (ss_fiale_opened) {
             next_anim = "weapon";
-        }
-            
+        }   
     }
 
     // Se l'animazione è cambiata, la aggiorniamo
@@ -114,7 +118,6 @@ function update_player(s, player) {
     }
 
     manage_player_weapon(s);
-    
 }
 
 //FUNZIONE PR COLPIRE I NEMICI

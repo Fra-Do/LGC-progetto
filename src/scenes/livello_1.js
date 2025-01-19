@@ -25,7 +25,6 @@ function preload(s) {
     img_tubi        = PP.assets.image.load(s, "assets/images/mappa/liv1e2.png"); 
     
     preload_HUD(s)
-    preload_collectibles(s);
     preload_instruction(s)
     preload_player(s);
     preload_animals (s);
@@ -50,7 +49,6 @@ function create(s) {
     //Tubi struttura
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
     
-    create_instruction(s) 
     create_player(s);
     create_animals (s);
 
@@ -68,8 +66,6 @@ function create(s) {
 }
 
 function update(s) {
-    //update_collectibles(s);
-   
     update_instruction(s);
     update_player(s, player);
     update_platforms(s);
@@ -104,18 +100,16 @@ function update(s) {
     update_instruction(s, player);
     open_map(s); // Controlla i tasti M e X per gestire la mappa
     update_HUD(s);
-    //score_update(s)
     manage_player_weapon(s);
     update_collectibles(s);
 }
 
 function destroy(s) {
-    //update_collectibles(s);
     destroy_instruction(s);
     destroy_player(s);
     destroy_platforms(s);
     destroy_HUD(s);
-    destroy_animals (s);
+    destroy_animals(s);
 }
 
 PP.scenes.add("livello_1", preload, create, update, destroy);
