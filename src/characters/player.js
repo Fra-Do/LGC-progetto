@@ -32,7 +32,7 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-   player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
+    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
     //player = PP.assets.sprite.add(s, img_player, 8055, 1330, 0.5, 1); 
     //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
 

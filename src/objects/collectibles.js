@@ -220,8 +220,7 @@ function open_cage_1(s, player) {
             }
         }
     
-    }
-        
+    }  
 }
 
 function open_cage_2(s, player) {
@@ -394,26 +393,28 @@ function collision_collectibles(s, player, kit) {
 
 //ALL'INIZIO DEL GIOCO LA PROTAGONISTA TROVA LA MAPPA, CHE APRE IN QUALUNQUE MOMENTO
 function open_map(s) {
-    // Controlla se il tasto M viene premuto e la mappa non è ancora visibile
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_created) {
-        console.log("Mappa aperta");
-        // Aggiungi l'immagine della mappa al centro dello schermo
-        lil_map = PP.assets.image.add(s, img_lil_map, 160, 160, 0, 0); 
-        lil_map.tile_geometry.scroll_factor_x = 0;
-        lil_map.tile_geometry.scroll_factor_y = 0;
-        map_created = true;
+    if (ss_map_opened) {
+        // Controlla se il tasto M viene premuto e la mappa non è ancora visibile
+        if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_created) {
+            console.log("Mappa aperta");
+            // Aggiungi l'immagine della mappa al centro dello schermo
+            lil_map = PP.assets.image.add(s, img_lil_map, 160, 160, 0, 0); 
+            lil_map.tile_geometry.scroll_factor_x = 0;
+            lil_map.tile_geometry.scroll_factor_y = 0;
+            map_created = true;
 
-    //codice per creare un layer sopra tutti 
-    let nome_layer = PP.layers.create(s);
-    PP.layers.add_to_layer(nome_layer, lil_map);
-    PP.layers.set_z_index(nome_layer, 2);
-    } 
-    // Controlla se il tasto X viene premuto e la mappa è visibile
-    else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_created) {
-        console.log("Mappa chiusa");
-        PP.assets.destroy(lil_map); // Rimuove la mappa dalla scena
-        lil_map = null; // Resetta il riferimento
-        map_created = false;
+            //codice per creare un layer sopra tutti 
+             let nome_layer = PP.layers.create(s);
+            PP.layers.add_to_layer(nome_layer, lil_map);
+            PP.layers.set_z_index(nome_layer, 2);
+        } 
+        // Controlla se il tasto X viene premuto e la mappa è visibile
+        else if (PP.interactive.kb.is_key_down(s, PP.key_codes.X) && map_created) {
+            console.log("Mappa chiusa");
+            PP.assets.destroy(lil_map); // Rimuove la mappa dalla scena
+            lil_map = null; // Resetta il riferimento
+            map_created = false;
+        }
     }
 }
 

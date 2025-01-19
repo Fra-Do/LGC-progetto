@@ -151,7 +151,7 @@ function create_HUD(s) {
     let wall = PP.shapes.rectangle_add(s, 9880, 5100, 100, 300, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC);
     
-    // Aggiungi overlap dinamico in base al punteggio
+    // Aggiungiamo overlap dinamico in base al punteggio
     PP.physics.add_overlap_f(s, player, wall, function () { //funzione anonima di callback perché viene usata solo in questo punto del codice
         
         //Se le gabbie aperte sono minori di 6 si ha il finale 2, se sono 6 le gabbie aperte si ha il finale 1
@@ -204,7 +204,27 @@ function reenable_damage (s) {
     enable_damage = true;
 }
 
-function reduce_kit (s, player, animal) {
+ //funziona ma va al game over non a 0 kit ma se viene colpita di nuovo quando ci sono 0 kit
+function reduce_kit(s, player, animal) { 
+    if (enable_damage){
+        let curr_kit = PP.game_state.get_variable("kit");
+        if (curr_kit > 0 && enable_damage) {
+            curr_kit--; // Incrementa il punteggio
+            PP.game_state.set_variable("kit", curr_kit); // Aggiorna lo stato di gioco
+            PP.shapes.text_change(txt_kit, "= " + curr_kit);
+            enable_damage = false;
+    
+            PP.timers.add_timer(s, 2000, reenable_damage, false);
+            
+    
+           //PP.assets.sprite.animation_play(player, "hurt");
+        } else if (curr_kit == 1){
+            goto_gameover(s)
+        }
+    } 
+} 
+
+/*function reduce_kit (s, player, animal) {
     let curr_kit = PP.game_state.get_variable("kit");
     if (curr_kit > 0 && enable_damage) {
         curr_kit--; // Incrementa il punteggio
@@ -214,13 +234,10 @@ function reduce_kit (s, player, animal) {
         enable_damage = false;
 
         /*PP.assets.sprite.animation_stop(player, "run");
-        PP.assets.sprite.animation_play(player, "hurt");*/
+        PP.assets.sprite.animation_play(player, "hurt");
 
-    } else {
-        goto_gameover (s)
-        console.log("Gameover");
-    }
-}
+    } 
+}*/
 
 function get_kit (s, player, kit_gen) {
     if (struzioni_kit_created1) {
