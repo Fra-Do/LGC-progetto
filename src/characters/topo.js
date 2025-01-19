@@ -8,6 +8,10 @@ function preload_topo (s) {
     img_topolino = PP.assets.image.load (s, "assets/images/characters/topolino.png");
 }
 
+function configure_topo_animations (s) {
+    
+}
+
 function create_topo (s) {
     topolino = PP.assets.sprite.add(s, img_topolino, 2817, 777, 0.5, 1);
     PP.physics.add(s, topolino, PP.physics.type.STATIC);
