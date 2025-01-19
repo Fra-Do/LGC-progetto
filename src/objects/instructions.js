@@ -6,6 +6,8 @@ let arrows
 let up
 
 let istruzioni_arrows       = false;
+let istruzioni_arrows_created = false;
+let istruzioni_up_created = false;
 let istruzioni_leftright    = false;
 
 //ISTRUZIONI KIT (TASTO K)
@@ -82,11 +84,42 @@ function preload_instruction(s) {
 }
 
 function create_instruction(s) {
-    arrows       = PP.assets.image.add(s, img_arrows, 350, 150, 0, 0);
-    up           = PP.assets.image.add(s, img_up, 890, 50, 0, 0); 
+    //arrows       = PP.assets.image.add(s, img_arrows, 350, 150, 0, 0);
+    //up           = PP.assets.image.add(s, img_up, 890, 50, 0, 0); 
 }
 
 function update_instruction(s) {
+    // ARROWS
+    if (player.geometry.x > 300 && player.geometry.x < 500 &&
+        player.geometry.y > 340 && player.geometry.y < 400) {
+        
+        if (istruzioni_arrows_created == false) {
+            istruzioni_interaction_arrows = PP.assets.image.add(s, img_arrows, 400, 150, 0.5, 1); 
+        }
+        istruzioni_arrows_created = true;
+
+    } else if ((player.geometry.x < 300 || player.geometry.x > 500 &&
+                player.geometry.y > 340 && player.geometry.y < 400) && istruzioni_arrows_created == true){
+        PP.assets.destroy(istruzioni_interaction_arrows);
+        istruzioni_arrows_created = false;
+    }
+    
+    //UP
+    if (player.geometry.x > 650 && player.geometry.x < 1150 &&
+        player.geometry.y > 0 && player.geometry.y < 400) {
+        
+        if (istruzioni_up_created == false) {
+            istruzioni_interaction_up = PP.assets.image.add(s, img_up,  900, 100, 0.5, 1); 
+        }
+        istruzioni_up_created = true;
+
+    } else if ((player.geometry.x < 650 || player.geometry.x > 1150 &&
+                player.geometry.y > 0 && player.geometry.y < 400) && istruzioni_up_created == true){
+        PP.assets.destroy(istruzioni_interaction_up);
+        istruzioni_up_created = false;
+    }
+
+    
     // KIT
     // ISTRUZIONE: kit 1
     if (player.geometry.x > 1300 && player.geometry.x < 1500 &&
@@ -168,7 +201,7 @@ function update_instruction(s) {
         player.geometry.y > 130 && player.geometry.y < 250) {
         
         if (istruzioni_map_created == false) {
-            istruzioni_interaction_map = PP.assets.image.add(s, img_istruzioni_map, 1900, 130, 0.5, 1); 
+            istruzioni_interaction_map = PP.assets.image.add(s, img_istruzioni_map, 1900, 80, 0.5, 1); 
         }
         istruzioni_map_created = true;
 

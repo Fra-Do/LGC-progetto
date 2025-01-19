@@ -400,7 +400,7 @@ function open_map(s) {
         if (PP.interactive.kb.is_key_down(s, PP.key_codes.M) && !map_created) {
             console.log("Mappa aperta");
             // Aggiungi l'immagine della mappa al centro dello schermo
-            lil_map = PP.assets.image.add(s, img_lil_map, 160, 160, 0, 0); 
+            lil_map = PP.assets.image.add(s, img_lil_map, 180, 160, 0, 0); 
             lil_map.tile_geometry.scroll_factor_x = 0;
             lil_map.tile_geometry.scroll_factor_y = 0;
             map_created = true;
