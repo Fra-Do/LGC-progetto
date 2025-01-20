@@ -150,7 +150,7 @@ function create_collectibles(s) {
     PP.physics.add(s, map, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, map, open_map);
 
-    fiale = PP.assets.image.add(s, img_fiale, 9400, 3610, 0, 0);
+    fiale = PP.assets.image.add(s, img_fiale, 9400, 3610-125, 0, 0);
     PP.physics.add(s, fiale, PP.physics.type.STATIC);
     PP.physics.add_overlap_f(s, player, fiale, collision_collectibles);
 }

@@ -24,7 +24,7 @@ function preload_animals(s) {
     img_scientist  = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scientist.png", 94, 170);
 
 
-    img_topino = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topino.png", 123, 96);
+    img_topino = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topino2.png", 147.5, 115);
 }
 
 function goto_gameover (s) {
@@ -124,7 +124,7 @@ function create_animals (s) {
 
 
     // Topino
-    topino = PP.assets.sprite.add(s, img_topino, 9300, 5190, 0.5, 1); 
+    topino = PP.assets.sprite.add(s, img_topino, 9310, 5190, 0.5, 1); 
     PP.physics.add(s, topino, PP.physics.type.DYNAMIC);
     
     PP.physics.add_overlap_f(s, player, topino, topino_free);

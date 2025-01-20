@@ -344,6 +344,15 @@ function create_structure(s) {
     wall = PP.shapes.rectangle_add(s, 5510, 4185, 390, 82, "0x000000", 0); 
     PP.physics.add(s, wall, PP.physics.type.STATIC); 
     PP.physics.add_collider(s, player, wall); 
+
+
+
+
+
+
+    wall = PP.shapes.rectangle_add(s, 9423, 3673, 238, 128, "0x000000", 0); 
+    PP.physics.add(s, wall, PP.physics.type.STATIC); 
+    PP.physics.add_collider(s, player, wall);
 }
 
 function update_structure(s, player) {

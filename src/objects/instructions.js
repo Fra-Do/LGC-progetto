@@ -319,15 +319,15 @@ function update_instruction(s) {
 
     //FIALE 
     if (player.geometry.x > 9300 && player.geometry.x < 9550 &&
-        player.geometry.y > 3610 && player.geometry.y < 3810) {
+        player.geometry.y > 3610-150 && player.geometry.y < 3810) {
         
         if (istruzioni_fiale_created == false) {
-            istruzioni_interaction_fiale = PP.assets.image.add(s, img_istruzioni_fiale, 9425, 3580, 0.5, 1); 
+            istruzioni_interaction_fiale = PP.assets.image.add(s, img_istruzioni_fiale, 9425, 3580-175, 0.5, 1); 
         }
         istruzioni_fiale_created = true;
 
     } else if ((player.geometry.x < 9300 || player.geometry.x > 9550 &&
-                player.geometry.y > 3610 && player.geometry.y < 3810) && istruzioni_fiale_created == true){
+                player.geometry.y > 3610-150 && player.geometry.y < 3810) && istruzioni_fiale_created == true){
         PP.assets.destroy(istruzioni_interaction_fiale);
         istruzioni_fiale_created = false;
     }
