@@ -12,6 +12,9 @@ let piattaforme;
 let parallax01;
 let parallax02;
 
+let img_acid;
+let acid;
+
 
 function preload(s) {
     //PARALLASSE
@@ -20,7 +23,10 @@ function preload(s) {
     
     //SFONDO
     img_background  = PP.assets.image.load(s, "assets/images/mappa/sfondo.png");
-    
+
+    //ACIDO
+    img_acid   = PP.assets.image.load(s, "assets/images/struttura/acidover.png");
+
     //STRUTTURA
     img_tubi        = PP.assets.image.load(s, "assets/images/mappa/liv1e2.png"); 
     
@@ -46,6 +52,9 @@ function create(s) {
     parallax01.tile_geometry.scroll_factor_x = 0.5;
     parallax01.tile_geometry.scroll_factor_y = 0.5;
 
+    //Acido
+    acid = PP.assets.image.add(s, img_acid, 1652, 2190, 0, 0);
+
     //Tubi struttura
     tubi = PP.assets.image.add(s, img_tubi, 10, -410, 0, 0);
     
@@ -63,6 +72,11 @@ function create(s) {
     //Gestione camera
     PP.camera.start_follow(s, player, 0, 120); //così il player è al centro dello schermo
     PP.camera.set_follow_offset(s, -600, 120);
+
+    //ACIDO GAMEOVER
+    img_acid = PP.shapes.rectangle_add(s, 5500, 2400, 7543, 290, "0x000000", 0); 
+    PP.physics.add(s, img_acid, PP.physics.type.STATIC); 
+    PP.physics.add_collider_f(s, player, img_acid, goto_gameover);
 }
 
 function update(s) {
