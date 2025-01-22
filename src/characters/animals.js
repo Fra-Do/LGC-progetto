@@ -15,6 +15,10 @@ let img_scientist;
 let scientist;
 let scientist2;
 
+let img_congratulazioni;
+let congratulazioni;
+let img_topino;
+
 
 function preload_animals(s) {
     img_coniglio   = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_coniglio2.png", 110.6, 90);
@@ -25,6 +29,7 @@ function preload_animals(s) {
 
 
     img_topino = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topino2.png", 147.5, 115);
+    img_congratulazioni = PP.assets.image.load(s, "assets/images/istruzioni/scritta_topo_b2.png");
 }
 
 function goto_gameover (s) {
@@ -204,6 +209,9 @@ else if (scientist2.geometry.x <= 7660) {
 
 function topino_free (s) {
     PP.assets.sprite.animation_play(topino, "free");
+    congratulazioni = PP.assets.image.add(s, img_congratulazioni, 9150, 4795, 0, 0);
+    congratulazioni.geometry.scale_x = 0.1;
+    congratulazioni.geometry.scale_y = 0.1;
 }
 
 function destroy_animals (s) {
