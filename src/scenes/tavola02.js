@@ -9,7 +9,7 @@ let indietro2;
 
 
 function preload_tavola02 (s) {
-    img_tavola2     = PP.assets.image.load(s, "assets/images/cover/tavola2prov.png");
+    img_tavola2     = PP.assets.image.load(s, "assets/images/cover/seconda_tavola.png");
     img_avanti2     = PP.assets.image.load(s, "assets/images/cover/avanti.png");
     img_indietro2   = PP.assets.image.load(s, "assets/images/cover/indietro.png");
 }
