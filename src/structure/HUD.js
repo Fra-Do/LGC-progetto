@@ -153,13 +153,16 @@ function create_HUD(s) {
     // Aggiungiamo overlap dinamico in base al punteggio
     PP.physics.add_overlap_f(s, player, wall, function () { //funzione anonima di callback perché viene usata solo in questo punto del codice
         
-        //Se le gabbie aperte sono minori di 6 si ha il finale 2, se sono 6 le gabbie aperte si ha il finale 1
+        if (ss_key_opened) {
+            //Se le gabbie aperte sono minori di 6 si ha il finale 2, se sono 6 le gabbie aperte si ha il finale 1
         let currentScore = PP.game_state.get_variable("score");
         if (currentScore < 6) {
             goto_finale2(s);
         } else {
             goto_finale1(s);
         }
+        }
+        
     });
 }
 

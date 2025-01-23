@@ -211,10 +211,13 @@ else if (scientist2.geometry.x <= 7660) {
 
 //Funzione del topolino liberato
 function topino_free (s) {
-    PP.assets.sprite.animation_play(topino, "free");
-    congratulazioni = PP.assets.image.add(s, img_congratulazioni, 9150, 4795, 0, 0);
-    congratulazioni.geometry.scale_x = 0.1;
-    congratulazioni.geometry.scale_y = 0.1;
+    if (ss_key_opened) {
+        PP.assets.sprite.animation_play(topino, "free");
+        congratulazioni = PP.assets.image.add(s, img_congratulazioni, 9150, 4795, 0, 0);
+        congratulazioni.geometry.scale_x = 0.1;
+        congratulazioni.geometry.scale_y = 0.1;
+    }
+    
 }
 
 function destroy_animals (s) {
