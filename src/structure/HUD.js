@@ -1,8 +1,6 @@
 //VARIABILE PER PORRE L'HUD NEL PRIMO LIVELLO
 let nome_layer;
 
-let health;
-
 //VARIABILI PER CONTEGGIO GABBIE
 let img_sfondo;
 let sfondo;
@@ -32,6 +30,7 @@ let ss_map_opened   = false;
 let ss_key_opened   = false;
 let ss_fiale_opened = false;
 
+//FUNZIONI PER CHIAMARE I FINALI
 function goto_finale1(s) {
     PP.scenes.start("finale1");
 }
@@ -164,6 +163,7 @@ function create_HUD(s) {
     });
 }
 
+//FUNZIONE GESTIONE VITA (KIT)
 function reduce_kit(s, player, animal) { 
     if (enable_damage) {
         let curr_kit = PP.game_state.get_variable("kit");
@@ -196,6 +196,7 @@ function reduce_kit(s, player, animal) {
     } 
 }
 
+//Il conteggio dei kit aumenta solamente una volta che l'istruzione per raccoglierli viene generata
 function get_kit (s, player, kit_gen) {
     if (struzioni_kit_created1) {
         score_kit_update(s)
@@ -259,12 +260,6 @@ function update_HUD(s, player) {
             console.log("Non puoi raccogliere le fiale senza aver visualizzato l'istruzione.");
         }
     }
-    
-    //chiamo qui la funzione altrimenti non funziona correttamente
-    //score_kit_update(s)
-    //score_update(s)
-    
-    
 }
 
 // Funzione per distruggere l'HUD

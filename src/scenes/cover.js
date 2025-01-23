@@ -19,11 +19,11 @@ function preload(s) {
 }
 
 function create(s) {
-    background_cover  = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
+    background_cover     = PP.assets.image.add(s, img_background_cover, 0, 0, 0, 0);
 
-    button_storia     = PP.assets.image.add(s, img_button_storia, 45, 200, 0, 0);
-    button_gioca      = PP.assets.image.add(s, img_button_gioca, 130, 323, 0, 0);
-    button_crediti    = PP.assets.image.add(s, img_button_crediti, 45, 430, 0, 0);
+    button_storia        = PP.assets.image.add(s, img_button_storia, 45, 200, 0, 0);
+    button_gioca         = PP.assets.image.add(s, img_button_gioca, 130, 323, 0, 0);
+    button_crediti       = PP.assets.image.add(s, img_button_crediti, 45, 430, 0, 0);
 
     //GESTIONE BOTTONI
     PP.interactive.mouse.add (button_gioca, "pointerdown", change_scene_livello_1)

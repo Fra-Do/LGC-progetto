@@ -1,7 +1,6 @@
 //Nel gioco si può raccogliere: la mappa, i kit per curare la vita, una chiave e le fiale per attaccare
 let txt_score;
 let curr_score
-
 let txt_kit;
 let curr_kit;
 
@@ -231,6 +230,7 @@ function open_cage_1(s, player) {
     }  
 }
 
+//FUNZIONI PER LE ANIMAZIONI DI CIASCUNA GABBIA
 function open_cage_2(s, player) {
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
@@ -366,10 +366,12 @@ function open_cage_6(s, player) {
     }
 }
 
+//CODIE PER LA GESTIONE DELLE COLLISIONI CON GLI OGGETTI DA RACCOGLIERE
 let isKPressed = false;
 //FUNZIONI PER RACCOLTA DI OGGETTI
 function collision_collectibles(s, player, kit) {
-    
+
+        //Quando premo K i kit vengono raccolti e scompaiono dalla mappa. Al contempo, il conteggio si aggiorna
         if (PP.interactive.kb.is_key_down(s, PP.key_codes.K)) {
             PP.assets.destroy(kit); 
             if (!isKPressed) { // Incrementa lo score solo una volta per ogni pressione
@@ -388,11 +390,13 @@ function collision_collectibles(s, player, kit) {
                 console.log("Hai raccolto tutti e 5 i kit");
             }
         }
-
+    
+    //Raccolgo la chiave premendo E
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.E)) {
         PP.assets.destroy(key); 
     }
 
+    //Raccolgo le chiavi premendo F
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L)) {
         PP.assets.destroy(fiale); 
     }

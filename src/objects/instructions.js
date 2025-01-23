@@ -1,14 +1,13 @@
-
 //FRECCE SU, DESTRA, SINISTRA
 let img_up;
 let img_arrows;
 let arrows
 let up
 
-let istruzioni_arrows       = false;
+let istruzioni_arrows         = false;
 let istruzioni_arrows_created = false;
-let istruzioni_up_created = false;
-let istruzioni_leftright    = false;
+let istruzioni_up_created     = false;
+let istruzioni_leftright      = false;
 
 //ISTRUZIONI KIT (TASTO K)
 let img_istruzioni_kit1;
@@ -38,7 +37,7 @@ let img_istruzioni_cage3;
 let img_istruzioni_cage4;
 let img_istruzioni_cage5;
 let img_istruzioni_cage6;
-let istruzioni_cage_created = false; 
+let istruzioni_cage_created  = false; 
 let istruzioni_cage_created2 = false; 
 let istruzioni_cage_created3 = false;
 let istruzioni_cage_created4 = false;
@@ -55,18 +54,18 @@ let istruzioni_fiale_created = false;
 
 function preload_instruction(s) {
     //FRECCE
-    img_arrows      = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
-    img_up          = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
+    img_arrows           = PP.assets.image.load(s, "assets/images/istruzioni/left_right.png");
+    img_up               = PP.assets.image.load(s, "assets/images/istruzioni/up.png");
 
     //kit 
-    img_istruzioni_kit1 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
-    img_istruzioni_kit2 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
-    img_istruzioni_kit3 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
-    img_istruzioni_kit4 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
-    img_istruzioni_kit5 = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit1  = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit2  = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit3  = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit4  = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
+    img_istruzioni_kit5  = PP.assets.image.load(s, "assets/images/istruzioni/k.png");
 
     //mappa
-    img_istruzioni_map = PP.assets.image.load(s, "assets/images/istruzioni/M.png");
+    img_istruzioni_map   = PP.assets.image.load(s, "assets/images/istruzioni/M.png");
 
     //cage
     img_istruzioni_cage  = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
@@ -77,7 +76,7 @@ function preload_instruction(s) {
     img_istruzioni_cage6 = PP.assets.image.load(s, "assets/images/istruzioni/C.png");
 
     //key
-    img_istruzioni_key = PP.assets.image.load(s, "assets/images/istruzioni/E.png"); 
+    img_istruzioni_key   = PP.assets.image.load(s, "assets/images/istruzioni/E.png"); 
 
     //fiale
     img_istruzioni_fiale = PP.assets.image.load(s, "assets/images/istruzioni/L.png"); 

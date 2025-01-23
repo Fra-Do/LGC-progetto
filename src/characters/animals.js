@@ -15,6 +15,7 @@ let img_scientist;
 let scientist;
 let scientist2;
 
+//Variabili per aver trovato il topolino
 let img_congratulazioni;
 let congratulazioni;
 let img_topino;
@@ -27,11 +28,11 @@ function preload_animals(s) {
     img_maiale     = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_maiale.png", 171, 87);
     img_scientist  = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_scientist.png", 94, 170);
 
-
     img_topino = PP.assets.sprite.load_spritesheet(s, "assets/images/personaggi/ss_topino2.png", 147.5, 115);
     img_congratulazioni = PP.assets.image.load(s, "assets/images/istruzioni/scritta_topo_b2.png");
 }
 
+//Gameover per la collisione con le scienziate
 function goto_gameover (s) {
     PP.scenes.start("gameover");
 }
@@ -42,6 +43,7 @@ function create_animals (s) {
     PP.physics.add(s, coniglio, PP.physics.type.DYNAMIC);
     coniglio.geometry.flip_x = true;
 
+    //Chiamiamo la funzione reduce kit contenuta in HUD.js
     PP.physics.add_overlap_f(s, player, coniglio, reduce_kit);
 
     PP.assets.sprite.animation_add(coniglio, "walk", 0, 10, 15, -1);
@@ -56,6 +58,7 @@ function create_animals (s) {
     PP.physics.add(s, topo, PP.physics.type.DYNAMIC);
     topo.geometry.flip_x = true;
 
+    //Chiamiamo la funzione reduce kit contenuta in HUD.js
     PP.physics.add_overlap_f(s, player, topo, reduce_kit);
 
     PP.assets.sprite.animation_add(topo, "walk", 0, 5, 8, -1);
@@ -70,6 +73,7 @@ function create_animals (s) {
     PP.physics.add(s, scimmia, PP.physics.type.DYNAMIC);
     scimmia.geometry.flip_x = true;
 
+    //Chiamiamo la funzione reduce kit contenuta in HUD.js
     PP.physics.add_overlap_f(s, player, scimmia, reduce_kit);
 
     PP.assets.sprite.animation_add(scimmia, "walk", 0, 6, 8, -1);
@@ -84,6 +88,7 @@ function create_animals (s) {
     PP.physics.add(s, maiale, PP.physics.type.DYNAMIC);
     maiale.geometry.flip_x = true;
 
+    //Chiamiamo la funzione reduce kit contenuta in HUD.js
     PP.physics.add_overlap_f(s, player, maiale, reduce_kit);
 
     PP.assets.sprite.animation_add(maiale, "walk", 0, 8, 8, -1);
@@ -124,25 +129,23 @@ function create_animals (s) {
     PP.physics.set_allow_gravity(scientist2, false);
 
 
-
-
-
-
+    //CODICE TOPOLINO TROVATO
     // Topino
     topino = PP.assets.sprite.add(s, img_topino, 9310, 5190, 0.5, 1); 
     PP.physics.add(s, topino, PP.physics.type.DYNAMIC);
     
     PP.physics.add_overlap_f(s, player, topino, topino_free);
     
+    //Sprite topino che esce dlla gabbia
     PP.assets.sprite.animation_add(topino, "locked", 0, 0, 15, 0);
     PP.assets.sprite.animation_add(topino, "free", 0, 8, 15, 0);
     PP.assets.sprite.animation_play(topino, "locked");
    
     PP.physics.set_immovable(topino, true);
     PP.physics.set_allow_gravity(topino, false);
-    
 }
 
+//CAMMINATA NEMICI
 function update_animals (s) {
  // movimento coniglio  
 if (coniglio.geometry.x >= 6560) {
@@ -206,7 +209,7 @@ else if (scientist2.geometry.x <= 7660) {
 
 }
 
-
+//Funzione del topolino liberato
 function topino_free (s) {
     PP.assets.sprite.animation_play(topino, "free");
     congratulazioni = PP.assets.image.add(s, img_congratulazioni, 9150, 4795, 0, 0);

@@ -33,8 +33,6 @@ function preload_platforms(s) {
 }
 
 function create_platforms(s) {
-    // Piattaforma mobile
-
     //piattaforme gruppo 1
     //1.1
     pl_1 = PP.assets.image.add(s, img_pl1, 3260-30, 200, 0, 0);
@@ -200,8 +198,6 @@ function create_platforms(s) {
     PP.physics.add_collider_f(s, player, pl_5_4, collision_platform);
     PP.physics.set_velocity_x(pl_5_4, pl_5_speed);
 
-    // piattaforme guuppo 6 --> animazioni acido spruzzato
-
     //piattaforme gruppo 7
     //7.1
     pl_7_1 = PP.assets.image.add(s, img_pl7, 7840, 810, 0, 0);
@@ -235,9 +231,9 @@ function create_platforms(s) {
     PP.physics.set_allow_gravity(pl_8_2, false);    
     PP.physics.add_collider_f(s, player, pl_8_2, collision_platform);
     PP.physics.set_velocity_y(pl_8_2, pl_8_speed);
-
 }
 
+//GESTIONE ANIMAZIONI PIATTAFORME MOBILI
 function update_platforms(s) {
     //piattaforme gruppo 1
     //1.1
@@ -405,9 +401,6 @@ function update_platforms(s) {
     else if(pl_5_4.geometry.x <= 5290-70) {
         PP.physics.set_velocity_x(pl_5_4, pl_5_speed);
     }
-
-
-    // piattaforme 6 --> acido spruzzato animazione 
     
     //piattaforme gruppo 7 
     //7.1
@@ -426,27 +419,9 @@ function update_platforms(s) {
         PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
     }
     
-    /*// 7.1 roba che ci aveva fatto fare l'assistente
-    if(pl_7_1.geometry.y >= 1260 || pl_7_1.geometry.y <= 900) {
-        pl_7_speed = -pl_7_speed;
-    }
-
-    PP.physics.set_velocity_y(pl_7_1, pl_7_speed);
-
-    // 7.2
-    if(pl_7_2.geometry.y >= 1260) {
-        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
-    }
-    else if(pl_7_2.geometry.y <= 900) {
-        PP.physics.set_velocity_y(pl_7_2, pl_7_speed);
-    }
-    else {
-        PP.physics.set_velocity_y(pl_7_2, -pl_7_speed);
-    }
-*/
     //piattaforme gruppo 8
     //8.1
-    if(pl_8_1.geometry.y >= 1570) {
+    if(pl_8_1.geometry.y >= 1670) {
         PP.physics.set_velocity_y(pl_8_1, -pl_8_speed);
     }
     else if(pl_8_1.geometry.y <= 800) {

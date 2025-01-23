@@ -32,9 +32,7 @@ function preload_player(s) {
 }
 
 function create_player(s) {
-    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste 
-    //player = PP.assets.sprite.add(s, img_player, 9010, 5190, 0.5, 1); 
-    //player = PP.assets.sprite.add(s, img_player, 2500, 350, 0.5, 1);  
+    player = PP.assets.sprite.add(s, img_player, 400, 350, 0.5, 1);  //posizioni iniziali giuste  
 
     PP.physics.add(s, player, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(player, true);
@@ -45,6 +43,7 @@ function create_player(s) {
     PP.layers.set_z_index(nome_layer, 1);
 }
 
+//FUNZIONE PER ABILITARE IL DANNO
 let enable_damage = true;
  
 function reenable_damage (s) {
@@ -81,8 +80,10 @@ function update_player(s, player) {
         next_anim = "idle"; 
     }
 
-    if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && player.ph_obj.body.blocked.down) {
-        PP.physics.set_velocity_y(player, -jump_init_speed);  // Impostiamo la velocità verticale per il salto
+    //Codice per impostazione salto
+    //Per gestire l'animazione di salto quando il player è posizionato su delle piattaforme che si muovono lungo l'asse y
+    if(PP.interactive.kb.is_key_down(s, PP.key_codes.UP) && player.ph_obj.body.blocked.down) { 
+        PP.physics.set_velocity_y(player, -jump_init_speed);  
         player.is_on_platform = false;
     } 
 
@@ -95,6 +96,7 @@ function update_player(s, player) {
         next_anim = "jump_down";
     }
 
+    //Animazione lancio arma
     if (PP.interactive.kb.is_key_down(s, PP.key_codes.L) && 
         PP.interactive.kb.is_key_up(s, PP.key_codes.RIGHT ) && PP.interactive.kb.is_key_up(s, PP.key_codes.LEFT)) {
 
@@ -121,10 +123,11 @@ function update_player(s, player) {
     manage_player_weapon(s);
 }
 
-//FUNZIONE PR COLPIRE I NEMICI
+//FUNZIONI PER COLPIRE I NEMICI
 function hit_scientist2 (s, weapon, scientist2) {
     PP.assets.destroy (scientist2);
     PP.assets.destroy (weapon);
+    console.log ("colpita scienziata");
 }
 
 function hit_animals (s, weapon, animal){
@@ -146,7 +149,8 @@ function launch_weapon(s, offset, velocity) {
             player.geometry.y - 70,
             0.5, 0.5
         );
-
+    
+    //Chiamo le funzioni hit_animals e hit_scientist
     PP.physics.add(s, weapon, PP.physics.type.DYNAMIC);
     PP.physics.set_allow_gravity(weapon, false);
     PP.physics.set_rotation(weapon, 360);
