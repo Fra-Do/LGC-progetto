@@ -197,11 +197,11 @@ function reduce_kit(s, player, animal) {
 }
 
 //Il conteggio dei kit aumenta solamente una volta che l'istruzione per raccoglierli viene generata
-function get_kit (s, player, kit_gen) {
+/*function get_kit (s, player, kit_gen) {
     if (struzioni_kit_created1) {
         score_kit_update(s)
     }
-}
+}*/
 
 // Funzione update per aggiornare l'HUD quando la salute cambia, e per attivare le animazioni della raccolta degli oggetti
 function update_HUD(s, player) {
