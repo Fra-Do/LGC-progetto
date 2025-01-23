@@ -204,64 +204,55 @@ function create_cage(s, player) {
 let isCPressed = false;
 //QUANDO VIENE PREMUTO IL TASTO C LA GABBIA SI APRE
 function open_cage_1(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+    //Si deve controllare che la gabbia non sia ancora aperta
+    if (!cage_1_opened && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
-        cage_1_opened = true;
+        cage_1_opened = true; // Segna la gabbia come aperta
         PP.assets.sprite.animation_stop(cage_1, "closed");
         PP.assets.sprite.animation_play(cage_1, "opened");
-        
-        if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isCPressed = true; 
-            console.log("Tasto C premuto");
 
-            // Ottieni il punteggio corrente
-            let curr_score = PP.game_state.get_variable("score");
+        // Ottieni il punteggio corrente
+        let curr_score = PP.game_state.get_variable("score");
 
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_score < 6) {
-                curr_score++; // Incrementa il punteggio
-                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "= " + curr_score);
-            } else {
-                console.log("Hai aperto tutte e 6 le gabbie");
-            }
+        // Incrementa il punteggio solo se è inferiore a 6
+        if (curr_score < 6) {
+            curr_score++; // Incrementa il punteggio
+            PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
+            PP.shapes.text_change(txt_score, "= " + curr_score);
+            console.log("Gabbia 1 aperta. Punteggio attuale: " + curr_score);
+        } else {
+            console.log("Hai aperto tutte e 6 le gabbie");
         }
-    
-    }  
+    }
 }
 
 //FUNZIONI PER LE ANIMAZIONI DI CIASCUNA GABBIA
 function open_cage_2(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+    if (!cage_2_opened && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
-        cage_2_opened = true;
+        cage_2_opened = true; // Segna la gabbia come aperta
         PP.assets.sprite.animation_stop(cage_2, "closed");
         PP.assets.sprite.animation_play(cage_2, "opened");
-        
-        if (!isCPressed) { // Incrementa lo score solo una volta per ogni pressione
-            isCPressed = true; 
-            console.log("Tasto C premuto");
 
-            // Ottieni il punteggio corrente
-            let curr_score = PP.game_state.get_variable("score");
+        // Ottieni il punteggio corrente
+        let curr_score = PP.game_state.get_variable("score");
 
-            // Incrementa il punteggio solo se è inferiore a 6
-            if (curr_score < 6) {
-                curr_score++; // Incrementa il punteggio
-                PP.game_state.set_variable("score", curr_score); // Aggiorna lo stato di gioco
-                PP.shapes.text_change(txt_score, "= " + curr_score);
-            } else {
-                console.log("Hai aperto tutte e 6 le gabbie");
-            }
+        // Incrementa il punteggio solo se è inferiore a 6
+        if (curr_score < 6) {
+            curr_score++;
+            PP.game_state.set_variable("score", curr_score);
+            PP.shapes.text_change(txt_score, "= " + curr_score);
+            console.log("Gabbia 2 aperta. Punteggio attuale: " + curr_score);
+        } else {
+            console.log("Hai aperto tutte e 6 le gabbie");
         }
-    
     }
 }
 
 function open_cage_3(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+    if (!cage_3_opened && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
-        cage_2_opened = true;
+        cage_3_opened = true;
         PP.assets.sprite.animation_stop(cage_3, "closed");
         PP.assets.sprite.animation_play(cage_3, "opened");
         
@@ -286,7 +277,7 @@ function open_cage_3(s, player) {
 }
 
 function open_cage_4(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+    if (!cage_4_opened && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
         cage_4_opened = true;
         PP.assets.sprite.animation_stop(cage_4, "closed");
@@ -313,7 +304,7 @@ function open_cage_4(s, player) {
 }
 
 function open_cage_5(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+    if (!cage_5_opened && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
         cage_5_opened = true;
         PP.assets.sprite.animation_stop(cage_5, "closed");
@@ -340,7 +331,7 @@ function open_cage_5(s, player) {
 }
 
 function open_cage_6(s, player) {
-    if (PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
+    if (!cage_6_opened && PP.interactive.kb.is_key_down(s, PP.key_codes.C)) {
         // Cambia animazione della gabbia
         cage_6_opened = true;
         PP.assets.sprite.animation_stop(cage_6, "closed");
