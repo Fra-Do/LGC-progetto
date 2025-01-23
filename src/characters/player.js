@@ -6,7 +6,7 @@ let weapon;
 
 let weapon_disable    = false;
 
-let player_speed      = 400;
+let player_speed      = 430;
 let jump_init_speed   = 480;
 let step_lenght       = 10;
 let height            = 8;
